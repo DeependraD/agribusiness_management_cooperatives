@@ -1,0 +1,1093 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Advanced course
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+source("./../scripts/supply-demand-surplus.R")
+source("./../scripts/graphics.R")
+# require(extrafont) # requires for graphics.R
+# require(extrafontdb)
+# extrafont::loadfonts()
+# extrafont::font_import()
+```
+
+# Introduction
+
+## 
+
+
+# Production possibility frontier
+
+- A production-possibility frontier shows the maximum number of alternative combinations of goods and services that a society or a farm can produce at a given time when there is full utilization of economic resources and technology.
+- Alternative combinations of guns and butter output for a hypothetical economy (guns represent the output of military goods, while butter represents nonmilitary goods and services) is shown in Table \ref{tab:gun-butter-ppf-tab}. 
+
+```{r gun-butter-ppf-tab, echo=FALSE}
+pps_less <- readxl::read_xlsx("./../data/concepts_of_economics.xlsx", 
+                              sheet = "production_possibility_schedule", col_names = TRUE)
+
+pps_less %>% 
+  mutate_if(is.numeric, function(x) {
+    kableExtra::cell_spec(x, "latex", bold = T, color = kableExtra::spec_color(x, end = 0.8),
+                          font_size = kableExtra::spec_font_size(x))
+    }) %>%
+  mutate_at("Alternative outputs", function(x) {kableExtra::cell_spec(
+    x, "latex", color = "white", bold = T,
+    background = kableExtra::spec_color(seq_along(1:nrow(.)), end = 0.9, option = "A", direction = -1)
+    )}) %>% 
+  knitr::kable(format = "latex", caption = "Production possibility schedule", 
+               escape = F, booktabs = T, linesep = "", align = "c") %>% 
+  kableExtra::kable_styling(position = "left", full_width = FALSE, font_size = 6) %>% 
+  kableExtra::column_spec(1:3, width = "10em")
+```
+
+##
+
+- In choosing what to produce, decision makers have a choice of producing, for example, alternative "C" (5,000 guns and 14 million units of butter) or any other alternative presented.
+- This production-possibility schedule is plotted and shown in Figure \ref{fig:gun-butter-ppf-fig}. The curve, labeled PP, is called the production-possibility frontier. 
+
+```{r gun-butter-ppf-fig, fig.cap="Production possibility frontier of gun versus butter", fig.width=6, fig.height=4, out.width="60%", echo=FALSE}
+
+pps_less_curve <- as_tibble(Hmisc::bezier(pps_less$`Guns (thousand units)`, y = pps_less$`Butter (million units)`)) %>% 
+  magrittr::set_colnames(c("guns_thousands", "butter_millions"))
+
+pps_less_curve %>% 
+  ggplot(mapping = aes(x = guns_thousands, y = butter_millions)) +
+  geom_path(color = "blue") + 
+  geom_label(data = pps_less, aes(x = `Guns (thousand units)`, y = `Butter (million units)`, label = `Alternative outputs`)) +
+  theme_bw()
+```
+
+
+## Marginal cost
+
+- The additional cost of doing a little bit more (or 1 unit more if a unit can be measured) of an activity.
+- How do you make a rational decision about when the alarm should go off? What you have to do is to weigh up the costs and benefits of additional sleep. Each extra minute in bed gives you more sleep (the marginal benefit), but gives you more of a rush when you get up (the marginal cost).
+- The decision is therefore based on the costs and benefits of extra sleep, not on the total costs and benefits of a whole night’s sleep.
+
+#### Rational decision
+- Doing more of an activity if its marginal benefit exceeds its marginal cost and doing less if its marginal cost exceeds its marginal benefit.
+- Rational decisions are made with rational choices; that involve weighing up the benefit of any activity against its opportunity cost.
+
+# Indifference curve
+
+## Meaning
+
+- Indifference curve approach is an effort to understanding consumer behavior considering the properties of consumer preferences. The major assumptions associated with the study of consumer behavior include:
+  1. Preferences for goods and services are complete
+  2. Consumers are consistent
+  3. Nonsatiation: More is preferred to less
+
+- Each indifference curve is a set of points, each representing a combination of quantities of two goods or services, all of which combinations the consumer is equally satisfied with. The further a curve is from the origin, the greater is the level of utility.
+
+##
+
+- Indifference curves represent the *theoretical* tradeoff of two goods and your individual preferences. Each curve shows the combination of goods that produce the same level of utility.
+
+- The slope of this line is known as the **marginal rate of substitution (MRS)**(the negative of the marginal rate of substitution of X for Y). The MRS for an individual is the willingness to trade off good X against good Y at any point (maintaining the same level of utility). The curve is convex to the origin as shown assuming the consumer has a **diminishing marginal rate of substitution**. It can be shown that consumer analysis with indifference curves (an ordinal approach) gives the same results as that based on cardinal utility theory - i.e., consumers will consume at the point where the marginal rate of substitution between any two goods equals the ratio of the prices of those goods (the equi-marginal principle)
+
+##
+
+- It can be shown as a lot of other things:
+    
+$$
+MRS = \frac{dy}{dx} = \frac{\Delta y}{\Delta x} = \frac{\text{Price}_x}{\text{Price}_y} = \frac{MU_x}{MU_y} = \frac{\partial u / \partial x}{\partial u / \partial y}
+$$
+
+We can find the optimum combination of goods (workers and planes, hours and grades, etc.) by combining the feasible set with indifference curves.
+
+#### Properties
+1. Downward sloping: Relates to "More is preferred to less"
+2. Everywhere dense: Infinite number of isoquants
+3. Cannot intersect
+4. Convex to origin: Due to law of diminishing marginal utility
+
+##
+
+- Economists assume that consumers maximize their own utility, subject to a budget constraint. Advertising aims explicitly at changing consumer preferences. Political rhetoric works the same way, and ever-present peer pressure causes consumers to make frequent changes in the pattern of their purchases.
+
+- Production economics tries to answer what happens when the relative prices of consumer goods (food, clothing, books, vacuum cleaners, entertainment, etc.) change. When this occurs, consumers shift their purchases into the less expensive goods and away from the more expensive goods. Indifference curves help show this movement between goods.
+
+##
+
+- A graph of indifference curves for several utility levels of an individual consumer is called an **indifference map**. Points yielding different utility levels are each associated with distinct indifference curves and these indifference curves on the indifference map are like contour lines on a topographical map. Each point on the curve represents the same elevation. If you move "off" an indifference curve traveling in a northeast direction (assuming positive marginal utility for the goods) you are essentially climbing a mound of utility. The higher you go the greater the level of utility. The non-satiation requirement means that you will never reach the "top," or a "bliss point," a consumption bundle that is preferred to all others.
+
+##
+
+```{r indifference-map, fig.width=6, fig.height=4, fig.cap="Indifference curves", echo=FALSE, eval=TRUE, out.width="60%"}
+u_xy <- function(x, U) (1*U) / x
+
+ggplot() +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = "red", size = 1, args = list(U = 40)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 40), label = "U = 40",
+           color = "red", size = 4.5) +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = "blue", size = 1, args = list(U = 20)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 20), label = "U = 20",
+           color = "blue", size = 4.5) +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = "aquamarine", size = 1, args = list(U = 10)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 10), label = "U = 10",
+           color = "aquamarine", size = 4.5) +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = "wheat4", size = 1, args = list(U = 5)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 5), label = "U = 5",
+           color = "wheat4", size = 4.5) +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = "turquoise", size = 1, args = list(U = 12)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 12), label = "U = 12",
+           color = "turquoise", size = 4.5) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 22, 5)) + 
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 20, 4)) +
+  coord_cartesian(xlim = c(0, 22), ylim = c(0, 24)) +
+  labs(x = "Commodity X", y = "Commodity Y") +
+  # theme_econ(14, axis_line = TRUE)
+  theme_bw()
+
+```
+
+## Applications
+
+- Consumer theory uses indifference curves and budget constraints to generate consumer demand curves. For a single consumer, this is a relatively simple process. First, let one good be an example market e.g., carrots, and let the other be a composite of all other goods. 
+- Budget constraints give a straight line on the indifference map showing all the possible distributions between the two goods; the point of maximum utility is then the point at which an indifference curve is tangent to the budget line. 
+- This follows from common sense: if the market values a good more than the household, the household will sell it; if the market values a good less than the household, the household will buy it. 
+
+##
+
+- The process then continues until the market's and household's marginal rates of substitution are equal. Now, if the price of carrots were to change, and the price of all other goods were to remain constant, the gradient of the budget line would also change, leading to a different point of tangency and a different quantity demanded. These price / quantity combinations can then be used to deduce a full demand curve. 
+- A line connecting all points of tangency between the indifference curve and the budget constraint is called the expansion path.
+
+## Indifference curve: Construction
+
+> Imagine that waffles (x) cost \$1 and calzones (y) cost \$2. You have a food budget of \$20. Your utility function for waffles and calzones is $u = xy$.
+
+## Figure out the feasible set and the MRT
+
+In this case our feasible set is not a production function—we aren't limited by workers or time. Instead, we're limited by our budget. We can only spend \$20. If we spend all our money on calzones, we could buy 10 of them. If we spend all our money on waffles, we can buy 20 of them. We can plot all the combinations of waffles and calzones as a *budget line*:
+
+```{r budget-line, echo=FALSE, fig.width=5, fig.height=3, fig.cap="Budget line for a combination of goods.", echo=FALSE, eval=TRUE, out.width="50%", fig.align='center'}
+budget <- function(x) (-0.5 * x) + 10
+
+ggplot() +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = budget,
+                color = nord_yellow, size = 2) +
+  annotate(geom = "label", x = 2.5, y = budget(2.5), label = "Budget line",
+           color = nord_yellow, size = 4.5) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 25, 5)) + 
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) +
+  coord_cartesian(xlim = c(0, 21), ylim = c(0, 11)) +
+  labs(x = "Waffles", y = "Calzones") +
+  # theme_econ(14, axis_line = TRUE)
+  theme_bw()
+```
+
+##
+
+We can write this budget line as an equation following the $y = mx + b$ format, where $m$ is the slope and $b$ is the y-intercept. The slope here is the marginal rate of transformation (MRT).
+
+$$
+y = -\frac{1}{2} x + 10
+$$
+
+## Figure out indifference curves and the MRS
+
+- We can afford every combination of waffles and calzones along the budget line, but we don't know what the optimal mix of waffles and calzones is—that depends on how much we like the two foods, or our *preferences*.
+- Our utility function is $u = xy$, which means that we multiply the quantity of waffles and calzones together to get our utility. That is, if we eat 10 waffles and 4 calzones, we'll get 40 utils; if we eat 5 waffles and 14 calzones, we'll get 70 utils; and so on.
+- Indifference curves show all the combinations of two goods that provide the same utility. If we want to get 40 utils, we could eat 20 waffles and 2 calzones, 10 waffles and 4 calzones, 5 waffles and 8 calzones, etc. Each of those combinations provides 40 utils of happiness.
+- We can calculate the combinations of waffles and calzones that lead to any amount of utility. In the chart below, I show three different indifference curves. Every point along the curve represents the combination of waffles and calzones that would lead to 10, 20, and 40 utils.
+
+##
+
+```{r indifference-curves, echo=FALSE, fig.width=6, fig.height=4, fig.cap="Indifference curves for different utility levels for two commodities.", echo=FALSE, eval=TRUE, out.width="65%", fig.align='center'}
+u_xy <- function(x, U) U / x
+
+ggplot() +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = nord_red, size = 1, args = list(U = 40)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 40), label = "U = 40",
+           color = nord_red, size = 4.5) +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = nord_dk_blue, size = 1, args = list(U = 20)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 20), label = "U = 20",
+           color = nord_dk_blue, size = 4.5) +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = nord_lt_blue, size = 1, args = list(U = 10)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 10), label = "U = 10",
+           color = nord_lt_blue, size = 4.5) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 25, 5)) + 
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) +
+  coord_cartesian(xlim = c(0, 21), ylim = c(0, 11)) +
+  labs(x = "Waffles", y = "Calzones") +
+  # theme_econ(14, axis_line = TRUE)
+  theme_bw()
+```
+
+##
+
+- Next, we can use this utility function to calculate the *marginal rate of substitution* or MRS, which is the slope of the curve at any given point. In calculus land, we find the slope of a function by calculating the first derivative. For easier one-variable functions like $x^2$, this involves moving the exponent down, multiplying it by the coefficient, and reducing the exponent by one. The first derivative of $x^2$ is $2x$. The derivative of $2x^3$ would be $6x^2$, and so on.
+- When differentiating a two-variable function like $xy$, though, we can't just follow the simple rule of moving an exponent down and subtracting one. Instead, we have to calculate partial derivatives—we find the derivative of just the $x$ part while holding $y$ constant and divide it by the derivative of just the $y$ part while holding $x$ constant.
+- In this case, where $u = xy$, the slope / first derivative / MRS is $\frac{y}{x}$.
+
+##
+
+- Next, we can add actual numbers to this MRS by setting it equal to the ratio of the prices of waffles and calzones (remember from that big list of things that MRS is, from up above, that MRS also is $\frac{\text{Price}_x}{\text{Price}_y}$):
+
+$$
+\frac{y}{x} = \frac{1}{2}
+$$
+
+- We can use algebra to rearrange this formula so that it's based on $y$:
+
+$$
+y = \frac{1}{2} x
+$$
+
+- That is our MRS given the prices that exist in the world. Phew.
+
+## Set MRS = MRT and solve for x and y
+
+- Now that we have formulas for the MRT and the MRS, we can set them equal to each other to find where they are tangent to each other (i.e where their slopes are the same). Algebra time!
+
+$$
+\begin{aligned}
+MRS &= MRT \\
+\frac{1}{2} x &= -\frac{1}{2} x + 10 \\
+x &= 10
+\end{aligned}
+$$
+
+##
+
+- The optimal level of waffles is thus 10. We can plug that back into either the MRS or the MRT equation to figure out the optimal level of calzones:
+
+$$
+\begin{aligned}
+y &= -\frac{1}{2} x + 10 \\
+y &= (-\frac{1}{2} \times 10) + 10 \\
+y &= 5
+\end{aligned}
+$$
+
+- 5 calzones! The best combination food that maximizes our utility given our budget constraint and current prices is **10 waffles and 5 calzones**.
+- We can use our utility function to calculate how many utils we get from that level of consumption: $u = xy$, or 10 × 5, or 50.
+
+##
+
+- We can verify this combination graphically by plotting the budget line and indifference curve for 50 utils all at the same time:
+
+```{r all-together, echo=FALSE, fig.width=5, fig.height=3, fig.cap="Indifference curves", echo=FALSE, eval=TRUE, out.width="55%", fig.align='center'}
+ggplot() +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = budget,
+                color = nord_yellow, size = 2) +
+  annotate(geom = "label", x = 2.5, y = budget(2.5), label = "Budget line",
+           color = nord_yellow, size = 4.5) +
+  stat_function(data = tibble(x = 0:20), aes(x = x), fun = u_xy,
+                color = nord_red, size = 1, args = list(U = 50)) +
+  annotate(geom = "label", x = 5, y = u_xy(5, 50), label = "U = 50",
+           color = nord_red, size = 4.5) +
+  annotate(geom = "point", x = 10, y = 5, size = 3, color = nord_dk_blue) +
+  annotate(geom = "label", x = 11, y = 5, label = "Optimal combination",
+           size = 4.5, hjust = 0, color = nord_dk_blue
+           # family = "Roboto Condensed Bold"
+           ) +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 25, 5)) + 
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 10, 2)) +
+  coord_cartesian(xlim = c(0, 21), ylim = c(0, 11)) +
+  labs(x = "Waffles", y = "Calzones") +
+  # theme_econ(14, axis_line = TRUE)
+  theme_bw()
+```
+
+
+# Demand and supply
+
+## 
+
+Let us consider that blackgram (average quality) has the following demand schedule:
+
+```{r}
+tribble(~"quantity", ~"price", ~"total_revenue", ~"total_cost", ~"profit", 
+        )
+```
+
+
+### Supply function
+
+Let us consider the following linear supply function:
+
+\begin{equation}
+\begin{split}
+q^s(p^s) = a + bp^s; a < 0, b > 0
+\end{split}
+\label{eq:supply-func}
+\end{equation}
+
+Where,
+
+$q^s(.)$ -- supply function
+
+$q^s$ -- quantity supplied
+
+$p^s$ -- supply price
+
+Parameter $a$ describes the hypothetical quantity of supply for a supply price of zero.
+Parameter $b$ describes the slope of the supply function and indicates the change in units supplied as a consequence of an increase of the supply price by one unit.
+
+Inverse function with price on y-axis and quanity on x-axis is given by following inverse supply function. Inverse function is derived by solving Equation \ref{eq:supply-func} with respect to $p^s$.
+
+\begin{equation}
+\usetagform{inverseeqn}
+\begin{split}
+\tilde{p}^s(q^s) = -\frac{a}{b} + \frac{1}{b}q^s
+\end{split}
+\label{inverse-supply-func}
+\end{equation}
+
+Where,
+
+$\tilde{p}^s(.)$ -- inverse supply function 
+
+
+### Demand function
+
+Let us consider the following linear demand function:
+
+\begin{equation}
+\begin{split}
+q^d(p^d) = c + dp^d; c > 0, d < 0
+\end{split}
+\label{demand-func}
+\end{equation}
+
+Where,
+
+$q^d(.)$ -- demand function
+
+$q^d$ -- quantity demanded
+
+$p^d$ -- demand price
+
+$c$ -- hypothetical quantity of supply for a supply price of zero.
+
+$d$ -- slope of the supply function that indicates the change in units supplied as a consequence of an increase of the supply price by one unit.
+
+Inverse function with price on y-axis and quanity on x-axis is given by following inverse supply function. Inverse function is derived by solving Equation \ref{eq:demand-func} with respect to $p^d$.
+
+\begin{equation}
+\usetagform{inverseeqn}
+\begin{split}
+\tilde{p}^d(q^d) = -\frac{c}{d} + \frac{1}{d}q^d
+\end{split}
+\label{inverse-demand-func}
+\end{equation}
+
+Where,
+
+$\tilde{p}^d(.)$ -- inverse demand function 
+
+\textbf{\Large Numerical examples on supply demand functions}
+
+Let us consider we have given parameters, a, b, c and d, we can then compute quantity distributions for given price levels with supply and demand functions respectively.
+
+```{r supply-demand-func, eval=FALSE}
+# quantity as function of price
+s_fun <- function(ps)a + b*ps
+d_fun <- function(pd)c + d*pd
+
+a <- -2
+b <- 3
+c <- 3
+d <- -5
+
+s_fun(c(2, 3, 4, 5))
+d_fun(c(2, 3, 4, 5))
+
+# price as function of demand
+
+s_fun_inv <- function(qs)-a/b + 1/b*qs
+d_fun_inv <- function(qd)-c/d + 1/d*qd
+
+s_fun_inv(c(2, 3, 4, 5))
+d_fun_inv(c(2, 3, 4, 5))
+```
+
+To solve for equilibrium price and quantity, however, we can algebrically solve the following linear function indicated in the matrix form as follow:
+
+\[
+\underbrace{\begin{bmatrix} p^s \\ p^d \end{bmatrix}}_y  = \underbrace{\begin{bmatrix}  a &  b \\ c &  d \end{bmatrix}}_X
+  \underbrace{\begin{bmatrix} q^s(p^s) \\ q^d(p^d) \end{bmatrix}}_\beta
+\]
+
+
+## Fun with empirical and function-based derivatives in R ^[[Andrew Heiss](https://www.andrewheiss.com), 2018-02-15]
+
+- For a more advanced topic on price optimization, refer to rmarkdown notebook by Andrew Heiss -- Chidi's budget utility [./chidi's_budget_utility.Rmd]
+
+*tl;dr*: Use functions like `Deriv::Deriv()`, `splinefun()`, `approxfun()`, and `uniroot()` to do things with derivatives in R, both with actual functions and with existing empirical data
+
+A typical microeconomics problem involves finding the optimal price and quantity of a product, given its demand and cost across different quantities. You can optimize this price and quantity and maximize profit by finding the point where the marginal cost and the marginal revenue (or the first derivatives of the cost and revenue functions) are equal to each other.
+
+For instance, the demand for some product can be defined as $Q = 10 - 2P$ (where $Q =$ quantity and $P =$ price). The revenue you get from selling that product is defined as $R = PQ$ (just multiplying price × quantity), so through some algebraic trickery and rearranging of Ps and Qs, you can create a revenue function for this demand curve: $R = 5Q - 0.5Q^2$. The cost function for this product can be defined as $C = 0.25Q + 0.5Q^2$.
+
+To figure out the optimal profit, we set the marginal cost and marginal revenue equations equal to each other and solve for Q. Here, $\frac{dC}{dQ} = MC = 0.25 + 0.5Q$ and $\frac{dR}{dQ} = MR = 5 - Q$, so with algebra we can find the optimal point:
+
+$$
+\begin{aligned}
+MC &= MR \\
+0.25 + 0.5Q &= 5 - Q \\
+1.5Q &= 4.75 \\
+Q &= 3.1\overline{66}
+\end{aligned}
+$$
+
+Phew. Calculus.
+
+Doing this in R is fairly straightforward and far more flexible and far less algebra-intensive. First, define the functions:
+
+```{r econ-functions, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(Deriv)
+library(pander)
+
+demand <- function(q) 5 - (0.5 * q)
+revenue <- function(q) (5 - 0.5 * q) * q
+
+cost <- function(q) (0.25 * q) + (0.5 * q)^2
+```
+
+Plotting these functions is easy with `stat_function()`:
+
+```{r plot-functions}
+ggplot(mapping = aes(x = 0:10)) +
+  stat_function(fun = cost, size = 1, aes(color = "Total cost")) +
+  stat_function(fun = revenue, size = 1, aes(color = "Total revenue")) +
+  labs(x = "Quantity", y = "Price") +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c("Total cost" = "red", "Total revenue" = "blue"),
+                     name = "Function") +
+  theme_light() +
+  theme(legend.position = "bottom")
+```
+
+Then, using `Deriv::Deriv()`, create derivative functions for the marginal cost and marginal revenue equations:
+
+```{r econ-marginal-functions}
+mr <- Deriv(revenue, "q")
+mc <- Deriv(cost, "q")
+```
+
+We can also plot these:
+
+```{r plot-marginal-functions}
+ggplot(mapping = aes(x = 0:10)) +
+  stat_function(fun = mc, size = 1, aes(color = "Marginal cost")) +
+  stat_function(fun = mr, size = 1, aes(color = "Marginal revenue")) +
+  labs(x = "Quantity", y = "Price") +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c("Marginal cost" = "red", "Marginal revenue" = "blue"),
+                     name = "Function") +
+  coord_cartesian(ylim = c(0, 6)) +
+  theme_light() +
+  theme(legend.position = "bottom")
+```
+
+Finally, use the `uniroot()` function to look for the point where `mc` and `mr` intersect within a given range (here I'm looking between 1 and 10 since the demand curve goes negative after $Q =$ 10):
+
+```{r opt-q}
+optimal_q <- uniroot(function(x) mc(x) - mr(x), c(1, 10))
+optimal_q$root
+```
+
+It's the same answer!
+
+We can then plug `optimal_q$root` back into the marginal revenue and demand functions to find the optimal price (in a competitive market, the price should be equal to the marginal revenue, but this happens to be a monopoly, so the actual price is higher, but that's totally unrelated to the topic here):
+
+```{r opt-p}
+mr(optimal_q$root)
+demand(optimal_q$root)
+# oh noes monopolies
+```
+
+**However! Wait! Stop!** This is all well and fine if you have precise formulas for demand and cost. But real life is far messier than this. What if you don't know the underlying equations?
+
+Often in economics, you have a set of quantities and prices based on empirical data. Market research and surveys can estimate the demand for a product, and tracking how fixed and variable costs change over time can estimate the costs for a product, but this data is all empirically based and not based in actual formulas. 
+
+For instance, suppose you have this table of prices, quantities, and costs (which is actually really based on the demand and cost functions from earlier):
+
+```{r empirical-data, results="asis"}
+costs_revenues <- data_frame(Quantity = seq(0, 10, 1),
+                             Price = demand(Quantity),
+                             `Total Revenue` = revenue(Quantity),
+                             `Total Cost` = cost(Quantity),
+                             Profit = `Total Revenue` - `Total Cost`)
+
+costs_revenues %>%
+  mutate_at(vars(-Quantity), funs(scales::dollar(.))) %>%
+  pandoc.table(style = "rmarkdown")
+```
+
+We can still use R to find the optimal quantity, ***even without actual formulas***. R has two base functions for approximating functions based on existing data. `approxfun()` will try to fit data linearly, and `splinefun()` will try to fit data with cubic splines (i.e. it can handle curvy lines better than `approxfun()`). 
+
+First, we can plot the revenue and cost columns to see their shape:
+
+```{r empirical-cost-revenue}
+costs_revenues_plot <- costs_revenues %>% 
+  select(Quantity, starts_with("Total")) %>% 
+  gather(Variable, Price, -Quantity)
+
+ggplot(costs_revenues_plot, aes(x = Quantity, y = Price, color = Variable)) +
+  geom_line(size = 1) +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c("red", "blue")) +
+  theme_light() +
+  theme(legend.position = "bottom")
+```
+
+Because both variables are curvilinear, it's probably best to approximate their functions using splines with `splinefun()`: 
+
+```{r create-empirical-functions}
+cost_empirical <- splinefun(x = costs_revenues$Quantity, 
+                            y = costs_revenues$`Total Cost`)
+
+revenue_empirical <- splinefun(x = costs_revenues$Quantity, 
+                               y = costs_revenues$`Total Revenue`)
+```
+
+If we compare the empirically-based functions with their real-life counterparts, we can see that the approximation worked great:
+
+```{r compare-functions}
+cost(1:10)
+cost_empirical(1:10)
+
+revenue(1:10)
+revenue_empirical(1:10)
+```
+
+Determining the marginal cost and revenue functions from these approximations is surprisingly easy because `splinefun()` objects have a built-in mechanism for returning derivatives with a `deriv` argument:
+
+```{r compare-marginal-functions}
+mc(1:10)
+cost_empirical(1:10, deriv = 1)
+
+mr(1:10)
+revenue_empirical(1:10, deriv = 1)
+```
+
+Magic!
+
+We can plot these empirically-approximated marginal functions and see that they intersect, as expected:
+
+```{r plot-empirical-marginal-functions}
+ggplot(mapping = aes(x = 0:10)) +
+  stat_function(fun = cost_empirical, size = 1, args = list(deriv = 1),
+                aes(color = "Marginal cost")) +
+  stat_function(fun = revenue_empirical, size = 1, args = list(deriv = 1),
+                aes(color = "Marginal revenue")) +
+  labs(x = "Quantity", y = "Price") +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c("Marginal cost" = "red", "Marginal revenue" = "blue"),
+                     name = "Empirical function") +
+  coord_cartesian(ylim = c(0, 6)) +
+  theme_light() +
+  theme(legend.position = "bottom")
+```
+
+Finally, we can use `uniroot()` to find where these two functions intersect:
+
+```{r opt-q-empirical}
+optimal_q_empirical <- uniroot(function(x) cost_empirical(x, deriv = 1) - 
+                                 revenue_empirical(x, deriv = 1), c(1, 10))
+optimal_q_empirical$root
+```
+
+It's the same!
+
+And just like before, we can find the optimal price, given this quantity. But first we have to create an empirical function for the demand. The demand variable is linear here, so we can use `approxfun()`, but `splinefun()` works just fine too (and it has built-in derivative capabilities, while `approxfun()` doesn't).
+
+```{r opt-p-empirical}
+revenue_empirical(optimal_q_empirical$root, deriv = 1)
+
+demand_empricial_spline <- splinefun(x = costs_revenues$Quantity,
+                                     y = costs_revenues$Price)
+
+demand_empricial_approx <- approxfun(x = costs_revenues$Quantity,
+                                     y = costs_revenues$Price)
+
+demand_empricial_spline(optimal_q_empirical$root)
+demand_empricial_approx(optimal_q_empirical$root)
+# oh noes monopolies again
+```
+
+We can plot all of these things together:
+
+```{r plot-all-empirical}
+ggplot(mapping = aes(x = 0:10)) +
+  stat_function(fun = demand_empricial_spline, size = 1,
+                aes(color = "Demand")) +
+  stat_function(fun = cost_empirical, size = 1, args = list(deriv = 1),
+                aes(color = "Marginal cost")) +
+  stat_function(fun = revenue_empirical, size = 1, args = list(deriv = 1),
+                aes(color = "Marginal revenue")) +
+  geom_vline(xintercept = optimal_q_empirical$root, 
+             color = "grey50", linetype = "dashed") +
+  geom_hline(yintercept = revenue_empirical(optimal_q_empirical$root, deriv = 1), 
+             color = "grey50", linetype = "dashed") +
+  labs(x = "Quantity", y = "Price") +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c("Marginal cost" = "red", "Marginal revenue" = "blue",
+                                "Demand" = "darkgreen"),
+                     name = "Function") +
+  coord_cartesian(ylim = c(0, 6)) +
+  theme_light() +
+  theme(legend.position = "bottom")
+```
+
+In this case, the empirical solution and the function-based solution are identical, but that's only because I created the empirical data from the functions. In real life, though, this same process should work on any empirical price, quantity, and cost data.
+
+# Product-product relationship
+
+```{r}
+# requirements
+require(tidyverse)
+require(tsibble)
+require(tidyquant)
+
+# in complementary goods, utility is limitted by the good with smallest quantity
+complementary_goods1 <- tribble(~"left_shoe", ~"right_shoe", ~"utility", ~"utility_level",
+                               2, 4, 100, 1, 
+                               3, 2, 100, 1,
+                               12, 2, 100, 1, 
+                               2, 2, 100, 1,
+                               7, 2, 100, 1,
+                               2, 5, 100, 1,
+                               8, 2, 100, 1,
+                               2, 10, 100, 1)
+
+complementary_goods2 <- tribble(~"left_shoe", ~"right_shoe", ~"utility", ~"utility_level",
+                                4, 5, 200, 2,
+                                5, 4, 200, 2,
+                                6, 4, 200, 2,
+                                10, 4, 200, 2,
+                                4, 12, 200, 2,
+                                7, 4, 200, 2,
+                                4, 6, 200, 2)
+
+complementary_goods <- ggplot() +
+  geom_segment(aes(x = `left_shoe`, y = `right_shoe`, xend = 2, yend = 2), data = complementary_goods1) +
+  geom_segment(aes(x = `left_shoe`, y = `right_shoe`, xend = 4, yend = 4), data = complementary_goods2) +
+  labs(title = "Complementary relationship between left and right shoes of a pair", 
+       x = "Left shoe", 
+       y = "Right shoe") +
+  expand_limits(x = 0, y = 0) +
+  scale_x_continuous(breaks = seq(2, 12, by = 2)) +
+  scale_y_continuous(breaks = seq(2, 12, by = 2)) +
+  theme_bw()
+complementary_goods
+
+# ggsave("./complementary_goods.png", complementary_goods, units = "in", 
+#        dpi = 250, width = 6, height = 4)
+
+# in supplementary goods 
+# marginal rate of substitution of quantity x for quantity y should be constant
+# the function below could be thought of as data generating process 
+
+# i. constant marginal rate of substitution
+# here MRS of y for x is given by slope coefficient
+tea <- c(2, 3, 5, 6, 7, 8, 10)
+coffee <- function(x){
+  -2*x + 20 # MRS is "-2"
+}
+coffee(tea)
+
+ggplot() +
+  geom_line(aes(tea, coffee(tea))) +
+  labs(x = "Tea", y = "Coffee") +
+  theme_bw()
+
+# ii. increasing marginal rate of substitution
+mrs <- c(0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6)
+tea <- c(1, 3, 5, 7, 9, 11, 13)
+coffee <- function(x, mrs){
+  mrs*x + 20
+}
+
+coffee(tea, mrs)
+
+ggplot(data = Hmisc::bezier(tea, coffee(tea, mrs)) %>% 
+         bind_cols()) +
+  geom_line(aes(x, y)) +
+  labs(x = "Tea", y = "Coffee") +
+  theme_bw()
+
+# iii. decreasing marginal rate of substitution/ synonymous to indifference curve
+bz_curves <- data.frame(`Tea` = c(12L, 8L, 5L, 3L, 2L, 1L), 
+                        `Coffee` = c(1L, 2L, 3L, 5L, 8L, 12L))
+
+bezier::bezier(t = seq(0,1,length.out = 50), bz_curves) %>% 
+  as_tibble() %>% 
+  ggplot2::ggplot(aes(y = V1, x = V2)) + 
+  ggplot2::geom_line(size = 1.0) +
+  xlab("Cups of tea") + 
+ylab("Cups of coffee")
+```
+
+
+# Price determination in monopoly market
+
+``` {r}
+library(Deriv)
+
+# Demand and revenue stuff
+# D: P = -0.09Q + 57.89
+demand <- function(Q) -0.09 * Q + 57.89
+
+# TR = PQ
+revenue <- function(Q) Q * demand(Q)
+
+# MR = TR′
+marginal_revenue <- Deriv(revenue, "Q")
+
+# Total revenue given a prevailing market price of $25
+revenue_price_taking <- function(Q) 25 * Q
+
+# MR_price_taking = TR_price_taking′
+mr_price_taking <- Deriv(revenue_price_taking)
+
+
+# Cost stuff
+# TC: P = 0.07Q^2 + 3000
+cost <- function(Q) 0.07 * Q^2 + 3000
+
+# MC = TC′
+marginal_cost <- Deriv(cost, "Q")
+
+# Average total cost: cost(Q) / Q
+atc <- function(Q) cost(Q) / Q
+
+
+# Figure out where all these functions cross
+# Revenue maximization
+max_revenue_q <- optimize(revenue, interval = c(100, 800), maximum = TRUE)$maximum
+max_revenue <- revenue(max_revenue_q)
+
+q_zero <- uniroot(revenue, c(400, 800))$root
+
+# Profit maximization
+max_profit_q <- uniroot(function(x) marginal_revenue(x) - 
+                          marginal_cost(x), c(0, 600))$root
+max_profit_p <- marginal_revenue(max_profit_q)
+max_profit_p_demand <- demand(max_profit_q)
+
+max_profit_q_price_taking <- uniroot(function(x) mr_price_taking(x) -
+                                       marginal_cost(x), c(0, 600))$root
+max_profit_p_price_taking <- mr_price_taking(max_profit_q_price_taking)
+
+# Competitive equilibrium
+competition_q <- uniroot(function(x) demand(x) - marginal_cost(x), c(0, 600))$root
+competition_p <- demand(competition_q)
+
+
+# Plot everything!
+points_to_add <- tribble(
+  ~x, ~y, ~label,
+  max_profit_q, marginal_revenue(max_profit_q), "Maximum profit according to MR = MC",
+  max_profit_q, demand(max_profit_q), "What theater will charge",
+  competition_q, demand(competition_q), "Socially optimal level"
+)
+
+ggplot(mapping = aes(x = 1:q_zero)) +
+  geom_hline(yintercept = 0, size = 0.25) +
+  geom_vline(xintercept = 0, size = 0.25) +
+  geom_segment(aes(x = max_profit_q, xend = max_profit_q,
+                   y = 0, yend = demand(max_profit_q)),
+               color = "grey50", linetype = "dashed", size = 0.5) +
+  geom_segment(aes(x = 0, xend = max_profit_q,
+                   y = demand(max_profit_q), yend = demand(max_profit_q)),
+               color = "grey50", linetype = "dashed", size = 0.5) +
+  geom_segment(aes(x = 0, xend = max_profit_q,
+                   y = marginal_revenue(max_profit_q), yend = marginal_revenue(max_profit_q)),
+               color = "grey50", linetype = "dashed", size = 0.5) +
+  geom_segment(aes(x = competition_q, xend = competition_q,
+                   y = 0, yend = demand(competition_q)),
+               color = "grey50", linetype = "dashed", size = 0.5) +
+  geom_segment(aes(x = 0, xend = competition_q,
+                   y = demand(competition_q), yend = demand(competition_q)),
+               color = "grey50", linetype = "dashed", size = 0.5) +
+  stat_function(fun = marginal_revenue, size = 1.5, color = "blue") +
+  stat_function(fun = marginal_cost, size = 1.5, color = "red") +
+  stat_function(fun = demand, size = 1.5, color = "darkblue") + 
+  stat_function(fun = atc, size = 0.5, color = "orange") +
+  geom_point(data = points_to_add, aes(x = x, y = y), size = 2) +
+  annotate(geom = "label", x = 600, y = demand(600), label = "D",
+           size = 3, fill = "darkblue", color = "white") +
+  annotate(geom = "label", x = 400, y = marginal_cost(400), label = "MC",
+           size = 3, fill = "red", color = "white") +
+  annotate(geom = "label", x = 300, y = marginal_revenue(300), label = "MR",
+           size = 3, fill = "blue", color = "white") +
+  annotate(geom = "label", x = 600, y = atc(600), label = "ATC",
+           size = 3, fill = "orange", color = "white") +
+  geom_label(data = points_to_add, aes(x = x, y = y, label = label), 
+             size = 3, hjust = -0.1) +
+  scale_y_continuous(labels = dollar) +
+  coord_cartesian(ylim = c(-10, 60)) +
+  labs(x = "Tickets (Q)", y = "Price (P)") +
+  theme_minimal(9) +
+  theme(panel.grid = element_blank())
+```
+
+
+# Notable formula and graphs
+
+## Formula
+
+- Demand:
+
+$$
+P = aQ + b
+$$
+
+- Total cost:
+
+$$
+\begin{aligned}
+TC &= TFC + TVC \\
+&\text{or} \\
+\text{A formula using } & Q \text{, like} \\
+TC &= aQ^2 + b
+\end{aligned}
+$$
+
+##
+
+- Average cost:
+
+$$
+AC = \frac{TC}{Q}
+$$
+
+- Marginal cost:
+
+$$
+\begin{aligned}
+  MC &= \frac{\Delta TC}{\Delta Q} \\
+  &\text{or} \\
+  MC &= \text{First derivative of TC} \\
+  &= 2aQ \text{ (if } TC = aQ^2 + b)
+\end{aligned}
+$$
+
+##
+
+- Total revenue:
+
+$$
+\begin{aligned}
+  TR &= PQ \\
+  &\text{or} \\
+  TR &= (aQ + b)Q \\
+  &= aQ^2 + bQ
+\end{aligned}
+$$
+
+- Average revenue:
+
+$$
+AR = \frac{TR}{Q}
+$$
+
+##
+
+- Marginal revenue:
+
+$$
+\begin{aligned}
+  MR &= \frac{\Delta TR}{\Delta Q} \\
+  &\text{or} \\
+  MR &= \text{First derivative of TR} \\
+  &= 2aQ + b \text{ (if } TR = aQ^2 + bQ)
+\end{aligned}
+$$
+
+- Maximum profit:
+
+$$
+max(\pi): MC = MR
+$$
+
+##
+
+- Price elasticity of demand = $- \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}$):
+
+$$
+\varepsilon = -\frac{\% \text{ change in quantity demand}}{\% \text{ change in price}} = - \frac{\Delta Q}{\Delta P} \times \frac{P}{Q}
+$$
+
+
+## Tax graph
+
+- Consumer surplus, producer surplus, tax revenues, tax burdens, and deadweight loss (use algebra and geometry to figure out the areas of the triangles ($\frac{1}{2} \times b \times h$) and rectangles ($l \times w$)):
+
+```{r supply-demand-surplus, warning=FALSE, message=FALSE, fig.width=5, fig.height=4, fig.cap="Supply and demand surplus and taxation scheme", echo=FALSE, eval=TRUE, out.width="50%", fig.align='center'}
+# source graphics.R and supply-demand-surplus.R
+tax_graph(demand, supply, supply_tax, NULL, TRUE)
+```
+
+## Maria's best response curve
+
+```{r labor-discipline-stuff, echo=FALSE, fig.width=6, fig.height=5, fig.cap="Indifference curves", echo=FALSE, eval=TRUE, out.width="60%", fig.align='center'}
+library(Deriv)
+library(ineq)
+library(scales)
+
+# Formula for polynomial curve: 60x^4 + 5x + 6
+#
+# I invented this by using WolframAlpha to fit a polynomial linear model that
+# when through a set of specific points using this command (with a maximum
+# exponent of 4):
+#
+# LinearModelFit[{{0, 6}, {0.5, 12}, {-0.8, 24}, {-0.9, 48}}, {1, x, x^4}, x]
+#
+# It yielded a messy model with like 78.3x^4, 10.1x + 3.44, so I put that in
+# Desmos.com, moved the y intercept to 6, and tinkered with the other coefficients
+# until it looked okay. Finally, I switched x and y so it's horizontal
+response_curve <- function(y) 60*y^4 + 5*y + 6
+response_deriv <- Deriv(response_curve)
+
+# We can use these functions to find the x value (wage) that corresponds with a
+# given y value (level of effort)
+# response_curve(0.5)
+
+# We can also find the slope of the response curve at that point:
+# response_deriv(0.5)
+
+# Armed with a slope an a single point (here slope = 35, point = (12.25, 0.5)),
+# we can create a formula for the line that is tangent to the response curve at
+# that point.
+#
+# Formula for y-intercept give a slope and a single point
+# y - y1 = m(x = x1)
+#
+# Because we've flipped the curve sidways and switched x and y, we need to
+# rearrange this in terms of x:
+#
+# x = (y - y1) / m + x1
+#
+tangent_intercept <- function(x, m, x1, y1) (x - x1) / m + y1
+
+# Here we invert tangent_intercept() by dividing by the negative derivative
+# It's negative because 1/y is really y^-1
+flipped_intercept <- function(x, effort) {
+  # m needs to be inverted because of switched x/y thing, so it's 1/deriv
+  tangent_intercept(x, m = 1 / response_deriv(effort), 
+                    x1 = effort, y1 = response_curve(effort)) / 
+    -response_deriv(effort)
+}
+
+# Create a line based on the slope and intercept of the flipped derivative
+tangent_line <- function(x, effort) {
+  (1 / response_deriv(effort) * x) + flipped_intercept(0, effort)
+}
+
+isocost_line <- function(x, m, b) m * x + b
+
+# FINALLY we can plot the flipped polynomial curve. This should, in theory, be
+# as simple as rearranging our x = 60y^4 + 5y + 6 formula to be in terms of y
+# and then using stat_function() to plot it, BUT polynomials are demonic beasts
+# and doing this is beyond my abilities.
+#
+# GO HERE and see what I mean: 
+# https://www.wolframalpha.com/input/?i=x+%3D+60y%5E4+%2B+5y+%2B+6+in+terms+of+y
+#
+# So to cheat, we make a little data frame with a range of x and y values and
+# then plot that with geom_line()
+flipped_curve <- tibble(y = seq(0, 1, 0.01)) %>% 
+  mutate(x = response_curve(y))
+
+# Finally, we can plot all these things!
+ggplot(data = tibble(x = 0:50), aes(x = x)) + 
+  # Add flipped polynomial curve
+  geom_line(data = flipped_curve, aes(x = x, y = y), 
+            size = 1, color = nord_dk_blue) +
+  # Mark tangent point
+  annotate(geom = "segment", x = response_curve(0.5), y = 0, 
+           xend = response_curve(0.5), yend = 0.5,
+           linetype = "dashed", color = "grey50", size = 0.5) +
+  annotate(geom = "segment", x = 0, y = 0.5, 
+           xend = response_curve(0.5), yend = 0.5,
+           linetype = "dashed", color = "grey50", size = 0.5) +
+  # Add tangent lines
+  # If I wanted to be super fancy, I could figure out the width of the base of
+  # the triangle formed by each tangent line so that I could get ± the same x
+  # distance to the left and right of each point and have each tangent segment
+  # use the same horizontal distance, but that sounds too hard, so I just picked
+  # numbers until it looked okay
+  stat_function(fun = tangent_line, args = list(effort = 0.5),
+                color = nord_red, size = 1, 
+                xlim = c(response_curve(0.5) - 10, response_curve(0.5) + 10)) +
+  stat_function(fun = isocost_line, args = list(m = 1/80, b = 0.15),
+                color = nord_orange, size = 1,
+                xlim = c(response_curve(0.5) - 10, response_curve(0.5) + 10)) + 
+  stat_function(fun = isocost_line, args = list(m = 1/20, b = 0.15),
+                color = nord_yellow, size = 1,
+                xlim = c(response_curve(0.5) - 10, response_curve(0.5) + 10)) + 
+  # annotate(geom = "label", x = tangent_line(5, 0.5), y = 0.5)
+  annotate(geom = "label", x = 15, y = isocost_line(15, m = 1/20, b = 0.15), 
+           label = "A", fill = nord_yellow, color = "white", size = pts(12)) +
+  annotate(geom = "label", x = 17.5, y = tangent_line(17.5, effort = 0.5), 
+           label = "B", fill = nord_red, color = "white", size = pts(12)) +
+  annotate(geom = "label", x = 20, y = isocost_line(20, m = 1/80, b = 0.15), 
+           label = "C", fill = nord_orange, color = "white", size = pts(12)) +
+  annotate(geom = "point", x = response_curve(0.5), y = 0.5, size = 2) +
+  annotate(geom = "text", x = response_curve(0.5), y = 0.5, 
+           hjust = -0.1, vjust = 1.1, size = pts(10),
+           label = paste0("(", dollar(response_curve(0.5)), ", ", 
+                          percent_format(accuracy = 1)(0.5), ")")) +
+  annotate(geom = "text", x = 6, y = 0, hjust = 1, vjust = -1,
+           label = "$6 reservation wage", size = pts(10)) +
+  # Labels and scale stuff
+  labs(x = "Wage per hour", y = "Work effort from employee",
+       title = "Maria's best response curve and employer isocost lines") +
+  scale_x_continuous(labels = dollar, expand = c(0, 0.3)) +
+  scale_y_continuous(labels = percent_format(accuracy = 1), expand = c(0, 0)) +
+  coord_cartesian(xlim = c(0, 25), ylim = c(0, 1)) +
+  # theme_econ(base_size = 13, axis_line = TRUE) +
+  theme_bw() +
+  theme(panel.grid = element_blank(),
+        plot.title = element_text(size = rel(1.1), hjust = 0.5))
+```
+
+##
+
+Would any of the following affect Maria’s best response curve or the firm's isocost lines for effort in the figure above? If so, explain how?
+
+1. The government decides to increase childcare subsidies for working parents but not for those unemployed. Assume Maria has a child and is eligible for the subsidy.
+2. Demand for the firm's output rises as celebrities endorse the good.
+3. Improved technology makes Maria's job easier.
+
+# Bibliography
+
+## For more information

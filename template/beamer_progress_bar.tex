@@ -1,0 +1,62 @@
+\documentclass{beamer}
+
+\title[Progress Bar]{Progress bar in beamer presentation slides}
+\author{Deependra Dhakal}
+\institute[GAASC]{GAASC\\ \textit{ddhakal.rookie@gmail.com}}
+\date{\today}
+
+\usetheme[secheader]{Madrid}
+
+\usepackage{tikz}
+
+\newcommand{\progressbar}{
+\pgfmathsetmacro{\theta}{360/\inserttotalframenumber*\insertframenumber}
+\begin{tikzpicture}[scale = 0.032]
+\fill[yellow] (0, 0) circle (7);
+\fill[red] (0, 0) -- (7, 0) arc (0:-\theta:7);
+\fill[white] (0, 0) circle (5);
+\end{tikzpicture}
+
+}
+
+\setbeamertemplate{footline}{\hfill \progressbar}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\frame{
+
+\frametitle{Equation}
+
+$$
+y = x^2
+$$
+
+}
+
+\frame{text}
+
+\frame{text}
+
+\section{experimental}
+
+\frame{
+
+\frametitle{Equation}
+
+$$
+E = mc^2
+$$
+
+}
+
+\frame{text}
+
+\frame{text}
+
+\appendix
+
+\frame{text}
+
+\end{document}

@@ -1,0 +1,899 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[12pt,ignorenonframetext,aspectratio=169]{beamer}
+\IfFileExists{pgfpages.sty}{\usepackage{pgfpages}}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+
+
+
+
+
+%
+\fi
+
+  \usetheme[]{iqss}
+
+
+
+
+
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+  \usepackage{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\newif\ifbibliography
+
+
+\hypersetup{
+      pdftitle={Farm Management},
+        pdfauthor={Deependra Dhakal},
+          pdfborder={0 0 0},
+    breaklinks=true}
+%\urlstyle{same}  % Use monospace font for urls
+
+
+
+
+
+
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+  \AtBeginPart{
+    \let\insertpartnumber\relax
+    \let\partname\relax
+    \frame{\partpage}
+  }
+  \AtBeginSection{
+    \ifbibliography
+    \else
+      \let\insertsectionnumber\relax
+      \let\sectionname\relax
+      \frame{\sectionpage}
+    \fi
+  }
+  \AtBeginSubsection{
+    \let\insertsubsectionnumber\relax
+    \let\subsectionname\relax
+    \frame{\subsectionpage}
+  }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+  \setcounter{secnumdepth}{0}
+
+
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{emptypage}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{wrapfig}
+  \usepackage{float}
+  \usepackage{colortbl}
+  \usepackage{pdflscape}
+  \usepackage{tabu}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage[normalem]{ulem}
+  \usepackage{rotating}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tikz} % required for image opacity change
+  \usepackage[absolute,overlay]{textpos} % for text formatting
+  
+  
+  % this font option is amenable for beamer
+  \setbeamerfont{caption}{size=\tiny}
+
+%% IQSS overrides
+\iqsssectiontitle{Outline}
+
+\AtBeginSection[]{
+  \title{\insertsectionhead}
+  {
+    \definecolor{white}{rgb}{0.776,0.357,0.157}
+    \definecolor{iqss@orange}{rgb}{1,1,1}
+    \ifnum \insertmainframenumber > \insertframenumber
+    \frame{
+      \frametitle{\iqsssectiontitleheader}
+      \tableofcontents[currentsection]
+    }
+    \else
+    \frame{
+      \frametitle{Backup Slides}
+      \tableofcontents[sectionstyle=shaded/shaded,subsectionstyle=shaded/shaded/shaded]
+    }
+    \fi
+  }
+}
+
+\AtBeginSubsection[]{}
+
+%%
+
+
+  \title[]{Farm Management}
+
+
+
+  \author[
+        Deependra Dhakal
+    ]{Deependra Dhakal}
+
+  \institute[
+    ]{
+    GAASC, Baitadi \and Tribhuwan University
+    }
+
+\date[
+      \today
+  ]{
+      \today
+        }
+
+\begin{document}
+
+% Hide progress bar and footline on titlepage
+  \begin{frame}[plain]
+  \titlepage
+  \end{frame}
+
+
+
+\hypertarget{introduction-to-farm-management}{%
+\section{Introduction to farm
+management}\label{introduction-to-farm-management}}
+
+\hypertarget{meaning-and-definition}{%
+\subsection{Meaning and definition}\label{meaning-and-definition}}
+
+\begin{frame}{Meaning and definition}
+\protect\hypertarget{meaning-and-definition-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Farm management comprises of two words
+
+  \begin{itemize}
+  \item "Farm" means a \alert{piece of land} where crops and livestock enterprises are taken up under a \alert{common management} and has specific \alert{boundaries}.
+  \item "Management" means the act or art of managing.
+  \end{itemize}
+\item
+  Gray\footnote<.->{Introduction to Agricultural Economics, 1924}
+  states, the art of managing a farm successfully, as measured by the
+  test of profitableness, is called farm management.
+\item
+  Farm is an economics and social institution
+\item
+  In a narrow sense, it might refer to the act of daily work supervision
+  of farm labour and carrying out the directives of seniors by the
+  public and private employed farm managers.
+\item
+  Broadly, it is also recognized as production economics or agricultural
+  economics.
+\item
+  Farm management is a rational resource allocation proposition,
+  particularly from the point of view of an individual farmer.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Because:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    On one hand, a farmer has a certain set of farm resources such as
+    land, labour, farm building, working capital and farm equipment,
+    etc.
+  \item
+    On other, the farmer has a set of goals/objectives to achieve, may
+    be to maximize family satisfaction through increasing net farm
+    income.
+  \item
+    Amidst, farmer him/her-self is limited by the specific degree of
+    ability and awareness.
+  \item
+    Everything must be bridged together
+  \end{itemize}
+\item
+  \(\leadsto\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A science which deals with judicious decisions on the use of scarce
+    farm resources, having alternative uses to obtain the maximum profit
+    and family satisfaction on a continuous basis from the farm as a
+    whole and under sound farming programmes.
+  \item
+    A science of decision making or science of choice
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  It assists farmer in deciding problems like:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What to produce
+  \item
+    How much to produce
+  \item
+    How to produce
+  \item
+    When to buy and sell
+  \item
+    Dealing with organization and managerial problems
+  \end{itemize}
+\item
+  Changes encountered by a farmer are:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Fluctuation in prices
+  \item
+    Weather variation
+  \item
+    Inventions in farming methods
+  \item
+    Changes in socio-economic environment (including government
+    policies, social response and values)
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{What makes a successful farm manager}
+\protect\hypertarget{what-makes-a-successful-farm-manager}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Eight processess or functions of management have been been proposed by
+  Nielson
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Formulation of the goals or objectives of the firm
+  \item
+    Recognition and definition of a problem or opportunity
+  \item
+    Obtaining information and observation of relevant facts
+  \item
+    Specification and analysis of alternatives
+  \item
+    Decision-making -- chosing an alternative
+  \item
+    Taking action
+  \item
+    Bearing responsibility for the decision or action taken
+  \item
+    Evaluating the outcome
+  \item
+    Revision
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{features-and-components}{%
+\subsection{Features and components}\label{features-and-components}}
+
+\begin{frame}{Nature of farm management}
+\protect\hypertarget{nature-of-farm-management}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  Practical science
+\item
+  Profit orientation
+\item
+  Integration of wider areas of sciences
+\item
+  Micro approach to management of farm units
+\item
+  Farm unit as a whole
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Components of farm management}
+\protect\hypertarget{components-of-farm-management}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  Boundaries
+\item
+  Household
+\item
+  Operating plan
+\item
+  Production-enabling resources
+\item
+  Final product-generating enterprises
+\item
+  Resource generating activities
+\item
+  Agro-technical processes
+\item
+  Structural (interdependence) coefficients
+\item
+  Time dimension
+\end{enumerate}
+
+\end{frame}
+
+\hypertarget{scope}{%
+\subsection{Scope}\label{scope}}
+
+\begin{frame}{Scope of farm management}
+\protect\hypertarget{scope-of-farm-management}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Farm management is considered to be microeconomics in its scope as it
+  deals with allocation of resources at the level of individual farm
+  operation and organization.
+\item
+  Seeks to help farmers in decision making, hence has a role to play in
+  extension of innovation.
+\item
+  Determination of most efficient production method of selected
+  enterprises.
+\item
+  Tries to explain all aspects of farming which have bearing on the
+  economic efficiency of farm.
+\item
+  These features highlight research prospect in farm management science.
+\item
+  Organization of agricultural resources and farm enterprises so as to
+  make a complete farm unit.
+\item
+  Maintenance of farm records, account and determination of various
+  efficiency parameters and it helps in adjusting against time and
+  uncertainty elements on the farm -- teaching/educational aspect of
+  farm management
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{importance}{%
+\subsection{Importance}\label{importance}}
+
+\begin{frame}{Importance of farm management}
+\protect\hypertarget{importance-of-farm-management}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Increase in farm resouce allocation efficiency
+\item
+  Systematic assessment of farm problems and identify cause and remedial
+  measures
+\item
+  Increase in farm income through increased productivity
+\item
+  Techological progress and agricultural modernization
+\item
+  Mechanization and industrial development
+\item
+  Generation of employment opportunities
+\item
+  Farm management as an education tool
+\item
+  Opportunities of resource sharing among enterprises, and resource
+  combination optimization. for e.g., sloping land utilized for
+  pig-cum-poultry farming.
+\item
+  Improvement of living standard and the level of satisfaction of
+  farming household
+\item
+  Reduction in poverty and improvement of national economy
+\item
+  Bringing about agricultural revolution
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{problems}{%
+\subsection{Problems}\label{problems}}
+
+\framesubtitle{Problems are specific to \textit{Nepal}.}
+
+\begin{frame}{Problems of farm management}
+\protect\hypertarget{problems-of-farm-management}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Farming rarely as a capital intensive enterprise. This leads to
+  reduced commercial efficiency and technology adoption.
+\item
+  Problem of land fragmentation, parcelization and subsistance state of
+  farming.
+\item
+  Absence of long term farm planning
+\item
+  Poor enterprise mix
+\item
+  Marketing problems
+\item
+  Input supply problems
+\item
+  Product standardization and quality regulation
+\item
+  Agroclimate and topography
+\item
+  Problem of rural infrastructures
+\item
+  Inadequate microcredit and finiancing facilities
+\item
+  Poor managerial efficiency.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Characteristics of farming as a business}
+\protect\hypertarget{characteristics-of-farming-as-a-business}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  Primary forces of production:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Biological nature
+\item
+  Diminishing returns at earlier stage
+\item
+  Wide and scattered production
+\item
+  Importance of land tenure system
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Size of production unit (relatively small sized)
+\item
+  Heavy dependence on climatic factors
+\item
+  Frequency and speed of decisions
+\item
+  Changes in prices
+\item
+  Standardization of practices and products
+\item
+  Turn over (Capital turnover)
+\item
+  Financing
+\item
+  Home and business
+\item
+  Fixed and variable costs
+\item
+  Inelastic demand for farm products
+\item
+  Time rigidities in consumption
+\end{enumerate}
+
+\end{frame}
+
+\hypertarget{management-of-farm-resources}{%
+\section{Management of farm
+resources}\label{management-of-farm-resources}}
+
+\hypertarget{section-2}{%
+\subsection{}\label{section-2}}
+
+\begin{frame}{Capital and credit}
+\protect\hypertarget{capital-and-credit}{}
+
+\begin{itemize}
+\tightlist
+\item
+  One of the four essential factors of production alongside, land,
+  labour and enterprise.
+\item
+  Broadly defined, capital is the money invested in the physical inputs
+  used in agricultural production.
+\item
+  It is needed to purchase or rent productive assets, pay for labor and
+  other inputs, and finance family living and other personal
+  expenditures. The basic questions to be answered are:
+\end{itemize}
+
+\begin{enumerate}
+\tightlist
+\item
+  How much total capital should be used?
+\item
+  How should limited capital be allocated among its many potential uses?
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Credit is important to capital acquisition and use.
+\item
+  It is the ability to borrow money with a promise to return the money
+  in the future and pay interest for its use.
+\item
+  The use of credit allows farmers to acquire productive assets and pay
+  for them later with the income they generate.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Production process that use a lot of capital relative to labor are
+  capital intensive, those that use comparatively little capital are
+  labor intensive.
+\item
+  A firm's asset are its capital -- it may include fixed capital
+  (machinery, buildings, and so on) and working capital (stocks of raw
+  materials and part-finished products, as well as money used up in
+  production process).
+\item
+  Financial capital includes money, shares and bonds, equity (owner's
+  and outside equity)
+\item
+  Human and social capital are often linked to capital types.
+\item
+  Capital formation is genereally done through loans in a farm
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Types of loans are based on: length of repayment (short,
+    intermediate and long), use of funds (Real estate, non-realestate
+    and personal), and types of security pledged (Secured and unsecured)
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Land control and use}
+\protect\hypertarget{land-control-and-use}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Pending colonisation of the moon, available in fairly fixed supply
+\item
+  Probably most valuable asset
+\item
+  A permanent and immobile resource that does not depreciate or wear out
+\item
+  Marginal increases are possible by reclaiming land from the sea and
+  cutting down forests (which may impose large economic costs by
+  damaging the environment), but the expansion of deserts may slightly
+  reduce the amount of usable land.
+\item
+  Owners earn money from land by charging rent.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Land is described legally with description of size, location and
+  shape.
+\item
+  The difference in land resources among farms explains why one of the
+  first steps in whole-farm planning is to make a complete inventory of
+  the land, including soil types, drainage, slope, and fertility.
+\item
+  Land management includes: Owner managed, leased (Cash share lease,
+  crop share lease, labor share lease)
+\item
+  Under land use, aspects such as farm layout, soil and nutrient
+  management, etc. are dealt.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Human resource management}
+\protect\hypertarget{human-resource-management}{}
+
+\begin{itemize}
+\tightlist
+\item
+  It is mobile but limited resource.
+\item
+  Among the things that determine the supply of labour are the number of
+  able people in the population, their willingness to work, labour laws
+  and regulations, and the health of the economy and firms.
+\item
+  Demand for labour is also affected by the health of the economy and
+  firms, labour laws and regulations, as well as the price and supply of
+  other factors of production.
+\item
+  In a perfect market, wages (the price of labour) would be determined
+  by supply and demand. But the labour market is often far from perfect.
+  Wages can be less flexible than other prices; in particular, they
+  rarely fall even when demand for labour declines or supply increases.
+\item
+  This wage rigidity can be a cause of unemployment.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Enterprise}
+\protect\hypertarget{enterprise}{}
+
+\begin{itemize}
+\tightlist
+\item
+  An entrepreneur is somebody who has the idea and enterprise to mix
+  together the other factors of production to produce something
+  valuable.
+\item
+  They must be willing to take a risk in pursuit of profit.
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{farming-systems}{%
+\section{Farming systems}\label{farming-systems}}
+
+\hypertarget{section-5}{%
+\subsection{}\label{section-5}}
+
+\begin{frame}{Integrated farming system}
+\protect\hypertarget{integrated-farming-system}{}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./figs/integrated_fs} \caption{Integrated farming system influenced by socio-economic, political and biophysical environment and managed by a farmer.}\label{fig:integrated-fs}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Commercial farming system}
+\protect\hypertarget{commercial-farming-system}{}
+
+\begin{center}\includegraphics[width=0.45\linewidth]{./figs/crop_value_addition} \end{center}
+
+\end{frame}
+
+\hypertarget{farm-management-decisions}{%
+\section{Farm management decisions}\label{farm-management-decisions}}
+
+\hypertarget{classification}{%
+\subsection{Classification}\label{classification}}
+
+\begin{frame}{Classification}
+\protect\hypertarget{classification-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Decisions can be classified based on:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Importance
+  \item
+    Frequency
+  \item
+    Imminency
+  \item
+    Revocability
+  \item
+    Available alternatives
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{decision-stages-in-farm-operation}{%
+\subsection{Decision stages in farm
+operation}\label{decision-stages-in-farm-operation}}
+
+\small
+
+\begin{itemize}
+\tightlist
+\item
+  In a typical production process, decision making can be grouped into
+  following stages:
+\end{itemize}
+
+\begin{frame}{Production organization and problem decisions}
+\protect\hypertarget{production-organization-and-problem-decisions}{}
+
+\begin{block}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Strategic decisions (Involves heavy investment and has long lasting
+  effects)
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Size of farm
+  \item
+    Machinery and livestock programme
+  \item
+    Construction of buildings
+  \item
+    Irrigation, conservation and reclaimation programmes
+  \end{enumerate}
+\item
+  Operational Decisions (More frequent and involve relatively small
+  investments)
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    What to produce -- selection of enterprise
+  \item
+    How much to produce -- enterprise mix and production process
+  \item
+    How to produce -- selection of least cost method
+  \item
+    When to produce -- timing of production
+  \end{enumerate}
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Administrative problem decisions}
+\protect\hypertarget{administrative-problem-decisions}{}
+
+\begin{block}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  Financing the farm business
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Optimum utilization of funds
+\item
+  Acquisition of funds -- proper agency and time
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Supervision of work -- operational timing
+\item
+  Accounting and book keeping
+\item
+  Adjustment of farming business to government programmes and policies
+\end{enumerate}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Marketing problem decisions}
+\protect\hypertarget{marketing-problem-decisions}{}
+
+\begin{block}{\alertb{Buying}}
+
+\begin{enumerate}
+\tightlist
+\item
+  What to buy ?
+\item
+  When to buy ?
+\item
+  From whom to buy ?
+\item
+  How to buy ?
+\end{enumerate}
+
+\end{block}
+
+\begin{block}{\alertc{Selling}}
+
+\begin{enumerate}
+\tightlist
+\item
+  What to sell ?
+\item
+  When to sell ?
+\item
+  Where to sell ?
+\item
+  How to sell ?
+\end{enumerate}
+
+\end{block}
+
+\end{frame}
+
+\hypertarget{bibliography}{%
+\section{Bibliography}\label{bibliography}}
+
+\hypertarget{section-10}{%
+\subsection{}\label{section-10}}
+
+\begin{frame}{For more information}
+\protect\hypertarget{for-more-information}{}
+
+\end{frame}
+
+
+
+
+\end{document}

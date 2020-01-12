@@ -1,0 +1,321 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Production economics
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+source("./../scripts/supply-demand-surplus.R")
+source("./../scripts/graphics.R")
+# require(extrafont) # requires for graphics.R
+# require(extrafontdb)
+extrafont::loadfonts()
+# extrafont::font_import()
+```
+
+# Introduction
+
+## Meaning
+
+- Specialization within the subject of agricultural economics.
+- Concerned with choosing of alternatives or their combinations with a view to maximizing the returns or minimizing the costs.
+- Two broad categories of decisions:
+  1. How to organize resources in order to maximize the production of a single commodity ? i.e., to make choices from among various alternative ways of using resources.
+  2. What combination of different commodities to produce ?
+
+#### Goals
+  - Maximize resource use efficiency
+  - Maximize farm income
+
+## Difference between production economics and farm management
+
+- Production economics involves analysis of relationships and principles of rational decisions. By:
+  - optimizing the use of farm resources on an individual farm level 
+  - rationalize the use of agricultural resources from a national angle
+- It is concerned with productivity (economic efficiency).
+- Subject matters includes: combination of farm enterprises, methods of production, size of farms, returns to scale, leasing, production possibilities, farming efficiency, use of credit and capital, risk and uncertainty which affect decision-making.
+
+##
+
+- Objectives of production economics:
+  1. To determine and define the conditions which provide for optimum use of resources
+  2. To determine the extent to which the existing use of resources deviates from the optimum use.
+  3. To analyze the factors or forces which are responsible for the existing production patterns and resources use, and
+  4. To delineate means and methods for changing the existing use of resources to the optimum level.
+  
+##
+
+- On micro level, where intra-farm resource allocation and production pattern are involved, while aiming to meet the abovementioned objectives, it is subject matter of farm management.
+- When the choice principles involve a broader field on a macro-level, the subject is known as production economics.
+- Production economist must understand and be able to integrate both individual and aggregate aspects of agricultural resource use and production patterns.
+- Why sometimes government tries to restrict crop acerage ?
+
+# Overview of production economics concepts
+
+##
+
+#### Units of accounting
+Application of inputs or measurement of output relate to a technical unit, plant or an economic unit.
+
+#### Technical unit
+Technical unit refers to a single, convenient unit in production for which technical coefficent are calculated e.g., a ropani of land, a cow, a unit of poultry birds, etc.
+
+#### Farm-firm
+It is a production unit under one management and is also known as an economic unit referring to an aggregation of resources for which costs and returns are worked out as a whole. e.g., A farm holding.
+
+##
+
+#### Plant
+Plant generally refers to a group of technical units such as a diary, enterprise or say a 5 ropani farm. Each enterprise or plant is a part of the farm-firm. A farmer may have a dairy unit and a 5 ropani crop farm. These are two plants of a single farm-firm.
+
+#### Production-resource relationship
+Production-resource relationships can be studied as they relate either to a technical unit, plant or economic unit or a farm-firm. Firm refers to a decision making unit within an industry while the plants within a firm refers to units which are relevant in the production plan of the firm. In production economics, following analogies hold:
+  \begin{itemize}
+  \item Farm $\longrightarrow$ Field
+  \item Firm $\longrightarrow$ Plant
+  \end{itemize}
+
+##
+
+#### Resource and resource services
+- Some resources such as fertilizers, water, insecticides get consumed or transformed into products in the process of production.
+- Some are certain resources of which only services are available for product transformation -- labor, implements, buildings, etc. These are said as being service resource transformed to products.
+
+#### Fixed and variable resources
+- Level of some resources such as buildings, machinery, implements is fixed over a planning period irrespective of the level of enterprise(s) taken up. These are known as fixed farm resources
+- Resources such as fertilizers, seeds, feeds, etc, whose use varies with the level of enterprise(s) are known as variable resources.
+
+##
+
+#### Flow and stock resources
+- Some resources or services, if not used cannot be stocked. Services like labor, buildings, etc are forthcoming like a flow.
+- While, resources like seed, feed and fertilizers can be stored for a later period. They are known as stock resources.
+- Some factor of production embody both flow and stock services -- Machinery.
+
+#### Product or production
+- Production are the result of the use of resources or services of resources.
+- Production is a process of transformation of certain resources or inputs like land, labor (human, bullock), seeds, fertilizers, irrigation water into products like wheat, milk, wool.
+
+##
+
+#### Production function
+- A technical and mathematical relationship describing the manner and extent to which a particular product depends upon the quantities of inputs(s) or service(s) of inputs used.
+- Two major categories of production functions:
+  - Continuous production function
+  - Discrete production function
+
+#### Transformation or production period
+- Time period taken for generation of actual product
+- Production period varies with resources
+- Some inputs/resources have complex pattern of transformation period, mostly those constituting fixed cost resources.
+
+##
+
+#### Short run and long run production function
+- Production function (input-output relation) which relates to factors and products where some resources are fixed (regardless of the number of fixed resources and level at which each is held fixed) can be termed \alertb{short-run} production function.
+- production function (input-output relation) which permits variation in the input of all factors (none is fixed) is called \alert{long-run} production function.
+
+##
+
+#### Choice indicator
+- A product can be produced in many ways through different combinations of resources and techniques.
+- The most desirable combination of products or factors can only be determined with a \alertc{choice indicator}.
+- A choice indicator is an index or a criterion indicating which of two or more alternatives is optimum or will maximize a given end.
+- Example: price ratio, substitution ratio, etc.
+
+##
+
+#### Cost concepts
+- Total cost = Fixed cost + Variable cost
+
+#### Return concepts
+- Gross return = Total production $\times$ price
+- Returns to fixed farm resources(or returns over variable costs) = Gross returns - Variable cost
+- Net return = Gross return - Total cost
+
+# Framework of analysis in production economics
+
+##
+
+- Analysis of production relationships can be made under:
+  1. Perfect knowledge
+  2. Imperfect knowledge
+- Following simplifying assumptions can be made under the first scenario (perfect knowledge) . They are:
+  1. A single production period which does not involve uncertainity or imperfect knowledge (a production period corresponding to time required to completely transform relevant resources into products or a production period long enough that the longest-lived resource is completely transformed into product.)
+  2. Price and input-output relations are known with certainty before production starts.
+- In imperfect knowledge scenario, more complex types of analysis is required as the above assumptions do not hold.
+
+# Representations of production functions
+
+## Graphical representation
+
+- Two relationship might exist:
+  1. Linear
+  2. Non linear (Monotonic and non-monotonic)
+  
+## Linear relationship graphs
+
+```{r linear-relationship-positive, fig.cap="Positive relationship between x and y variables", fig.width=4, fig.height=3, out.width="28%"}
+ggplot(data=data.frame( x=c(1,3),y=c(1,3) ), aes(x=x,y=y)) + 
+  geom_point(shape = 1) +
+  geom_abline(intercept = 0, slope = +1, col = "red") +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  geom_label(aes(x = x, y = y, label = c("P1", "P2"))) +
+  theme_bw()
+
+ggplot(data=data.frame( x=c(1,1.5),y=c(1,1.5)), aes(x=x,y=y)) + 
+  geom_point(shape = 1) +
+  geom_abline(intercept = 0, slope = +1, col = "red") +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  geom_label(aes(x = x, y = y, label = c("P1", "P2"))) +
+  theme_bw()
+```
+
+##
+
+```{r linear-relationship-negative, fig.cap="Negative relationship between the two variables", fig.width=5, fig.height=4, out.width="45%"}
+
+ggplot(data=data.frame( x=c(1,0.5),y=c(1,1.5)), aes(x=x,y=y)) + 
+  geom_point(shape = 1) +
+  geom_abline(intercept = 2, slope = -1, col = "red") +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  scale_x_continuous(limits = c(-0.5, 4)) +
+  scale_y_continuous(limits = c(-0.5, 4)) +
+  geom_label(aes(x = x, y = y, label = c("P1", "P2"))) +
+  theme_bw()
+```
+
+The slopes of lines for first, second and third figures are, respectively, +1, +1 and -1.
+
+##
+
+$$
+Slope(P1P2) = \frac{P2_y - P1_y}{P2_x - P1_x}
+$$
+
+The slope of a line indicates the rate of change in one quantity in response to the change in other; i.e., higher slopes (in magnitude) correspond to faster changes in lower slopes (in magnitude) correspond to slower changes.
+
+## Non linear relationship graphs
+
+1. Monotonic
+  - Monotonic functions are throughout either increasing or decreasing. Unlike the linear relationship, however, the rate or speed with which Y changes for a given change in X does not remain constant in all the ranges.
+  - The rate of change at any point can be measured through drawing a tangent to the curve at that point.
+
+2. Non-monotonic
+  - In nonmonotonic functions, the nature of relationship itself changes through the range of the curve.
+
+## Scatter diagram
+
+## Slope of curve
+
+# Product
+
+## Total product (TP)
+
+- A given level of total product is always associated with a particular level of input(s) use with a given technology. Production function is often presented as total output curve because total product curve and production function curve are closely associated.
+
+## Average product (AP)
+
+- The term average product refers to the average productivity of resources. It is the ratio of total product (TP) to the quantity of input used in producing that amount of product, i.e., at any point on production function, it is the total output divided by the total input used.
+
+$$
+AP = \frac{Y}{X}
+$$
+
+Where Y is product and X the input(s).
+
+## Marginal product
+
+- The term marginal product refers to the quantity which additional (marginal) unit of factor-input adds to the total product. The marginal product (MP) at any level of the variable input can be approximated by dividing the addition to total output by the addition to total input:
+
+$$
+MP = \frac{\Delta Y}{\Delta X}
+$$
+
+Here, $\Delta$ refers to the change in or addition to the product or the input.
+
+- It is the rate of change in total product at a given point as the quantity of input changes.
+- Although, average productivity provides some guidelines as to the manner in which resources are allocated, it is marginal productivity which provides the final criterion in determining optimum use of limited resources.
+
+## Average marginal product
+
+- The average marginal product indicates the productivity values between the two relevant input levels.
+
+```{r marginal-product}
+ex1 <- tribble(~"input", ~"output", 
+               0, 10, 
+               5, 20, 
+               10, 30,
+               15, 40)
+
+ex2 <- tribble(~"input", ~"output", 
+               0, 10, 
+               5, 30, 
+               10, 45,
+               15, 50)
+
+```
+
+```{r marginal-product1}
+ex1 %>% 
+  knitr::kable(booktabs = T, caption = "Example 1") %>% 
+  kableExtra::kable_styling(font_size = 6)
+
+```
+
+
+```{r marginal-product2}
+ex2 %>% 
+  knitr::kable(booktabs = T, caption = "Example 2") %>% 
+  kableExtra::kable_styling(font_size = 6)
+```
+
+##
+
+- In Example 1 (Table \ref{tab:marginal-product1}), when $\Delta X = 5$, $\Delta Y = 10$, then $\frac{\Delta Y}{\Delta X} = \frac{10}{5} = 2.0$
+- In Example 2 (Table \ref{tab:marginal-product2}), when $\Delta X = 5$, $\Delta Y = 20$ for first unit of input, 15 for second and 5 for third addition of input. It indicates that with each unit change in X from 0 to first addition of inputs, there is a change in 2 units of Y ($\frac{\Delta Y}{\Delta X} = \frac{20}{5} = 4.0$). The Marginal product of variable unit can be thus approximated by dividing addition to total output by addition to total input. The marginal product, however, has decreased upon further addition of inputs to the first input level. i.e., when the input level is 15 (0 + 5 + 10), the additional 5 (10-5) unit input have given rise to only 15 (45-30) unit of output, hence the marginal product ($\frac{\Delta Y}{\Delta X} = \frac{15}{5} = 3.0$). This is reduction from the previous value of MP of 4.
+
+## Exact marginal product
+
+- Exact (point) marginal product refers to the marginal product as a derivative. This indicates the marginal product of a point. The derivative gives the values at a point and not an average between two points.
+
+- If the production function $Y = \alpha + \beta X$, point marginal product = $\frac{\delta Y}{\delta X} = b$, which is a linear constant relationship. If the production function is non-linear, i.e., $Y = \alpha + \beta X + \gamma X^2$, exact MP will be $\frac{\delta Y}{\delta X} = \beta + 2\gamma X$.
+
+## Marginal cost
+
+- The additional cost of doing a little bit more (or 1 unit more if a unit can be measured) of an activity.
+- How do you make a rational decision about when the alarm should go off? What you have to do is to weigh up the costs and benefits of additional sleep. Each extra minute in bed gives you more sleep (the marginal benefit), but gives you more of a rush when you get up (the marginal cost).
+- The decision is therefore based on the costs and benefits of extra sleep, not on the total costs and benefits of a whole night’s sleep.
+
+#### Rational decision
+- Doing more of an activity if its marginal benefit exceeds its marginal cost and doing less if its marginal cost exceeds its marginal benefit.
+- Rational decisions are made with rational choices; that involve weighing up the benefit of any activity against its opportunity cost.
+
+# Bibliography
+
+## For more information

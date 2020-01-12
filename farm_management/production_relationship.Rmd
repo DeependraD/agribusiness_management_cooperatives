@@ -1,0 +1,219 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Production relationships
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+source("./../scripts/supply-demand-surplus.R")
+source("./../scripts/graphics.R")
+# require(extrafont) # requires for graphics.R
+# require(extrafontdb)
+# extrafont::loadfonts()
+# extrafont::font_import()
+```
+
+# Introduction
+
+## Product relationships
+
+- All major production relationships can be categorized under three categories. i.e.:
+  1. Factor-product relationship
+  2. Factor-factor relationship
+  3. Product-product relationship
+
+# Factor-product relationship
+
+## Background
+
+- When concerned with resource allocation for production optimization, an understanding of input-output or factor-product relationship is important.
+- First, study of physical or technical relationship is important. Second, for decision making, application of economic choice indicators such as price ratio is required.
+- In a simple scenario, we details the physical factor-product relationship of a single variable resoruce and single product.
+- Many time resources or capacities of technical units, such as a ropani of land or a cow, are fixed and choice is to vary the input of only one factor -- such as fertilizer \alertc{OR} labor.
+- Other inputs such as fixed capital, buildings, implements and technical knowhow remain the same.
+
+##
+
+- Under such situation question of how much of certain input (amount of fertilizer or feed to a cow) to apply arises ?
+- This situtation is dealt by single factor-product relationships. a.k.a single variable production function (in a production function various levels of input are involved with corresponding output of the product).
+
+#### Inputs have several different names:
+Inputs = factors = factors of production = resources = A, L, K, M
+
+> \textbf{A}: Land (Natural and biological resources, climate.) \newline \textbf{L}: Labor (Human resources.) \newline \textbf{K}: Capital (Manufactured resources, which include buildings, machines, tools, and equipment.) \newline \textbf{M}: Management (The entrepreneur, or individual, who combines the other resources into inputs.)
+
+## Example: Production function of wheat
+
+To isolate the relationship between nitrogen and wheat yields, the agronomists (or other biophysical scientists) will hold constant all inputs other than the one that they are isolating, in this case nitrogen.
+
+$$Y = f(N | L, K, M, A)$$
+
+This relationship is highly important, since too little nitrogen means the yields will be lower than the potential, and too much nitrogen will "burn" the crop, causing smaller yields. Figure \ref{fig:nitrogen-wheat} shows the connection between nitrogen applications and wheat yields.
+
+##
+
+```{r nitrogen-wheat, fig.width=5, fig.height=4, out.width="50%", eval=TRUE, fig.cap="Relationship between nitrogen application and yield", echo=FALSE, eval = TRUE}
+
+nitrogen_wheat <- matrix(c(10, 20, 30, 40, 50, 60, 70, 1.8, 1.9, 2.2, 2.5, 2.6, 2.7, 2.74), byrow = F, ncol = 2) %>% 
+  as_tibble(.name_repair = function(x)janitor::make_clean_names(x, case = "snake")) %>% 
+  Hmisc::bezier() %>% 
+  as_tibble() %>%
+  magrittr::set_colnames(c("nitrogen", "yield"))
+
+nitrogen_wheat %>% 
+  ggplot(aes(nitrogen, yield)) +
+  geom_line() +
+  xlab("Nitrogen (kg)") +
+  ylab("Yield ('000 kg)") +
+  theme_bw()
+```
+
+## Concept of optimum production
+
+```{r nitrogen-wheat-optimum-production}
+nitrogen_wheat %>% 
+  ggplot(aes(nitrogen, yield)) +
+  geom_line() +
+  geom_point(aes(
+    y = max(nitrogen_wheat$yield), 
+    x = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)])
+  ) +
+  annotate("segment", 
+           y = max(nitrogen_wheat$yield) - 0.2, 
+           yend = max(nitrogen_wheat$yield) - 0.02,
+           x = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)] - 2, 
+           xend = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)] - 0.5, arrow = arrow(type = "closed"), color = "blue") +
+  geom_label(aes(x = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)] - 2, 
+                 y = max(nitrogen_wheat$yield) - 0.22), 
+             label = "Point of maximum production") +
+  scale_x_continuous(limits = c(0, 100)) +
+  xlab("Nitrogen (kg)") +
+  ylab("Yield ('000 kg)") +
+  theme_bw()
+```
+
+
+- The point of maximum physical wheat yield (N\*) is not always the optimal economic wheat yield. This is because nitrogen is a scarce resource, and costs money to purchase. In fact, fertilizer is one of the major costs of production for farmers in most agricultural regions. 
+
+##
+
+- If nitrogen were free, then the optimal application to a wheat field would always be N\* in Figure \ref{fig:nitrogen-wheat}, since this is the level of nitrogen that maximizes production.
+- However, since it costs money to purchase and use fertilizer, the farmer will stop applying it at a point to the left of N\*. Finding the optimal amount of nitrogen to apply requires application of economic principles. Economic reasoning will help determine the exact point where the benefits of using N minus the costs are maximized. 
+- Producers will not maximize production, because it costs too much. Instead, they will maximize profits.
+
+## Types of production functions
+
+- There can be three types of input-output relationships in the production of a commodity where one input is varied and the quantities of all other inputs are fixed.
+  1. Constant marginal rate of returns (Constant productivity)
+  2. Increasing marginal rate of returns (Increasing productivity)
+  3. Decreasing marginal rate of returns (Decreasing productivity)
+  
+## Contant marginal rate of returns
+
+- Each additional unit of the variable input when applied to fixed factors, produces an equal amount of additional product. The amount of product increases by the same magnitude for each additional unit of input.
+- Not a very common relationship in agriculture and holds true only for limited range.
+- Example:
+  1. Addition of one acre of land (technology and other factors being same) will add the same amount of product.
+  2. An addition of one tractor plus driver will do the same amount of work as previous tractor driver unit did.
+
+##
+  
+```{r tractor-driver-unit-cmr}
+tractor_driver_unit_cmr <- tribble(~"tractor_driver_unit", ~"field_ploughed", 
+                                   1, 2, 
+                                   2, 4,
+                                   5, 10, 
+                                   6, 12) %>% 
+  mutate(marginal_tractor_driver_unit = tsibble::difference(tractor_driver_unit),
+         marginal_field_ploughed = tsibble::difference(field_ploughed), 
+         marginal_rate_returns = field_ploughed/tractor_driver_unit)
+  
+```
+
+```{r tractor-driver-unit-cmr-fig, fig.cap="Constant marginal rate of returns for a input-output relationship between number of tractor plus driver unit recruits and hectares of land ploughed."}
+tractor_driver_unit_cmr %>% 
+  ggplot(aes(x = tractor_driver_unit, y = field_ploughed)) +
+  geom_line() +
+  geom_point() +
+  theme_bw() +
+  xlab("Tractor driver unit") +
+  ylab("Hectares of field ploughed")
+```
+
+##
+
+```{r tractor-driver-unit-cmr-tab}
+tractor_driver_unit_cmr %>% 
+  rename_all(function(x)str_replace_all(x, "_", " ")) %>% 
+  knitr::kable(booktab = TRUE, caption = "Constant marginal rate of returns for a input-output relationship between number of tractor plus driver unit recruits and hectares of land ploughed.") %>% 
+  kableExtra::kable_styling(font_size = 6)
+```
+
+## Increasing marginal rate of returns
+
+- Every additional or marginal unit of input adds more to the total product than the previous unit, i.e., addition to total product is at an increasing rate. 
+- In actual practice, the cases of purely increasing returns are rarely available except, again, in very limited range.
+- This relationship is possible when the fixed factors of production are in excess capacity and addition of the small units of a variable resource makes more and more efficient use of fixed resources.
+- Example:
+  1. Small quanity of wheat seed applied when other factors of production such as fertilizer, irrigation and other cultural practices can be used at high levels will give low returns.
+
+##
+
+```{r nitrogen-wheat-imr}
+nitrogen_wheat_imr <- tribble(~"wheat_seed", ~"marginal_wheat_seed", ~"wheat_production", ~"marginal_wheat_production",
+        10, NA, 1000, NA,
+        15, NA, 1025, NA,
+        20, NA, 1075, NA,
+        25, NA, 1150, NA,
+        30, NA, 1250, NA,
+        35, NA, 1375, NA) %>% 
+  mutate(marginal_wheat_seed = tsibble::difference(wheat_seed), 
+         marginal_wheat_production = tsibble::difference(wheat_production), 
+         marginal_rate_returns = marginal_wheat_production/marginal_wheat_seed)
+```
+
+```{r nitrogen-wheat-imr-fig, fig.cap = "Increasing marginal rate of returns for hypothetical wheat production scenario."}
+nitrogen_wheat_imr %>% 
+  ggplot(aes(x = wheat_seed, y = wheat_production)) +
+  geom_line() +
+  geom_point() +
+  theme_bw() +
+  xlab("Wheat seed (in kg)") +
+  ylab("Wheat production (in kg)")
+```
+
+##
+
+```{r nitrogen-wheat-imr-tab}
+nitrogen_wheat_imr %>% 
+  rename_all(function(x)str_replace_all(x, "_", " ")) %>% 
+  knitr::kable(booktabs = TRUE, caption = "Increasing marginal rate of return for hypothetical wheat production scenario.") %>% 
+  kableExtra::kable_styling(font_size = 6)
+
+```
+
+# Bibliography
+
+## For more information
