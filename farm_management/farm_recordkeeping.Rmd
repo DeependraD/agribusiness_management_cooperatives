@@ -1,0 +1,46 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Farm recordkeeping
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Importance
+
+##
+
+1. Measure profit and assess financial condition.
+2. Provide data for business analysis.
+3. Assist in preparing reports for partners, lenders, landlords, input providers, and government agencies.
+4. Measure the profitability of individual enterprises.
+5. Assist in the analysis of new investments.
+6. Prepare income tax returns.
+
+# Bibliography
+
+## References
+
+## For more information
