@@ -1,0 +1,184 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Production relationships
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+source("./../scripts/supply-demand-surplus.R")
+source("./../scripts/graphics.R")
+# require(extrafont) # requires for graphics.R
+# require(extrafontdb)
+# extrafont::loadfonts()
+# extrafont::font_import()
+```
+
+# Production relationships
+
+##
+
+- All major production relationships can be categorized under three categories. i.e.:
+  1. Factor-product relationship
+  2. Factor-factor relationship
+  3. Product-product relationship
+
+
+# Product
+
+## Total product (TP)
+
+- A given level of total product is always associated with a particular level of input(s) use with a given technology. Production function is often presented as total output curve because total product curve and production function curve are closely associated.
+
+## Average product (AP)
+
+- The term average product refers to the average productivity of resources. It is the ratio of total product (TP) to the quantity of input used in producing that amount of product, i.e., at any point on production function, it is the total output divided by the total input used.
+
+$$
+AP = \frac{Y}{X}
+$$
+
+Where Y is product and X the input(s).
+
+## Marginal product
+
+- The term marginal product refers to the quantity which additional (marginal) unit of factor-input adds to the total product. The marginal product (MP) at any level of the variable input can be approximated by dividing the addition to total output by the addition to total input:
+
+$$
+MP = \frac{\Delta Y}{\Delta X}
+$$
+
+Here, $\Delta$ refers to the change in or addition to the product or the input.
+
+- It is the rate of change in total product at a given point as the quantity of input changes.
+- Although, average productivity provides some guidelines as to the manner in which resources are allocated, it is marginal productivity which provides the final criterion in determining optimum use of limited resources.
+
+## Average marginal product
+
+- The average marginal product indicates the productivity values between the two relevant input levels.
+
+```{r marginal-product}
+ex1 <- tribble(~"input", ~"output", 
+               0, 10, 
+               5, 20, 
+               10, 30,
+               15, 40)
+
+ex2 <- tribble(~"input", ~"output", 
+               0, 10, 
+               5, 30, 
+               10, 45,
+               15, 50)
+
+```
+
+
+```{r marginal-product1}
+ex1 %>% 
+  knitr::kable(booktabs = T, caption = "Example 1") %>% 
+  kableExtra::kable_styling(font_size = 6)
+
+```
+
+
+```{r marginal-product2}
+ex2 %>% 
+  knitr::kable(booktabs = T, caption = "Example 2") %>% 
+  kableExtra::kable_styling(font_size = 6)
+```
+
+##
+
+- In Example 1 (Table \ref{tab:marginal-product1}), when $\Delta X = 5$, $\Delta Y = 10$, then $\frac{\Delta Y}{\Delta X} = \frac{10}{5} = 2.0$
+- In Example 2 (Table \ref{tab:marginal-product2}), when $\Delta X = 5$, $\Delta Y = 20$ for first unit of input, 15 for second and 5 for third addition of input. It indicates that with each unit change in X from 0 to first addition of inputs, there is a change in 2 units of Y ($\frac{\Delta Y}{\Delta X} = \frac{20}{5} = 4.0$). The Marginal product of variable unit can be thus approximated by dividing addition to total output by addition to total input. The marginal product, however, has decreased upon further addition of inputs to the first input level. i.e., when the input level is 15 (0 + 5 + 10), the additional 5 (10-5) unit input have given rise to only 15 (45-30) unit of output, hence the marginal product ($\frac{\Delta Y}{\Delta X} = \frac{15}{5} = 3.0$). This is reduction from the previous value of MP of 4.
+
+## Exact marginal product
+
+- Exact (point) marginal product refers to the marginal product as a derivative. This indicates the marginal product of a point. The derivative gives the values at a point and not an average between two points.
+
+- If the production function $Y = \alpha + \beta X$, point marginal product = $\frac{\delta Y}{\delta X} = b$, which is a linear constant relationship. If the production function is non-linear, i.e., $Y = \alpha + \beta X + \gamma X^2$, exact MP will be $\frac{\delta Y}{\delta X} = \beta + 2\gamma X$.
+
+## Example: Production function of wheat
+
+To isolate the relationship between nitrogen and wheat yields, the agronomists (or other biophysical scientists) will hold constant all inputs other than the one that they are isolating, in this case nitrogen.
+
+$$Y = f(N | L, K, M, A)$$
+
+This relationship is highly important, since too little nitrogen means the yields will be lower than the potential, and too much nitrogen will "burn" the crop, causing smaller yields. Figure \ref{fig:nitrogen-wheat} shows the connection between nitrogen applications and wheat yields.
+
+##
+
+```{r nitrogen-wheat, fig.width=5, fig.height=4, out.width="50%", eval=TRUE, fig.cap="Relationship between nitrogen application and yield", echo=FALSE, eval = TRUE}
+
+nitrogen_wheat <- matrix(c(10, 20, 30, 40, 50, 60, 70, 1.8, 1.9, 2.2, 2.5, 2.6, 2.7, 2.74), byrow = F, ncol = 2) %>% 
+  as_tibble(.name_repair = function(x)janitor::make_clean_names(x, case = "snake")) %>% 
+  Hmisc::bezier() %>% 
+  as_tibble() %>%
+  magrittr::set_colnames(c("nitrogen", "yield"))
+
+nitrogen_wheat %>% 
+  ggplot(aes(nitrogen, yield)) +
+  geom_line() +
+  xlab("Nitrogen (kg)") +
+  ylab("Yield ('000 kg)") +
+  scale_x_continuous(limits = c(0, 100)) +
+  theme_bw()
+```
+
+##
+
+```{r nitrogen-wheat-optimum-production, fig.width=5, fig.height=4, out.width="50%", eval=TRUE, fig.cap="Relationship between nitrogen application and yield", echo=FALSE, eval = TRUE}
+nitrogen_wheat %>% 
+  ggplot(aes(nitrogen, yield)) +
+  geom_line() +
+  geom_point(aes(
+    y = max(nitrogen_wheat$yield), 
+    x = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)])
+  ) +
+  annotate("segment", 
+           y = max(nitrogen_wheat$yield) - 0.2, 
+           yend = max(nitrogen_wheat$yield) - 0.02,
+           x = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)] - 2, 
+           xend = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)] - 0.5, arrow = arrow(type = "closed"), color = "blue") +
+  geom_label(aes(x = nitrogen_wheat$nitrogen[nitrogen_wheat$yield == max(nitrogen_wheat$yield)] - 2, 
+                 y = max(nitrogen_wheat$yield) - 0.22), 
+             label = "Point of maximum production") +
+  scale_x_continuous(limits = c(0, 100)) +
+  xlab("Nitrogen (kg)") +
+  ylab("Yield ('000 kg)") +
+  theme_bw()
+```
+
+
+## Concept of optimum production
+
+- The point of maximum physical wheat yield (N\*) is not always the optimal economic wheat yield. This is because nitrogen is a scarce resource, and costs money to purchase. In fact, fertilizer is one of the major costs of production for farmers in most agricultural regions.
+- If nitrogen were free, then the optimal application to a wheat field would always be N\* in Figure \ref{fig:nitrogen-wheat}, since this is the level of nitrogen that maximizes production.
+- However, since it costs money to purchase and use fertilizer, the farmer will stop applying it at a point to the left of N\*. Finding the optimal amount of nitrogen to apply requires application of economic principles. Economic reasoning will help determine the exact point where the benefits of using N minus the costs are maximized. 
+- Producers will not maximize production, because it costs too much. Instead, they will maximize profits.
+
+
+# Bibliography
+
+## For more information
