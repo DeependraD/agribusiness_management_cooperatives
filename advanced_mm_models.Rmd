@@ -1,0 +1,152 @@
+---
+title: "Multimarket models"
+author: "Samita Paudel"
+date: "7/23/2019"
+output: 
+  bookdown::pdf_document2:
+    toc: yes
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Multimarket models
+
+A partial equilibrium model defines functional relationships for supply and demand for a specific commodity in a specific time and place. As in an I-O model, partial equilibrium analysis reveals very little about the details of the distribution of costs in an activity budget. Instead, the model measures the market-wide impacts of a shock on prices, quantities, and welfare. A  multi-market analysis links shocks in one market to changes in demand and supply in related markets, thereby capturing impacts through diverse sectors of the economy. Unlike the I-O approach, shocks in a partial equilibrium framework may affect either supply or demand and their impacts can be assessed over longer time periods.
+
+The multi-market approach offers a way to capture greater linkages between sectors (including non-agricultural sectors) and is particularly suitable for the examination of dynamic, long-term issues in which BCA and I-O models are less appropriate.
+
+## Rationale
+
+Public debate on the impact of changes in price policy usually involves changes in government deficit, foreign exchange earnings (or requirements), and real incomes of various groups within society (for example, urban versus rural residents) effective protection rates (EPRs) or domestic resource cost (DRC) calculations cannot be used either to answer questions about the distributional impact of policies or to determine adjustment of quantities produced or consumed.
+
+Single market studies of producer and consumer surplus can address questions about the short term impact of price changes on real income (though only on the functional distribution of income).
+
+Price policies implemented in one market can lead to spill-over effects on supply, demand and prices in other markets. Similarly, price policies on other markets can affect quantities and prices on the market being considered. Simplification of market structure, assuming no interdependencies between markets, is justifiable only to a limited extent.
+
+## Two market scenario
+
+- Two commodity markets:
+  - In Market 1, a protectionist price policy is implemented in an import situation.
+  - In Market 2, equilibrium at autarky without government intervention is present.
+  
+If the price protection in the first market is now increased from $p_1$ to $p^{\prime}_1$, the second market would be affected. For example, in this case the price increase in the first market would provide an _incentive for producers to use fewer resources_ (people could buy product 2 at a relatively better price than previously, since spending on product 1 takes up more of their resource) for product 2 which would lead to a leftward shift of the supply curve in this market. In addition, consumers would consume more of product 2 due to the higher price of product 1, which would lead to a rightward shift of the demand curve in the second market. In a new equilibrium in the second market the price would have increased to $p^{\prime}_2$ and the quantity declined to $q^{\prime}_2$.
+
+### Defining cross elasticity
+
+A commonly used approach to capture interdependencies between markets is to define cross-price elasticities. The extended supply function $q^{s}_1 = q^{s}_1(p^s_1, p^s_2)$ describes that the supply of the first product depends on the price of this product and the price of the second product.
+
+A commonly used approach to capture interdepencies between markets is to define cross-price elasticities. The extended supply function $q^s_1 = q^s_1(p^s_1, p^s_2)$ describes that the supply of the first product depends on the price of this product and the price of the second product. Accordingly, we may, in addition to the direct price elasticity of supply $\varepsilon^s_{11}$ define the cross-price elasticity $\varepsilon^s_{12}$ as follow:
+
+\begin{equation}
+\varepsilon^s_{12} = \frac{\delta q_1^s}{\delta p_2^s}.\frac{p_2^s}{q_1^s}
+\label{cross-elasticity}
+\end{equation}
+
+With, 
+
+$\varepsilon^s_{12}$ -- cross-price elasticity of supply (of the first product with respect to the price of the second product.)
+
+At a cross price elasticity of zero no interdependencies exist. Substitutive goods have "-" ve and complementary goods have "+" ve cross price elasticities in supply.
+
+Cross-price elasticities may be derived for the supply of the second product as well as for the demand functions of both markets.
+
+The cross-price elasticity of demand $\varepsilon^d_{21}$ indicates by how many percentage points the quantity demanded of the second product changes if the price of the first product increases by 1 per cent.
+
+In demand case, however, "+" cross price elasticities indicate that goods are substitutive whereas, a negative cross price elasticity indicates that products are complementary.
+
+If we continue to assume iso-elastic supply and demand functions, we can formulate a two-market model as follows:
+
+\begin{equation}
+\begin{aligned}
+q_1^s(p_1^s, p_2^s) = c_1 . (p_1^s)^{\varepsilon^s_{11}}.(p_2^s)^{\varepsilon^s_{12}} &; \varepsilon_{11}^s > 0 \\
+q_2^s(p_1^s, p_2^s) = c_2 . (p_1^s)^{\varepsilon^s_{21}}.(p_2^s)^{\varepsilon^s_{22}} &; \varepsilon_{22}^s > 0 \\
+
+q_1^d(p_1^d, p_2^d) = d_1 . (p_1^d)^{\varepsilon^d_{11}}.(p_2^d)^{\varepsilon^d_{12}} &; \varepsilon_{11}^d < 0 \\
+q_2^d(p_1^d, p_2^d) = d_2 . (p_1^d)^{\varepsilon^d_{21}}.(p_2^s)^{\varepsilon^d_{22}} &; \varepsilon_{22}^d < 0 
+
+\label{two-markets-cross-elasticity}
+\end{aligned}
+\end{equation}
+
+Where,
+
+cross-price elasticities $\varepsilon^s_{12}$, $\varepsilon^s_{21}$, $\varepsilon_{12}^d$ and $\varepsilon_{21}^d$ may be positive, zero or negative.
+
+Now relevant political variables for both markets can be derived, for example, foreign exchange, government budget and welfare. This would require information about the cross-price elasticities.
+
+Ideally, cross price elasticities would be obtained through econometric estimation. Additionally, in the case of a multi-market model it applies that all supply and demand functions need to be calibrated, i.e. the relevant constants for the model equations have to be determined.
+
+Based on \ref{two-markets-cross-elasticity}, for example, we can define the equation for the supply constant of the first product:
+
+\begin{equation}
+c_1 = \frac{q_1^s}{(p_1^s)^{\varepsilon_{11}^s}. (p_2^s)^{\varepsilon_{12}^s}}
+\end{equation}
+
+With the extension of the model from one market to two markets the calculation of the constant changes, because the quantity supplied is not also explained via the price relation between the two markets. This is also restated as the information obtained from a market model increases with a higher degree of endogenisation of markets. Other supply and demand constants are obtained in the same way.
+
+Note that now the cross price elasticities also affect the calibration. Hence, if different values for the cross-price elasticity are chosen, the model has to be calibrated again.
+
+
+```{r}
+# specify funs
+supply_fun <- function(ps){
+  cc * (ps)^es
+}
+
+es <- 0.3
+
+demand_fun <- function(pd){
+  dc * (pd)^ed
+}
+
+ed <- -0.4
+
+# situation (a)
+# a country sets supply price and demand price independently from the world market price
+# with ps = 15 and pd = 12; the world market price is pw = 10. At this price setting
+# the country is an importer; the quantity supplied is qs = 80, and the quantity demanded
+# is qd = 100. Calibrate the supply and demand functions
+
+# solution (a)
+
+ps <- 15
+pd <- 12
+pw <- 10
+cc <- 1 # supply constant
+dc <- 1 # demand constant
+
+# change in supply function
+supply <- cc*ps^es
+
+# change in demand function
+demand <- dc*pd^ed
+
+# cost
+cost <- ps*supply_fun(ps) - integrate(supply_fun, lower = 0, upper = ps)$value
+
+# total benefit
+# however, since the total benefit requires integral of demand function through $\inf$, a way
+# out to solve this is to define a quasi-intersection of the demand curve with the price axis
+# and to cut off the integral at a sufficiently high price; in this example pd_0 = 60.
+tbenefit <- pd * demand_fun(pd) + integrate(demand_fun, pd, 60)$value
+
+# Let us look at the outcome of the model at a domestic price of 1. Since we get for ps = pd = 1 the
+# equilibrium quantity q = 1, the role of constants cc and dc as shift parameters becomes clear.
+
+# situation (b)
+
+# A country sets supply price and demand price independently from the world
+# market price with ps = 15 and pd = 12; the world market price is pw = 10. At
+# this price setting the country is an importer; the quantity supplied is qs = 80,
+# and the quantity demanded is qd = 100. Calibrate the supply and demand
+# functions.
+
+qs = 80
+qd = 100
+
+cc <- qs/ps^es
+```
+

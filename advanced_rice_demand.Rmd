@@ -1,0 +1,106 @@
+---
+title: "Rice demand analysis"
+author: "Deependra Dhakal"
+date: "`r Sys.Date()`"
+output: 
+  tint::tintBook:
+    keep_tex: true
+tables: yes
+bibliography: [../bibliographies.bib]
+link-citations: yes
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+---
+
+```{r setup, include=FALSE}
+library(tint)
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                      cache.extra = packageVersion('tint'), 
+                      message = FALSE, warning = FALSE, fig.width = 5)
+options(htmltools.dir.version = FALSE) 
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+## Background
+
+Source: http://www.fao.org/3/y4475e/y4475e08.htm#bm08
+
+- Marrakech Agreement of the General Agreement on Tariff and Trade (GATT) Uruguay Round started a process of agricultural market liberalization in 1994.
+- New negotiations launched in 2000 by WTO.
+- 90% of rice production and consumption occur in Asia.
+
+- Japanese consumption behaviour is a key indicator for forecasting the future consumption patterns of Asian nations, as japan lies in the forefront among asian economies.
+- Republic of Korea accepted the same minimum access import requirements in the GATT negotiations as Japan did.
+- How well the consumption behaviour of rice in Japan is reflective of rice demand in high-income economies.
+- Whether rice is a normal or an inferior good. i.e. whether per capita rice consumption goes up or down as income increases.
+- Food balance assessment is mainly concerned with supply-side factors.
+- Demand side is important to determine the fate of rice market.
+- Demand elasticities help in accurately estimating the impact of liberalization of rice market.
+
+- Time tend of rice consumption of patterns (Annual per capita rice consumption). Obtainable from food balance sheet ?
+
+## Aggregate consumption
+
+- It is indicated by per capita consumption of commmodity
+
+## Information lacked from aggregate consumption, comparative consumption of two or more food items per capita and per capita calorie intake values
+
+- Calorie elasticity and price elasticity have little in common, as the former is a behavioural variable.
+- Also food balance sheet provides macrodata, which may not capture individual household consumption patterns accurately. There may be aggregation problems.
+- For estimating income elasticities, household survey data should provide a better picture of individual household consumption patterns.
+
+## Rice study in japan
+
+- Rice is inferior good along with other cereals, with
+  - Income elasticity: -0.091 in 1964 and -0.708 in 1984.
+  - Price elasticity: -0.130 (1997)
+  - Expenditure elasticity: -0.308 (1997)
+- Demand could be projected using a log-linear function estimated by OLS using time series.
+- Expenditure elasticity (Negative!):
+  - Short term: -0.01
+  - Long term: -0.015
+- Expenditure elasticity and price elasticities are closely linked.  
+
+## Important questions
+
+- Is rice a complement or a substitute for meat, fish and other food items ?
+- Cross-sectional analysis
+  - In order to incorporate household-level microdata, the authors applied the following single equation models: the Working-Leser model estimated by OLS; Heckman's sample selection model; and the Tobit model.
+- Classification of households by income level table (contingency of income classess, 5 and Annual income level)
+- Whole sample elasticities for 11 major food items (OLS)
+- Expenditure elasticities by income bracket (OLS)
+- Own price elasticities by income bracket (OLS)
+- Uncompensated price and expenditure elasticities: AIDS model with inverse Mills ratio
+- Compensated price elasticities: AIDS model with inverse Mills ratio
+- Comparison of own-price elasticities
+- Comparison of expenditure elasticites
+- Comparison of income elasticites
+- Coefficients for demographic variables from AIDS model
+- Coefficients for regional dummy variables from AIDS model
+
+## Conclusion
+
+Concluding remarks
+
+This report estimates the Japanese demand for 11 major products: non-glutinous rice, bread, noodles, fresh fish and shellfish, fresh meat, milk, eggs, fresh vegetables, fresh fruits, fats and oil, and FAFH. The own-price, cross-price and expenditure elasticities of the 11 products are estimated, and some selected demographic variables are analysed. Contrary to previous studies on rice consumption patterns, the empirical results reported here show that own-price and expenditure elasticities for rice are high in absolute terms. In addition, these high elasticities are robust across different estimators. These results imply that Japanese rice is no longer a staple food, and rice has become more of a luxury food than many other foods. The econometric results also show that rice and FAFH are strong substitutes. The estimation results for other goods confirm that FAFH is a substitute for bread, noodles, fresh meat, eggs and fats and oil. These results are not surprising because this report utilizes purchase data, but they do imply the importance of FAFH in Japanese dietary patterns. Results from demographic variables show that Japanese food consumption patterns are different across household age groups: households with older heads tend to have more traditional dietary patterns, including a higher budget share for rice. The general dietary patterns of younger households can be characterized as Westernized: these households tend to consume more bread, noodles and meat, which are not traditional Japanese food items.
+
+Using 1997 household survey data, econometric results indicate that traditional Japanese dietary patterns have changed. Rice is no longer a staple food, and FAFH plays an important role in food consumption. There is no evidence that rice is an inferior good. It may even be appropriate to change a priori expectations for grain consumption in high-income countries.

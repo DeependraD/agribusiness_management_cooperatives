@@ -1,0 +1,545 @@
+---
+title: "Macroeconomics: recession, excess demand, government investment, production and consumption"
+author: "Deependra Dhakal"
+date: "`r Sys.Date()`"
+output: 
+  tint::tintBook:
+    keep_tex: true
+    includes:
+      in_header: macroeconomics_introduction_header.tex
+tables: yes
+bibliography: [../bibliographies.bib]
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tint)
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                      cache.extra = packageVersion('tint'), 
+                      message = FALSE, warning = FALSE, fig.width = 6, fig.height = 4)
+options(htmltools.dir.version = FALSE) 
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Background
+
+- What policy shifts what curve ? 
+- What determines the slope of IS-LM and Acess Demand (AD) - Acess Supply (AS) curves? 
+- What is Keynisian economics ?
+- How do all these curves move in tandem? 
+
+Any theory/idea, be it in pure science or economics, emanates with a hypothesis that is supported by some assumptions. As the study on the subject progresses researchers try and play with the assumptions and see if they can make it better in terms of explaining the real world as we see it. Macroeconomics is no exception, classical macroeconomics dates back to the 19th century with major proponents being Adam Smith, David Ricardo, Malthus, John Stuart Mill, J.B Say, etc. Early on the propnents believed, while pondering about resource use efficiency, forces of demand and supply determine market equilibrium and the efficacy of resource can best be realized in free market. At the same time, it was assumed that intervention of goverment in tackling localized market fluctuations will be detrimental in business cycles. Role of government (mostly that of centralized government) was sought in keeping a balance between government spending and tax revenues. However, several scenarios in history have made it necessary that alternative mechanisms act on macro economic scales. This surfaces, in particular, when economic recessions have struck. This is when the “Say's law“, which was at the heart of classical economics, failed to hold [@ackley1961macroeconomic]. There was mass unemployment, which was invoulantary (as opposed to the classicals view of only voluntary unemployment), insufficient demand for the produced goods, in short “Great” was an adequate adjective to describe the depressed economic scenario during the 1930’s.
+
+The Great depression of 1929 provided researchers with the much needed opportunity to revise/update the assumption that they were playing with. J.M Keynes made a break through contribution in revising the assumptions and ideologies of the classicals. He argued that market left completely to themselves might not lead to efficient allocation of resources. This was a paradigm shift in the way policy makers and researchers thought about macroeconomics. He argued that in times of recession the govt. should boost spending in order to revive the economy, contrary to the idea that the classicals propagated. Government spending and private investment were seen as complements and not substitutes. Private spending was determined not only by the interest rates in the economy but also by the expectation of future profitability (famously called the “animal spirit“). Another set of assumptions that he relaxed from the classical framework was the full flexibility of wages and prices. Classical economists believed that the market mechanism ensured that the prices of commodities adjusted instantaneously and fully to make the supply = demand. For eg. if there are 10 apples being produced and the demand turns out for only 8 apples, classical economists argues that the price of the apples would adjust in a manner (fall in this case) so that the demand rises instantaneously and exactly by 2 apples and the equilibrium is maintained. Keynes on the other hand argued that due to rigidities in the market (sticky prices, labor unions, menu costs, etc.) the price adjustment would not be instantaneous and hence the additional demand, in the short run will have to be created by the govt. by spending more. Either it can pitch in and buy the additional 2 apples or it can expedite investment in an avenue that absorbs the labor retrenched due to insufficient demand in the apple market.
+
+We start by illustrating the difference between the 2 idelogies using the IS-LM  framework (also called the Investment Savings/Liquidity preference Money supply). The basic national income identity finds mention in the first chapters of most of the introductory Macroeconomics textbooks hence we start by the same identity:
+
+## Derivation
+
+$$
+Y = C + I + G + (X - M)
+$$
+
+Where,
+
+$Y$: Output produced in the economy
+
+$C$: Total consumption demand
+
+$I$: Total investment
+
+$G$: Total govt. spending
+
+$X$: Total value of exports
+
+$M$: Total value of imports
+	
+Assuming a closed economy (where there is no trade overall) identity boils down to
+	
+$$
+Y = C + I + G
+$$
+The equilibrium condition for the goods market is:
+
+$$
+Y = D_a
+$$
+
+where $D_a$ is the aggregate demand.
+
+Using the above equilibrium condition we can arrive at the goods market equilibrium condition that would eventually lead us to the IS curve equation which is:
+
+$$
+Y = \alpha A - \alpha b\times i
+$$
+Where,
+
+$Y$ = Total output
+
+$c$ = marginal propensity to consume (MPC)
+
+$\alpha$ = $\frac{1}{1-c}$
+
+$A$ = autonomous component (Government spending, autonomous consumption and investment)
+
+$b$ = Senstivity to interest rates
+
+$i$ = interest rates
+
+$I = I.0 - b\times i$ (investment function)
+
+$C = C.0 + c\times y$ (consumption function)
+	
+Similarly for the money market equilibrium, the money supply has to equal the money demand leading to the following condition:
+	
+$$
+MS = k*Y - h*i
+$$
+or 
+
+$$
+y = \frac{MS}{k} - \frac{h}{k}\times i
+$$
+
+Here, Usual definitions follow from above
+
+$k$ = sensitivity of transactions demand for money to change in income.
+
+$h$ = sensitivity of speculative demand for money to change in interest rates.
+
+$MS$ = real money supply in the economy (nominal money)/(prices)
+	
+For complete and comprehensive proofs of the above equations you can refer to a text book by William Branson or another textbook by Dornbusch and Fischer.
+
+IS curve: The points on the IS curve represent the combinations of rate of interest (i) and output (Y) for which the goods market are in equilibrium. Meaning, at these combinations of “I” and “Y”, the aggregate supply of goods equals aggregate demand for goods in the economy.
+
+LM curve: The points on the LM curve represent the combinations of rate of interest (i) and output for which the money market is in equilibrium. Meaning, at these combinations of “I” and “Y”, the aggregate demand for money equals aggregate supply of money in the economy. (Note that we have the prices as exogenously given and fixed)
+
+## IS curve equation
+
+```{r is-curve}
+# y = output; c = marginal propensity to consume; alpha = 1/(1-c) A = autonomous component;
+# b = Senstivity to interest rates; i = interest rates
+# I = I.0 - b*i (investment equation)
+# y = alpha*A - alpha*b*i
+
+IS.curve <- function(c, A, b, i)
+{
+  y = (1/(1-c))*A - (1/(1-c))*b*i
+  return(y)
+}
+
+
+# LM curve equation
+# Usual definitions follow from above; k = sensitivity of transactions demand for money to change in income
+# h = senstivity of speculative demand for money to change in income; MS = real money supply in the economy
+# ((nominal money)/(prices)
+# y = MS/k - (h/k)*i
+
+LM.curve <- function(ms, h, k, i)
+{
+  y = ms/k + (h/k)*i
+  return(y)
+}
+
+# Function to calculate the point of intersection of the IS and LM curves
+
+Intersect <- function(c, A, b, ms, h, k ,i) # Using cramers rule to solve a system of simultaneous equations
+{
+  a1 <- (1/(1-c)) * b
+  b1 <- 1
+  c1 <- (1/(1-c)) * A
+  a2 <- - (h / k)
+  b2 <- 1
+  c2 <- ms/k
+  stopifnot(a1 * b2 - b1 * a2 != 0) # We need to make sure that the determinant is non-zero.
+  return(list(
+    x = (b2 * c1 - b1 * c2)/(a1 * b2 - b1 * a2),
+    y = (a1 * c2 - a2 * c1)/(a1 * b2 - b1 * a2)
+  )
+  )
+}
+
+# IS curve plotting
+
+autonomous.component <- 100
+mpc <- 0.5
+b <- 0.75
+i <- c(1,2,3,4,5,6,7,8,9,10)
+y.is <- IS.curve(mpc,autonomous.component, b, i)
+
+# LM curve plotting
+
+ms <- 143
+h <- 1.8
+k <- 0.8
+y.lm <- LM.curve(ms, h, k, i)
+
+# Effect of government spending or tax cut of any other form of fiscal policy
+
+autonomous.component.gov <- 102 # Say the government spending increased by 2 units
+y.is.gov <- IS.curve(mpc,autonomous.component.gov, b, i)
+
+# Effect of increasing money supply by the central bank (or monetary policy)
+
+ms.mon <- 145 # money supply increased by 2 units
+y.lm.mon <- LM.curve(ms.mon, h, k, i)
+
+# Finding the point of intersection of the IS-LM curves
+
+intersect <- Intersect(mpc, autonomous.component, b, ms, h, k ,i)
+intersect.gov <- Intersect(mpc, autonomous.component.gov , b, ms, h, k ,i)
+intersect.mon <- Intersect(mpc, autonomous.component , b, ms.mon , h, k ,i)
+intersect.mon.gov <- Intersect(mpc, autonomous.component.gov , b, ms.mon , h, k ,i)
+
+
+# IS-LM framework
+
+plot(y.is,i, xlim = c(180,205), ylim = c(-1,10), type ="l",
+     main = "Fiscal and Monetary policy together", xlab = "Output(Y)",
+     ylab = "Interest rates(I)", col = "red")
+
+lines(y.lm, i, type = "l", col = "green")
+lines(y.is.gov, i, type = "l", lty = 2, col = "red")
+lines(y.lm.mon, i , type ="l", lty = 2, col = "green")
+legend("bottomright", c("IS", "LM") , cex=0.5, col=c("red", "green"), lwd=2, bty="n")
+
+lines(c(-1, intersect$y, intersect$y), c(intersect$x, intersect$x, -1), lty=2, col='black')
+lines(c(-1, intersect.gov$y, intersect.gov$y), c(intersect.gov$x, intersect.gov$x, -1), lty=2, col='black')
+lines(c(-1, intersect.mon$y, intersect.mon$y), c(intersect.mon$x, intersect.mon$x, -1), lty=2, col='black')
+lines(c(-1, intersect.mon.gov$y, intersect.mon.gov$y),
+      c(intersect.mon.gov$x, intersect.mon.gov$x, -1), lty=2, col='black')
+```
+
+Equilibrium: The point of intersection of the IS and LM curve is the combination of "I" and "Y" for which both the goods and the money market are in equilibrium.
+
+\textbf{Effects of fiscal policy (or increase in government expenditure)}
+
+An increase in the government spending (fiscal expansion) results in the rightward shift of the IS curve. This happens because the autonomous component of the aggregate demand (“A” in the above derivation) increases. Fiscal policy (with exogenous price level) leads to increase in both output and interest rates.
+
+\textbf{Effect of monetary policy (change in money supply)}
+
+An increase in the money supply by the central bank (monetary policy) results in the rightward shift in the LM curve. This happens because of the increase in nominal money supply (MS), and since the prices are exogenous the entire curve shifts to the right. Monetary policy (with exogenous prices) leads to fall in interest rates and rise in the output.
+
+\textbf{Mixture of monetary and fiscal policy}
+
+Any desired level of output and interest rates can be achieved by using both these policies in tandem, as illustrated below.
+
+\textbf{Aggregate demand curve (AD curve)}
+
+Now if we introduce prices in the picture we can trace out different combinations of “P“(prices) and “Y” for which both the goods and the money market are in equilibrium. In order to achieve this we have endogenised the computation of prices (P) (by taking ms = (nominal money)/(prices))  This represents an important relationship between aggregate price level and output for the economy. The downward sloping AD curve should not be confused with the demand curve for a good (as in microeconomics). Although both are downward sloping, the reasons for the negative relation between the prices and output demanded are different in the 2 cases. In microeconomics if the price of a good increases less of it is demanded, ceteris paribus. However in the case of AD curve, this negative relation is established by the interplay between the goods and the money market that ensures that markets clear.
+
+
+```{r aggregate-demand}
+# Aggregate demand curve
+
+ad.curve <- function(c, A, b, ms, h, k ,y) # We are trying to arrive at a relation between
+  # Prices and output.
+{
+  alpha <- 1/(1-c)
+  omega <- (k/h) - (1/alpha*b)
+  P <- (ms/h)/(y*omega + (A/b)) # This is just basic algebra, you substitute "i" in terms of
+  # "P" and "Y" from the IS and LM equations and find a relation between prices and output.
+  return(P)
+}
+
+# Deriving the AD curve
+ms.ad <- 10000
+ad <- ad.curve(mpc, autonomous.component , b, ms.ad, h, k ,y.is)
+plot(y.is, ad, type="l",xlim = c(180,205), ylim = c(37.68,38.05),
+     main = "Aggregate demand curve", xlab = "Output(Y)",
+     ylab = "Prices(P)", col = "royalblue")
+```
+
+
+This completes the story from the demand side, as to how we arrived at the aggregate demand curve for the economy. Note that we have taken a simplified version of the equations to make our point clear and to make it useful for non-econ students too. We could introduce government taxes to make the equations more realistic (and complicated) but the math looks cleaner this way and anyways the intuition remains the same even after incorporating taxes.
+
+The next thing that we need to do is to arrive at the aggregate supply curve (labor side) for the economy, which we shall take up in the next post. Once we have presented both the ideas of aggregate demand and aggregate supply, we would be in a position to better understand the above discussion about the classical and Keynesian school of thought.
+
+# Macroeconomic terminologies and their descriptions
+
+
+## Supply demand and price policies
+
+
+### Supply function
+
+Let us consider the following linear supply function:
+
+\begin{equation}
+\begin{split}
+q^s(p^s) = a + bp^s; a < 0, b > 0
+\end{split}
+\label{eq:supply-func}
+\end{equation}
+
+Where,
+
+$q^s(.)$ -- supply function
+
+$q^s$ -- quantity supplied
+
+$p^s$ -- supply price
+
+Parameter $a$ describes the hypothetical quantity of supply for a supply price of zero.
+Parameter $b$ describes the slope of the supply function and indicates the change in units supplied as a consequence of an increase of the supply price by one unit.
+
+Inverse function with price on y-axis and quanity on x-axis is given by following inverse supply function. Inverse function is derived by solving Equation \ref{eq:supply-func} with respect to $p^s$.
+
+\begin{equation}
+\usetagform{inverseeqn}
+\begin{split}
+\tilde{p}^s(q^s) = -\frac{a}{b} + \frac{1}{b}q^s
+\end{split}
+\label{inverse-supply-func}
+\end{equation}
+
+Where,
+
+$\tilde{p}^s(.)$ -- inverse supply function 
+
+
+### Demand function
+
+Let us consider the following linear demand function:
+
+\begin{equation}
+\begin{split}
+q^d(p^d) = c + dp^d; c > 0, d < 0
+\end{split}
+\label{demand-func}
+\end{equation}
+
+Where,
+
+$q^d(.)$ -- demand function
+
+$q^d$ -- quantity demanded
+
+$p^d$ -- demand price
+
+$c$ -- hypothetical quantity of supply for a supply price of zero.
+
+$d$ -- slope of the supply function that indicates the change in units supplied as a consequence of an increase of the supply price by one unit.
+
+Inverse function with price on y-axis and quanity on x-axis is given by following inverse supply function. Inverse function is derived by solving Equation \ref{eq:demand-func} with respect to $p^d$.
+
+\begin{equation}
+\usetagform{inverseeqn}
+\begin{split}
+\tilde{p}^d(q^d) = -\frac{c}{d} + \frac{1}{d}q^d
+\end{split}
+\label{inverse-demand-func}
+\end{equation}
+
+Where,
+
+$\tilde{p}^d(.)$ -- inverse demand function 
+
+\textbf{\Large Numerical examples on supply demand functions}
+
+Let us consider we have given parameters, a, b, c and d, we can then compute quantity distributions for given price levels with supply and demand functions respectively.
+
+```{r supply-demand-func, eval=FALSE}
+# quantity as function of price
+s_fun <- function(ps)a + b*ps
+d_fun <- function(pd)c + d*pd
+
+a <- -2
+b <- 3
+c <- 3
+d <- -5
+
+s_fun(c(2, 3, 4, 5))
+d_fun(c(2, 3, 4, 5))
+
+# price as function of demand
+
+s_fun_inv <- function(qs)-a/b + 1/b*qs
+d_fun_inv <- function(qd)-c/d + 1/d*qd
+
+s_fun_inv(c(2, 3, 4, 5))
+d_fun_inv(c(2, 3, 4, 5))
+```
+
+To solve for equilibrium price and quantity, however, we can algebrically solve the following linear function indicated in the matrix form as follow:
+
+\[
+\underbrace{\begin{bmatrix} p^s \\ p^d \end{bmatrix}}_y  = \underbrace{\begin{bmatrix}  a &  b \\ c &  d \end{bmatrix}}_X
+  \underbrace{\begin{bmatrix} q^s(p^s) \\ q^d(p^d) \end{bmatrix}}_\beta
+\]
+
+
+### Market equilibrium with and without government intevention
+
+Let us now consider a closed economy without government intervention. For such a policy framework there will be an equilibrium price on the market equalising supply and demand. This is the autarky price $p^a$.
+
+Under free trade, world market price $p^w$ will be relevant price for domestic supply and demand. We can make small country assumption, i.e. the world market price will not change due to domestic supply and demand changes.
+
+Domestic supply and demand under free trade will be $q^s(p^w)$ and $q^d(p^w)$. Imports, under free trade will be $q^{im} = q^d(p^w)-q^s(p^w)$. Note that Autarky and free trade mark the absence of government interventions in a market.
+
+A country can set the domestic price independently of the world market price according to domestic policy objectives, implemented by price and quantity interventions. Typical intervention is a 'subsidisation' or a 'taxation'.
+
+Protectionist policy: May be implemented by a tariff in an import situation or an export subsidy in an export situation. Thus the policy objectives on this market such as increasing producer revenue or government budget now depend on the world market price and/or the domestic price.
+
+In an import situation with protectionist price policy, as compared to free trade, quantity of supply increases (to $q^s(p)$) and quantity of demand decreases (to $q^d(p)$). 
+
+The producer revenue in such a case would be:
+
+\begin{equation}
+R(p) = q^s(p).p
+\label{prod-revenue}
+\end{equation}
+
+The consumer expenditure would be:
+
+\begin{equation}
+E(p) = q^d(p).p
+\label{consumer-expenditure}
+\end{equation}
+
+For the import situation, import expenditures occur. A foreign exchange function covers both import and an export situation. This can be defined as:
+
+\begin{equation}
+FE(p, p^w) = \left(q^s (p) - q^d(p)\right)p^w
+\label{foreign-exchange}
+\end{equation}
+
+Thus, foreign exchange is a function of the two exogenous prices and it has a negative value in the import situation considered.
+
+Similarly, government budget may be defined as follows in its functional form.
+
+\begin{equation}
+B(p, p^w) = \left(q^d(p)-q^s(p)\right)(p-p^w)
+\label{govt-budget}
+\end{equation}
+
+The value of this function is positive for the case considered. It would be negative for a protectionist price policy in an export situation to be established by an export subsidy.
+
+
+## Welfare and distribution
+
+The maximum willingness to pay may be used as a welfare indicator for the consumer. Willingness to pay is defined as the maximum amount a consumer is prepared to pay for a good or service. It is therefore a monetary measure of the satisfaction of consuming a good.
+
+
+### Willingness to pay function
+
+Willingness to pay, aggregated for all consumers, is illustrated by the area under the demand curve up to the quantity demanded $q^d(p)$. We also call this the total benefit of consumption, defined as:
+
+\begin{equation}
+TB(p) = \int^{q^{d}p}_0 \tilde{p}^d(v)dv
+\label{benefit-consumption}
+\end{equation}
+
+Where, 
+
+TB -- total benefit
+
+$v$ -- integration variable, here, $q^d$
+
+
+### Opportunity cost function
+
+\begin{equation}
+C(p) = \int^{q^s(p)}_0 \tilde{p}^s(v)dv
+\label{opportunity-cost}
+\end{equation}
+
+Where,
+
+C -- cost
+
+v -- integration variable, here $q^s$
+
+### Welfare function
+
+\begin{equation}
+\begin{aligned}
+\begin{split}
+W(p, p^w) &= TB(p) - c(p) + FE(p, p^w) \\
+W(p, p^w) &= \int^{q^d(p)}_0\tilde{p}^d(v)dv - \int^{q^s(p)}_0\tilde{p}^s(v)dv + \left(q^s(p) - q^d(p)\right)p^w
+\end{split}
+\end{aligned}
+\label{welfare-func}
+\end{equation}
+
+Where, 
+
+W -- welfare
+
+
+### Consumer surplus
+
+The difference of total benefit and consumer expenditure is the relevant welfare indicator for consumers, called consumer surplus.
+
+\begin{equation}
+CS(p) = \int^{q^d(p)}_0 \tilde{p}^d(v)dv - q^d(p)p
+\label{consumer-surplus}
+\end{equation}
+
+Where, 
+
+CS -- consumer surplus
+
+\textbf{\Large Numerical examples}
+
+\textbf{Calculation based on $\bar{x}$ and demand function}
+
+The inverse demand function for a certain product is given as follow. Find the consumers surplus if $\bar{x}=200$ (Equilibrium quantity).
+
+```{r, eval=FALSE}
+# Given demand function and average quantity
+d_fun <- function(x)1000-0.1*x-0.01*x^2
+x_bar <- 200 # units of goods sold
+
+# The price p is:
+d_price <- d_fun(x_bar)
+```
+
+There would have been people willing to pay more than $P$. These people got a "deal," For the $\Delta x$ people willing to pay between $p(x)$ and $p(x+\Delta x)$, the amount "saved" is approximately $(p(x)-P)\Delta x$. "Add up" (integrate) from $x=0$ to $x=200$. The amount collectively saved (the consumer surplus) is:
+
+$$
+\int_0^{200} (p(x)-P)\,dx.
+$$
+
+For our particular problem, use the given function $p(x)$, and the value $P$ that we calculated. The integration will be straightforward.
+
+```{r, eval=FALSE}
+integrate(function(x)d_fun(x)-d_price, lower = 0, upper = 200)
+```
+
+\textbf{Calculation with with exponential and logarithmic expressions}
+
+```{r, eval=FALSE}
+d_fun <- function(x)(log(exp(1)^2/4*x))
+s_fun <- function(x)sqrt(20-4*x)
+
+eq_quantity <- 4
+eq_price <- 2
+
+# consumer surplus equals
+integrate(s_fun, 0, 4)$value-eq_quantity*eq_price
+
+# producer surplus equals
+eq_quantity*eq_price - integrate(d_fun, 0, 4)$value
+```
+
+
+### Producer surplus
+
+The relevant indicator to describe the welfare of producers is the difference of producer revenue and cost; it is called producer surplus.
+
+\begin{equation}
+PS(p) = q^s(p)p-\int^{q^s(p)}_0 \tilde{p}^s(v)dv
+\label{producer-surplus}
+\end{equation}
+
+Where,
+
+PS -- producer surplus

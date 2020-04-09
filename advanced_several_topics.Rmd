@@ -323,6 +323,78 @@ ggplot() +
 ```
 
 
+``` {r}
+# Download this from https://github.com/andrewheiss/econw18.classes.andrewheiss.com/blob/master/lib/graphics.R
+source("./scripts/graphics.R")
+
+# Create functions
+budget <- function(x) 50 - (2 * x)
+budget_new <- function(x) 50 - x
+budget_shifted <- function(x) 35.5 - x
+utility <- function(x, good_x, good_y, adj = 0) sqrt(good_x * good_y)^2 / x + adj
+
+# Annotations for the plot
+# It'd be better to figure these out mathematically using the functions, but ¯\_(ツ)_/¯
+points_to_show <- tribble(
+  ~x,   ~y,  ~label,
+  12.5, 25,  "A",
+  22,   28,  "B",
+  17.5, 18,  "C"
+)
+
+effects <- tibble(x_start = c(filter(points_to_show, label == "A") %>% pull(x),
+                                  filter(points_to_show, label == "C") %>% pull(x),
+                                  filter(points_to_show, label == "A") %>% pull(x)),
+                      x_end = c(filter(points_to_show, label == "C") %>% pull(x),
+                                filter(points_to_show, label == "B") %>% pull(x),
+                                filter(points_to_show, label == "B") %>% pull(x)),
+                      label = c("SE", "IE", "TE"),
+                      y = c(12, 8, 4))
+
+# Plot everything
+ggplot(data = points_to_show, aes(x = x, y = y)) +
+  stat_function(data = tibble(x = 0:60), inherit.aes = FALSE,
+                aes(x = x, color = "Original budget", size = "Original budget"), 
+                fun = budget) +
+  stat_function(data = tibble(x = 0:25), inherit.aes = FALSE,
+                aes(x = x, color = "New budget", size = "New budget"),
+                fun = budget_new) +
+  stat_function(data = tibble(x = 0:25), inherit.aes = FALSE,
+                aes(x = x), color = "grey70", linetype = "dashed",
+                size = 0.5, fun = budget_shifted) +
+  stat_function(data = tibble(x = 1:25), inherit.aes = FALSE,
+                aes(x = x, color = "Original indifference", size = "Original indifference"), 
+                fun = utility, args = list(good_x = 12.5, good_y = 25)) +
+  stat_function(data = tibble(x = 1:25), inherit.aes = FALSE,
+                aes(x = x, color = "New indifference", size = "New indifference"),
+                fun = utility, args = list(good_x = 15.5, good_y = 30, adj = 7)) +
+  geom_segment(aes(xend = x, yend = 0), 
+               size = 1, color = nord_yellow, linetype = "dotted") +
+  geom_point(size = 2) + 
+  geom_text(aes(label = label), hjust = "left", nudge_x = 1, size = 6) +
+  geom_segment(data = effects, aes(x = x_start, xend = x_end, y = y, yend = y)) +
+  geom_text(data = effects, aes(x = (x_start + x_end) / 2, y = y, label = label),
+            vjust = 1.3) +
+  scale_x_continuous(expand = c(0, 0)) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_color_manual(values = c("Original budget" = nord_green, 
+                                "New budget" = nord_orange, 
+                                "Original indifference" = nord_dk_blue, 
+                                "New indifference" = nord_lt_blue), 
+                     guide = guide_legend(reverse = TRUE), name = NULL) +
+  scale_size_manual(values = c("Original budget" = 2.5, 
+                               "New budget" = 2.5, 
+                               "Original indifference" = 1, 
+                               "New indifference" = 1), 
+                    guide = guide_legend(reverse = TRUE), name = NULL) +
+  coord_equal(xlim = c(0, 50), ylim = c(0, 50)) +
+  labs(x = "Good X", y = "Good Y") +
+  theme_econ(axis_line = TRUE) +
+  theme(panel.grid = element_blank(),
+        legend.position = "bottom")
+```
+
+
 # Demand and supply
 
 ## 
@@ -334,6 +406,14 @@ tribble(~"quantity", ~"price", ~"total_revenue", ~"total_cost", ~"profit",
         )
 ```
 
+
+## Excess demand and supply
+
+Excess demand is the function describing the amount of quantity demanded above quantity supplied at each price level. Mathematically, it is allowed to be negative (so then we have excess quantity supplied actually).
+ 
+Remember that the Walrasian construct imagines an "auction" situation when transactions do not take place as long as the market doesn't clear. So somebody (the "walrasian auctioneer") "announces a price, and buyers declare their desired quantities at that price and sellers declare the quantities they want to sell at that price. If the sum of quantities demanded exceeds the sum of quantities supplied, the excess demand function is strictly positive at that price.
+
+A classic case of real-world strictly positive excess quantity demanded is a very large discount a shop may give for an item, but having decided a priori the pieces it will sell at that prices (the desired quantity supplied at the price). The price may be so low that customers may demand more than the quantities that the store desires to sell at that price.
 
 ### Supply function
 
@@ -442,8 +522,315 @@ To solve for equilibrium price and quantity, however, we can algebrically solve 
   \underbrace{\begin{bmatrix} q^s(p^s) \\ q^d(p^d) \end{bmatrix}}_\beta
 \]
 
+## Demand shift
 
-## Fun with empirical and function-based derivatives in R ^[[Andrew Heiss](https://www.andrewheiss.com), 2018-02-15]
+```{r demand-shift}
+supply <- Hmisc::bezier(c(1, 8, 9),
+                        c(1, 5, 9)) %>%
+  data.frame()
+
+demand <- Hmisc::bezier(c(1, 3, 9),
+                        c(9, 3, 1)) %>%
+  as_tibble()
+
+demand1 <- Hmisc::bezier(c(1, 3, 9),
+                        c(9, 3, 1)) %>%
+  as_tibble()
+
+demand2 <- Hmisc::bezier(c(3, 5, 11),
+                         c(11, 5, 3)) %>%
+  data.frame()
+
+# Calculate the intersections of the two curves
+intersections <- bind_rows(curve_intersect(supply, demand1),
+                           curve_intersect(supply, demand2))
+
+plot_labels <- data_frame(label = c("S", "D[1]", "D[2]"),
+                          x = c(8, 1, 5),
+                          y = c(8, 8, 8))
+
+ggplot(mapping = aes(x = x, y = y)) + 
+  geom_path(data = supply, color = "#0073D9", size = 1) + 
+  geom_path(data = demand, color = "#FF4036", size = 1, linetype = "dashed") + 
+  geom_path(data = demand2, color = "#FF4036", size = 1) + 
+  geom_segment(data = intersections, 
+               aes(x = x, y = 0, xend = x, yend = y), lty = "dotted") +
+  geom_segment(data = intersections, 
+               aes(x = 0, y = y, xend = x, yend = y), lty = "dotted") + 
+  geom_text(data = plot_labels,
+            aes(x = x, y = y, label = label), parse = TRUE) +
+  annotate("segment", x = 3.5, xend = 4.5, y = 6, yend = 7,
+           arrow = arrow(length = unit(1, "lines")), colour = "grey50") +
+  geom_point(data = intersections, size = 3) +
+  scale_x_continuous(expand = c(0, 0), breaks = intersections$x,
+                     labels = expression(Q[1], Q[2])) +
+  scale_y_continuous(expand = c(0, 0), breaks = intersections$y,
+                     labels = expression(P[1], P[2])) +
+  labs(x = "Quantity", y = "Price",
+       title = "Rightward shift in demand",
+       subtitle = "As demand increases, so does price") +
+  coord_equal() +
+  theme_classic() + 
+  theme(plot.title = element_text(size = rel(1.3)))
+```
+
+
+# Demand models
+
+In this section, three different types of demand models for homogeneous products will be compared and how to find optimal prices for each one of them.
+
+For the linear model, demand is given by:
+
+$$\displaystyle d(p) = \alpha p + \beta,$$
+
+where $\alpha$ is the slope of the curve and $\beta$ the intercept. For the linear model, the elasticity goes from zero to infinity. Another very common demand model is the constant-elasticity model, given by:
+
+$$\displaystyle \ln d(p) = \alpha \ln p + \beta,$$
+
+or
+
+$$\displaystyle d(p) = d_0 e^\beta p^\alpha = Cp^\alpha,$$
+
+where $\alpha$ is the elasticity of the demand and C is a scale factor. A much more interesting demand curve is given by the logistic/sigmoide function:
+
+$$\displaystyle d(p) = C\frac{e^{\alpha p + \beta}}{1 + e^{\alpha p + \beta}} = \frac{C}{1+e^{-\alpha(p - p_0)}},$$
+
+where $\displaystyle C$ is a scale factor and $\alpha$ measures price sensitivity. We also can observe $p_0 = -\alpha/\beta$ as the inflection point of the demand.
+
+Some books changes the signs of the coefficients using the assumption that $\alpha$ is a positive constant and using a minus sign in front of it. However, it does not change the estimation procedure or final result, it is just a matter of convenience. Here, we expect $\alpha$ to be negative in the three models.
+
+In the Figure below we can check a comparison among the shapes of the demand models:
+
+```{r shapes-of-demand}
+library(reshape2)
+library(magrittr)
+ 
+linear = function(p, alpha, beta) alpha*p + beta
+constant_elast = function(p, alpha, beta) exp(alpha*log(p)+beta)
+logistic = function(p, c, alpha, p0) c/(1+exp(-alpha*(p-p0)))
+ 
+p = seq(1, 100)
+y1 = linear(p, -1, 100)
+y2 = constant_elast(p, -.5, 4.5)
+y3 = logistic(p, 100, -.2, 50)
+ 
+df = data.frame('Prices' = p, 'Linear' = y1, 'Constant_elast' = y2, 'Logistic' = y3)
+df.plot = melt(df, id = 'Prices') %>% magrittr::set_colnames(c('Prices', 'Model', 'Demand'))
+ 
+ggplot(df.plot) + aes(x = Prices, y = Demand) +
+  geom_line(color = 'blue', alpha = .6, lwd = 1) +
+  facet_grid(~Model)
+```
+
+Of course that in practice prices does not change between 1 and 100, but the idea is to show the main differences in the shape of the models.
+
+All the models presented above have positive and negative points. Although local linear approximation may be reasonable for small changes in prices, sometimes this assumption is too strong and does not capture the correct sensitivity of bigger price changes. In the constant elasticity model, even though it is a non-linear relationship between demand and price, the constant elasticity assumption might be too restrictive. Moreover, it tends to over estimate the demand for lower and bigger prices. In a fist moment, I would venture to say that the logistic function is the most robust and realistic among the three types.
+
+## Pricing with demand models
+
+In a general setting, one have for the total profit function:
+
+$\displaystyle L(p) = d(p)(p-c),$
+
+where, L gives the profit, d is the demand function that depends of the price and c is the marginal cost. Taking the derivative with respect to price we have:
+
+$\displaystyle L'(p) = d'(p)(p - c) + d(p).$
+
+Making L'(p) = 0 to calculate the optimum price (first order condition), we have:
+
+$$\displaystyle d'(p^\star)(p^\star - c) + d(p^\star) = 0
+\displaystyle d'(p^\star)p^\star + d(p^\star) = d'(p^\star)c,$$
+
+which is the famous condition that in the optimal price, marginal cost equals marginal revenue. Next, let’s see how to calculate the optimum prices for each demand functions.
+
+## Linear model
+
+For the linear model $d'(p) = \alpha$. Hence:
+
+$$
+\begin{aligned}
+\displaystyle d'(p^\star)p + d(p^\star) &= d'(p^\star)c, \\
+\displaystyle \alpha p^\star + \alpha p^\star + \beta &= \alpha c, \\
+\displaystyle p^\star &= \frac{\alpha c - \beta}{2\alpha}.
+\end{aligned}
+$$
+
+Example:
+
+```{r example-fit-viz}
+# Synthetic data
+p = seq(80,130)
+d = linear(p, alpha = -1.5, beta = 200) + rnorm(sd = 5, length(p))
+c = 75
+profit = d*(p-c)
+ 
+# Fit of the demand model
+model1 = lm(d~p)
+profit.fitted = model1$fitted.values*(p - c)
+ 
+# Pricing Optimization
+alpha = model1$coefficients[2]
+beta = model1$coefficients[1]
+p.max.profit = (alpha*c - beta)/(2*alpha)
+ 
+# Plots
+df.linear = data.frame('Prices' = p, 'Demand' = d,
+                       'Profit.fitted' = profit.fitted, 'Profit' = profit)
+ 
+ggplot(select(df.linear, Prices, Demand)) + 
+  aes(x = Prices, y = Demand) +
+  geom_point() + 
+  geom_smooth(method = lm)
+
+# plot another
+ggplot(select(df.linear, Prices, Profit)) + 
+  aes(x = Prices, y = Profit) +
+  geom_point() + 
+  geom_vline(xintercept = p.max.profit, lty = 2) +
+  geom_line(data = df.linear, 
+            aes(x = Prices, y = Profit.fitted), color = 'blue')
+```
+
+## Constant elasticity model
+
+For the constant elasticity model, since $\lim_{\Delta \rightarrow 0}\frac{\Delta D}{\Delta p} = d'(p)$, we have that:
+
+$$
+\displaystyle \epsilon = \frac{\%D}{\%p} = \frac{p\Delta D}{D\Delta p} = -\frac{d'(p)p}{D}.
+$$
+
+Therefore,
+
+$$
+\begin{aligned}
+\displaystyle d'(p^\star)p^\star + d(p^\star) &= d'(p^\star)c, \\
+\displaystyle \frac{d'(p^\star)p^\star}{d(p^\star)} + 1 &= \frac{d'(p^\star)c}{d(p^\star)}, \\
+\displaystyle -\epsilon + 1 &= \epsilon \frac{c}{p^\star}, \\
+\displaystyle p^\star &= \frac{\epsilon c}{1-\epsilon} \\
+&= \frac{c}{1-1/\epsilon}.
+\end{aligned}
+$$
+
+Moreover, knowing that $\frac{\%D}{\%p} \sim \frac{\Delta \ln D}{\Delta \ln p}$ and using the constant elasticity model, we have that:
+
+$$
+\displaystyle \epsilon \sim \lim_{\Delta \rightarrow0} \frac{\Delta \ln D}{\Delta \ln P} = \frac{d\ln D}{d\ln p} = \alpha.
+$$
+
+Thus, we can calculate the optimum profit price for the constant elasticity model as:
+
+$$\displaystyle p^\star = \frac{c}{1 - \frac{1}{|\alpha|}}$$
+
+It is interesting to note that one needs $|\alpha| > 1$, otherwise the profit function will be convex with respect to price and the optimal price will be $\infty$. If one have a monopolistic market, normally this assumption holds.
+
+Example:
+
+```{r constant-elasticity}
+# Synthetic data
+p = seq(80,130)
+d = constant_elast(p, alpha = -3, beta = 15)*exp(rnorm(sd = .15, length(p)))
+c = 75
+profit = d*(p-c)
+ 
+# Fitting of demand model
+model2 = lm(log(d)~log(p))
+profit.fitted = exp(model2$fitted.values)*(p - c)
+ 
+# pricing optimization
+alpha = model2$coefficients[2]
+p.max.profit = c/(1-1/abs(alpha))
+ 
+# Plots
+df.const_elast = data.frame('Prices' = p, 'Demand' = d,
+                       'Profit.fitted' = profit.fitted, 'Profit' = profit)
+ 
+ggplot(select(df.const_elast, Prices, Demand)) + aes(x = log(Prices), y = log(Demand)) +
+  geom_point() + geom_smooth(method = lm)
+
+ggplot(select(df.const_elast, Prices, Profit)) + 
+  aes(x = Prices, y = Profit) +
+  geom_point() + 
+  geom_vline(xintercept = p.max.profit, lty = 2) +
+  geom_line(data = df.const_elast, aes(x = Prices, y = Profit.fitted), color = 'blue')
+```
+
+## Logistic model
+
+For the logistic function, one can check that $d'(p) = \alpha d(p)(1-d(p)/C)$. Thus:
+
+$$
+\begin{aligned}
+\displaystyle d'(p^\star)(p^\star - c) + d(p^\star) &= 0, \\
+\displaystyle \alpha d(p^\star)(1-d(p^\star)/C)(p^\star-c) + d(p^\star) &= 0, \\
+\displaystyle \alpha(1-d(p^\star)/C)(p^\star-c) + 1 &= 0, \\
+\displaystyle \frac{\alpha e^{-\alpha(p^\star - p_0)}(p^\star - c) + 1+ e^{-\alpha(p^\star - p_0)}}{1+ e^{-\alpha(p^\star - p_0)}} &= 0, \\
+\displaystyle \alpha(p^\star-c)+1]e^{-\alpha(p^\star - p_0)} + 1 &= 0.
+\end{aligned}
+$$
+
+Since the last equation above does not have an analytical solution (at least we couldn’t solve it), one can easily find the result with a newton-step algorithm or minimization problem. We will use the second approach with the following formulation:
+
+$$
+\displaystyle \min_{p \in \mathbb{R}} \big{(}[\alpha(p-c)+1]e^{-\alpha(p - p_0)} + 1\big{)}^2
+$$
+
+Example:
+
+```{r logistic-regression-demand}
+# Objective functions for optimization
+demand_objective = function(par, p, d) sum((d - logistic(p, par[1], par[2], par[3]))^2)
+price_objective = function(p, alpha, c, p0) (exp(-alpha*(p-p0))*(alpha*(p-c)+1) + 1)^2 
+ 
+# A cleaner alternative for pricing optimization is to min:
+price_objective2 = function(p, c, alpha, C, p0) -logistic(p, C, alpha, p0)*(p-c)
+ 
+# synthetic data
+p = seq(80,130)
+c = 75
+d = logistic(p, 120, -.15, 115) + rnorm(sd = 10, length(p))
+profit = d*(p-c)
+ 
+# Demand fitting, we can't use lm anymore
+par.start = c(max(d), 0, mean(d)) # initial guess
+ 
+demand_fit = optim(par = par.start, fn = demand_objective, method = 'BFGS',
+                   p = p, d = d)
+ 
+par = demand_fit$par # estimated parameters for demand function
+demand.fitted = logistic(p, c = par[1], alpha = par[2], p0 = par[3])
+profit.fitted = demand.fitted*(p - c)
+ 
+# Pricing Optimization, we don't have a closed expression anymore
+price_fit = optim(mean(p), price_objective, method = 'BFGS',
+                  alpha = par[2], c = c, p0 = par[3])
+ 
+# or
+ 
+price_fit2 = optim(mean(p), price_objective2, method = 'BFGS',
+                  c = c, C = par[1], alpha = par[2], p0 = par[3]) 
+ 
+# both results are almost identical
+p.max.profit = price_fit$par
+ 
+# Graphics
+df.logistic = data.frame('Prices' = p, 'Demand' = d, 'Demand.fitted' = demand.fitted,
+                       'Profit.fitted' = profit.fitted, 'Profit' = profit)
+ 
+ggplot(select(df.logistic, Prices, Demand)) + aes(x = Prices, y = Demand) +
+  geom_point() +
+  geom_line(data = df.logistic, aes(x = Prices, y = Demand.fitted), color = 'blue')
+
+ggplot(select(df.logistic, Prices, Profit)) + 
+  aes(x = Prices, y = Profit) +
+  geom_point() + 
+  geom_vline(xintercept = p.max.profit, lty = 2) +
+  geom_line(data = df.logistic, aes(x = Prices, y = Profit.fitted), color = 'blue')
+```
+
+Since the optimal prices is a non-linear transformation of the demand parameters, the methodology above could lead to sub-optimal prices due to Jensen’s inequality. Next post will address with examples how to estimate optimal prices when we have a lot of uncertainty in the demand function parameters.
+
+
+# Fun with empirical and function-based derivatives in R ^[[Andrew Heiss](https://www.andrewheiss.com), 2018-02-15]
 
 - For a more advanced topic on price optimization, refer to rmarkdown notebook by Andrew Heiss -- Chidi's budget utility [./chidi's_budget_utility.Rmd]
 
@@ -667,93 +1054,6 @@ ggplot(mapping = aes(x = 0:10)) +
 ```
 
 In this case, the empirical solution and the function-based solution are identical, but that's only because I created the empirical data from the functions. In real life, though, this same process should work on any empirical price, quantity, and cost data.
-
-# Product-product relationship
-
-```{r}
-# requirements
-require(tidyverse)
-require(tsibble)
-require(tidyquant)
-
-# in complementary goods, utility is limitted by the good with smallest quantity
-complementary_goods1 <- tribble(~"left_shoe", ~"right_shoe", ~"utility", ~"utility_level",
-                               2, 4, 100, 1, 
-                               3, 2, 100, 1,
-                               12, 2, 100, 1, 
-                               2, 2, 100, 1,
-                               7, 2, 100, 1,
-                               2, 5, 100, 1,
-                               8, 2, 100, 1,
-                               2, 10, 100, 1)
-
-complementary_goods2 <- tribble(~"left_shoe", ~"right_shoe", ~"utility", ~"utility_level",
-                                4, 5, 200, 2,
-                                5, 4, 200, 2,
-                                6, 4, 200, 2,
-                                10, 4, 200, 2,
-                                4, 12, 200, 2,
-                                7, 4, 200, 2,
-                                4, 6, 200, 2)
-
-complementary_goods <- ggplot() +
-  geom_segment(aes(x = `left_shoe`, y = `right_shoe`, xend = 2, yend = 2), data = complementary_goods1) +
-  geom_segment(aes(x = `left_shoe`, y = `right_shoe`, xend = 4, yend = 4), data = complementary_goods2) +
-  labs(title = "Complementary relationship between left and right shoes of a pair", 
-       x = "Left shoe", 
-       y = "Right shoe") +
-  expand_limits(x = 0, y = 0) +
-  scale_x_continuous(breaks = seq(2, 12, by = 2)) +
-  scale_y_continuous(breaks = seq(2, 12, by = 2)) +
-  theme_bw()
-complementary_goods
-
-# ggsave("./complementary_goods.png", complementary_goods, units = "in", 
-#        dpi = 250, width = 6, height = 4)
-
-# in supplementary goods 
-# marginal rate of substitution of quantity x for quantity y should be constant
-# the function below could be thought of as data generating process 
-
-# i. constant marginal rate of substitution
-# here MRS of y for x is given by slope coefficient
-tea <- c(2, 3, 5, 6, 7, 8, 10)
-coffee <- function(x){
-  -2*x + 20 # MRS is "-2"
-}
-coffee(tea)
-
-ggplot() +
-  geom_line(aes(tea, coffee(tea))) +
-  labs(x = "Tea", y = "Coffee") +
-  theme_bw()
-
-# ii. increasing marginal rate of substitution
-mrs <- c(0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6)
-tea <- c(1, 3, 5, 7, 9, 11, 13)
-coffee <- function(x, mrs){
-  mrs*x + 20
-}
-
-coffee(tea, mrs)
-
-ggplot(data = Hmisc::bezier(tea, coffee(tea, mrs)) %>% 
-         bind_cols()) +
-  geom_line(aes(x, y)) +
-  labs(x = "Tea", y = "Coffee") +
-  theme_bw()
-
-# iii. decreasing marginal rate of substitution/ synonymous to indifference curve
-bz_curves <- data.frame(`Tea` = c(12L, 8L, 5L, 3L, 2L, 1L), 
-                        `Coffee` = c(1L, 2L, 3L, 5L, 8L, 12L))
-
-bezier::bezier(t = seq(0,1,length.out = 50), bz_curves) %>% 
-  as_tibble() %>% 
-  ggplot2::ggplot(aes(y = V1, x = V2)) + 
-  ggplot2::geom_line(size = 1.0) +
-  xlab("Cups of tea") + 
-ylab("Cups of coffee")
-```
 
 
 # Price determination in monopoly market
@@ -1087,6 +1387,417 @@ Would any of the following affect Maria’s best response curve or the firm's is
 1. The government decides to increase childcare subsidies for working parents but not for those unemployed. Assume Maria has a child and is eligible for the subsidy.
 2. Demand for the firm's output rises as celebrities endorse the good.
 3. Improved technology makes Maria's job easier.
+
+# Pricing optimization: How to find the price that maximizes your profit
+
+One of the major problems in finance/economics is: As manager of a company/store, how much should I *charge* in order to maximize my revenue or profit?
+
+Obviously, the answer isn’t "as high as possible". If you charge one hundred dollars for a candy, probably only one or two people will accept to buy it. Although the profit per product is very high, you probably won’t even your fixed costs. Charge a very small is also not the best call.
+
+Before showing an example for this problem, let us build some simple formulas.
+
+Imagine a monopolist selling a specific product with demand curve $\displaystyle Q(p)$, where $\displaystyle Q(p)$ is the quantity sold given a specific price $p$. To simplify things, let's suppose that $Q(p)$ is a linear functions:
+
+$$
+\displaystyle Q(p) = \alpha p + \beta
+$$
+
+The total revenue will be given by:
+
+$$
+\displaystyle Q(p) = pQ(p) = \alpha p^2 + p\beta
+$$
+
+And total profit will be given by:
+
+$$
+\displaystyle L(p) = (p-c)Q(p) = \alpha p^2 - \alpha pc + \beta (p-c)
+$$
+
+Where $c$ is the unity cost of the product. Adding fixed costs in the profit equation does not change the price police, so we will suppose it zero.
+
+Next, we differentiate the equations for $\displaystyle R(p)$ and $\displaystyle L(p)$ to find the first order conditions, which allow us to find the optimal police under the hypothesis of a linear demand curve. $\alpha$ is expected to be negative (demand decrease when price increase) $R$ and $L$ are concave functions of $p$. As consequence, the critical point will be a maximum point. Therefore, the optimal police for revenue is given by:
+
+$$
+\displaystyle P_{\textrm{max rev}} = \frac{-\beta}{2\alpha}
+$$
+
+And for profit:
+
+$$
+\displaystyle P_{\textrm{max prof}} = \frac{-\beta + \alpha c}{2\alpha}
+$$
+
+Note that sometimes people write the linear demand curve as $\displaystyle Q(p) = -\alpha p + \beta$, in this case $\alpha$ should be positive, and the signs in equation 2 and equation 3 must change. Moreover, it is interesting to note that the price that maximizes profit is always bigger than the one that maximizes total revenue because $c$ is always positive.
+
+If taxes are calculated just on profit the price police remains the same. However, countries like Brazil usually charges a lot of taxes on total revenue. In this case, the price police for maximizing revenue doesn’t change, but the police for maximizing profit will change according to the following expression:
+
+$$
+\displaystyle P_{\textrm{max prof}}^{(tax)} = \frac{-\beta(1-tax) + \alpha c}{2\alpha(1-tax)}
+$$
+
+## Example and implementations
+
+As an example of how to proceed with the estimation of the optimum price, let’s generate a linear demand curve for daily selling of a product:
+
+```{r demand-implementation, cache=TRUE}
+# example of linear demand curve (first equation)
+
+demand <- function(p, alpha = -40, beta = 500, sd = 10) {
+  error = rnorm(length(p), sd = sd)
+  q = p*alpha + beta + error
+ 
+  return(q)
+}
+
+set.seed(100)
+ 
+prices <- seq(from = 5, to = 10, by = 0.1)
+q <- demand(prices)
+ 
+data = data.frame('prices' = prices,'quantity' = q)
+ 
+ggplot(data, aes(prices, quantity)) +
+  geom_point(shape=1) +
+  geom_smooth(method='lm') +
+  ggtitle('Demand Curve')
+
+```
+
+Imagine a company that has been selling the product which follows the demand curve above for a while (one year changing prices daily), testing some prices over time. The following time-series is what we should expect for the historical revenue, profit and cost of the company:
+
+```{r price-time-profile, cache=TRUE}
+set.seed(10)
+ 
+hist.prices = rnorm(252, mean = 6, sd = .5) # random prices defined by the company
+hist.demand = demand(hist.prices) # demand curve defined in the chunck above
+hist.revenue = hist.prices*hist.demand # From the revenue equation
+unity.cost = 4 # production cost per unity
+hist.cost = unity.cost*hist.demand
+hist.profit = (hist.prices - unity.cost)*hist.demand # From the price equation
+ 
+data = data.frame('Period' = seq(1,252),'Daily.Prices' = hist.prices,
+                  'Daily.Demand' = hist.demand, 'Daily.Revenue' = hist.revenue,
+                  'Daily.Cost' = hist.cost, 'Daily.Profit' = hist.profit)
+ 
+ggplot(data, aes(Period, Daily.Prices)) +
+  geom_line(color = 4) +
+  ggtitle('Historical Prices used for explotation')
+
+ggplot(data, aes(Period, Daily.Revenue, colour = 'Revenue')) +
+  geom_line() +
+  geom_line(aes(Period, Daily.Profit, colour = 'Profit')) +
+  geom_line(aes(Period, Daily.Cost, colour = 'Cost')) +
+  labs(title = 'Historical Performance', colour = '')
+```
+
+We can recover the demand curve using the historical data (that is how it is done in the real world).
+
+```{r model-params, results="asis", echo=FALSE, cache=TRUE}
+model.fit <- lm(hist.demand ~ hist.prices) # linear model for demand
+stargazer::stargazer(model.fit, type = 'latex', header = FALSE, 
+                     title = "Regression of historical prices with historical demand for the commodity", style = "all") # output
+```
+
+And now we need to apply equation 2 and equation 3.
+
+```{r estimated-params, cache=TRUE}
+# estimated parameters
+beta = model.fit$coefficients[1]
+alpha = model.fit$coefficients[2]  
+ 
+p.revenue = -beta/(2*alpha) # estimated price for revenue
+p.profit = (alpha*unity.cost - beta)/(2*alpha) # estimated price for profit
+```
+
+The final plot with the estimated prices:
+
+```{r graph-estimated-demand, cache=TRUE}
+true.revenue = function(p) p*(-40*p + 500) # Revenue with true parameters (chunck demand)
+true.profit = function(p) (p - unity.cost)*(-40*p + 500) # price with true parameters
+ 
+# estimated curves
+estimated.revenue = function(p) p*(model.fit$coefficients[2]*p + model.fit$coefficients[1])
+estimated.profit = function(p) (p - unity.cost)*(model.fit$coefficients[2]*p + model.fit$coefficients[1])
+ 
+opt.revenue = true.revenue(p.revenue) # Revenue with estimated optimum price
+opt.profit = true.profit(p.profit) # Profit with estimated optimum price
+ 
+# plot
+df = data.frame(x1 = p.revenue, x2 = p.profit,
+                y1 = opt.revenue, y2 = opt.profit, y3 = 0)
+ 
+ggplot(data = data.frame(Price = 0)) +
+  stat_function(fun = true.revenue, mapping = aes(x = Price, color = 'True Revenue')) +
+  stat_function(fun = true.profit, mapping = aes(x = Price, color = 'True Profit')) +
+  stat_function(fun = estimated.revenue, mapping = aes(x = Price, color = 'Estimated Revenue')) +
+  stat_function(fun = estimated.profit, mapping = aes(x = Price, color = 'Estimated Profit')) +
+  scale_x_continuous(limits = c(4, 11)) +
+  labs(title = 'True curves without noise') +
+  ylab('Results') +
+  scale_color_manual(name = "", values = c("True Revenue" = 2, "True Profit" = 3, "Estimated Revenue" = 4, "Estimated Profit" = 6)) +
+  geom_segment(aes(x = x1, y = y1, xend = x1, yend = y3), data = df) +
+  geom_segment(aes(x = x2, y = y2, xend = x2, yend = y3), data = df)
+```
+
+Final observations
+
+As you can see, the estimated Revenue and estimated Profit curves are quite similar to the true ones without noise and the expected revenue for our estimated optimal policies looks very promising. Although the linear and monopolist assumption looks quite restrictive, this might not be the case, check @besbes2015surprising and @cooper2015learning.
+
+Due to Jensen’s inequality, if one expect a large variance for $\alpha$, it might be useful to calculate the optimal price simulating $\alpha$, $\beta$.
+
+See also: @talluri2006theory, @phillips2005pricing.
+
+# Consumer and producer surplus
+
+Let's first define supply and demand functions.
+
+$$
+\begin{aligned}
+p_{\textrm{demand}} &= (q-10)^2 \\
+p_{\textrm{supply}} &= q^2 + 2q + 8
+\end{aligned}
+$$
+
+```{r supply-demand-funs, cache=TRUE}
+demand <- function(q)(q - 10)^2
+supply <- function(q) q^2 + 2*q + 8
+```
+
+We plot these functions over a specified domain.
+
+```{r fun-domain-plotting, cache=TRUE}
+x <- 2:8
+
+fun_domain_gg <- ggplot() +
+  stat_function(aes(x, color = "Demand"), fun = demand) +
+  stat_function(aes(x, color = "Supply"), fun = supply)
+
+fun_domain_gg
+```
+
+
+To find the equilibrium point, or, the point of intesection, `uniroot` function could be used. This requires an anonymous function to be passes that calculates the difference between the supply and demand. Uniroot function then finds where this difference is zero. This gives us the equilibrium quanity _q*_. Passing this quantity to the supply function then gives us the equilibrium price _p*_.
+
+```{r eq-quant-price, cache=TRUE}
+# eq quantity
+q <- uniroot(function(x)demand(x)-supply(x), range(x))
+q <- q$root # saved as root object
+
+# eq price
+p <- supply(q) # or demand/both have same result
+
+# annotating the point (q, p) on the chart
+fun_domain_gg <- fun_domain_gg +
+  annotate("point", x = q, y = p, color = "grey4")
+
+fun_domain_gg
+```
+
+Adding some dashed segments from the equilibrium point to the axes, we get following chart.
+
+```{r segment-to-axes, cache=TRUE}
+fun_domain_gg <- fun_domain_gg +
+  annotate("segment", x = q, xend = q, y = 0, yend = p, 
+           linetype = "dashed", color = "grey30") +
+  annotate("segment", x = 0, xend = q, y = p, yend = p,
+           linetype = "dashed", color = "grey30")
+
+fun_domain_gg
+```
+
+
+For shading the area between demand curve and the dashed line segment (consumer surplus), and the area below the dashed line above supply curve (producer surplus), we need to pre-calculate a dummy series from 0 to the equilibrium point, which will be passed to the `geom_ribbon` function.
+
+```{r ribboning-plot, cache=TRUE}
+z <- seq(0, q, 0.01)
+
+fun_domain_gg <- fun_domain_gg +
+  geom_ribbon(aes(x = z, ymin = supply(z), ymax = p,
+                  fill = "Producer surplus"), alpha = 0.25) +
+  geom_ribbon(aes(x = z, ymin = p, ymax = demand(z),
+                  fill = "Consumer surplus"), alpha = 0.25)
+
+# beautifying
+fun_domain_gg +
+  scale_x_continuous(expand = c(0,0),
+                     breaks = q, labels = "q*") + 
+  scale_y_continuous(expand = c(0,0), 
+                     breaks = p, labels = "p*") +
+  theme_minimal() +
+  theme(panel.grid = element_blank(),
+        legend.position = c(1,1),
+        legend.justification = c(1,1),
+        legend.spacing = unit(0, "cm"),
+        legend.margin = margin(0, 0, 0, 0, "cm")) +
+  labs(x = "Quantity", y = "Price",
+       color = NULL, fill = NULL)
+```
+
+Numerical values for the surpluses can be obtained from following relation
+
+$$
+\begin{aligned}
+\textrm{consumer surplus} &= \int^{q^*}_0 D(x)dx - p^*q^* \\
+\textrm{producer surplus} &= p^*q^*- \int^{q^*}_0 S(x)dx
+\end{aligned}
+$$
+
+In R, we compute the values by defining a function.
+
+```{r consumer-producer-fun}
+surpluss <- function(demand, supply, domain){
+  q <- uniroot(function(x)demand(x)-supply(x), domain)$root
+  p <- supply(q)
+  
+  consumer_surplus <- integrate(demand, 0, q)$value - p*q
+  producer_surplus <- p*q - integrate(supply, 0, q)$value
+  list("consumer_surplus" = consumer_surplus,
+       "producer_surplus" = producer_surplus)
+}
+
+surpluss(demand, supply, c(2, 8)) %>% 
+  enframe() %>% 
+  unnest() %>% 
+  knitr::kable(booktabs = TRUE)
+```
+
+
+# Curve intersect function^[https://github.com/andrewheiss/reconPlots]
+
+The author of `reconPlots` package has defined a function which helps obtain a point or set of points that are useful for working with straight lines or bezier. Here's an illustration for that.
+
+To obtain intersection of lines using dataframe and then use them further,
+
+```{r line-intersect, cache=TRUE}
+line1 <- data.frame(x = c(1, 9), y = c(1, 9))
+line2 <- data.frame(x = c(9, 1), y = c(1, 9))
+
+# intersection of lines
+line_intersection <- curve_intersect(line1, line2)
+
+# plotting
+ggplot(mapping = aes(x = x, y = y)) +
+  geom_line(data = line1, color = "red", size = 1) +
+  geom_line(data = line2, color = "blue", size = 1) +
+  geom_vline(xintercept = line_intersection$x, linetype = "dotted") +
+  geom_hline(yintercept = line_intersection$y, linetype = "dotted") +
+  theme_classic()
+```
+
+For working with curved bezier and its dataframe,
+
+```{r curved-bezier, cache=TRUE}
+curve1 <- data.frame(Hmisc::bezier(c(1, 8, 9), c(1, 5, 9)))
+curve2 <- data.frame(Hmisc::bezier(c(1, 3, 9), c(9, 3, 1)))
+
+# demand curve
+ggplot(mapping = aes(x = x, y = y)) + 
+  geom_path(data = curve2, color = "#FF4036", size = 1) +
+  theme_classic() + 
+  labs(x = "Quantity", y = "Price") +
+  coord_equal() +
+  ggtitle(label = "Demand curve")
+
+# supply curve
+ggplot(mapping = aes(x = x, y = y)) + 
+  geom_path(data = curve1, color = "#0073D9", size = 1) +
+  theme_classic() + 
+  labs(x = "Quantity", y = "Price") +
+  coord_equal() +
+  ggtitle(label = "Supply curve")
+
+# Simple intersection approximation
+fun_supply <- approxfun(curve1$x, curve1$y, rule = 2)
+fun_demand <- approxfun(curve2$x, curve2$y, rule = 2)
+
+intersection_funs <-  uniroot(function(x) fun_supply(x) - fun_demand(x), range(curve2$x))
+intersection_funs
+
+ggplot(mapping = aes(x = x, y = y)) + 
+  geom_path(data = curve1, color = "#0073D9", size = 1) + 
+  geom_path(data = curve2, color = "#FF4036", size = 1) + 
+  geom_vline(xintercept = intersection_funs$root, linetype = "dotted") +
+  theme_classic() + 
+  coord_equal()
+
+# use of intersection function
+curve_intersection <- curve_intersect(curve1, curve2)
+ggplot(mapping = aes(x = x, y = y)) +
+  geom_line(data = curve1, color = "red", size = 1) +
+  geom_line(data = curve2, color = "blue", size = 1) +
+  geom_vline(xintercept = curve_intersection$x, linetype = "dotted") +
+  geom_hline(yintercept = curve_intersection$y, linetype = "dotted") +
+  theme_classic()
+```
+
+Curves can also be defined with functions, with argument `emirical = FALSE` in the `curve_intersect()`. For example;
+
+```{r function-curve, cache=TRUE}
+curve1 <- function(p) (p + 2)^2
+curve2 <- function(p) p^2 + 3*p + 5 
+x_range <- 0:8
+
+curve_intersection <- curve_intersect(curve1, curve2, empirical = FALSE, 
+                                      domain = c(min(x_range), max(x_range)))
+
+ggplot() +
+  stat_function(aes(x_range), color = "blue", size = 1, fun = curve1) +
+  stat_function(aes(x_range), color = "red", size = 1, fun = curve2) +
+  geom_vline(xintercept = curve_intersection$x, linetype = "dotted") +
+  geom_hline(yintercept = curve_intersection$y, linetype = "dotted") +
+  theme_classic()
+```
+
+# Cobb douglas model
+
+## Cobb douglas type 1 production function with n inputs/goods
+
+$I$ = Vector of inputs
+$elasticity$ = Vector of elasticities, must be the same length as $I$. Defaults to equal elasticities for all inputs with sum of those equal to 1.
+$K$ = Model constant. Defaults to 1
+
+```{r cd1}
+require(Recon)
+I <- c(3, 4, 5)
+elasticity <- rep(1/length(I), times = length(I))
+K <- 1
+
+Q <- I * elasticity
+S <- prod(Q)
+y <- K * S
+CD <- list(y = y, Degree = sum(elasticity))
+
+# cobb douglas function:
+CD
+
+cobb_douglas(I)
+```
+
+## Cobb douglas type 2 production function with two inputs/goods
+
+$x$ = data frame with two columns
+$tfp$ = Model constant
+$\alpha$ = first input's elasticity. Defaults to random number between 0 and 1, rounded to two digits.
+$\beta$ = second input's elasticity. Defaults to $1-\alpha$
+
+```{r cd2}
+input1 <- c(3, 4, 5)
+input2 <- c(1, 5, 6)
+df <- tibble(input1, input2)
+alpha <- 0.4
+beta <- 1-alpha
+tfp <- 1
+
+y <- vector()
+for (i in 1:nrow(df)) {
+  y[i] <- tfp * df[i, 1]^alpha * df[i, 2]^beta
+}
+y
+
+cobb_douglas_2(df, TFP = 1, alpha = 0.4, beta = 1-0.4)
+```
+
 
 # Bibliography
 

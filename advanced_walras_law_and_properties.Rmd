@@ -1,0 +1,188 @@
+---
+title: "Walras law and its properties"
+author: "Deependra Dhakal"
+date: "`r Sys.Date()`"
+output: 
+  tint::tintBook:
+    keep_tex: true
+tables: yes
+bibliography: [../bibliographies.bib]
+link-citations: yes
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+---
+
+```{r setup, include=FALSE}
+library(tint)
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                      cache.extra = packageVersion('tint'), 
+                      message = FALSE, warning = FALSE, fig.width = 5)
+options(htmltools.dir.version = FALSE) 
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2)
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+## Background
+
+Walras's law is a principle in general equilibrium theory asserting that budget constraints imply that the values of excess demand (or, conversely, excess market supplies) must sum to zero.
+
+That is:
+
+$$
+\sum_{j = 1}^k p_j.D_j - \sum_{j = 1}^k p_j.S_j = \sum_{j = 1}^k p_j. (D_j - S_j) = 0
+$$
+
+Where, $p_j$ is the price of good $j$ and $D_j$ and $S_j$ are the demand and supply respectively of good j.
+
+```{r demand-supply-data}
+# for background on data see the dataset headers
+# demand data
+demand_df <- read_csv("./data/demand.csv", skip = 4)
+# demand bezier; this functionality is available in ggforce, however only for cubic and quadratic functions; ggforce::geom_bezier automatically determines if given set of points are cubic or quadratic
+demand_df_bz <- Hmisc::bezier(x = demand_df) %>% as_tibble()
+
+# supply data
+supply_df <- read_csv("./data/supply.csv", skip = 4)
+# supply bezier
+supply_df_bz <- Hmisc::bezier(x = supply_df) %>% as_tibble()
+```
+
+## Plot demand function
+
+```{r demand-supply-curves}
+# linear demand curve 
+ggplot(demand_df, aes(Price, `Quantity demanded`)) +
+  geom_point(shape=1) +
+  geom_smooth(method='lm') +
+  ggtitle('Demand Curve')
+
+# bezier demand curve
+ggplot(demand_df, aes(Price, `Quantity demanded`)) +
+  geom_point() +
+  geom_line(aes(x, y), data = demand_df_bz) +
+  geom_smooth(method='lm') +
+  labs(x = "Price", 
+       y = "Quantity demanded") +
+  ggtitle('Demand Curve (with bezier fit)')
+
+# linear supply curve
+ggplot(supply_df, aes(Price, `Quantity supplied`)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  ggtitle("Supply curve")
+
+# bezier supply curve
+ggplot(supply_df, aes(Price, `Quantity supplied`)) +
+  geom_point() +
+  geom_line(aes(x, y), data = supply_df_bz) +
+  geom_smooth(method = "lm") +
+  labs(x = "Price", 
+       y = "Quantity supplied") +
+  ggtitle("Supply curve (with bezier fit)")
+```
+
+## Estimation of linear demand function
+
+Given demand data (price and quantity demanded), we can arrive at a function for demand curve. We will only use 
+
+```{r demand-supply-linear-est}
+demand_coef <- lm(`Quantity demanded`~Price, data = demand_df) %>% 
+  broom::tidy()
+
+supply_coef <- lm(`Quantity supplied`~Price, data = supply_df) %>% 
+  broom::tidy()
+```
+
+
+```{r demand-supply-fun}
+# here we assume standard deviation demand function depends only on 
+# standard error estimates of price (not that of intercept)
+demand_fun <- function(price, alpha = demand_coef$estimate[2], 
+                       beta = demand_coef$estimate[1], 
+                       sd = demand_coef$std.error[2]*sqrt(nrow(demand_df))) {
+  error = rnorm(length(price), sd = sd)
+  quantity_demanded = price*alpha + beta + error
+  
+  return(quantity_demanded)
+}
+
+price <- seq(from = 2, to = 10, by = 0.2)
+quantity_demanded <- demand_fun(price)
+
+demand_df_lm <- tibble('Price' = price, 'Quantity demanded' = quantity_demanded)
+
+# difference between linear fit and bezier fit from original control points
+ggplot() +
+  # linear fit
+  geom_point(data = demand_df_lm, aes(Price, `Quantity demanded`)) +
+  geom_smooth(method='lm', data = demand_df_lm, aes(Price, `Quantity demanded`)) +
+  # bezier fit
+  geom_line(aes(x, y), data = demand_df_bz) +
+  labs(x = "Price", 
+       y = "Quantity demanded") +
+  ggtitle('Demand Curve (with bezier fit)')
+```
+
+## Definition
+
+    A market for a particular commodity is in partial equilibrium if, at the current prices of all commodities, the quantity of the commodity demanded by potential buyers equals the quantity supplied by potential sellers. For example, suppose the current market price of cherries is $1 per pound. If all cherry farmers summed together are willing to sell a total of 500 pounds of cherries per week at $1 per pound, and if all potential customers summed together are willing to buy 500 pounds of cherries in total per week when faced with a price of $1 per pound, then the market for cherries is in equilibrium because neither shortages nor surpluses of cherries exist.
+    An economy is in general equilibrium if every market in the economy is in partial equilibrium. Not only must the market for cherries clear, but so too must all markets for all commodities (apples, automobiles, etc.) and for all resources (labor and economic capital) and for all financial assets, including stocks, bonds, and money.
+    'Excess demand' refers to a situation in which a market is not in equilibrium at a specific price because the number of units of an item demanded exceeds the quantity of that item supplied at that specific price. Excess demand yields an economic shortage. A negative excess demand is synonymous with an excess supply, in which case there will be an economic surplus of the good or resource. 'Excess demand' may be used more generally to refer to the algebraic value of quantity demanded minus quantity supplied, whether positive or negative.
+
+## Explaination
+
+Walras's law states that the sum of the values of excess demands across all markets must equal zero, whether or not the economy is in a general equilibrium. This implies that if positive excess demand exists in one market, negative excess demand must exist in some other market. Thus, if all markets but one are in equilibrium, then that last market must also be in equilibrium.
+
+This last implication is often applied in formal general equilibrium models. In particular, to characterize general equilibrium in a model with m agents and n commodities, a modeler may impose market clearing for n – 1 commodities and "drop the n-th market-clearing condition." In this case, the modeler should include the budget constraints of all m agents (with equality). Imposing the budget constraints for all m agents ensures that Walras's law holds, rendering the n-th market-clearing condition redundant.
+
+In the former example, suppose that the only commodities in the economy are cherries and apples, and that no other markets exist. This is an exchange economy with no money, so cherries are traded for apples and vice versa. If excess demand for cherries is zero, then by Walras's law, excess demand for apples is also zero. If there is excess demand for cherries, then there will be a surplus (excess supply, or negative excess demand) for apples; and the market value of the excess demand for cherries will equal the market value of the excess supply of apples.
+
+Walras's law is ensured if every agent's budget constraint holds with equality. An agent's budget constraint is an equation stating that the total market value of the agent's planned expenditures, including saving for future consumption, must be less than or equal to the total market value of the agent's expected revenue, including sales of financial assets such as bonds or money. When an agent's budget constraint holds with equality, the agent neither plans to acquire goods for free (e.g., by stealing), nor does the agent plan to give away any goods for free. If every agent's budget constraint holds with equality, then the total market value of all agents' planned outlays for all commodities (including saving, which represents future purchases) must equal the total market value of all agents' planned sales of all commodities and assets. It follows that the market value of total excess demand in the economy must be zero, which is the statement of Walras's law. Walras's law implies that if there are n markets and n – 1 of these are in equilibrium, then the last market must also be in equilibrium, a property which is essential in the proof of the existence of equilibrium. 
+
+## Formal statement
+
+Consider an exchange economy with n {\displaystyle n} n agents and k {\displaystyle k} k divisible goods.
+
+For every agent i {\displaystyle i} i, let E i {\displaystyle E_{i}} E_{i} be their initial endowment vector and x i {\displaystyle x_{i}} x_{i} their Marshallian demand function (demand vector as a function of prices and income).
+
+Given a price vector p {\displaystyle p} p, the income of consumer i {\displaystyle i} i is p ⋅ E i {\displaystyle p\cdot E_{i}} {\displaystyle p\cdot E_{i}}. Hence, their demand vector is x i ( p , p ⋅ E i ) {\displaystyle x_{i}(p,p\cdot E_{i})} {\displaystyle x_{i}(p,p\cdot E_{i})}.
+
+The excess demand function is the vector function:
+
+    z ( p ) = ∑ i = 1 n x i ( p , p ⋅ E i ) − E i {\displaystyle z(p)=\sum _{i=1}^{n}{x_{i}(p,p\cdot E_{i})-E_{i}}} {\displaystyle z(p)=\sum _{i=1}^{n}{x_{i}(p,p\cdot E_{i})-E_{i}}}
+
+Walras's law can be stated succinctly as:
+
+    p ⋅ z ( p ) = 0 {\displaystyle p\cdot z(p)=0} {\displaystyle p\cdot z(p)=0}
+
+PROOF: By definition of the excess demand:
+
+    p ⋅ z ( p ) = ∑ i = 1 n p ⋅ x i ( p , p ⋅ E i ) − p ⋅ E i {\displaystyle p\cdot z(p)=\sum _{i=1}^{n}{p\cdot x_{i}(p,p\cdot E_{i})-p\cdot E_{i}}} {\displaystyle p\cdot z(p)=\sum _{i=1}^{n}{p\cdot x_{i}(p,p\cdot E_{i})-p\cdot E_{i}}}
+
+The Marshallian demand is a bundle x {\displaystyle x} x that maximizes the agent's utility, given the budget constraint. The budget constraint here is:
+
+    p ⋅ x = p ⋅ E i {\displaystyle p\cdot x=p\cdot E_{i}} {\displaystyle p\cdot x=p\cdot E_{i}}
+
+Hence, all terms in the sum are 0 so the sum itself is 0.
+
+
+## Normative properties of walrasian equilibrium
+
