@@ -1,0 +1,390 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[12pt,ignorenonframetext,aspectratio=169]{beamer}
+\IfFileExists{pgfpages.sty}{\usepackage{pgfpages}}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+
+
+
+
+
+%
+\fi
+
+  \usetheme[]{iqss}
+
+
+
+
+
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+  \usepackage{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\newif\ifbibliography
+
+
+\hypersetup{
+      pdftitle={Farm recordkeeping},
+        pdfauthor={Deependra Dhakal},
+          pdfborder={0 0 0},
+    breaklinks=true}
+%\urlstyle{same}  % Use monospace font for urls
+
+
+
+
+
+
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+  \AtBeginPart{
+    \let\insertpartnumber\relax
+    \let\partname\relax
+    \frame{\partpage}
+  }
+  \AtBeginSection{
+    \ifbibliography
+    \else
+      \let\insertsectionnumber\relax
+      \let\sectionname\relax
+      \frame{\sectionpage}
+    \fi
+  }
+  \AtBeginSubsection{
+    \let\insertsubsectionnumber\relax
+    \let\subsectionname\relax
+    \frame{\subsectionpage}
+  }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+  \setcounter{secnumdepth}{0}
+
+
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{emptypage}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{wrapfig}
+  \usepackage{float}
+  \usepackage{colortbl}
+  \usepackage{pdflscape}
+  \usepackage{tabu}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage[normalem]{ulem}
+  \usepackage{rotating}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tikz} % required for image opacity change
+  \usepackage[absolute,overlay]{textpos} % for text formatting
+  \usepackage[utf8]{inputenc}
+  \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+  \usepackage[skip=2pt]{caption}
+
+  % this font option is amenable for beamer
+  \setbeamerfont{caption}{size=\tiny}
+
+
+%% IQSS overrides
+\iqsssectiontitle{Outline}
+
+\AtBeginSection[]{
+  \title{\insertsectionhead}
+  {
+    \definecolor{white}{rgb}{0.776,0.357,0.157}
+    \definecolor{iqss@orange}{rgb}{1,1,1}
+    \ifnum \insertmainframenumber > \insertframenumber
+    \frame{
+      \frametitle{\iqsssectiontitleheader}
+      \tableofcontents[currentsection]
+    }
+    \else
+    \frame{
+      \frametitle{Backup Slides}
+      \tableofcontents[sectionstyle=shaded/shaded,subsectionstyle=shaded/shaded/shaded]
+    }
+    \fi
+  }
+}
+
+\AtBeginSubsection[]{}
+
+%%
+
+
+  \title[]{Farm recordkeeping}
+
+
+
+  \author[
+        Deependra Dhakal
+    ]{Deependra Dhakal}
+
+  \institute[
+    ]{
+    GAASC, Baitadi \and Tribhuwan University
+    }
+
+\date[
+      \today
+  ]{
+      \today
+        }
+
+\begin{document}
+
+% Hide progress bar and footline on titlepage
+  \begin{frame}[plain]
+  \titlepage
+  \end{frame}
+
+
+
+\hypertarget{meaning-and-definition}{%
+\section{Meaning and definition}\label{meaning-and-definition}}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\begin{itemize}
+\tightlist
+\item
+  Farm accountancy is defined as the art as well as the science of
+  recording in books business transactions in regular and systematic
+  manner so that their nature, extent and financial effects can be
+  readily ascertained at any time of the year.
+\item
+  Farm accounting is an application of the accounting principles to the
+  business of farming.
+\item
+  Farm book keeping is known as a system of records written to furnish a
+  history of the business transactions, with special reference to its
+  financial side.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\begin{itemize}
+\tightlist
+\item
+  A record keeping system should go beyond the basic listing of income
+  and expenses.
+\item
+  The major financial accounting statements aim to provide a picture of
+  the financial position and performance of a business.
+\item
+  A business's accounting system will normally produce three particular
+  statements on a regular, recurring basis.
+\end{itemize}
+\end{frame}
+
+\hypertarget{importance}{%
+\section{Importance}\label{importance}}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\begin{enumerate}
+\tightlist
+\item
+  Measure profit and assess financial condition.
+\item
+  Provide data for business analysis.
+\item
+  Assist in preparing reports for partners, lenders, landlords, input
+  providers, and government agencies.
+\item
+  Measure the profitability of individual enterprises.
+\item
+  Assist in the analysis of new investments.
+\item
+  Prepare income tax returns.
+\end{enumerate}
+\end{frame}
+
+\hypertarget{farm-records-examples}{%
+\section{Farm records -- Examples}\label{farm-records-examples}}
+
+\begin{frame}{Dairy farm}
+\protect\hypertarget{dairy-farm}{}
+\begin{itemize}
+\tightlist
+\item
+  Livestock register : This register records the number of the animals
+  at the farm along with their identification number, date of birth,
+  sire number, dam number, calf and its sex, date of calving, date of
+  purchase, date of sale/auction/death.
+\item
+  Calving register : This register maintains the records of calving that
+  take place in the farm. It maintains dam and sire number of the calf,
+  calf number, sex and its date of birth and any other remarks like type
+  of calving (normal/abnormal).
+\item
+  Daily milk yield register : This register records the daily milk yield
+  performance of the cows.
+\item
+  Calf register : maintains the records of calf at the farm, calf
+  number, sex of the calf, sire number, dam number, birth weight etc.
+\item
+  Growth record of young stock : this record maintains the weight of the
+  young stocks at different intervals.
+\item
+  Daily feeding register : This register records the amount concentrate,
+  dry fodder, green fodder and other feeds given to the animals daily.
+\item
+  Herd health register : This register maintains the record of the
+  diseased animals along with history, symptoms, diagnosed disease,
+  treatment given and name of the veterinarian who treated.
+\item
+  Cattle breeding register : This register maintains the details of
+  breeding practices in the farm such as cow number, date of calving,
+  date of heat and services along with the bull number, date of
+  successful service, pregnancy diagnosis records, expected date of
+  calving, actual date of calving, calf number etc.
+\item
+  Animal History sheet : This maintains animal number, breed, date of
+  birth, sire and dam number, lactation yield records, date of drying,
+  date of disposal/death, cause of disposal etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Crop production farm}
+\protect\hypertarget{crop-production-farm}{}
+\begin{itemize}
+\tightlist
+\item
+  Field locations book
+\item
+  Crop rotation and input history by field
+\item
+  Individual field activity log
+\item
+  Storage records
+\item
+  Sales record
+\item
+  Estimated and actual individual crop income and expense
+\item
+  Income worksheet
+\item
+  Expense worksheet
+\end{itemize}
+\end{frame}
+
+\hypertarget{farm-inventory}{%
+\section{Farm inventory}\label{farm-inventory}}
+
+\begin{frame}{Making an inventory}
+\protect\hypertarget{making-an-inventory}{}
+\begin{itemize}
+\tightlist
+\item
+  An inventory is generally done at least once a year and involves the
+  counting of everything on the farm, including hectares of land, tons
+  of grain in stock, animals and so on. The inventory will also include
+  the money value in Rand of the assets.
+\item
+  Walk around the farm and make a general inspection of farm assets.
+  Make a list or spreadsheet of items according to main categories such
+  as buildings, land, machinery, equipment, farm supplies and stock.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Details on a farm inventory}
+\protect\hypertarget{details-on-a-farm-inventory}{}
+\begin{itemize}
+\tightlist
+\item
+  Size of the farm, the right of ownership, the size of land that is
+  used for agriculture and a valuation of the production unit.
+\item
+  Description and valuation of fixed improvements such as a new borehole
+  or roof.
+\item
+  Vehicles, machinery and equipment, as well as numbers and types or
+  models.
+\item
+  Numbers and types of livestock.
+\item
+  Stocks, farm supplies and production inputs such as seed, fertiliser.
+\item
+  Finished and semi-finished products at the beginning and end of the
+  financial year.
+\item
+  In separate columns of the inventory indicate the following:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The year when each item of property was purchased.
+  \item
+    The purchase price of each item.
+  \item
+    The expected lifetime of machinery/equipment.
+  \item
+    Then calculate the annual depreciation for each item using the
+    straight-line method or the reducing-value method.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Expected lifetime of equipment}
+\protect\hypertarget{expected-lifetime-of-equipment}{}
+\begin{itemize}
+\item
+  Below are the expected lifetimes for some machinery and equipment used
+  on a farm. In brackets is the salvage value as a percentage of the
+  purchase price - the value of the item at the end of its life.
+\item
+  Vehicles - 5 years (10\%)
+\item
+  Tractors - 10 years (10\%)
+\item
+  Implements - 10 years (10\%)
+\item
+  Tools - 10 years (10\%)
+\item
+  Pumps and electrical motors - 15 years (0\%)
+\end{itemize}
+\end{frame}
+
+
+
+
+\end{document}

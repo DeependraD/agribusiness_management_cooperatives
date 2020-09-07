@@ -1,0 +1,526 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[12pt,ignorenonframetext,aspectratio=169]{beamer}
+\IfFileExists{pgfpages.sty}{\usepackage{pgfpages}}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+
+
+
+
+
+%
+\fi
+
+  \usetheme[]{iqss}
+
+
+
+
+
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+  \usepackage{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\newif\ifbibliography
+
+
+\hypersetup{
+      pdftitle={Product-product relationship},
+        pdfauthor={Deependra Dhakal},
+          pdfborder={0 0 0},
+    breaklinks=true}
+%\urlstyle{same}  % Use monospace font for urls
+
+
+
+
+
+
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+  \AtBeginPart{
+    \let\insertpartnumber\relax
+    \let\partname\relax
+    \frame{\partpage}
+  }
+  \AtBeginSection{
+    \ifbibliography
+    \else
+      \let\insertsectionnumber\relax
+      \let\sectionname\relax
+      \frame{\sectionpage}
+    \fi
+  }
+  \AtBeginSubsection{
+    \let\insertsubsectionnumber\relax
+    \let\subsectionname\relax
+    \frame{\subsectionpage}
+  }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+  \setcounter{secnumdepth}{0}
+
+
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{emptypage}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{wrapfig}
+  \usepackage{float}
+  \usepackage{colortbl}
+  \usepackage{pdflscape}
+  \usepackage{tabu}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage[normalem]{ulem}
+  \usepackage{rotating}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tikz} % required for image opacity change
+  \usepackage[absolute,overlay]{textpos} % for text formatting
+  \usepackage[utf8]{inputenc}
+  \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+  \usepackage[skip=2pt]{caption}
+
+  % this font option is amenable for beamer
+  \setbeamerfont{caption}{size=\tiny}
+
+
+%% IQSS overrides
+\iqsssectiontitle{Outline}
+
+\AtBeginSection[]{
+  \title{\insertsectionhead}
+  {
+    \definecolor{white}{rgb}{0.776,0.357,0.157}
+    \definecolor{iqss@orange}{rgb}{1,1,1}
+    \ifnum \insertmainframenumber > \insertframenumber
+    \frame{
+      \frametitle{\iqsssectiontitleheader}
+      \tableofcontents[currentsection]
+    }
+    \else
+    \frame{
+      \frametitle{Backup Slides}
+      \tableofcontents[sectionstyle=shaded/shaded,subsectionstyle=shaded/shaded/shaded]
+    }
+    \fi
+  }
+}
+
+\AtBeginSubsection[]{}
+
+%%
+
+
+  \title[]{Product-product relationship}
+
+
+
+  \author[
+        Deependra Dhakal
+    ]{Deependra Dhakal}
+
+  \institute[
+    ]{
+    GAASC, Baitadi \and Tribhuwan University
+    }
+
+\date[
+      \today
+  ]{
+      \today
+        }
+
+\begin{document}
+
+% Hide progress bar and footline on titlepage
+  \begin{frame}[plain]
+  \titlepage
+  \end{frame}
+
+
+
+\hypertarget{product-product-relationship}{%
+\section{Product-product
+relationship}\label{product-product-relationship}}
+
+\begin{frame}{Background}
+\protect\hypertarget{background}{}
+\begin{itemize}
+\tightlist
+\item
+  Product-product relationship deals with resource allocation among
+  competing enterprises.
+\item
+  Under product-product relationship, inputs are kept constant while
+  product (outputs) are varied.
+\item
+  This relationship guides the producer in deciding ``what to produce
+  ?''
+\item
+  This relationship is explained by principle of product substitution
+  and law of equimarginal returns.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Production-possibility frontier}
+\protect\hypertarget{production-possibility-frontier}{}
+\begin{itemize}
+\tightlist
+\item
+  A production-possibility frontier shows the maximum number of
+  alternative combinations of goods and services that a society can
+  produce at a given time when there is full utilization of economic
+  resources and technology.
+\item
+  Alternative combinations of Rice and Wheat output from a piece of land
+  (Both crops are alloted randomly to the given parcel with no
+  difference in use of other inputs) is shown in Table
+  \ref{tab:ppschedule}.
+\item
+  In choosing what to produce, decision makers have a choice of
+  producing, for example, alternative C-- 5 tons of Rice and 14 tons of
+  Wheat-- or any other alternative presented.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Production-possibility schedule}
+\protect\hypertarget{production-possibility-schedule}{}
+\begin{table}
+
+\caption{\label{tab:ppschedule}Production possibility schedule}
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{>{\centering\arraybackslash}p{10em}>{\centering\arraybackslash}p{10em}>{\centering\arraybackslash}p{10em}}
+\toprule
+Alternative outputs & Rice (tons) & Wheat (tons)\\
+\midrule
+\cellcolor[HTML]{FECE91}{\textcolor{white}{\textbf{A}}} & \bgroup\fontsize{8}{10}\selectfont \textcolor[HTML]{440154}{\textbf{0}}\egroup{} & \bgroup\fontsize{16}{18}\selectfont \textcolor[HTML]{7AD151}{\textbf{20}}\egroup{}\\
+\cellcolor[HTML]{F2645C}{\textcolor{white}{\textbf{B}}} & \bgroup\fontsize{10}{12}\selectfont \textcolor[HTML]{453882}{\textbf{2}}\egroup{} & \bgroup\fontsize{15}{17}\selectfont \textcolor[HTML]{4CC26C}{\textbf{18}}\egroup{}\\
+\cellcolor[HTML]{A1307E}{\textcolor{white}{\textbf{C}}} & \bgroup\fontsize{12}{14}\selectfont \textcolor[HTML]{2A788E}{\textbf{5}}\egroup{} & \bgroup\fontsize{14}{16}\selectfont \textcolor[HTML]{1F9F88}{\textbf{14}}\egroup{}\\
+\cellcolor[HTML]{461078}{\textcolor{white}{\textbf{D}}} & \bgroup\fontsize{15}{17}\selectfont \textcolor[HTML]{4CC26C}{\textbf{9}}\egroup{} & \bgroup\fontsize{10}{12}\selectfont \textcolor[HTML]{3C508B}{\textbf{6}}\egroup{}\\
+\cellcolor[HTML]{000004}{\textcolor{white}{\textbf{E}}} & \bgroup\fontsize{16}{18}\selectfont \textcolor[HTML]{7AD151}{\textbf{10}}\egroup{} & \bgroup\fontsize{8}{10}\selectfont \textcolor[HTML]{440154}{\textbf{0}}\egroup{}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+\tightlist
+\item
+  The curve, labeled PP, is called the production-possibility frontier.
+  Point C plots the combination of 5 tons of rice and 14 tons of wheat,
+  assuming full employment of the economy's resources and full use of
+  its technology, as do all of the alternatives presented in Table
+  \ref{tab:ppschedule}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Production-possibility frontier}
+\protect\hypertarget{production-possibility-frontier-1}{}
+\begin{figure}
+\includegraphics[width=0.6\linewidth]{06-product_product_relationship_files/figure-beamer/ppfrontier-1} \caption{Production possibility frontier}\label{fig:ppfrontier}
+\end{figure}
+\end{frame}
+
+\hypertarget{enterprise-combination}{%
+\section{Enterprise combination}\label{enterprise-combination}}
+
+\begin{frame}{Relationships between products (enterprise relations)}
+\protect\hypertarget{relationships-between-products-enterprise-relations}{}
+\begin{enumerate}
+\tightlist
+\item
+  Joint products
+\item
+  Complementary products
+\item
+  Competitive products
+\item
+  Supplementary products
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Joint products}
+\protect\hypertarget{joint-products}{}
+\begin{itemize}
+\tightlist
+\item
+  Products that are produced through single production process and the
+  production of one without another is not possible.
+\item
+  These products are obtained in fixed proportions. If a given quantity
+  of one product is produced, the quantity of other products is fixed by
+  nature.
+\item
+  Joint products are produced through a single production function and
+  for the purpose of analysis they may be treated as single product.
+\item
+  All farm commodities are mostly joint products. E.g. wheat and straw,
+  groundnut and hulms, cotton seed and lint, cattle and manure, butter
+  and milk etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\begin{figure}
+
+{\centering \includegraphics[width=0.45\linewidth]{06-product_product_relationship_files/figure-beamer/joint-goods-1} 
+
+}
+
+\caption{Joint relationship rice straw and rice grain}\label{fig:joint-goods}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Complementary goods}
+\protect\hypertarget{complementary-goods}{}
+\begin{columns}
+  \column{0.5\textwidth}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\textwidth]{06-product_product_relationship_files/figure-beamer/complementary-goods-1} 
+
+}
+
+\caption{Complementary relationship between wheat and legume system of cropping}\label{fig:complementary-goods}
+\end{figure}
+
+  \column{0.5\textwidth}
+  \footnotesize
+  \begin{itemize}
+  \item When change in level of production of one occurs, another also changes in the same direction. i.e. when resource held constant the increase in the level of output of one product also increases in the level of another output. 
+  \item In other words shift of resources from one product to a second product will increase rather than decrease the output of first. But this relation holds only upto certain level of production. 
+  \item Leguminous crops increases the fertility status of soil, which is beneficial for production of wheat on a piece of land.
+  \end{itemize}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Competitive goods}
+\protect\hypertarget{competitive-goods}{}
+\begin{columns}
+    \column{0.33\textwidth}
+    \centering
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\textwidth]{06-product_product_relationship_files/figure-beamer/competitive-goods-constant-mrs-1} 
+
+}
+
+\caption{Competitive relationship between Rice and Wheat (constant marginal rate of product substitution)}\label{fig:competitive-goods-constant-mrs}
+\end{figure}
+
+      \column{0.33\textwidth}
+      \footnotesize
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\textwidth]{06-product_product_relationship_files/figure-beamer/competitive-goods-increasing-mrs-fig-1} 
+
+}
+
+\caption{Competitive relationship between Rice and Wheat (increasing marginal rate of product substitution)}\label{fig:competitive-goods-increasing-mrs-fig}
+\end{figure}
+
+\begin{table}[H]
+\centering\begingroup\fontsize{5}{7}\selectfont
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{3.2em}}
+\toprule
+rice & wheat & $\Delta \textrm{rice}$ & $\Delta \textrm{wheat}$ & $MRS \newline (\frac{\Delta wheat}{\Delta rice})$\\
+\midrule
+2.0 & 1.92 &  &  & \\
+2.1 & 1.87 & 0.1 & -0.05 & 0.46\\
+2.2 & 1.78 & 0.1 & -0.09 & 0.94\\
+2.3 & 1.59 & 0.1 & -0.19 & 1.94\\
+2.4 & 1.38 & 0.1 & -0.21 & 2.10\\
+\addlinespace
+2.5 & 1.00 & 0.1 & -0.38 & 3.76\\
+2.6 & 0.44 & 0.1 & -0.56 & 5.60\\
+\bottomrule
+\end{tabular}}
+\endgroup{}
+\end{table}
+
+
+      \column{0.33\textwidth}
+      \footnotesize
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\textwidth]{06-product_product_relationship_files/figure-beamer/competitive-goods-decreasing-mrs-fig-1} 
+
+}
+
+\caption{Competitive relationship between Rice and Wheat (decreasing marginal rate of product substitution)}\label{fig:competitive-goods-decreasing-mrs-fig}
+\end{figure}
+
+\begin{table}[H]
+\centering\begingroup\fontsize{5}{7}\selectfont
+
+\resizebox{\linewidth}{!}{
+\begin{tabular}{>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{2.4em}>{\raggedleft\arraybackslash}p{3.2em}}
+\toprule
+rice & wheat & $\Delta \textrm{rice}$ & $\Delta \textrm{wheat}$ & $MRS \newline (\frac{\Delta wheat}{\Delta rice})$\\
+\midrule
+2.0 & 3.2 &  &  & \\
+2.1 & 2.8 & 0.1 & -0.36 & 3.60\\
+2.2 & 2.6 & 0.1 & -0.22 & 2.24\\
+2.3 & 2.4 & 0.1 & -0.20 & 2.02\\
+2.4 & 2.2 & 0.1 & -0.17 & 1.74\\
+\addlinespace
+2.5 & 2.1 & 0.1 & -0.09 & 0.90\\
+2.6 & 2.1 & 0.1 & -0.05 & 0.46\\
+\bottomrule
+\end{tabular}}
+\endgroup{}
+\end{table}
+
+
+ \end{columns}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  When increase in the production of one product, with resources held
+  constant results in the decrease in the output of the other product.
+\item
+  The marginal rate of product substitution, which indicates the
+  quantity of one product that must be given up, when the output of
+  other product is increased by one unit, is negative.
+\item
+  Marginal Rate of Product Substitution (MRPS) =
+  \(\large \frac{\Delta Y_2}{\Delta Y_1}\), where \(Y_1\) and \(Y_2\)
+  are the two products of a competitive relationship.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Supplementary good}
+\protect\hypertarget{supplementary-good}{}
+\begin{columns}
+  \column{0.45\textwidth}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\textwidth]{06-product_product_relationship_files/figure-beamer/supplementary-goods-1} 
+
+}
+
+\caption{Supplementary relationship between Goat and wheat production (After reaching certain level of production relation becomes competitive)}\label{fig:supplementary-goods}
+\end{figure}
+
+  \column{0.55\textwidth}
+  \footnotesize
+  
+  \begin{itemize}
+  \item When increase or decrease in the output of one product does not affect the production of the other product.
+  \item With the same resources, the output of one product can be increased with neither a gain nor a sacrifice in the other product.
+  \item Supplementary products use the idle resources. 
+  \item On small farms keeping a few goats undertaking wheat cultivation may be enterprises because permanent labour is used in crop without reducing the productivity of goat farming.
+  \end{itemize}
+
+\end{columns}
+\end{frame}
+
+\hypertarget{production-optimization-concepts}{%
+\section{Production optimization
+concepts}\label{production-optimization-concepts}}
+
+\begin{frame}{Iso revenue line}
+\protect\hypertarget{iso-revenue-line}{}
+\begin{itemize}
+\tightlist
+\item
+  It represents all possible combination of two products which would
+  yield an equal (same) revenue or income.
+\end{itemize}
+
+\textbf{Characteristics}
+
+\begin{enumerate}
+\tightlist
+\item
+  Iso revenue line is a straight line because product prices do not
+  change with quantity sold
+\item
+  As the Total Revenue increases the iso revenue line moves away from
+  origin
+\item
+  The slope indicates ratio of product prices. As long as product prices
+  remain constant iso revenue lines are parallel.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+Suppose a farmer intends to earn Rs 10000 of revenue from sales of two
+competative ouputs. His isorevenue line is shown in Figure
+\ref{fig:isorevenue-line-rice-wheat}.
+
+\begin{figure}
+\includegraphics[width=0.45\linewidth]{06-product_product_relationship_files/figure-beamer/isorevenue-line-rice-wheat-1} \caption{Isorevenue line for different quantity combination of Rice and Wheat grain sales}\label{fig:isorevenue-line-rice-wheat}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Determination of optimum combination of products}
+\protect\hypertarget{determination-of-optimum-combination-of-products}{}
+\begin{enumerate}
+\tightlist
+\item
+  Tabular method
+\item
+  Arithmetic method
+\item
+  Graphical method
+\end{enumerate}
+\end{frame}
+
+
+
+
+\end{document}

@@ -1,0 +1,544 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Principles involved in farm management decisions
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+# requirements
+library(knitr)
+require(tidyverse)
+require(tsibble)
+require(tidyquant)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+source("./../scripts/supply-demand-surplus.R")
+source("./../scripts/graphics.R")
+# require(extrafont) # requires for graphics.R
+# require(extrafontdb)
+# extrafont::loadfonts()
+# extrafont::font_import()
+require(tvm) # functions for calculating time value of money
+require(FinancialMath) # function
+```
+
+# Principle of diminishing return (Principle of variable proportion)
+
+## Background
+
+\footnotesize
+
+- It explains the basic relationship between factor and product. 
+- This law derives its name from the fact that as successive units of variable resource are used in the combination with a collection of fixed resources, the resulting addition to the total product will become successively smaller.
+- How much to produce? (Optimum production level) It guides in the determination of optimum output level to produce. 
+- How much input to use? 
+  - Production function determines how much inputs are used to produce the product.
+  - Given goal of maximizing profit the farmer must select from all possible input levels, the one which will result in the greatest profit.
+
+## Input determination
+
+1. Marginal value product (MVP): It is the additional income received from using an additional unit in input. It is calculated by using following equation:
+
+$$
+MVP = \frac{\Delta TR}{\Delta X} = \frac{\Delta Y}{\Delta X}\times P_y
+$$
+\footnotesize
+
+Where, 
+
+$P_y$ = Price of output
+$\Delta X$ = Change in input
+$\Delta Y$ = Change in output
+
+##
+
+2. Marginal input cost (MIC) or Marginal factor cost (MFC): It is defined as the additional cost associated with the use of an additional unit of input.
+
+$$
+MFC = \frac{\Delta TC}{\Delta X} = P_x
+$$
+\footnotesize
+
+Where, 
+
+$P_x$ = Price of input
+$\Delta X$ = Change in input
+$\Delta TC$ = Change in total cost
+
+- The MFC remains constant regardless of how much of the variable input is used.
+<!-- - This is based on the assumption that no one business is large enough to influence the market price for the input regardless of how much of the input the business wants to use. -->
+
+## Decision rules
+
+- If MVP > MIC, additional profit can be made using more input
+- If MVP < MIC, more profit can be made by using less input
+- Profit is not maximized where production is maximized because production is maximized where MVP is \$0. Accordingly, MIC would have to be \$0 (that is, free) to maximize profit where production is maximized. If variable input has a cost, maximum profit is at some level of production less than maximum production.
+- Profit maximization or optimum input level is at the point where MVP = MIC, or,
+
+$$
+ \frac{\Delta Y}{\Delta X} \times P_y = P_x
+$$
+
+## Output determination
+
+1. Marginal revenue (MR): It is defined as the additional income from selling additional unit of output. It is calculated from the following equation:
+
+$$
+MR = \frac{\Delta TR}{\Delta Y} = \frac{\Delta Y}{\Delta Y}\times P_y = P_y
+$$
+
+2. Marginal cost (MC): It is defined as the additional cost incurred from producing an additional unit of output. It is computed from the following equation:
+
+$$
+MC = \frac{\Delta X}{\Delta Y} \times P_x
+$$
+
+## Decision rules
+
+- If MR > MC, additional profit can be made by producing more output
+- If MR < MC, more profit can be made by producing less output
+- The profit maximizing output level is at the point where, MR = MC
+
+## Applications of principle of diminishing returns
+
+\footnotesize
+
+1. Role of nature: The agricultural production greatly depends on the nature.
+2. Land is a fixed factor: The supply of land is fixed, that is, we cannot increase the land. We have to work within that limited land.
+3. Less scope of division of labor: Unlike in industry, we cannot make specialization in agricultural activities. A family has to plough, dig, transplant, harvest, and store, sell altogether. No one is specialized for a particular activity, though there are some cultural or gender divisions like transplanting by women, ploughing by men etc.
+4. Less use of machines: Due to less use of machines, there is diminishing return.
+5. Seasonal nature of work: The agricultural labor is engaged in particular season. In other season, they may be idle. So the total productivity with respect to the inputs go on decreasing.
+6. Less supervision: The agriculture business really gets less supervision. In the field no frequent supervision is possible like in closed industry.
+
+# Cost principle
+
+## Background
+
+- Cost of production of any commodity is the value of the factors of production used in producing that unit. 
+- Producers must take into account cost of production while making production decisions.
+
+## Cost accounting period and cost curves
+
+- Generally there are two types of cost accounting periods as so are the curves -- short run and long run cost.
+- The terms short and long are not absolute time based, rather it is based on use/employment of resources.
+- In long run, none of the inputs are fixed, and all are variable.
+- In short run, some inputs are fixed (at least one) and others may be variable.
+
+## Short run cost curve
+
+- The analysis of costs of a firm is based on the theory of production. The behavior of the cost shows the behavior of the production.
+- The cost is the product of quantity of inputs and the respective price. When we transpose the production function (on cost basis) from 'X'-axis to 'Y'-axis, then it becomes the cost curve.
+
+## Fixed, variable and total costs in the short-run
+
+```{r cost-short-run}
+cost_short_run <- tribble(~"number_of_workers", ~"output_wheat_yield",
+        0, 0,
+        1, 1.0,
+        2, 2.2,
+        3, 3.6,
+        4, 5.2,
+        5, 7.0,
+        6, 8.6,
+        7, 10.0,
+        8, 11.2,
+        9, 12.2,
+        10, 13.0,
+        11, 13.7,
+        12, 14.3,
+        13, 14.8,
+        14, 15.2,
+        15, 15.5) %>% 
+  mutate(daily_wage_per_worker= 400,
+         total_variable_cost=number_of_workers * daily_wage_per_worker, 
+         total_fixed_cost=1500, 
+         short_run_total_cost=total_variable_cost + total_fixed_cost)
+
+cost_short_run  %>% 
+  knitr::kable(booktabs = TRUE, linesep = "",
+               caption = "Fixed, variable and total costs in short run", escape = TRUE,
+               col.names = c("Number of workers (L)", "Output (Wheat yield in Quintals; Q)", "Daily wages per worker (W)", "Total variable costs (TVC)", "Total fixed costs (TFC)", "Short run total cost (TVC + TFC)")) %>% 
+  kableExtra::kable_styling(latex_options = "striped", font_size = 6) %>% 
+  kableExtra::column_spec(column = 1:6, width = c(rep("7em", 5), "10em"))
+```
+
+
+##
+
+```{r cost-short-run-plot, fig.cap="Short run total cost curve", fig.width=5, fig.height=4, out.width="50%"}
+cost_short_run %>% 
+  ggplot() +
+  geom_line(aes(x = output_wheat_yield, y = total_variable_cost, color = "wheat4"), size = 1.1) +
+  geom_line(aes(x = output_wheat_yield, y = total_fixed_cost, color = "blue"), size = 1.1) +
+  geom_line(aes(x = output_wheat_yield, y = short_run_total_cost, color = "aquamarine"), size = 1.1) +
+  scale_color_manual(labels = c("Short run total cost", "Total fixed cost", "Total variable cost"), 
+                     values = c("wheat4", "blue", "aquamarine")) +
+  xlab("Output (Wheat yield in Quintals)") +
+  ylab("Cost (in Rs)") +
+  theme_bw()
+```
+
+
+##
+
+- The cost curves are of short-run period in the Figure \ref{fig:cost-short-run-plot}; some inputs are fixed and other are variable.
+- It means whether we produce or not, there incurs a cost that is called the fixed cost.
+- Variable cost are those that vary according to the level of production.
+- Fixed cost remain the same throughout all levels of production.
+- If we try to produce more and more with same level of fixed inputs, the variable cost curve becomes too steeper.
+
+## Long run cost curve
+
+- In long run all inputs are variable.
+- The long-run may be a month, a year or decade.
+- In long -run, the scale of production is varied by varying all the inputs.
+
+```{r cost-long-run-plot, fig.cap="Long run total cost curve", fig.width=4, fig.height=3, out.width="40%"}
+# in long run there is not fixed cost, so plot only the variable cost
+cost_short_run %>%
+  ggplot() +
+  geom_line(aes(x = output_wheat_yield, y = total_variable_cost), size = 1) +
+  xlab("Output (Wheat yield in Quintals)") +
+  ylab("Cost (in Rs)") +
+  theme_bw()
+```
+
+
+## Application of cost principle
+
+- To determine shut down point
+- To determine break even point
+- To know economies of scale of production
+
+# Principle of factor substitution/Principle of marginal rate of technical substiution/Principle of least cost combination
+
+##
+
+- This law or principle in farming is applied in a situation in which the farmer has a number of options are open for a number of alternatives available among different resource inputs for a particular operation.
+- He will choose the best alternative, which adds more in output while at the same time minimizes the cost.
+
+## Procedures for working out the least-cost combination
+
+1. Step I: Compute the substitution ratio i.e. MRTS, For example MRTS of X1 for X2 will be
+
+$$\frac{\textrm{Change in X2 (quantity of replaced input)}}{ \textrm{Change in X1 (quantity of added input)}} = \frac{\Delta X_2}{\Delta X_1}$$
+
+
+2. Step II: Compute the price ratio, i.e. ratio of price of the added input (PX1) and price of the replaced input (PX2), mathematically, $\frac{P_{X_1}}{P_{X_2}}$.
+
+3. Step III: Find the point where the substitution ratio and the price ratio is equal.
+
+## Decision rule for profit maximization
+
+1. If the substitution ratio is greater than the price ratio, one can reduce the costs by using more of the "added" resource. That is, if DX2/DX1 > PX1/PX2, use more X1 till equality.
+2. If the substitution ratio is less than the price ratio, costs can be reduced by using more of "replaced" resource. That is, if DX2/DX1 < PX1/PX2, use more X2 till equality.
+3. If the substitution ratio is equal to the price ratio, then it is the point of least cost.
+
+# Principle of product substitution/Principle of enterprise combination
+
+## 
+
+- It solves the problem of "what to produce".
+- Guides determination of optimum combination of enterprises (products). It explains product-product relationship.
+- It is economical to substitute one product for another product, if the decrease in returns from the product being replaced is less than the increase in returns from the product being added.
+- The principle of product substitution says that we should go in increasing the output of a product so long as decrease in the returns from the product being replaced is less than the increase in the returns from the product being added.
+
+## Decision rule
+
+- If marginal rate of product substitution (MRPS) is greater than price ratio (PR) ($MRPS (Y_1 \textrm{ for } Y_2) > PR (Y_1 Y_2)$):
+  - profits can be increased by producing more of replaced product. 
+  - either increase production of Y1 or decrease Y2 or both.
+- If MRPS < PR ($MRPS (Y_1 \textrm{ for } Y_2) > PR (Y_1 Y_2)$): 
+  - profits can be increased by producing more of added product.
+  - either decrease production of Y1 or increase Y2 or both.
+- Optimum combination of products is when MRPS = PR.
+
+# Principle of opportunity cost
+
+##
+
+- Opportunity cost recognizes the fact that every input has an alternative use. Once an input is committed to a particular use, it is no longer available for any other alternative use and the income from the alternative must be foregone.
+- Opportunity cost is defined as the returns that are sacrificed from the next best alternative.
+- Opportunity cost is also known as real cost or alternate cost.
+- Its concept is closely related to the equi-marginal principle. 
+
+## Examples
+
+- The opportunity cost of using a machine to produce one product is the earnings that would be possible from other products.
+- The opportunity cost of using a machine that is useless for any other purpose is nil since its use requires no sacrifice of other opportunities.
+- The opportunity cost of the time one puts into his own business is the salary he could earn in other occupations (with a correction for the relative psychic income in the two occupations).
+
+# Principle of comparative advantage
+
+##
+
+- It explains regional specialization in the production of commodities.
+- Certain crops can be grown in only limited areas because of specific soil and climatic requirement. However, even those crop and livestock enterprises which can be raised over broad geographical area often have production concentrated in one region.
+- Regional specialization in the production of the agricultural commodities and other products can be explained by the principle of comparative advantage.
+- The yields, production costs, profits may be different in different areas. 
+- It is relative yields, costs, and profits which are important for the application of this principle.
+
+## Statement of principle
+
+Individuals or regions will tend to specialize in the production of those commodities for which resources give them a relative or comparative advantage.
+
+```{r comparative-advantage}
+tribble(
+  ~"Crop account", ~"Wheat_Region A", ~"Groundnut_Region A", ~"Wheat_Region B", ~"Groundnut_Region B", 
+  "Total cost", 425, 200, 210, 200, 
+  "Total return", 500, 225, 225, 200, 
+  "Net return", 75, 25, 15, 20, 
+  "Rate of return", 1.18, 1.13, 1.07, 1.1
+) %>% 
+  # pivot_longer(cols = 2:last_col(), names_to = c(".value", "Ecology"), names_pattern = "(.*)_(.*)") %>% 
+  knitr::kable(booktabs = TRUE, col.names = c("Crop account", rep(c("Wheat", "Groundnut"), times = 2))) %>% 
+  kableExtra::add_header_above(header = c(" " = 1, "Region A" = 2, "Region B" = 2))
+```
+
+##
+
+- Region A has greater absolute advantage in growing both wheat and groundnut than Region B because the net incomes per acre are Rs 75 and Rs 25 respectively which are higher than the net incomes from wheat and groundnut in Region B. Farmers of Region A can make more profits by growing both the crops. 
+- But they want to make the greatest profits and this can be done by having the largest possible acerage under Wheat alone as it is the question of relative advantage.
+- Similarly farmers of Region of B have relative advantage in growing groundnut.
+
+# Principle of equimarginal-returns
+
+##
+
+- In input-output relationship, MC=MR is the economic principle used to determine the most profitable level of variable input.
+- But it is under the assumption of unlimited availability of variable input, which is unrealistic.
+- If a scarce resource is to be distributed among two or more uses, the highest total return is obtained when the marginal return per unit of resource is equal in all alternative uses. -- **Principle of equi-marginal returns**.
+
+## One input -- several products
+
+\footnotesize
+
+- Suppose there is a limited amount of a variable input to be allocated among several enterprises. 
+- For this, the production function and product prices must be known for each enterprise. Next, the MVP schedule must be computed for each enterprise.
+- Finally, using the opportunity cost principle, units of input are allocated to each enterprise in such a way that profit earned by the input is maximum. 
+- Profit from a limited amount of variable resource is maximized when the resource is allocated among the enterprises in such as way that marginal earnings of the input are equal in all enterprises. i.e.,
+
+$$
+VMP_{xy_{1}} = VMP_{xy_{2}} = \ldots = VMP_{xy_{n}}
+$$
+Where, $VMP_{xy_{1}}$ is the value of marginal product of $X$ used on product $Y_1$; $VMP_{xy_{2}}$ is the value of marginal product of $X$ used on product $Y_2$ and so on.
+
+##
+
+```{r three-enterprise-allocation}
+# given price_y1 = 12, price_y2 = 6, price_y3 = 12
+enterprise_combination <- tribble(
+  ~"x_maize", ~"y1_maize", ~"x_rice", ~"y2_rice", ~"x_sorghum", ~"y3_sorghum",
+  0, 0, 0, 0, 0, 0,
+  1, 10, 1, 18, 1, 7, 
+  2, 18, 2, 31, 2, 13, 
+  3, 24, 3, 42, 3, 18, 
+  4, 29, 4, 51, 4, 22, 
+  5, 33, 5, 58, 5, 25,  
+  6, 36, 6, 64, 6, 27
+  ) %>% 
+  mutate(vmp_xy1_maize = (y1_maize - lag(y1_maize))*2, 
+         vmp_xy2_rice = (y2_rice - lag(y2_rice))*1, 
+         vmp_xy2_sorghum = (y3_sorghum - lag(y3_sorghum))*2)
+
+enterprise_combination %>% 
+  knitr::kable(booktabs = TRUE, col.names = str_replace_all(colnames(.), "_", " ")) %>% 
+  kableExtra::kable_styling(latex_options = "scale_down") %>% 
+  kableExtra::column_spec(column = 7:9, width = c("4em", "4em", "4em"))
+```
+
+##
+
+\footnotesize
+
+Suppose that the farmer has five units of X. According to the opportunity cost principle, he will allocate each successive units of input to the use where its marginal return, VMP, is the largest; i.e., first unit of X used in Enterprise I (Maize) earns Rs 20; second on first unit of Enterprise II (Rice) earns Rs 18; third on second unit of Enterprise I earns Rs 16; fourth on first unit of Enterprise III (Sorghum) earns Rs 14; and 5th on second unit of enterprise II earns Rs 13.
+
+Two units of inputs go on enterprise I, two on II and one on III. Used in this manner, the five units of inputs will earn Rs 81.  No other allocation of the five units among the three enterprise will earn as much.
+
+## 
+
+- What is the maximum amount of input needed for enterprises I, II and III ?
+
+- To determine this, manager must determine the most profitable amount of input for each enterprise. When input cost is Rs 6.5 per unit, the optimum amounts are 5 for I, 5 for II and 4 for III. Cost is Rs 91 ((5 + 5 + 4 = 14)*6.5 = 91). Thus, the manager would never use more than a total of 14 units of inputs, no matter how many units of inputs he could afford to buy.
+
+<!-- ## Algebraic example -->
+
+<!-- - Maize response to nitrogen production function is: $C = 65.54 + 1.084 N_C - 0.003 N_C^2$ -->
+<!-- - Sorghum response to nitrogen production function is: $S = 68.07 + 0.830 N_S - 0.002 N_S^2$ -->
+
+<!-- - Assume that the farmer has 100 kgs of Nitrogen available for 2 hectares -- 1 ha to be grown maize and 1 to be used for sorghum and that the price of corn is Rs 3 per kg and price of grain sorghum is Rs 2.5 per kg. -->
+<!-- - The allocative equations would be, $VMP_{NC} = VMP_{NS}$ or $P_C \times MPP_{NC} = P_S \times MPP_{NS}$ -->
+<!-- - $VMP_{NC} = (1.084 - 0.006 N_C) \times 3 = 3.252 - 0.018 N_C$, obtained by taking first derivative with respect to $N_C$ -->
+<!-- - $VMP_{NS} = (0.830 - 0.004 N_S) \times 2.5 = 2.075 - 0.01 N_S$ -->
+
+<!-- Substituting $N_S = 100 - N_C$, we get, $3.252 - 0.0018 N_C = 2.075 - 0.01 (100 - N_C)$ and $N_S = 100 - 77.8 = 22.2$ -->
+
+<!-- Hence,  -->
+
+<!-- $$ -->
+<!-- C = 65.54 + 1.084 N_C + 0.003 N_C^2  = 131.71668 \times 3 = \textrm{Rs} 395.15 -->
+<!-- $$ -->
+
+<!-- $$ -->
+<!-- S = 68.07 + 0.83 N_S + 0.002 N_S^2  = 85.51032 \times 2 = \textrm{Rs} 213.78 -->
+<!-- $$ -->
+
+<!-- Thus, the corn would get 77.8 kgs of Nitrogen and sorghum would get 22.2 kgs. This allocation equates the value of marginal products and assures the largest return from 100 kg of Nitrogen. Substituting 77.8 kgs of N into $VMP_NC$ equation and 22.2 kgs of N into $VMP_NS$ equation, demonstrates that the VMPs are equal to Rs 1.85. -->
+
+# Principle of time comparison
+
+##
+
+- The time value of money is the idea that there is greater benefit to receiving a sum of money now rather than an identical sum later. It is founded on time preference.
+- The time value of money is the reason why interest is paid or earned: interest, whether it is on a bank deposit or debt, compensates the depositor or lender for the time value of money.
+
+##
+
+- Time value of money problems involve the net value of cash flows at different points in time.
+- In a typical case, the variables might be: a balance (the real or nominal value of a debt or a financial asset in terms of monetary units), a periodic rate of interest, the number of periods, and a series of cash flows.
+- For example, Rs 100 invested for one year, earning 5\% interest, will be worth Rs 105 after one year; therefore, Rs 100 paid now and Rs 105 paid exactly one year later both have the same value to a recipient who expects 5\% interest assuming that inflation would be zero percent.
+
+## Future value of a present sum
+
+The future value (FV) formula is:
+
+\begin{equation}
+FV = PV(1 + i)^n
+\label{eqn:future-value}
+\end{equation}
+
+## Present value of a future sum
+
+\footnotesize
+
+The present value formula is the core formula for the time value of money; each of the other formulae is derived from this formula. For example, the annuity formula is the sum of a series of present value calculations.
+
+The present value (PV) formula has four variables, each of which can be solved for by numerical methods:
+
+\begin{equation}
+PV = \frac{FV}{(1 + i)^n}
+\label{eqn:current-value}
+\end{equation}
+
+##
+
+The cumulative present value of future cash flows can be calculated by summing the contributions of $FV_t$, the value of cash flow at time $t$;
+
+$$
+PV = \sum_{t = 1}^n \frac{FV_t}{(1 + i)^t}
+$$
+
+- This principle allows for the valuation of a likely stream of income in the future, in such a way that annual incomes are discounted and then added together, thus providing a lump-sum "present value" of the entire income stream; all of the standard calculations for time value of money derive from the most basic algebraic expression for the present value of a future sum, "discounted" to the present by an amount equal to the time value of money. For example, the future value sum ${\displaystyle FV}$ to be received in one year is discounted at the rate of interest ${\displaystyle r}$ to give the present value sum ${\displaystyle PV}$.
+
+##
+
+Suppose a farmer want's to know value of his current fund deposit Rs 10050. The annual market discounting rate (bank interest rate, if he deposited it in bank) is 8\%. What sum should he expect if he were to draw the funds after 3 years.
+
+```{r}
+# future value of "P" money after "n" periods at interest rate of "i"
+future_value <- function(P, i, n){P * (1 + i)^n}
+
+# present value of "F", "n" periods before at interest rate of "i"
+present_value <- function(F, i, n){F * (1 + i)^(-n)}
+```
+
+Using formula for compounding of current value to obtain future value (Equation \ref{eqn:future-value}), we obtain future value of current Rs 10050 = `r future_value(P = 10050, i = 0.08, n = 4)`.
+
+Similarly, in a second example, let us suppose a farmer expects Rs 10000 from sales of his crops and poultry 2 years later, now find the current value of his future expected earning. (Suppose half yearly discounting rate is 4\%).
+
+It is calculated from the discounting future value to current value, using equation \ref{eqn:current-value}: `r present_value(10000, i = 0.04, n = 2*2)`. Here we should use `n = 4`, because time time frequency is 2 times for the given annual compounding rate.
+
+
+```{r npv-irr-bc-calculation, eval=FALSE}
+# # # investment return analysis # # #
+
+# suppose a firm has a capital expenditure (initial investment) of
+C0 <- 300000
+
+# it has yearly variable cost and return of (at 10th year)
+cost <- c(110000, 75000, 75000, 110000, 120000)
+benefit <- c(140000, 120000, 320000, 260000, 230000)
+
+# at discounting rate (opportunity cost of capital) at dr%, and
+# at `flow_start_year` years after investment
+dr <- 12
+flow_start_year <- 10
+
+# non discounted cash flow on each year is simply:
+bc_diff <- benefit - cost
+
+# total investment portfolio is:
+bc_diff_invest <- c(-C0, bc_diff)
+
+# for bc ratio calculation both cost and benefit should be discounted separately
+
+# discounted cost is:
+discounted_c <- map2_dbl(.x = cost, 
+                         .y = seq(length.out = length(bc_diff), from = flow_start_year),
+                         .f = ~(.x/(1 + dr/100)^.y))
+
+# discounted benefit is:
+discounted_b <- map2_dbl(.x = benefit, 
+                         .y = seq(length.out = length(bc_diff), from = flow_start_year),
+                         .f = ~(.x/(1 + dr/100)^.y))
+
+# discounted cash flow is (note that we can used difference here):
+discounted_cf <- map2_dbl(.x = bc_diff, 
+                          .y = seq(length.out = length(bc_diff), from = flow_start_year),
+                          .f = ~(.x/(1 + dr/100)^.y))
+
+# same can be done by using calculator
+-FinCal::pv.simple(dr/100, seq(length.out = length(bc_diff), from = flow_start_year), bc_diff)
+
+# npv is:
+sum(discounted_cf) - C0 # shows that present value is of investment returns doesn't even cover capital expenses
+
+# npv is:
+sum(-FinCal::pv.simple(dr/100, seq(length.out = length(bc_diff), from = flow_start_year), bc_diff))-C0
+
+# npv is: (alternative way)
+FinancialMath::NPV(cf0 = C0, cf = bc_diff, 
+                   times = seq(length.out = length(bc_diff), from = flow_start_year), 
+                   i = 0.12, plot = T)
+
+# irr is: (note that all years, even without cash-inflow are included)
+bc_diff_full <- c(rep(0, 9), bc_diff) # undiscounted
+
+# `FinCal` uses uniroot, but does not approximate the best
+FinCal::irr(c(-C0, bc_diff_full))
+
+# `FinancialMath::IRR` uses polyroot. It gives the best approximation when cross verified with NPV. Both of these forms below give same result; (Note there are several estimated values. But most, except one, extremely high negative NPV value, which is essentially not what we want)
+FinancialMath::IRR(cf0 = C0, cf = bc_diff, times = seq(length.out = length(bc_diff), from = flow_start_year))
+FinancialMath::IRR(cf0 = C0, cf = bc_diff_full, times = seq(length(bc_diff_full)))
+
+# manually verify irr
+FinancialMath::NPV(cf0 = C0, cf = bc_diff_full, 
+                   times = seq(length.out = length(bc_diff_full)), 
+                   i = 0.054478356, plot = T)
+
+# `tidyquant::IRR` gives unexpected results
+tidyquant::IRR(c(-C0, bc_diff_full))
+
+# bc ratio is:
+sum(discounted_b)/(sum(discounted_c)+C0)
+
+```
+

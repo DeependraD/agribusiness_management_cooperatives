@@ -407,135 +407,212 @@ production_relationship %>%
 - However, as long as addition to total product is increasing at increasing rate or increasing at constant rate, or even increasing at decreasing rate, so that cost of additional unit of input use can be justified with returns from product obtained by the same additional unit of input, the production is carried out. The exact optimum level of input use, however, is determined by the price of input and output, both.
 
 
-## Knowing the point of operation
+<!-- ## Knowing the point of operation -->
 
-- In order to determine what level in Region 2 one should operate, one needs to know the product as well as the input prices. Multiplying the quantities of product and inputs with the respective prices we can convert the physical production function into revenue and cost functions.
-- Thus the optimum level of input use, will be where the additional cost of an input is equal to the additional revenue which the input yields.
-- Hence in the rational zone of production, factor-product price ratio will be used as a choice indicator.
+<!-- - In order to determine what level in Region 2 one should operate, one needs to know the product as well as the input prices. Multiplying the quantities of product and inputs with the respective prices we can convert the physical production function into revenue and cost functions. -->
+<!-- - Thus the optimum level of input use, will be where the additional cost of an input is equal to the additional revenue which the input yields. -->
+<!-- - Hence in the rational zone of production, factor-product price ratio will be used as a choice indicator. -->
+
+<!-- ## -->
+
+<!-- ```{r fp-relationship-decision} -->
+
+<!-- # physical_input_units_nitrogen_ropani = Units of crop input (Nitrogen) per ropani -->
+<!-- fp_relation_decision <- tribble(~"physical_input_units_nitrogen_ropani", ~"physical_output_units_ropani",  -->
+<!--         ~"physical_marginal_input_units", ~"physical_marginal_product_units", -->
+<!--         ~"physical_average_product", ~"economic_marginal_cost_unit",  -->
+<!--         ~"economic_marginal_returns_unit", ~"economic_total_returns", -->
+<!--         ~"economic_total_cost_inputs", ~"economic_profit",  -->
+<!--         0, 2, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         1, 5, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         2, 9, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         3, 14, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         4, 21, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         5, 26, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         6, 30, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         7, 33, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         8, 35, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         9, 36, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         10, 36, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         11, 35, NA, NA, NA, NA, NA, NA, NA, NA, -->
+<!--         12, 33, NA, NA, NA, NA, NA, NA, NA, NA -->
+<!--         ) -->
+
+<!-- input_unit_price <- 4 # Rupees -->
+<!-- output_unit_price <- 3 # Rupees -->
+
+<!-- fp_relation_decision <- fp_relation_decision %>%  -->
+<!--   mutate(physical_marginal_input_units = tsibble::difference(physical_input_units_nitrogen_ropani),  -->
+<!--          physical_marginal_product_units = tsibble::difference(physical_output_units_ropani),  -->
+<!--          physical_average_product = physical_output_units_ropani/physical_input_units_nitrogen_ropani,  -->
+<!--          economic_marginal_cost_unit = physical_marginal_input_units * input_unit_price,  -->
+<!--          economic_marginal_returns_unit = physical_marginal_product_units * output_unit_price,  -->
+<!--          economic_total_returns = physical_output_units_ropani * output_unit_price,  -->
+<!--          economic_total_cost_inputs = physical_input_units_nitrogen_ropani * input_unit_price,  -->
+<!--          economic_profit = economic_total_returns - economic_total_cost_inputs) -->
+<!-- ``` -->
+
+
+<!-- ```{r fp-relationship-decision-tab} -->
+<!-- fp_relation_decision %>%  -->
+<!--   mutate(physical_average_product = ifelse(is.infinite(physical_average_product), NA, -->
+<!--                                            physical_average_product)) %>%  -->
+<!--   rename_all(function(x)str_replace_all(x, "_", " ")) %>%  -->
+<!--   rename_all(function(x)str_to_sentence(x)) %>%  -->
+<!--   knitr::kable(caption = "Factor-product relationship and economic decision analysis.",  -->
+<!--                booktabs = TRUE) %>%  -->
+<!--   kableExtra::kable_styling(font_size = 6) %>%  -->
+<!--   kableExtra::column_spec(1:10, width = rep("4em", times = 10)) -->
+
+<!-- ``` -->
+
+<!-- ## -->
+
+<!-- - Take for example Table \ref{tab:fp-relationship-decision-tab}, the price per unit of input to be Rs. 4 and price per unit of product Rs. 3. Multiply the various quantities of product at different levels of input-use by Rs. 3. Assuming the producer's purchases are low enough not to cause the price of the input to rise, each input unit will cost Rs. 4. This is shown in 6th column of the Table \ref{tab:fp-relationship-decision-tab}. -->
+<!-- - We can see from the Table \ref{tab:fp-relationship-decision-tab} that the highest net revenue can be obtained when 8 units of the input are used yielding net revenue at Rs 73. If the producer applies less number of input units, say 7 units, the net revenue will be less. Here the returns from the last unit of input are greater than the costs, indicating a scope of further increasing the revenue by pushing up input use. -->
+
+<!-- ## -->
+
+<!-- - On the other hand, if inputs are added to the point where the price of the input exceeds the value of the marginal product, the added costs go greater than the added returns. -->
+<!-- - By adding the 9th unit of input, the additional returns will be only Rs 3 whereas the cost of this unit of input will be the same Rs 4. This means it does not pay the producer to add more than 8 units of the input. -->
+<!-- - Optimum level of input use will thus be where the value of the additional product will be equal to the cost of additional input. -->
+
+<!-- ## -->
+
+<!-- - We can write this condition for maximization of net revenue as: -->
+
+<!-- $$ -->
+<!-- P_{Y1} \Delta Y_1 = P_{X1} \Delta X_1 -->
+<!-- $$ -->
+
+<!-- Where $P_{Y1} \Delta Y_1$ is added revenue and $P_{X1} \Delta X_1$ is added cost. -->
+
+<!-- - This can be written in ratio form as well. -->
+
+<!-- $$ -->
+<!-- \frac{\Delta Y_1}{\Delta X_1} = \frac{P_{X1}}{P_{Y1}} -->
+<!-- $$ -->
+
+<!-- # Cost function -->
+
+<!-- ## Background -->
+
+<!-- - The total cost curve or cost function represents the functional relationship between output and total cost. -->
+<!-- - It shows the change in cost structure when we produce different quantities of a commodity. -->
+<!-- - The exact nature of the Total Cost function depends on the nature of the corresponding production function, provided that the price which the producer pays for inputs does not change as the quantity of inputs purchased changes. -->
+
+<!-- ## Relationship between production function and total cost function -->
+
+<!-- # Relationship between various costs -->
+
+<!-- ## TC, TFC and TVC -->
+
+<!-- Fig. 5.3 and explanation. -->
+
+<!-- ## ATC, AFC and AVC -->
+
+<!-- Fig. 5.4 and explanation. -->
+
+<!-- ## Relationship between average and marginal cost -->
+
+<!-- Fig. 5.5 and explanation. -->
+
+<!-- # Impact of technological change on production function -->
+
+<!-- - Technical advances may result in such development as evolution of new crop varieties, breeds of animals and birds, invention of new fertilizers and their use methods, improved rations, new farm machinery etc. -->
+<!-- - So far we have made or point about production function with assumption that technology remains constant. -->
+<!-- - Application of different technology results in a different production function. -->
 
 ##
 
-```{r fp-relationship-decision}
-
-# physical_input_units_nitrogen_ropani = Units of crop input (Nitrogen) per ropani
-fp_relation_decision <- tribble(~"physical_input_units_nitrogen_ropani", ~"physical_output_units_ropani", 
-        ~"physical_marginal_input_units", ~"physical_marginal_product_units",
-        ~"physical_average_product", ~"economic_marginal_cost_unit", 
-        ~"economic_marginal_returns_unit", ~"economic_total_returns",
-        ~"economic_total_cost_inputs", ~"economic_profit", 
-        0, 2, NA, NA, NA, NA, NA, NA, NA, NA,
-        1, 5, NA, NA, NA, NA, NA, NA, NA, NA,
-        2, 9, NA, NA, NA, NA, NA, NA, NA, NA,
-        3, 14, NA, NA, NA, NA, NA, NA, NA, NA,
-        4, 21, NA, NA, NA, NA, NA, NA, NA, NA,
-        5, 26, NA, NA, NA, NA, NA, NA, NA, NA,
-        6, 30, NA, NA, NA, NA, NA, NA, NA, NA,
-        7, 33, NA, NA, NA, NA, NA, NA, NA, NA,
-        8, 35, NA, NA, NA, NA, NA, NA, NA, NA,
-        9, 36, NA, NA, NA, NA, NA, NA, NA, NA,
-        10, 36, NA, NA, NA, NA, NA, NA, NA, NA,
-        11, 35, NA, NA, NA, NA, NA, NA, NA, NA,
-        12, 33, NA, NA, NA, NA, NA, NA, NA, NA
-        )
-
-input_unit_price <- 4 # Rupees
-output_unit_price <- 3 # Rupees
-
-fp_relation_decision <- fp_relation_decision %>% 
-  mutate(physical_marginal_input_units = tsibble::difference(physical_input_units_nitrogen_ropani), 
-         physical_marginal_product_units = tsibble::difference(physical_output_units_ropani), 
-         physical_average_product = physical_output_units_ropani/physical_input_units_nitrogen_ropani, 
-         economic_marginal_cost_unit = physical_marginal_input_units * input_unit_price, 
-         economic_marginal_returns_unit = physical_marginal_product_units * output_unit_price, 
-         economic_total_returns = physical_output_units_ropani * output_unit_price, 
-         economic_total_cost_inputs = physical_input_units_nitrogen_ropani * input_unit_price, 
-         economic_profit = economic_total_returns - economic_total_cost_inputs)
-```
-
-
-```{r fp-relationship-decision-tab}
-fp_relation_decision %>% 
-  mutate(physical_average_product = ifelse(is.infinite(physical_average_product), NA,
-                                           physical_average_product)) %>% 
-  rename_all(function(x)str_replace_all(x, "_", " ")) %>% 
-  rename_all(function(x)str_to_sentence(x)) %>% 
-  knitr::kable(caption = "Factor-product relationship and economic decision analysis.", 
-               booktabs = TRUE) %>% 
-  kableExtra::kable_styling(font_size = 6) %>% 
-  kableExtra::column_spec(1:10, width = rep("4em", times = 10))
-  
-```
-
-##
-
-- Take for example Table \ref{tab:fp-relationship-decision-tab}, the price per unit of input to be Rs. 4 and price per unit of product Rs. 3. Multiply the various quantities of product at different levels of input-use by Rs. 3. Assuming the producer's purchases are low enough not to cause the price of the input to rise, each input unit will cost Rs. 4. This is shown in 6th column of the Table \ref{tab:fp-relationship-decision-tab}.
-- We can see from the Table \ref{tab:fp-relationship-decision-tab} that the highest net revenue can be obtained when 8 units of the input are used yielding net revenue at Rs 73. If the producer applies less number of input units, say 7 units, the net revenue will be less. Here the returns from the last unit of input are greater than the costs, indicating a scope of further increasing the revenue by pushing up input use.
-
-##
-
-- On the other hand, if inputs are added to the point where the price of the input exceeds the value of the marginal product, the added costs go greater than the added returns.
-- By adding the 9th unit of input, the additional returns will be only Rs 3 whereas the cost of this unit of input will be the same Rs 4. This means it does not pay the producer to add more than 8 units of the input.
-- Optimum level of input use will thus be where the value of the additional product will be equal to the cost of additional input.
-
-##
-
-- We can write this condition for maximization of net revenue as:
-
-$$
-P_{Y1} \Delta Y_1 = P_{X1} \Delta X_1
-$$
-
-Where $P_{Y1} \Delta Y_1$ is added revenue and $P_{X1} \Delta X_1$ is added cost.
-
-- This can be written in ratio form as well.
-
-$$
-\frac{\Delta Y_1}{\Delta X_1} = \frac{P_{X1}}{P_{Y1}}
-$$
-
-# Impact of technological change on production function
-
-- Technical advances may result in such development as evolution of new crop varieties, breeds of animals and birds, invention of new fertiliers and their use methods, improved rations, new farm machinery etc.
-- So far we have made or point about production function with assumption that technology remains constant.
-- Application of different technology results in a different production function.
-
-##
+\tikzset{
+  basic/.style  = {draw, text width=2cm, drop shadow, font=\sffamily, rectangle},
+  root/.style   = {basic, rounded corners=2pt, thin, align=center,
+                   fill=green!30},
+  level 2/.style = {basic, rounded corners=6pt, thin,align=center, fill=green!60,
+                   text width=8em},
+  level 3/.style = {basic, thin, align=left, fill=pink!60, text width=6.5em}
+}
 
 \begin{tikzpicture}[
-  transform shape, mindmap,
-  grow cyclic, 
-  text width = 4.5cm, %align=flush center, %automatically formatted by mindmap
-  scale=0.6, every node/.style={scale=0.6, concept, concept color=orange},
-  level 1/.append style={level distance=4cm, sibling angle=120}, 
-  level 2/.append style={level distance=2.5cm, sibling angle=45}]
+  level 1/.style={sibling distance=40mm},
+  edge from parent/.style={->,draw},
+  >=latex]
 
-\node{Technology}
-  child {node {Impacts how ?}
-    child {node {\scriptsize Replacement of old products by new ones}}
-    child {node {\scriptsize Create new inputs or improve old ones}}
-    child {node {\scriptsize Affect the production process}}
-  }
-  child {node {Types}
-    child {node {\scriptsize Superior: Upward shift of production function}}
-    child {node {\scriptsize Inferior: Downward shift of production function}}
-  }
-  child {node {General impact}
-    child {node {\scriptsize Factor saving}}
-    child {node {\scriptsize Yield increasing}}
-    child {node {\scriptsize Both factor saving and yield increasing}}
-  }
-  child {node {Broader impacts}
-    child {node {\scriptsize Safter growing environment and safer food}}
-    child {node {\scriptsize Higher crop productivity}}
-    child {node {\scriptsize Decreased  use of water, fertilizer, and pesticides}}
-    child {node {\scriptsize Lower food prices}}
-    child {node {\scriptsize Reduced impact on natural ecosystems}}
-    child {node {\scriptsize Less runoff of chemicals into rivers and groundwater}}
-    child {node {\scriptsize Increased worker safety}}
-    }
-;
+% root of the the initial tree, level 1
+\node[root] {Technology}
+% The first level, as children of the initial tree
+  child {node[level 2] (c1) {General impacts}}
+  child {node[level 2] (c2) {Types}}
+  child {node[level 2] (c3) {Broader impacts}};
+
+% The second level, relatively positioned nodes
+\begin{scope}[every node/.style={level 3}]
+\node [below of = c1, xshift=15pt] (c11) {Yield increasing};
+\node [below of = c11] (c12) {Factor saving};
+\node [below of = c12] (c13) {Both factor saving and yield increasing};
+
+\node [below of = c2, xshift=15pt] (c21) {Inferior: Downward shift of production function};
+\node [below of = c21] (c22) {Superior: Upward shift of production function};
+
+\node [below of = c3, xshift=15pt] (c31) {Increased worker safety};
+\node [below of = c31] (c32) {Less run-off of chemicals into rivers and ground water};
+\node [below of = c32] (c33) {Reduced impact on natural ecosystem};
+\node [below of = c33] (c34) {Lower food prices};
+\node [below of = c34] (c35) {Decreased use of water, fertilizer, and pesticides};
+\node [below of = c35] (c36) {Higher productivity};
+\node [below of = c36] (c37) {Safer growing environment and safer food};
+
+\end{scope}
+
+% lines from each level 1 node to every one of its "children"
+\foreach \value in {1,2,3}
+  \draw[->] (c1.195) |- (c1\value.west);
+
+\foreach \value in {1,...,2}
+  \draw[->] (c2.195) |- (c2\value.west);
+
+\foreach \value in {1,...,7}
+  \draw[->] (c3.195) |- (c3\value.west);
 \end{tikzpicture}
 
-# Bibliography
+<!-- ## -->
 
-## For more information
+<!-- \begin{tikzpicture}[ -->
+<!--   transform shape, mindmap, -->
+<!--   grow cyclic,  -->
+<!--   text width = 4.5cm, %align=flush center, %automatically formatted by mindmap -->
+<!--   scale=0.6, every node/.style={scale=0.6, concept, concept color=orange}, -->
+<!--   level 1/.append style={level distance=4cm, sibling angle=120},  -->
+<!--   level 2/.append style={level distance=2.5cm, sibling angle=45}] -->
+
+<!-- \node{Technology} -->
+<!--   child {node {Impacts how ?} -->
+<!--     child {node {\scriptsize Replacement of old products by new ones}} -->
+<!--     child {node {\scriptsize Create new inputs or improve old ones}} -->
+<!--     child {node {\scriptsize Affect the production process}} -->
+<!--   } -->
+<!--   child {node {Types} -->
+<!--     child {node {\scriptsize Superior: Upward shift of production function}} -->
+<!--     child {node {\scriptsize Inferior: Downward shift of production function}} -->
+<!--   } -->
+<!--   child {node {General impact} -->
+<!--     child {node {\scriptsize Factor saving}} -->
+<!--     child {node {\scriptsize Yield increasing}} -->
+<!--     child {node {\scriptsize Both factor saving and yield increasing}} -->
+<!--   } -->
+<!--   child {node {Broader impacts} -->
+<!--     child {node {\scriptsize Safter growing environment and safer food}} -->
+<!--     child {node {\scriptsize Higher crop productivity}} -->
+<!--     child {node {\scriptsize Decreased  use of water, fertilizer, and pesticides}} -->
+<!--     child {node {\scriptsize Lower food prices}} -->
+<!--     child {node {\scriptsize Reduced impact on natural ecosystems}} -->
+<!--     child {node {\scriptsize Less runoff of chemicals into rivers and groundwater}} -->
+<!--     child {node {\scriptsize Increased worker safety}} -->
+<!--     } -->
+<!-- ; -->
+<!-- \end{tikzpicture} -->
+
+<!-- # Bibliography -->
+
+<!-- ## For more information -->

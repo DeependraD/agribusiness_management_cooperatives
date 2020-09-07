@@ -124,10 +124,10 @@ options(kableExtra.latex.load_packages = FALSE)
 
 ### Importance of farm management
 
-- Increase in farm resouce allocation efficiency
+- Increase in farm resource allocation efficiency
 - Systematic assessment of farm problems and identify cause and remedial measures
 - Increase in farm income through increased productivity
-- Techological progress and agricultural modernization
+- Technological progress and agricultural modernization
 - Mechanization and industrial development
 - Generation of employment opportunities
 - Farm management as an education tool
@@ -137,12 +137,11 @@ options(kableExtra.latex.load_packages = FALSE)
 - Bringing about agricultural revolution
 
 ## Problems
-\framesubtitle{Problems are specific to \textit{Nepal}.}
 
-### Problems of farm management
+### Problems of farm management (specific to Nepal)
 
 - Farming rarely as a capital intensive enterprise. This leads to reduced commercial efficiency and technology adoption.
-- Problem of land fragmentation, parcelization and subsistance state of farming.
+- Problem of land fragmentation, parcelization and subsistence state of farming.
 - Absence of long term farm planning
 - Poor enterprise mix
 - Marketing problems
@@ -150,10 +149,12 @@ options(kableExtra.latex.load_packages = FALSE)
 - Product standardization and quality regulation
 - Agroclimate and topography
 - Problem of rural infrastructures
-- Inadequate microcredit and finiancing facilities
+- Inadequate microcredit and financing facilities
 - Poor managerial efficiency.
 
 ### Characteristics of farming as a business
+
+\footnotesize
 
 1. Primary forces of production:
   - Biological nature
@@ -178,8 +179,8 @@ options(kableExtra.latex.load_packages = FALSE)
 
 ### Capital and credit
 
-- One of the four essential factors of production alongside, land, labour and enterprise.
-- Broadly defined, capital is the money invested in the physical inputs used in agricultural production. 
+- One of the four essential factors of production alongside, land, labor and enterprise.
+- Broadly defined, capital is the money invested in the physical inputs used in agricultural production.
 - It is needed to purchase or rent productive assets, pay for labor and other inputs, and finance family living and other personal expenditures. The basic questions to be answered are:
 1. How much total capital should be used?
 2. How should limited capital be allocated among its many potential uses?
@@ -302,10 +303,3 @@ knitr::include_graphics("./figs/crop_value_addition.jpg")
 2. When to sell ?
 3. Where to sell ?
 4. How to sell ?
-
-# Bibliography
-
-##
-
-### For more information
-

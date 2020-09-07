@@ -1,0 +1,188 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Agribusiness management: Concept definition and scope"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 1
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+
+# Agriculture
+
+\footnotesize
+
+- Agriculture is the art and science of crop and livestock production. In its broadest sense, agriculture comprises the entire range of technologies associated with the production of useful products from plants and animals, including soil cultivation, crop and livestock management, and the activities of processing and marketing. Agriculture is the science, skill or practice of cultivating crop plants for human food and animal feed and livestock products.
+- Agriculture is the process of producing food, feed, fiber and other desired products by cultivation of certain plants and the raising of domesticated animals.
+- Agriculture consists of growing plants and rearing animals for food, manure, decoration and sale. It includes farming of cereal crops, grain legumes, oil seed crops root and tuber crops, sugar crops, fiber crops, fruits, vegetables, spices, agro-forestry, fishery, floriculture, sericulture, apiculture, livestock, poultry, medicinal herbs.
+
+# Business
+
+\footnotesize
+
+- Business involves activities connected with the production of wealth. It is an organized and systematized human activity involving and purchase of goods and service with the object of selling them at a profit. Business concerns with buying and selling goods, manufacturing goods or providing services in order to earn profit.
+- Commercial activity in which goods and services are exchanged for one another or money, on the basis of their perceived worth.
+- Activity of manufacturing, buying, selling, or supplying goods and services for money, commerce and trade.
+- A business is typically formed to earn profit that will increase the wealth of its owners and grow the business itself.
+- It is the process of buying and selling of commodities with or without value
+addition and generating profit from it.
+
+# Management
+
+\footnotesize
+
+- Management can be defined as the process of achieving organizational goals through planning, organizing, leading, and controlling the human, physical, financial, and information resources of the organization in an effective and efficient manner.
+- Management has been described as a social process involving responsibility for economical and effective planning and regulation of operation of an enterprise in the fulfillment of given purposes.
+- Management is the judicious use of knowledge and skill of person/persons utilizing the various resources in appropriate time, place and methods for the better results.
+- Henry Fayol who is considered as the father of principles of management: To manage is to forecast, to plan, to organize, to command coordinate and to control.
+
+#
+
+- George Terry: Management is a distinct process consisting of planning, organizing actuating and controlling performance to determine and accomplish the objectives by the use of people and resources.
+- Management helps coordinate both the human and material resources towards objective
+accomplishment through collective effect.
+- Elements of management:
+  1. Towards objective
+  2. Through people
+  3. Via technique
+  4. In an organization
+
+# Agribusiness management
+
+- The term "Agribusiness" was first introduced by John Davis & Ray Goldberg of Harvard University in their book 'A Conception of Agribusiness' in 1957. 
+- Process wise, they defined agribusiness as: "The sum total of operation involved in the manufacture and distribution of farm supplies, production activities on the farms and the storage, processing and distribution of farm commodities and items made from them". Thus, it represents three part system made up of:
+  1. the agriculture input sector,
+  2. the production sector, and
+  3. the processing-manufacturing sector.
+
+- Agribusiness includes total input-farm-product sectors that supply from inputs, are involved in production, and finally, handle the processing, distributing, wholesaling and retailing of the product to the final consumer. -- Downey and Trocke, 1987.
+
+# Features of agribusiness
+
+- Since agribusiness is applied economics, problems of agribusiness have their roots as well as solution in economics. Problems in decision making are:
+  1. Operational or internal problem; how/what/how much to produce, how to promote sales, how to face price competition, etc.
+  2. Environment or external problem
+- Agribusiness has a vertical structure, compose of input suppliers, farmers, processors, transport operators, financers, wholesalers, retailers, and consumers. These components participate in the movement of the commodity from the producer down to final consumer.
+- The agribusiness concept is market-oriented (demand-driven approach). This means that the component must function in a way that will lead to satisfaction of consumers' need.
+
+# Scope
+
+- The "whole agricultural sector" (including fishery and forestry)
+- The portion of the "industrial sector" which is composed of manufacturers or suppliers of inputs (i.e. for the farm, processing plants, and marketing firms) and processors of
+products, therefore it is directly related to industry, commerce and trade^[Industry is concerned with the production of commodities and materials while commerce and trade are concerned with their distribution].
+- Agriculture is the back bone of Nepalese economy. Hence, agriculture-based activities are the basis of developing economy of Nepal. Agro-business-led growth has good potential to contribute in sustained economic development of country. 
+- Recent trends in globalization and integration of international consumer market offer further opportunities for development of agro-business and food industry across the world which would also benefit developing country like Nepal.
+
+#
+
+- Contribution of this sector to GDP for the fiscal year 2009/10 is estimated to be about 33 percent and about 66 percent of total population is engaged in agriculture. Since it is a major source of income and employment for the majority of people in rural area, agriculture sector received top priority since the early periodic plans and policies of the nation.
+- The importance of agro-business can hardly be exaggerated especially in coping with globally increasing problem of food crisis. It is the only means for the overall food security of the country.
+- Nepal is endowed with varied ago-climate, which facilitates production of temperate, sub-tropical and tropical agricultural commodities.
+- Nepal is rich in natural resources and bio-diversities. Nepal with 0.03 \% of the world's area having more than 2 \% bio-diversities.
+
+#
+
+- Nepal has comparative and competitive advantages of growing and exports of niche products like orthodox tea, coffee, cardamom, Zinger, honey, cheese, green vegetables, vegetable seed, labor intensive and manually prepared agricultural products.
+- There is growing demand for agricultural inputs like feed and fodder, inorganic fertilizers, bio-fertilizers.
+- Export of agricultural products can be the good source of economic growth. Emerging global and regional free trade regimes such as World Trade Organization(WTO), South Asian Free Trade Area (SAFTA), Bay of Bengal Initiatives for Multi-sectoral Technical and Economic Cooperation(BIMSTEC), Asia Pacific Trading Area (APTA), Nepal has vast potential to improve it present position in the World trade of agricultural commodities both raw and processed form.
+- At present processing is done at primary level only and the rising standard of living expands opportunities for secondary and tertiary processing of agricultural commodities.
+
+#
+
+- The livestock wealth gives enormous scope for production of meat, milk and milk products, poultry products etc.
+- Organic farming has highest potential in Nepal as the pesticide and inorganic fertilizer application are less in Nepal compared to industrial nations of the world. The farmers can be encouraged and educated to switch over for organic farming.
+- The enhanced agricultural production throws open opportunities for employment in marketing, transport, cold storage and warehousing facilities, credit, insurance and logistic support services.
+- Emerging new national consensus in social and political economy has broadened the scope of agro-business.
+
+# Agribusiness elements
+
+```{r agribusiness-elements, fig.cap="Agribusiness elements in flow chart", fig.width=5, out.width="70%"}
+    # Inputs and Services
+    # Coordination Devices
+DiagrammeR::mermaid("
+graph TB
+    subgraph Coordination devices
+    a1[Markets<br> Government programs and agencies<br> Cooperative<br> Joint venture<br> Integration<br> Contractual and vertical<br> Statistical reporting agencies<br> Trade association]
+    end
+    subgraph 
+    A[Raw material producers]-->B[Farm supplier]
+    B --> C[Farmer]
+    C --> D[Processor]
+    D --> E[Industrial]
+    D --> F[Retailer]
+    D --> G[Institutional]
+    E --> H[Consumer]
+    F --> H
+    G --> H
+    end
+    subgraph Inputs and services
+    c1[Labor<br> Credit<br> Transportation<br> Energy<br> Advertising<br> Packing<br> Other services]
+    end
+", width = 600, height = 400)
+```
+
+
+# Importance of agribusiness
+
+- Utilization of niche based potentiality according to comparative advantage of agricultural goods and services.
+- Pro-poor growth strategy in rural farming areas
+- Value added and upgrading of agricultural commodity
+- Market-oriented (demand-driven business approach)
+
+# Distinctive features of agribusiness
+
+1. Tremendous variety in kind of business the agricultural sector has given rise to.
+2. Agricultural products have relatively inelastic demand than the industrial products.
+3. Infinite variety in size of business
+4. Many agribusiness workers exhibit a traditional philosophy of life, which tend to make agribusiness more conservative than other business.
+5. Agricultural products are seasonal in nature/low storage life.
+6. Agribusiness deals with vagaries of nature
+7. Agribusiness firm tends to be family oriented/community oriented.
+8. Several government polices have important impression in agricultural production and business -- price policy, health policy, fiscal policy, monetary policy, etc.
+
+# Problems of agribusiness
+
+- Subsistence farming with low productivity
+- Low investment in agriculture related activities.
+- Lack of linkage between agriculture and industry.
+- Lack of location specific and farmer oriented technology.
+- Lack of integrated approach.
+- Heavy dependent on rain fed condition.
+- Small, fragmented and absentee land holding with high cost of production.
+- Inadequate market infrastructure facilities.
+- Scattered production hence high collection cost.
+- Low infrastructure development for agro-business.
+
+#
+
+- Lack of skilled and qualified human resources.
+- Lack of business culture, monitoring and evaluation and reward punishment system.
+- Unconsolidated legal framework- overlapping and cross cutting.
+- Unskilled, aged backward community is engaged in farming.
+- Labor migration.
+- Insufficient government service delivery system.
+- Insufficient and timely unavailability of agricultural inputs.
+- Low volume of commercial production for market.
+- Weak capacity of planning and policy analysis.
+- Low linkage between research and extension.

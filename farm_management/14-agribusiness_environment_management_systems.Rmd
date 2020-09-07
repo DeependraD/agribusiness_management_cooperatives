@@ -1,0 +1,163 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Agribusiness environment and management system"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Meaning and definition
+
+## Environment
+
+- It is the situation in which agribusiness firm is operated.
+- It checks the potentiality and feasibility of business for overall investment
+- One of the important steps in business initiation
+- Analysis is conducted throughout the business period
+- The environmental factors or forces which affect the success of agribusiness are:
+  1. Economic environment
+  2. Demographic environment
+  3. Socio-cultural environment
+  4. Technological environment
+  5. Political environment
+  6. Legal environment
+- Overall, it is resultant of those components like government, technology, management, organization and individuals (public).
+
+##
+
+- In agribusiness there are several producers and several consumers as well. So the effect of single producer and consumer is negligible; i.e. they have no single effect on fixing market price, demand and supply.
+- Therefore the market equilibrium does not change unless external forces are operating.
+
+## Forces affecing agribusiness
+
+- technology changes,
+- production (yields per acre, rate of gain per animal, pounds of milk per animal),
+- local labor (availability and price),
+- land and machinery (availability and price),
+- consumer and industry demand for your products (tase and preference),
+- markets (availability, niche, traditional, organic),
+- operating environmental forces,
+- conservation programs (regulations),
+- family living and medical expenses (current and future),
+- macroeconomic forces (inflation, interest, and exchange rates),
+- trade agreements (GATT, SAFTA, BIMSTEC), and
+- other items unique to the farm business. 
+
+## Importance of agribusiness environment analysis
+
+- The manager needs to be dynamic to effectively deal with the challenges of the environment as the business environment is non-static. Some of the benefits of environment
+scanning are:
+1. It creates an increased general awareness of environment changes on the part of management.
+2. It guides with greater effectiveness in matters relating to government.
+3. It helps in marketing analysis.
+4. It suggests improvement in diversification and resources allocation
+5. It helps firms to identify and capitalize upon opportunities rather than losing out to competitors.
+6. It provides base of objective qualitative information about the business environment that can subsequently be of value in designing the strategies.
+
+# Management system and managerial decisions
+
+## Agribusiness management functions
+
+\begin{columns}
+
+\column{0.6\textwidth}
+
+\footnotesize
+1. Planning
+
+\begin{itemize}
+\item What to produce ? How to produce ? How much to produce ?
+\item Set objectives, formulate product production, processing or marketing strategies and plan accordingly
+\item Prepare work schedule and budget accordingly
+\item Plan joint venture
+\item First prepare managerial work plan and then work under it.
+\end{itemize}
+
+\column{0.4\textwidth}
+
+```{r management-functions, fig.width=2, fig.height=3, out.width="28%"}
+DiagrammeR::mermaid(
+  "
+  graph TB
+  
+  A((Directing)) --> B((Controlling))
+  B --> C((Planning))
+  C --> D((Organizing))
+  D --> E((Staffing))
+  E --> A
+  "
+, width = 400, height = 400)
+```
+
+
+\end{columns}
+
+##
+
+2. Organizing
+
+- Systematic classification and grouping of human and other resources in a manner consistent with the firm's goals.
+- Organizing task occurs continuously throughout the life of a firm
+- Defining line of authority and responsibility
+- Decentralization of authority
+- Coach and train all employees
+
+##
+
+3. Staffing
+
+- Process of recruiting, selecting, training and developing human resources in organization
+
+4. Directing 
+
+- Process of influencing employees to work for the achievement of the organizational goals
+
+5. Controlling
+
+- The collection of relevant feedback information, analyzing of such data and as per need taking of corrective action
+- It measures current performance of the firm, cooperatives or company.
+
+## Best management practices
+
+- The best management practices are research driven, industry based and proven in practice.
+- Enlisting:
+  1. Visioning
+  2. Risk management
+  3. Human resource management
+  4. Technically innovative business
+  5. Market proactive and consumer oriented (marketing management)
+  6. Addressing sustainable development practices
+
+## Decision-making at the level of top management
+
+- Determine the internal allocation of most of the resources. 
+- Two criteria are set: 
+  - The first is a budgetary (financial) criterion, i.e. are there fund available for the realization of the proposed agribusiness project? 
+  - The second is an improvement criterion, i.e. does the agribusiness project being proposed improve the existing situation beyond doubt?
+
+## Decision-making at lower levels of management (Administration)
+
+- Adaptive rational system, i.e. on the floor, day-to-day activities, 'blue print' and rule-of-thumb.
+- It involves choosing the best course of action (choosing among various sets of alternatives) for accomplishing goals out of available alternatives.

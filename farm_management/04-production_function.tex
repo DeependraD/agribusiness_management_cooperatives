@@ -115,7 +115,7 @@
   \usepackage{tikz} % required for image opacity change
   \usepackage[absolute,overlay]{textpos} % for text formatting
   \usepackage[utf8]{inputenc}
-  \usetikzlibrary{mindmap}
+  \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
 
   % this font option is amenable for beamer
   \setbeamerfont{caption}{size=\tiny}
@@ -810,188 +810,58 @@ function}\label{three-regions-of-production-function}}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Knowing the point of operation}
-\protect\hypertarget{knowing-the-point-of-operation}{}
-\begin{itemize}
-\tightlist
-\item
-  In order to determine what level in Region 2 one should operate, one
-  needs to know the product as well as the input prices. Multiplying the
-  quantities of product and inputs with the respective prices we can
-  convert the physical production function into revenue and cost
-  functions.
-\item
-  Thus the optimum level of input use, will be where the additional cost
-  of an input is equal to the additional revenue which the input yields.
-\item
-  Hence in the rational zone of production, factor-product price ratio
-  will be used as a choice indicator.
-\end{itemize}
-\end{frame}
-
 \begin{frame}{}
 \protect\hypertarget{section-14}{}
-\begin{table}
+\tikzset{
+  basic/.style  = {draw, text width=2cm, drop shadow, font=\sffamily, rectangle},
+  root/.style   = {basic, rounded corners=2pt, thin, align=center,
+                   fill=green!30},
+  level 2/.style = {basic, rounded corners=6pt, thin,align=center, fill=green!60,
+                   text width=8em},
+  level 3/.style = {basic, thin, align=left, fill=pink!60, text width=6.5em}
+}
 
-\caption{\label{tab:fp-relationship-decision-tab}Factor-product relationship and economic decision analysis.}
-\centering
-\fontsize{6}{8}\selectfont
-\begin{tabular}[t]{>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}}
-\toprule
-Physical input units nitrogen ropani & Physical output units ropani & Physical marginal input units & Physical marginal product units & Physical average product & Economic marginal cost unit & Economic marginal returns unit & Economic total returns & Economic total cost inputs & Economic profit\\
-\midrule
-0 & 2 &  &  &  &  &  & 6 & 0 & 6\\
-1 & 5 & 1 & 3 & 5.0 & 4 & 9 & 15 & 4 & 11\\
-2 & 9 & 1 & 4 & 4.5 & 4 & 12 & 27 & 8 & 19\\
-3 & 14 & 1 & 5 & 4.7 & 4 & 15 & 42 & 12 & 30\\
-4 & 21 & 1 & 7 & 5.2 & 4 & 21 & 63 & 16 & 47\\
-\addlinespace
-5 & 26 & 1 & 5 & 5.2 & 4 & 15 & 78 & 20 & 58\\
-6 & 30 & 1 & 4 & 5.0 & 4 & 12 & 90 & 24 & 66\\
-7 & 33 & 1 & 3 & 4.7 & 4 & 9 & 99 & 28 & 71\\
-8 & 35 & 1 & 2 & 4.4 & 4 & 6 & 105 & 32 & 73\\
-9 & 36 & 1 & 1 & 4.0 & 4 & 3 & 108 & 36 & 72\\
-\addlinespace
-10 & 36 & 1 & 0 & 3.6 & 4 & 0 & 108 & 40 & 68\\
-11 & 35 & 1 & -1 & 3.2 & 4 & -3 & 105 & 44 & 61\\
-12 & 33 & 1 & -2 & 2.8 & 4 & -6 & 99 & 48 & 51\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{frame}
-
-\begin{frame}{}
-\protect\hypertarget{section-15}{}
-\begin{itemize}
-\tightlist
-\item
-  Take for example Table \ref{tab:fp-relationship-decision-tab}, the
-  price per unit of input to be Rs. 4 and price per unit of product Rs.
-  3. Multiply the various quantities of product at different levels of
-  input-use by Rs. 3. Assuming the producer's purchases are low enough
-  not to cause the price of the input to rise, each input unit will cost
-  Rs. 4. This is shown in 6th column of the Table
-  \ref{tab:fp-relationship-decision-tab}.
-\item
-  We can see from the Table \ref{tab:fp-relationship-decision-tab} that
-  the highest net revenue can be obtained when 8 units of the input are
-  used yielding net revenue at Rs 73. If the producer applies less
-  number of input units, say 7 units, the net revenue will be less. Here
-  the returns from the last unit of input are greater than the costs,
-  indicating a scope of further increasing the revenue by pushing up
-  input use.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\protect\hypertarget{section-16}{}
-\begin{itemize}
-\tightlist
-\item
-  On the other hand, if inputs are added to the point where the price of
-  the input exceeds the value of the marginal product, the added costs
-  go greater than the added returns.
-\item
-  By adding the 9th unit of input, the additional returns will be only
-  Rs 3 whereas the cost of this unit of input will be the same Rs 4.
-  This means it does not pay the producer to add more than 8 units of
-  the input.
-\item
-  Optimum level of input use will thus be where the value of the
-  additional product will be equal to the cost of additional input.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\protect\hypertarget{section-17}{}
-\begin{itemize}
-\tightlist
-\item
-  We can write this condition for maximization of net revenue as:
-\end{itemize}
-
-\[
-P_{Y1} \Delta Y_1 = P_{X1} \Delta X_1
-\]
-
-Where \(P_{Y1} \Delta Y_1\) is added revenue and \(P_{X1} \Delta X_1\)
-is added cost.
-
-\begin{itemize}
-\tightlist
-\item
-  This can be written in ratio form as well.
-\end{itemize}
-
-\[
-\frac{\Delta Y_1}{\Delta X_1} = \frac{P_{X1}}{P_{Y1}}
-\]
-\end{frame}
-
-\hypertarget{impact-of-technological-change-on-production-function}{%
-\section{Impact of technological change on production
-function}\label{impact-of-technological-change-on-production-function}}
-
-\begin{frame}{Impact of technological change on production function}
-\begin{itemize}
-\tightlist
-\item
-  Technical advances may result in such development as evolution of new
-  crop varieties, breeds of animals and birds, invention of new
-  fertiliers and their use methods, improved rations, new farm machinery
-  etc.
-\item
-  So far we have made or point about production function with assumption
-  that technology remains constant.
-\item
-  Application of different technology results in a different production
-  function.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\protect\hypertarget{section-18}{}
 \begin{tikzpicture}[
-  transform shape, mindmap,
-  grow cyclic, 
-  text width = 4.5cm, %align=flush center, %automatically formatted by mindmap
-  scale=0.6, every node/.style={scale=0.6, concept, concept color=orange},
-  level 1/.append style={level distance=4cm, sibling angle=120}, 
-  level 2/.append style={level distance=2.5cm, sibling angle=45}]
+  level 1/.style={sibling distance=40mm},
+  edge from parent/.style={->,draw},
+  >=latex]
 
-\node{Technology}
-  child {node {Impacts how ?}
-    child {node {\scriptsize Replacement of old products by new ones}}
-    child {node {\scriptsize Create new inputs or improve old ones}}
-    child {node {\scriptsize Affect the production process}}
-  }
-  child {node {Types}
-    child {node {\scriptsize Superior: Upward shift of production function}}
-    child {node {\scriptsize Inferior: Downward shift of production function}}
-  }
-  child {node {General impact}
-    child {node {\scriptsize Factor saving}}
-    child {node {\scriptsize Yield increasing}}
-    child {node {\scriptsize Both factor saving and yield increasing}}
-  }
-  child {node {Broader impacts}
-    child {node {\scriptsize Safter growing environment and safer food}}
-    child {node {\scriptsize Higher crop productivity}}
-    child {node {\scriptsize Decreased  use of water, fertilizer, and pesticides}}
-    child {node {\scriptsize Lower food prices}}
-    child {node {\scriptsize Reduced impact on natural ecosystems}}
-    child {node {\scriptsize Less runoff of chemicals into rivers and groundwater}}
-    child {node {\scriptsize Increased worker safety}}
-    }
-;
+% root of the the initial tree, level 1
+\node[root] {Technology}
+% The first level, as children of the initial tree
+  child {node[level 2] (c1) {General impacts}}
+  child {node[level 2] (c2) {Types}}
+  child {node[level 2] (c3) {Broader impacts}};
+
+% The second level, relatively positioned nodes
+\begin{scope}[every node/.style={level 3}]
+\node [below of = c1, xshift=15pt] (c11) {Yield increasing};
+\node [below of = c11] (c12) {Factor saving};
+\node [below of = c12] (c13) {Both factor saving and yield increasing};
+
+\node [below of = c2, xshift=15pt] (c21) {Inferior: Downward shift of production function};
+\node [below of = c21] (c22) {Superior: Upward shift of production function};
+
+\node [below of = c3, xshift=15pt] (c31) {Increased worker safety};
+\node [below of = c31] (c32) {Less run-off of chemicals into rivers and ground water};
+\node [below of = c32] (c33) {Reduced impact on natural ecosystem};
+\node [below of = c33] (c34) {Lower food prices};
+\node [below of = c34] (c35) {Decreased use of water, fertilizer, and pesticides};
+\node [below of = c35] (c36) {Higher productivity};
+\node [below of = c36] (c37) {Safer growing environment and safer food};
+
+\end{scope}
+
+% lines from each level 1 node to every one of its "children"
+\foreach \value in {1,2,3}
+  \draw[->] (c1.195) |- (c1\value.west);
+
+\foreach \value in {1,...,2}
+  \draw[->] (c2.195) |- (c2\value.west);
+
+\foreach \value in {1,...,7}
+  \draw[->] (c3.195) |- (c3\value.west);
 \end{tikzpicture}
-\end{frame}
-
-\hypertarget{bibliography}{%
-\section{Bibliography}\label{bibliography}}
-
-\begin{frame}{For more information}
-\protect\hypertarget{for-more-information}{}
 \end{frame}
 
 

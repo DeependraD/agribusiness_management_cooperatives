@@ -1,0 +1,209 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Production planning in agribusiness and risk and uncertainity management"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Production planning in agribusiness
+
+## Background^[Production planning is related to earlier lecture on Farm Planning]
+
+- All business activities ranging from small corner shop to large commercial firms should plan their production and marketing operations
+- Planning is secret of economic success of business
+- With recent technological development in agriculture, farming has become more complex business and requires careful planning for successful operation
+- Fail to make a plan is a plan to fail
+
+## Advantages of planning
+
+1. Income improvement
+
+- Farm planning is an integrated, coordinated and advance programmes of actions which show opportunity to cultivators to improve in income
+- Income maximization can be achieved through by efficient utilization of present resources/technologies and introduction of new technology
+- Farm planning gives idea about this
+
+##
+
+2. Educational process
+
+- FP is an educational tool to bring a change in the outlook of the cultivators and the extension workers
+- Knowledge in advances in agriculture is pre-requisite for better farm planning
+- So, farmers keep their information up-to-date by farm planning
+- This acts as a self-educating tool for the farmers
+- Farmers can closely study their own business and see more clearly their opportunities and limitations, thus, improving managerial ability
+
+##
+
+3. Desirable organizational changes
+
+- FM is an approach which introduces desirable changes in farm organization and operations and makes the farm a viable unit
+
+## Objectives of planning
+
+- Ultimate objective of FP is the improvement in the standard of living of farmer
+- Immediate goal is to maximize the net income of the farmer
+
+## Characteristics of a good plan
+
+1. It should provide ways for efficient use of farm resources such as labor, power and equipment
+2. The crop plan should have balanced combinations of enterprises,
+3. Avoid excessive risks
+4. Provide flexibility
+5. Utilize the farmers knowledge, training and experience and take account of the farmers likes and dislikes
+6. Give considerations to efficient marketing facilities
+7. Provide program of obtaining, using and repaying the credit
+8. Provide for the use of up-to-date modern agricultural methods and practices
+9. Provide regular income and employment to the farm families
+10. Do not produce negative environmental impact
+
+## Steps in farm planing and budgeting
+
+\footnotesize
+
+1. Specification of the technical coefficients of production: specification of technical coefficients for producing different outputs
+2. Specification of appropriate prices: price forecasting for outputs (last three years average price or last year price plus inflation)
+3. Preparation of enterprise profitability chart: prepare profitability ranking charts for enterprises based on net return
+4. Preparation of farm map: prepare farm map showing all physical features of farm
+5. Preparation of inventory of limited farm resources: prepare list of all resources like land, labor, animals, buildings, machines, cash and farm products along with their value
+6. Examine the existing farm plan: evaluate present plan on the basis of costs, returns and resource use patterns
+  - Work out variable cost for each enterprise
+  - Work out gross income for various enterprises
+  - Calculate returns to fixed farm resources (gross income variable cost)
+  - Work out net profit (gross income-total cost)
+
+##
+
+7. Locate the weakness of present plan: identifying weaknesses of present plan may serve as guidelines for improving alternative plan
+8. List the risks in farm production: identify probable risks and think about effective strategies to cope them
+9. Prepare the alternative plans: alternative plans can be developed considering resource restriction and weakness of existing plan and possibilities of incorporating modern technology
+10. Analyzing alternative plans: new plans are analyzed for costs and returns and practicability and the optimum one which shows highest returns is selected
+11. Implementing the plan: execution of plan
+
+# Uncertainty and risk management
+
+## Background
+
+- Perfect knowledge situation in agribusiness management decisions is far from reality
+- It is necessary to study the effect of technical progress on the production relation and incorporate all the complications due to time and risk and uncertainty in decision making
+- Consideration of such aspects should help to arrive at some adjustments with the introduction of time and risk and uncertainty aspects
+
+## Decision making under risk and uncertainty
+
+```{r decision-risk-uncertainty, fig.cap="Frank Knight's classification of knowledge situation."}
+DiagrammeR::mermaid(
+  "
+  graph TB
+  A[Knowledge situation] --> B[Perfect knowledge]
+  A --> C[Imperfect knowledge]
+  C --> D[Risk]
+  C --> E[Uncertainty]
+  D --> F[Priori]
+  D --> G[Statistical]
+  "
+)
+```
+
+##
+
+\footnotesize
+
+**Perfect knowledge**
+
+- Every thing (technology, price, organizational behavior etc) about the future of business is know with certainty
+- No need of farm management expert
+- But does not reflect the real world situation
+
+**Imperfect knowledge**
+
+- May be either risk or uncertainty
+- Risk represents less imperfection in knowledge than does uncertainty
+- Under risk the occurrence of future events can be predicted fairly accurately by specifying the level of probability
+- When a risk situation prevails, it can be said, for instance, that the chances of a hailstorm at the time of harvesting wheat are 5:95 or 20:80.
+- In practice, however, farmers are unable to draw a clear distinction between risk and uncertainty, though the reaction in each situation is markedly different
+- Thus in most cases risk and uncertainty are taken as similar in decision making
+
+## Types of risk and uncertainty
+
+1. Economic uncertainties
+
+- Input and output price uncertainties
+- In many developed countries this uncertainty are reduced by price announcement before crop season
+- This uncertainty is caused by national and international policies which are beyond the approach of individual farmer
+
+2. Biological uncertainties
+
+- Common and important in agriculture
+- Rain, drought, flood, hailstorm, frost may cause disease and pest incidence
+
+##
+
+\footnotesize
+
+3. Technological uncertainty
+
+- Continuous advancement of knowledge through research
+- New technology (method, practice, raw material, market etc) available to farmers - increased efficiency of production
+
+4. Institutional uncertainty
+
+- Government, banks may cause uncertainties for farmers
+- Credit squeeze, price supports, subsidies etc may be enforced and withdrawn without considering individual farmers
+
+5. Personal uncertainty
+
+- Unexpected happening in farmers' household or its labor
+- Sum of production and technical risk, marketing and price risk, and personal risk is called business risk.
+
+## Risk attitudes
+
+1. Risk avoider/avert
+2. Risk neutral
+3. Risk bearer/taker
+
+## Risk management
+
+- It is a way for an organization to avoid losses and maximize opportunities
+- Steps in project risk management
+  1. Establishing context
+  2. Identifying important risky decision problems
+  3. Structure problems
+  4. Analyze options and consequences
+  5. Evaluate and decide
+  6. Implement and manage
+  7. Monitoring and review
+
+## Risk management strategies
+
+- Some farmers take more risk than others
+- However, every farmer take some safeguarding measures to minimize loss
+- Some measures to safeguard against risk and uncertainty are:
+  1. Selection of enterprises with low variability
+  2. Insurance
+  3. Forward contract
+  4. Flexibility
+  5. Liquidity and asset management
+  6. Diversification
+  7. Maintaining resource in reserve

@@ -1,0 +1,97 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Agricultural policies"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Agribusiness related policies by government
+
+## 
+
+- Policies
+  - Trade policy 1992
+  - National Agricultural Policy 2004
+  - Agribusiness Promotion policy 2006 AD/2063 BS
+  - National Tea Policy 2057 (2000),
+  - National Coffee Policy 2060 (2003)
+  - Floral Promotion Policy 2069 (2012)
+- Plans
+  - Agriculture Perspective plan (APP) 1995 to 2015
+  - Periodic plans
+- Strategies
+  - Nepal trade integration strategy 2010
+  - Nepal trade integration strategy 2016
+  - Agricultural Development Strategy 2015 to 2035
+
+# Policies
+
+## The agribusiness promotion policy, 2063
+
+\footnotesize
+
+- The Agri-Business Promotion Policy highlights the diversification, commercialization and promotion of agriculture sector with private sector involvement in commercial farming.
+- It emphasizes that the living standard of the farmer would not improve unless the agriculture sector is transformed from subsistence level to commercial farming.
+- The policy aims to reduce poverty by encouraging production of market-oriented and competitive agro-products.
+- It realizes the need of promoting internal and external markets.
+- This policy was prepared in the spirit of National Agriculture Policy 2061 emphasizing business service centers establishment for quality agriculture inputs and services.
+- Partnership between the private sector and Government has been emphasized for the export of quality goods.
+- In the context of Nepal's entry into the WTO, developing market network is its priority.
+- The policy considers infrastructure development as a cornerstone for commercialization and has envisaged promotion of partnership approach between Government and the private sector.
+
+##
+
+- Nepal Government has launched Agri-business Promotion Policy in 2063 (2006 AD) with giving high priority on diversification, modernization, commercialization and promotion of agriculture sector.
+- This policy was prepared in the spirit of National Agriculture Policy, 2061 emphasizing agriculture production as agri-business or an enterprise.
+- It realizes the important role of private sector to promote commercial farming.
+- It has emphasized the transformation of subsistence agriculture into commercial agriculture which is imperative to improve the living standard of the farmers from their current situation.
+
+## Objectives
+
+- Enhance and/or support market oriented and competitive agricultural production;
+- Contribute to promote domestic and export markets by developing agro-based industries; and
+- Reduce poverty through the commercialization of agriculture sector.
+
+##
+
+- The policy has identified a total of 44 strategic issues as its main policies for the commercialization of agriculture and poverty reduction. Among them a few are:
+  - Focus on the formation and promotion of Massive Production/Growth Centres based on geographic, technical and economic possibilities (and/or based on the comparative advantages),
+  - Emphasis on special economic zones (for agriculture production, manufacturing and export),
+  - Services such as production inputs, technologies and technical services, agriculture roads, rural electricity, irrigation, credit, insurance, market management, information system, appropriate agriculture mechanization and processing etc. will be assured to the specified production area in a integrated way through the collaboration and coordination of government,
+
+##
+
+- 
+  - Establishment and operation of Commercial Service Centres (CSCs) to provide commercial services for high quality production inputs and for the collection of farm produces, storage, processing, transportation and market price based on the area of trade and geographic locations. This will be managed through the participation of GOs and NGOs, GOs, Cooperative and private sector,
+  - Promotion of partnership approach between government and the private sector for agriculture development.
+  - So, it has emphasized private sectors involvement for the export of quality goods and market Network.
+  
+##
+
+- 
+  - Establishment and operation of Commercial Service Centres (CSCs) to provide commercial services for high quality production inputs and for the collection of farm produces, storage, processing, transportation and market price based on the area of trade and geographic locations. This will be managed through the participation of GOs and NGOs,
+  - Prerequisites of agribusiness such as irrigation, agriculture roads, collection centres, various types of refrigerated storage, rural electrification, development of appropriate technologies, laboratory services etc. will be promoted through the collaboration of government, private sector, NGOs, cooperative and civil societies
+  - Provision of 75% duty-free on the import of agri-business machineries such as thresher, sprinkler, weeding machine, harvester, chilling vat, cooling Vat, milk processer, agriculture tools and implements etc.

@@ -1,0 +1,397 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Product-product relationship
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+# requirements
+library(knitr)
+require(tidyverse)
+require(tsibble)
+require(tidyquant)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+source("./../scripts/supply-demand-surplus.R")
+source("./../scripts/graphics.R")
+# require(extrafont) # requires for graphics.R
+# require(extrafontdb)
+# extrafont::loadfonts()
+# extrafont::font_import()
+```
+
+# Product-product relationship
+
+## Background
+
+- Product-product relationship deals with resource allocation among competing enterprises.
+- Under product-product relationship, inputs are kept constant while product (outputs) are varied. 
+- This relationship guides the producer in deciding "what to produce ?"
+- This relationship is explained by principle of product substitution and law of equimarginal returns.
+<!-- - The choice indicators are substitution ratio and price ratio. -->
+
+## Production-possibility frontier
+
+- A production-possibility frontier shows the maximum number of alternative combinations of goods and services that a society can produce at a given time when there is full utilization of economic resources and technology.
+- Alternative combinations of Rice and Wheat output from a piece of land (Both crops are alloted randomly to the given parcel with no difference in use of other inputs) is shown in Table \ref{tab:ppschedule}.
+- In choosing what to produce, decision makers have a choice of producing, for example, alternative C-- 5 tons of Rice and 14 tons of Wheat-- or any other alternative presented.
+
+## Production-possibility schedule
+
+```{r ppschedule, echo=FALSE}
+pps_less <- readxl::read_xlsx("./../data/concepts_of_economics.xlsx", 
+                               sheet = "production_possibility_schedule", col_names = TRUE)
+pps_less %>% 
+  mutate_if(is.numeric, function(x) {
+    kableExtra::cell_spec(x, "latex", bold = T, color = kableExtra::spec_color(x, end = 0.8),
+                          font_size = kableExtra::spec_font_size(x))
+    }) %>%
+  mutate_at("Alternative outputs", function(x) {kableExtra::cell_spec(
+    x, "latex", color = "white", bold = T,
+    background = kableExtra::spec_color(seq_along(1:nrow(.)), end = 0.9, option = "A", direction = -1)
+    )}) %>% 
+  knitr::kable(format = "latex", caption = "Production possibility schedule", 
+               escape = F, booktabs = T, linesep = "", align = "c") %>% 
+  kableExtra::kable_styling(position = "left", full_width = FALSE, font_size = 8) %>% 
+  kableExtra::column_spec(1:3, width = "10em")
+```
+
+- The curve, labeled PP, is called the production-possibility frontier. Point C plots the combination of 5 tons of rice and 14 tons of wheat, assuming full employment of the economy's resources and full use of its technology, as do all of the alternatives presented in Table \ref{tab:ppschedule}.
+
+## Production-possibility frontier
+
+```{r ppfrontier, fig.cap="Production possibility frontier", fig.width=4, fig.height=3, out.width="60%", echo=FALSE}
+pps_curve <- data.frame(x2 = 2.62, x1 = 3.57, y2 = 12.0, y1 = 10.0)
+pps_less %>% 
+  ggplot(mapping = aes(x = `Rice (tons)`, y = `Wheat (tons)`)) +
+  geom_path(color = "blue") + 
+  ggforce::geom_bspline0(color = "red") +
+  theme_bw()
+  
+```
+
+# Enterprise combination
+
+## Relationships between products (enterprise relations)
+
+1. Joint products
+2. Complementary products
+3. Competitive products
+4. Supplementary products
+
+## Joint products
+
+- Products that are produced through single production process and the production of one without another is not possible. 
+- These products are obtained in fixed proportions. If a given quantity of one product is produced, the quantity of other products is fixed by nature. 
+- Joint products are produced through a single production function and for the purpose of analysis they may be treated as single product. 
+- All farm commodities are mostly joint products. E.g. wheat and straw, groundnut and hulms, cotton seed and lint, cattle and manure, butter and milk etc.
+
+##
+
+```{r joint-goods, fig.cap="Joint relationship rice straw and rice grain", fig.width=4, fig.height=3, fig.align="center"}
+joint_goods1 <- tribble(~"rice_grain", ~"rice_straw", ~"utility", ~"utility_level",
+                               2, 4, 100, 1,
+                               3, 6, 100, 1,
+                               2.5, 5, 100, 1,
+                               6, 12, 100, 1,
+                               5.5, 11, 100, 1)
+
+joint_goods <- ggplot() +
+  geom_point(aes(x = `rice_grain`, y = `rice_straw`), data = joint_goods1) +
+  geom_line(aes(x = `rice_grain`, y = `rice_straw`), data = joint_goods1) +
+  labs(x = "Rice grain",
+       y = "Rice straw") +
+  expand_limits(x = 0, y = 0) +
+  scale_x_continuous(breaks = seq(2, 12, by = 2)) +
+  scale_y_continuous(breaks = seq(2, 12, by = 2)) +
+  theme_bw()
+joint_goods
+
+```
+
+
+## Complementary goods
+
+<!-- ```{r complementary-goods, fig.cap="Complementary relationship between left and right shoes of a pair", fig.width=4, fig.height=3, fig.align="center"} -->
+<!-- # in complementary goods, utility is limitted by the good with smallest quantity -->
+<!-- complementary_goods1 <- tribble(~"left_shoe", ~"right_shoe", ~"utility", ~"utility_level", -->
+<!--                                2, 4, 100, 1,  -->
+<!--                                3, 2, 100, 1, -->
+<!--                                12, 2, 100, 1,  -->
+<!--                                2, 2, 100, 1, -->
+<!--                                7, 2, 100, 1, -->
+<!--                                2, 5, 100, 1, -->
+<!--                                8, 2, 100, 1, -->
+<!--                                2, 10, 100, 1) -->
+
+<!-- complementary_goods2 <- tribble(~"left_shoe", ~"right_shoe", ~"utility", ~"utility_level", -->
+<!--                                 4, 5, 200, 2, -->
+<!--                                 5, 4, 200, 2, -->
+<!--                                 6, 4, 200, 2, -->
+<!--                                 10, 4, 200, 2, -->
+<!--                                 4, 12, 200, 2, -->
+<!--                                 7, 4, 200, 2, -->
+<!--                                 4, 6, 200, 2) -->
+
+<!-- complementary_goods <- ggplot() + -->
+<!--   geom_segment(aes(x = `left_shoe`, y = `right_shoe`, xend = 2, yend = 2), data = complementary_goods1) + -->
+<!--   geom_segment(aes(x = `left_shoe`, y = `right_shoe`, xend = 4, yend = 4), data = complementary_goods2) + -->
+<!--   labs(x = "Left shoe",  -->
+<!--        y = "Right shoe") + -->
+<!--   expand_limits(x = 0, y = 0) + -->
+<!--   scale_x_continuous(breaks = seq(2, 12, by = 2)) + -->
+<!--   scale_y_continuous(breaks = seq(2, 12, by = 2)) + -->
+<!--   theme_bw() -->
+<!-- complementary_goods -->
+
+<!-- # ggsave("./complementary_goods.png", complementary_goods, units = "in",  -->
+<!-- #        dpi = 250, width = 6, height = 4) -->
+<!-- ``` -->
+
+\begin{columns}
+  \column{0.5\textwidth}
+
+```{r complementary-goods, fig.cap="Complementary relationship between wheat and legume system of cropping", fig.width=4, fig.height=3, fig.align="center", out.width="0.6\\textwidth"}
+complementary_goods <- tribble(
+  ~"wheat", ~"legume", 
+  2.25, 1.5, 
+  2.5, 1.8, 
+  2.75, 1.9, 
+  3, 1.8, 
+  3.25, 1.6,
+  3.5, 1.3, 
+  3.25, 0.9
+  )
+
+complementary_goods %>% 
+  ggplot(aes(x = wheat, y = legume)) +
+  # geom_point() +
+  ggforce::geom_bspline() +
+  labs(x = "Wheat", y = "Legume") +
+  theme_bw()
+
+```
+
+  \column{0.5\textwidth}
+  \footnotesize
+  \begin{itemize}
+  \item When change in level of production of one occurs, another also changes in the same direction. i.e. when resource held constant the increase in the level of output of one product also increases in the level of another output. 
+  \item In other words shift of resources from one product to a second product will increase rather than decrease the output of first. But this relation holds only upto certain level of production. 
+  \item Leguminous crops increases the fertility status of soil, which is beneficial for production of wheat on a piece of land.
+  \end{itemize}
+
+\end{columns}
+
+## Competitive goods
+
+\begin{columns}
+    \column{0.33\textwidth}
+    \centering
+
+```{r competitive-goods-constant-mrs, fig.cap="Competitive relationship between Rice and Wheat (constant marginal rate of product substitution)", fig.width=4, fig.height=3, fig.align="center", out.width="0.95\\textwidth"}
+# marginal rate of substitution of quantity x for quantity y should be constant
+# the function below could be thought of as data generating process
+
+# i. constant marginal rate of substitution
+# here MRS of y for x is given by slope coefficient
+rice <- c(2, 2.3, 2.4, 2.6, 2.8, 2.9, 3.2)
+wheat <- function(x){
+  -0.15*x + 1.6 # MRS is "-2"
+}
+# wheat(rice)
+
+ggplot() +
+  geom_line(aes(rice, wheat(rice))) +
+  labs(x = "Rice", y = "Wheat") +
+  theme_bw()
+
+```
+
+      \column{0.33\textwidth}
+      \footnotesize
+
+```{r competitive-goods-increasing-mrs-fig, fig.cap="Competitive relationship between Rice and Wheat (increasing marginal rate of product substitution)", fig.width=4, fig.height=3, fig.align="center", out.width="0.75\\textwidth"}
+
+# ii. increasing marginal rate of substitution
+mrs <- c(0.04, 0.06, 0.1, .18, .26, .40, .60)
+rice <- c(2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6)
+wheat <- function(x, mrs){
+  2-mrs*x
+}
+
+ggplot(data = Hmisc::bezier(rice, wheat(rice, mrs)) %>%
+         bind_cols()) +
+  geom_line(aes(x, y), size = 1) +
+  labs(x = "Rice", y = "Wheat") +
+  theme_bw()
+
+```
+
+```{r competitive-goods-increasing-mrs-table}
+tibble(
+  rice = rice, 
+  wheat = wheat(rice, mrs)
+) %>% 
+  mutate("$\\Delta \\textrm{rice}$" = rice - lag(rice), 
+         "$\\Delta \\textrm{wheat}$" = wheat - lag(wheat)) %>%
+  mutate("$MRS \\newline (\\frac{\\Delta wheat}{\\Delta rice})$" = abs(`$\\Delta \\textrm{wheat}$`/`$\\Delta \\textrm{rice}$`)) %>% 
+  knitr::kable(booktabs = TRUE, escape = FALSE) %>% 
+  kableExtra::kable_styling(font_size = 5, latex_options = "scale_down") %>% 
+  kableExtra::column_spec(column = 1:5, width = c(rep("2.4em", 4), "3.2em"))
+```
+
+
+      \column{0.33\textwidth}
+      \footnotesize
+
+```{r competitive-goods-decreasing-mrs-fig, fig.cap="Competitive relationship between Rice and Wheat (decreasing marginal rate of product substitution)", fig.width=4, fig.height=3, fig.align="center", out.width="0.75\\textwidth"}
+# iii. decreasing marginal rate of substitution/ synonymous to indifference curve
+
+mrs <- rev(-c(0.04, 0.06, 0.1, .18, .28, .40, .60)) # infact mrs is negative
+bz_curves <- data.frame(`Rice` = rice,
+                        `Wheat` = wheat(rice, mrs))
+
+bezier::bezier(t = seq(0,1,length.out = 50), bz_curves) %>%
+  as_tibble() %>%
+  ggplot2::ggplot(aes(y = V1, x = V2)) +
+  ggplot2::geom_line(size = 1.0) +
+  xlab("Rice") +
+  ylab("Wheat") +
+  theme_bw()
+```
+
+```{r competitive-goods-decreasing-mrs-table}
+tibble(
+  rice = rice, 
+  wheat = wheat(rice, mrs)
+) %>% 
+  mutate("$\\Delta \\textrm{rice}$" = rice - lag(rice), 
+         "$\\Delta \\textrm{wheat}$" = wheat - lag(wheat)) %>%
+  mutate("$MRS \\newline (\\frac{\\Delta wheat}{\\Delta rice})$" = abs(`$\\Delta \\textrm{wheat}$`/`$\\Delta \\textrm{rice}$`)) %>% 
+  knitr::kable(booktabs = TRUE, escape = FALSE) %>% 
+  kableExtra::kable_styling(font_size = 5, latex_options = "scale_down") %>% 
+  kableExtra::column_spec(column = 1:5, width = c(rep("2.4em", 4), "3.2em"))
+```
+
+
+ \end{columns}
+
+##
+
+\footnotesize
+
+- When increase in the production of one product, with resources held constant results in the decrease in the output of the other product.
+- The marginal rate of product substitution, which indicates the quantity of one product that must be given up, when the output of other product is increased by one unit, is negative.
+- Marginal Rate of Product Substitution (MRPS) = $\large \frac{\Delta Y_2}{\Delta Y_1}$, where $Y_1$ and $Y_2$ are the two products of a competitive relationship.
+
+## Supplementary good
+
+\begin{columns}
+  \column{0.45\textwidth}
+
+```{r supplementary-goods, fig.cap="Supplementary relationship between Goat and wheat production (After reaching certain level of production relation becomes competitive)", fig.width=4, fig.height=3, fig.align="center", out.width="0.95\\textwidth"}
+supplementary_goods <- tribble(
+  ~"wheat_yield", ~"goats", ~"which_rise",
+  3, 6, "wheat", 
+  3, 7, "wheat", 
+  3, 8, "wheat", 
+  1, 6, "goat", 
+  2, 6, "goat", 
+  3, 6, "goat", 
+  3, 6, "both",
+  4, 5.5, "both",
+  5, 4.5, "both",
+  6, 3.25, "both", 
+  7, 1.5, "both"
+)
+
+ggplot(supplementary_goods, aes(x = wheat_yield, y = goats)) +
+  # geom_point() +
+  # geom_line(aes(color = which_rise)) +
+  ggforce::geom_bspline(aes(color = which_rise)) +
+  scale_colour_viridis_d(label = c("Both", "Goat", "Wheat"), name = "Which product varies ?") +
+  theme_bw() +
+  labs(x = "Wheat", y = "Goats")
+```
+
+  \column{0.55\textwidth}
+  \footnotesize
+  
+  \begin{itemize}
+  \item When increase or decrease in the output of one product does not affect the production of the other product.
+  \item With the same resources, the output of one product can be increased with neither a gain nor a sacrifice in the other product.
+  \item Supplementary products use the idle resources. 
+  \item On small farms keeping a few goats undertaking wheat cultivation may be enterprises because permanent labour is used in crop without reducing the productivity of goat farming.
+  \end{itemize}
+
+\end{columns}
+
+# Production optimization concepts
+
+## Iso revenue line
+
+- It represents all possible combination of two products which would yield an equal (same) revenue or income.
+
+**Characteristics**
+
+1. Iso revenue line is a straight line because product prices do not change with quantity sold
+2. As the Total Revenue increases the iso revenue line moves away from origin
+3. The slope indicates ratio of product prices. As long as product prices remain constant iso revenue lines are parallel.
+
+##
+
+Suppose a farmer intends to earn Rs 10000 of revenue from sales of two competative ouputs. His isorevenue line is shown in Figure \ref{fig:isorevenue-line-rice-wheat}.
+
+```{r isorevenue-line-rice-wheat, fig.width=5, fig.height=4, fig.cap="Isorevenue line for different quantity combination of Rice and Wheat grain sales"}
+# provide a isorevenue line
+total_revenue <- 10000
+price_rice <- 40
+price_wheat <- 45
+
+n_rice <- total_revenue / price_rice
+# n_rice
+
+n_wheat <- total_revenue / price_wheat
+# n_wheat
+
+slope <- -n_wheat / n_rice
+# slope
+
+# budget function
+revenue_fun <- function(x) slope*x + n_wheat
+
+ggplot() +
+  stat_function(data = tibble(x = seq(0, 350, 15)), aes(x = x), 
+                fun = revenue_fun, color = "purple", size = 1.5) +
+  annotate(geom = "label", x = 75, y = revenue_fun(75), 
+           label = "Revenue", color = "purple") +
+  labs(x = "Rice grain", y = "Wheat grain") +
+  scale_x_continuous(expand = c(0, 0), breaks = seq(0, 350, 50)) +
+  scale_y_continuous(expand = c(0, 0), breaks = seq(0, 250, 50)) +
+  coord_cartesian(xlim = c(0, 300), ylim = c(0, 250)) +
+  theme_bw()
+```
+
+## Determination of optimum combination of products
+
+1. Tabular method
+2. Arithmetic method; Equate marginal rate of product substitution with price ratio
+3. Graphical method; point of contact of Production possibility curve and Isorevenue line

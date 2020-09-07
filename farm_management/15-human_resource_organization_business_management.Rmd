@@ -1,0 +1,175 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Human resource, organization and business management functions"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Human resource management in organization
+
+## Meaning
+
+- Human resource are the people working for the organization
+- Human Resource Management (HRM) is the term used to describe formal systems developed for the management of people within an organization. 
+- It involves finding out the needs and aspirations of employees and creating opportunities within the organization (job enlargement, position creation) and outside the organization (support for advance learning, training and exposure) for employees to improve themselves.
+- The responsibilities of a human resource manager fall into three major areas: staffing, employee compensation and benefits, and defining/designing work. 
+- Essentially, the purpose of HRM is to maximize the productivity of an organization by optimizing the effectiveness of its employees.
+
+## Functions
+
+- Recruiting employees
+- Fixing position in the organogram
+- Fixing remuneration and incentives
+- Fixing time rate to be worked
+- Providing trainings, visits, exposure or advanced education for potential employees
+- Assess job satisfaction
+- Award, punish or fire staffs
+
+## Human behavior in organization
+
+- Mobilizing employee means mobilizing human factors in the organization
+- Employee work is perishable
+- Employee is a mobile factor
+- Employee has different efficiencies
+
+## Organizational behavior
+
+- Organizational behavior is the system of culture, leadership, communication and group dynamics that determines an organization's actions.
+- According to Keith Davis, "It is the study and application of knowledge about how people act within an organization"
+- Employee have a variety of needs, irrespective of one's status, age and achievements;
+- Human behavior in organizations is as complex as the social system itself.
+- The organizational system consists of social, technical and economic elements which coordinate human and material resources to achieve various organizational objectives
+- If understood and addressed properly, OB improves people's understanding of interpersonal skills and so also the ability to work together as a team to achieve organizational goals effectively.
+
+## Theories of human motivation (Theory of X and Y)
+
+- Douglas McGreator and MIT Sloan School of Management (1960s) introduced Theory X and Theory Y
+- Theory specially used for human resource management, organizational behavior and organizational development.
+
+**Theory X**
+
+- This theory of management assumes that employees are inherently lazy and would like to avoid work responsibility as much as possible.
+- Because of this reason employees need to be closely supervised and comprehensive system of controls developed
+- A hierarchical structure is needed with the narrow span of control at each level.
+- Pessimistic view of employees.
+- The major problem of this theory is causing diseconomies of scale in large business, increases administrative cost.
+
+##
+
+**Theory Y**
+
+- This theory of management assumes that employees may be ambitious, self motivated, anxious to accept greater responsibility and exercise self control and self direction
+- It is believed that employees enjoy their mental and physical work duties
+- If management gives chances and freedoms employees create creativity and forward thinking in the work place, enhance workforce productivity
+- It is positive set of assumptions about the workers
+- Thus managers need to be open to a more positive views of workers and create many management possibilities for employees
+
+# Organization and business management functions
+
+## Organization: Meaning and definition
+
+- A social unit of people that is structured and managed to meet a need or to pursue collective goals. (Dictionary)
+- A social unit where individuals from diverse backgrounds, different educational qualifications and varied interests come together to work towards a common goal is called an organization.
+- The employees must work in close coordination with each other and try their level best to achieve the organization's goals.
+- It is essential to manage the employees well for them to feel indispensable for the organization.
+- Organization management helps to extract the best out of each employee so that they accomplish the tasks within the given time frame.
+- Organization management binds the employees together and gives them a sense of loyalty towards the organization.
+
+##
+
+- Organization management refers to efficient handling of the organization as well as its employees.
+- Even though agribusiness organizations are smaller and leaner, they have own management committee and with assigned role and responsibility in organizational structure
+- Example of business organization:
+  - Farmer's, producer's group, cooperatives, private firm, association, company, etc.
+- Organizational behavior is the study and application of knowledge about how people as individuals and as groups act within organization
+
+## Hierarchy of workforce in organization
+
+\begin{columns}
+
+\column{0.6\textwidth}
+
+- Organization has organizational structure, have formal positions in a
+hierarchical order.
+- Structure is prepared to designate different positions, divisions and
+sub-divisions.
+- The chairman, vice chairman, secretary and treasurers are vital positions in an organization.
+- Supportive positions are members ultimately leading the producer group/cooperative/firms.
+- Employees are managers, middle managers and staffs who are guided by the organizations management committee.
+
+\column{0.4\textwidth}
+
+```{r organizational-hierarchy, fig.width=3, fig.height=3, out.width="30%"}
+DiagrammeR::mermaid(
+  "
+  graph TB
+  
+  A[Chairman] --> M[Manager]
+  M --> S[Secretary]
+  M --> C[Vice secretary]
+  M --> D[Members]
+  "
+)
+```
+
+\end{columns}
+
+# Managerial decision process in agribusiness
+
+## Role of agribusiness manager
+
+- Creating environment wherein groups of people can work effectively and efficiently for achievement of goals
+- Planning, organizing, staffing, directing and controlling are basic roles
+- Support junior manager and other staffs in official activities
+- Lead for inventory management and elimination of unnecessary tasks and procedures
+- Flow of information, logical support in the business system and sub system
+- Maintain ethical and moral behavior in the organization
+
+## The process
+
+```{r decision-process, fig.width=8, fig.height=6, out.width="95%", fig.cap="Rational deision making process (Stronger, Freedman and Gilbert, 1995)"}
+DiagrammeR::mermaid("
+                    graph LR
+                    subgraph Problem analysis
+                    a1[-Defining problem <br> -Diagnose casues <br> -Identify decision objectives]
+                    end
+                    subgraph Table of alternatives
+                    b1[-Seeking creative alternatives <br> -Do not evaluate]
+                    end
+                    subgraph Evaluation and selection
+                    c1[-Evaluate alternative <br> -Select the best alternative]
+                    end
+                    subgraph Implement and monitor
+                    d1[-Plan implementation <br> -Monitoring and making necessary adjustments]
+                    end
+                    a1 --> b1
+                    b1 --> c1
+                    c1 --> d1
+                    d1 --> a1
+                    
+                    ", width = 400, height = 400)
+```
+

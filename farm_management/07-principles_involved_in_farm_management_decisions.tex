@@ -1,0 +1,957 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[12pt,ignorenonframetext,aspectratio=169]{beamer}
+\IfFileExists{pgfpages.sty}{\usepackage{pgfpages}}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+
+
+
+
+
+%
+\fi
+
+  \usetheme[]{iqss}
+
+
+
+
+
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+  \usepackage{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\newif\ifbibliography
+
+
+\hypersetup{
+      pdftitle={Principles involved in farm management decisions},
+        pdfauthor={Deependra Dhakal},
+          pdfborder={0 0 0},
+    breaklinks=true}
+%\urlstyle{same}  % Use monospace font for urls
+
+
+
+
+
+
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+  \AtBeginPart{
+    \let\insertpartnumber\relax
+    \let\partname\relax
+    \frame{\partpage}
+  }
+  \AtBeginSection{
+    \ifbibliography
+    \else
+      \let\insertsectionnumber\relax
+      \let\sectionname\relax
+      \frame{\sectionpage}
+    \fi
+  }
+  \AtBeginSubsection{
+    \let\insertsubsectionnumber\relax
+    \let\subsectionname\relax
+    \frame{\subsectionpage}
+  }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+  \setcounter{secnumdepth}{0}
+
+
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{emptypage}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{wrapfig}
+  \usepackage{float}
+  \usepackage{colortbl}
+  \usepackage{pdflscape}
+  \usepackage{tabu}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage[normalem]{ulem}
+  \usepackage{rotating}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tikz} % required for image opacity change
+  \usepackage[absolute,overlay]{textpos} % for text formatting
+  \usepackage[utf8]{inputenc}
+  \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+  \usepackage[skip=2pt]{caption}
+
+  % this font option is amenable for beamer
+  \setbeamerfont{caption}{size=\tiny}
+
+
+%% IQSS overrides
+\iqsssectiontitle{Outline}
+
+\AtBeginSection[]{
+  \title{\insertsectionhead}
+  {
+    \definecolor{white}{rgb}{0.776,0.357,0.157}
+    \definecolor{iqss@orange}{rgb}{1,1,1}
+    \ifnum \insertmainframenumber > \insertframenumber
+    \frame{
+      \frametitle{\iqsssectiontitleheader}
+      \tableofcontents[currentsection]
+    }
+    \else
+    \frame{
+      \frametitle{Backup Slides}
+      \tableofcontents[sectionstyle=shaded/shaded,subsectionstyle=shaded/shaded/shaded]
+    }
+    \fi
+  }
+}
+
+\AtBeginSubsection[]{}
+
+%%
+
+
+  \title[]{Principles involved in farm management decisions}
+
+
+
+  \author[
+        Deependra Dhakal
+    ]{Deependra Dhakal}
+
+  \institute[
+    ]{
+    GAASC, Baitadi \and Tribhuwan University
+    }
+
+\date[
+      \today
+  ]{
+      \today
+        }
+
+\begin{document}
+
+% Hide progress bar and footline on titlepage
+  \begin{frame}[plain]
+  \titlepage
+  \end{frame}
+
+
+
+\hypertarget{principle-of-diminishing-return-principle-of-variable-proportion}{%
+\section{Principle of diminishing return (Principle of variable
+proportion)}\label{principle-of-diminishing-return-principle-of-variable-proportion}}
+
+\begin{frame}{Background}
+\protect\hypertarget{background}{}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  It explains the basic relationship between factor and product.
+\item
+  This law derives its name from the fact that as successive units of
+  variable resource are used in the combination with a collection of
+  fixed resources, the resulting addition to the total product will
+  become successively smaller.
+\item
+  How much to produce? (Optimum production level) It guides in the
+  determination of optimum output level to produce.
+\item
+  How much input to use?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Production function determines how much inputs are used to produce
+    the product.
+  \item
+    Given goal of maximizing profit the farmer must select from all
+    possible input levels, the one which will result in the greatest
+    profit.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Input determination}
+\protect\hypertarget{input-determination}{}
+\begin{enumerate}
+\tightlist
+\item
+  Marginal value product (MVP): It is the additional income received
+  from using an additional unit in input. It is calculated by using
+  following equation:
+\end{enumerate}
+
+\[
+MVP = \frac{\Delta TR}{\Delta X} = \frac{\Delta Y}{\Delta X}\times P_y
+\] \footnotesize
+
+Where,
+
+\(P_y\) = Price of output \(\Delta X\) = Change in input \(\Delta Y\) =
+Change in output
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Marginal input cost (MIC) or Marginal factor cost (MFC): It is defined
+  as the additional cost associated with the use of an additional unit
+  of input.
+\end{enumerate}
+
+\[
+MFC = \frac{\Delta TC}{\Delta X} = P_x
+\] \footnotesize
+
+Where,
+
+\(P_x\) = Price of input \(\Delta X\) = Change in input \(\Delta TC\) =
+Change in total cost
+
+\begin{itemize}
+\tightlist
+\item
+  The MFC remains constant regardless of how much of the variable input
+  is used.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Decision rules}
+\protect\hypertarget{decision-rules}{}
+\begin{itemize}
+\tightlist
+\item
+  If MVP \textgreater{} MIC, additional profit can be made using more
+  input
+\item
+  If MVP \textless{} MIC, more profit can be made by using less input
+\item
+  Profit is not maximized where production is maximized because
+  production is maximized where MVP is \$0. Accordingly, MIC would have
+  to be \$0 (that is, free) to maximize profit where production is
+  maximized. If variable input has a cost, maximum profit is at some
+  level of production less than maximum production.
+\item
+  Profit maximization or optimum input level is at the point where MVP =
+  MIC, or,
+\end{itemize}
+
+\[
+ \frac{\Delta Y}{\Delta X} \times P_y = P_x
+\]
+\end{frame}
+
+\begin{frame}{Output determination}
+\protect\hypertarget{output-determination}{}
+\begin{enumerate}
+\tightlist
+\item
+  Marginal revenue (MR): It is defined as the additional income from
+  selling additional unit of output. It is calculated from the following
+  equation:
+\end{enumerate}
+
+\[
+MR = \frac{\Delta TR}{\Delta Y} = \frac{\Delta Y}{\Delta Y}\times P_y = P_y
+\]
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Marginal cost (MC): It is defined as the additional cost incurred from
+  producing an additional unit of output. It is computed from the
+  following equation:
+\end{enumerate}
+
+\[
+MC = \frac{\Delta X}{\Delta Y} \times P_x
+\]
+\end{frame}
+
+\begin{frame}{Decision rules}
+\protect\hypertarget{decision-rules-1}{}
+\begin{itemize}
+\tightlist
+\item
+  If MR \textgreater{} MC, additional profit can be made by producing
+  more output
+\item
+  If MR \textless{} MC, more profit can be made by producing less output
+\item
+  The profit maximizing output level is at the point where, MR = MC
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Applications of principle of diminishing returns}
+\protect\hypertarget{applications-of-principle-of-diminishing-returns}{}
+\footnotesize
+
+\begin{enumerate}
+\tightlist
+\item
+  Role of nature: The agricultural production greatly depends on the
+  nature.
+\item
+  Land is a fixed factor: The supply of land is fixed, that is, we
+  cannot increase the land. We have to work within that limited land.
+\item
+  Less scope of division of labor: Unlike in industry, we cannot make
+  specialization in agricultural activities. A family has to plough,
+  dig, transplant, harvest, and store, sell altogether. No one is
+  specialized for a particular activity, though there are some cultural
+  or gender divisions like transplanting by women, ploughing by men etc.
+\item
+  Less use of machines: Due to less use of machines, there is
+  diminishing return.
+\item
+  Seasonal nature of work: The agricultural labor is engaged in
+  particular season. In other season, they may be idle. So the total
+  productivity with respect to the inputs go on decreasing.
+\item
+  Less supervision: The agriculture business really gets less
+  supervision. In the field no frequent supervision is possible like in
+  closed industry.
+\end{enumerate}
+\end{frame}
+
+\hypertarget{cost-principle}{%
+\section{Cost principle}\label{cost-principle}}
+
+\begin{frame}{Background}
+\protect\hypertarget{background-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Cost of production of any commodity is the value of the factors of
+  production used in producing that unit.
+\item
+  Producers must take into account cost of production while making
+  production decisions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cost accounting period and cost curves}
+\protect\hypertarget{cost-accounting-period-and-cost-curves}{}
+\begin{itemize}
+\tightlist
+\item
+  Generally there are two types of cost accounting periods as so are the
+  curves -- short run and long run cost.
+\item
+  The terms short and long are not absolute time based, rather it is
+  based on use/employment of resources.
+\item
+  In long run, none of the inputs are fixed, and all are variable.
+\item
+  In short run, some inputs are fixed (at least one) and others may be
+  variable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Short run cost curve}
+\protect\hypertarget{short-run-cost-curve}{}
+\begin{itemize}
+\tightlist
+\item
+  The analysis of costs of a firm is based on the theory of production.
+  The behavior of the cost shows the behavior of the production.
+\item
+  The cost is the product of quantity of inputs and the respective
+  price. When we transpose the production function (on cost basis) from
+  `X'-axis to `Y'-axis, then it becomes the cost curve.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fixed, variable and total costs in the short-run}
+\protect\hypertarget{fixed-variable-and-total-costs-in-the-short-run}{}
+\begin{table}
+
+\caption{\label{tab:cost-short-run}Fixed, variable and total costs in short run}
+\centering
+\fontsize{6}{8}\selectfont
+\begin{tabular}[t]{>{\raggedleft\arraybackslash}p{7em}>{\raggedleft\arraybackslash}p{7em}>{\raggedleft\arraybackslash}p{7em}>{\raggedleft\arraybackslash}p{7em}>{\raggedleft\arraybackslash}p{7em}>{\raggedleft\arraybackslash}p{10em}}
+\toprule
+Number of workers (L) & Output (Wheat yield in Quintals; Q) & Daily wages per worker (W) & Total variable costs (TVC) & Total fixed costs (TFC) & Short run total cost (TVC + TFC)\\
+\midrule
+\rowcolor{gray!6}  0 & 0.0 & 400 & 0 & 1500 & 1500\\
+1 & 1.0 & 400 & 400 & 1500 & 1900\\
+\rowcolor{gray!6}  2 & 2.2 & 400 & 800 & 1500 & 2300\\
+3 & 3.6 & 400 & 1200 & 1500 & 2700\\
+\rowcolor{gray!6}  4 & 5.2 & 400 & 1600 & 1500 & 3100\\
+5 & 7.0 & 400 & 2000 & 1500 & 3500\\
+\rowcolor{gray!6}  6 & 8.6 & 400 & 2400 & 1500 & 3900\\
+7 & 10.0 & 400 & 2800 & 1500 & 4300\\
+\rowcolor{gray!6}  8 & 11.2 & 400 & 3200 & 1500 & 4700\\
+9 & 12.2 & 400 & 3600 & 1500 & 5100\\
+\rowcolor{gray!6}  10 & 13.0 & 400 & 4000 & 1500 & 5500\\
+11 & 13.7 & 400 & 4400 & 1500 & 5900\\
+\rowcolor{gray!6}  12 & 14.3 & 400 & 4800 & 1500 & 6300\\
+13 & 14.8 & 400 & 5200 & 1500 & 6700\\
+\rowcolor{gray!6}  14 & 15.2 & 400 & 5600 & 1500 & 7100\\
+15 & 15.5 & 400 & 6000 & 1500 & 7500\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{07-principles_involved_in_farm_management_decisions_files/figure-beamer/cost-short-run-plot-1} \caption{Short run total cost curve}\label{fig:cost-short-run-plot}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\begin{itemize}
+\tightlist
+\item
+  The cost curves are of short-run period in the Figure
+  \ref{fig:cost-short-run-plot}; some inputs are fixed and other are
+  variable.
+\item
+  It means whether we produce or not, there incurs a cost that is called
+  the fixed cost.
+\item
+  Variable cost are those that vary according to the level of
+  production.
+\item
+  Fixed cost remain the same throughout all levels of production.
+\item
+  If we try to produce more and more with same level of fixed inputs,
+  the variable cost curve becomes too steeper.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Long run cost curve}
+\protect\hypertarget{long-run-cost-curve}{}
+\begin{itemize}
+\tightlist
+\item
+  In long run all inputs are variable.
+\item
+  The long-run may be a month, a year or decade.
+\item
+  In long -run, the scale of production is varied by varying all the
+  inputs.
+\end{itemize}
+
+\begin{figure}
+\includegraphics[width=0.4\linewidth]{07-principles_involved_in_farm_management_decisions_files/figure-beamer/cost-long-run-plot-1} \caption{Long run total cost curve}\label{fig:cost-long-run-plot}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Application of cost principle}
+\protect\hypertarget{application-of-cost-principle}{}
+\begin{itemize}
+\tightlist
+\item
+  To determine shut down point
+\item
+  To determine break even point
+\item
+  To know economies of scale of production
+\end{itemize}
+\end{frame}
+
+\hypertarget{principle-of-factor-substitutionprinciple-of-marginal-rate-of-technical-substiutionprinciple-of-least-cost-combination}{%
+\section{Principle of factor substitution/Principle of marginal rate of
+technical substiution/Principle of least cost
+combination}\label{principle-of-factor-substitutionprinciple-of-marginal-rate-of-technical-substiutionprinciple-of-least-cost-combination}}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+\begin{itemize}
+\tightlist
+\item
+  This law or principle in farming is applied in a situation in which
+  the farmer has a number of options are open for a number of
+  alternatives available among different resource inputs for a
+  particular operation.
+\item
+  He will choose the best alternative, which adds more in output while
+  at the same time minimizes the cost.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Procedures for working out the least-cost combination}
+\protect\hypertarget{procedures-for-working-out-the-least-cost-combination}{}
+\begin{enumerate}
+\tightlist
+\item
+  Step I: Compute the substitution ratio i.e.~MRTS, For example MRTS of
+  X1 for X2 will be
+\end{enumerate}
+
+\[\frac{\textrm{Change in X2 (quantity of replaced input)}}{ \textrm{Change in X1 (quantity of added input)}} = \frac{\Delta X_2}{\Delta X_1}\]
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item
+  Step II: Compute the price ratio, i.e.~ratio of price of the added
+  input (PX1) and price of the replaced input (PX2), mathematically,
+  \(\frac{P_{X_1}}{P_{X_2}}\).
+\item
+  Step III: Find the point where the substitution ratio and the price
+  ratio is equal.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Decision rule for profit maximization}
+\protect\hypertarget{decision-rule-for-profit-maximization}{}
+\begin{enumerate}
+\tightlist
+\item
+  If the substitution ratio is greater than the price ratio, one can
+  reduce the costs by using more of the ``added'' resource. That is, if
+  DX2/DX1 \textgreater{} PX1/PX2, use more X1 till equality.
+\item
+  If the substitution ratio is less than the price ratio, costs can be
+  reduced by using more of ``replaced'' resource. That is, if DX2/DX1
+  \textless{} PX1/PX2, use more X2 till equality.
+\item
+  If the substitution ratio is equal to the price ratio, then it is the
+  point of least cost.
+\end{enumerate}
+\end{frame}
+
+\hypertarget{principle-of-product-substitutionprinciple-of-enterprise-combination}{%
+\section{Principle of product substitution/Principle of enterprise
+combination}\label{principle-of-product-substitutionprinciple-of-enterprise-combination}}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+\begin{itemize}
+\tightlist
+\item
+  It solves the problem of ``what to produce''.
+\item
+  Guides determination of optimum combination of enterprises (products).
+  It explains product-product relationship.
+\item
+  It is economical to substitute one product for another product, if the
+  decrease in returns from the product being replaced is less than the
+  increase in returns from the product being added.
+\item
+  The principle of product substitution says that we should go in
+  increasing the output of a product so long as decrease in the returns
+  from the product being replaced is less than the increase in the
+  returns from the product being added.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Decision rule}
+\protect\hypertarget{decision-rule}{}
+\begin{itemize}
+\tightlist
+\item
+  If marginal rate of product substitution (MRPS) is greater than price
+  ratio (PR) (\(MRPS (Y_1 \textrm{ for } Y_2) > PR (Y_1 Y_2)\)):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    profits can be increased by producing more of replaced product.
+  \item
+    either increase production of Y1 or decrease Y2 or both.
+  \end{itemize}
+\item
+  If MRPS \textless{} PR
+  (\(MRPS (Y_1 \textrm{ for } Y_2) > PR (Y_1 Y_2)\)):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    profits can be increased by producing more of added product.
+  \item
+    either decrease production of Y1 or increase Y2 or both.
+  \end{itemize}
+\item
+  Optimum combination of products is when MRPS = PR.
+\end{itemize}
+\end{frame}
+
+\hypertarget{principle-of-opportunity-cost}{%
+\section{Principle of opportunity
+cost}\label{principle-of-opportunity-cost}}
+
+\begin{frame}{}
+\protect\hypertarget{section-5}{}
+\begin{itemize}
+\tightlist
+\item
+  Opportunity cost recognizes the fact that every input has an
+  alternative use. Once an input is committed to a particular use, it is
+  no longer available for any other alternative use and the income from
+  the alternative must be foregone.
+\item
+  Opportunity cost is defined as the returns that are sacrificed from
+  the next best alternative.
+\item
+  Opportunity cost is also known as real cost or alternate cost.
+\item
+  Its concept is closely related to the equi-marginal principle.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Examples}
+\protect\hypertarget{examples}{}
+\begin{itemize}
+\tightlist
+\item
+  The opportunity cost of using a machine to produce one product is the
+  earnings that would be possible from other products.
+\item
+  The opportunity cost of using a machine that is useless for any other
+  purpose is nil since its use requires no sacrifice of other
+  opportunities.
+\item
+  The opportunity cost of the time one puts into his own business is the
+  salary he could earn in other occupations (with a correction for the
+  relative psychic income in the two occupations).
+\end{itemize}
+\end{frame}
+
+\hypertarget{principle-of-comparative-advantage}{%
+\section{Principle of comparative
+advantage}\label{principle-of-comparative-advantage}}
+
+\begin{frame}{}
+\protect\hypertarget{section-6}{}
+\begin{itemize}
+\tightlist
+\item
+  It explains regional specialization in the production of commodities.
+\item
+  Certain crops can be grown in only limited areas because of specific
+  soil and climatic requirement. However, even those crop and livestock
+  enterprises which can be raised over broad geographical area often
+  have production concentrated in one region.
+\item
+  Regional specialization in the production of the agricultural
+  commodities and other products can be explained by the principle of
+  comparative advantage.
+\item
+  The yields, production costs, profits may be different in different
+  areas.
+\item
+  It is relative yields, costs, and profits which are important for the
+  application of this principle.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Statement of principle}
+\protect\hypertarget{statement-of-principle}{}
+Individuals or regions will tend to specialize in the production of
+those commodities for which resources give them a relative or
+comparative advantage.
+
+\begin{tabular}{lrrrr}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Region A} & \multicolumn{2}{c}{Region B} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
+Crop account & Wheat & Groundnut & Wheat & Groundnut\\
+\midrule
+Total cost & 425.0 & 200.0 & 210.0 & 200.0\\
+Total return & 500.0 & 225.0 & 225.0 & 200.0\\
+Net return & 75.0 & 25.0 & 15.0 & 20.0\\
+Rate of return & 1.2 & 1.1 & 1.1 & 1.1\\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-7}{}
+\begin{itemize}
+\tightlist
+\item
+  Region A has greater absolute advantage in growing both wheat and
+  groundnut than Region B because the net incomes per acre are Rs 75 and
+  Rs 25 respectively which are higher than the net incomes from wheat
+  and groundnut in Region B. Farmers of Region A can make more profits
+  by growing both the crops.
+\item
+  But they want to make the greatest profits and this can be done by
+  having the largest possible acerage under Wheat alone as it is the
+  question of relative advantage.
+\item
+  Similarly farmers of Region of B have relative advantage in growing
+  groundnut.
+\end{itemize}
+\end{frame}
+
+\hypertarget{principle-of-equimarginal-returns}{%
+\section{Principle of
+equimarginal-returns}\label{principle-of-equimarginal-returns}}
+
+\begin{frame}{}
+\protect\hypertarget{section-8}{}
+\begin{itemize}
+\tightlist
+\item
+  In input-output relationship, MC=MR is the economic principle used to
+  determine the most profitable level of variable input.
+\item
+  But it is under the assumption of unlimited availability of variable
+  input, which is unrealistic.
+\item
+  If a scarce resource is to be distributed among two or more uses, the
+  highest total return is obtained when the marginal return per unit of
+  resource is equal in all alternative uses. -- \textbf{Principle of
+  equi-marginal returns}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One input -- several products}
+\protect\hypertarget{one-input-several-products}{}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  Suppose there is a limited amount of a variable input to be allocated
+  among several enterprises.
+\item
+  For this, the production function and product prices must be known for
+  each enterprise. Next, the MVP schedule must be computed for each
+  enterprise.
+\item
+  Finally, using the opportunity cost principle, units of input are
+  allocated to each enterprise in such a way that profit earned by the
+  input is maximum.
+\item
+  Profit from a limited amount of variable resource is maximized when
+  the resource is allocated among the enterprises in such as way that
+  marginal earnings of the input are equal in all enterprises. i.e.,
+\end{itemize}
+
+\[
+VMP_{xy_{1}} = VMP_{xy_{2}} = \ldots = VMP_{xy_{n}}
+\] Where, \(VMP_{xy_{1}}\) is the value of marginal product of \(X\)
+used on product \(Y_1\); \(VMP_{xy_{2}}\) is the value of marginal
+product of \(X\) used on product \(Y_2\) and so on.
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-9}{}
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}{rrrrrr>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{4em}}
+\toprule
+x maize & y1 maize & x rice & y2 rice & x sorghum & y3 sorghum & vmp xy1 maize & vmp xy2 rice & vmp xy2 sorghum\\
+\midrule
+0 & 0 & 0 & 0 & 0 & 0 &  &  & \\
+1 & 10 & 1 & 18 & 1 & 7 & 20 & 18 & 14\\
+2 & 18 & 2 & 31 & 2 & 13 & 16 & 13 & 12\\
+3 & 24 & 3 & 42 & 3 & 18 & 12 & 11 & 10\\
+4 & 29 & 4 & 51 & 4 & 22 & 10 & 9 & 8\\
+\addlinespace
+5 & 33 & 5 & 58 & 5 & 25 & 8 & 7 & 6\\
+6 & 36 & 6 & 64 & 6 & 27 & 6 & 6 & 4\\
+\bottomrule
+\end{tabular}}
+\end{table}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-10}{}
+\footnotesize
+
+Suppose that the farmer has five units of X. According to the
+opportunity cost principle, he will allocate each successive units of
+input to the use where its marginal return, VMP, is the largest; i.e.,
+first unit of X used in Enterprise I (Maize) earns Rs 20; second on
+first unit of Enterprise II (Rice) earns Rs 18; third on second unit of
+Enterprise I earns Rs 16; fourth on first unit of Enterprise III
+(Sorghum) earns Rs 14; and 5th on second unit of enterprise II earns Rs
+13.
+
+Two units of inputs go on enterprise I, two on II and one on III. Used
+in this manner, the five units of inputs will earn Rs 81. No other
+allocation of the five units among the three enterprise will earn as
+much.
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-11}{}
+\begin{itemize}
+\item
+  What is the maximum amount of input needed for enterprises I, II and
+  III ?
+\item
+  To determine this, manager must determine the most profitable amount
+  of input for each enterprise. When input cost is Rs 6.5 per unit, the
+  optimum amounts are 5 for I, 5 for II and 4 for III. Cost is Rs 91 ((5
+  + 5 + 4 = 14)*6.5 = 91). Thus, the manager would never use more than a
+  total of 14 units of inputs, no matter how many units of inputs he
+  could afford to buy.
+\end{itemize}
+\end{frame}
+
+\hypertarget{principle-of-time-comparison}{%
+\section{Principle of time
+comparison}\label{principle-of-time-comparison}}
+
+\begin{frame}{}
+\protect\hypertarget{section-12}{}
+\begin{itemize}
+\tightlist
+\item
+  The time value of money is the idea that there is greater benefit to
+  receiving a sum of money now rather than an identical sum later. It is
+  founded on time preference.
+\item
+  The time value of money is the reason why interest is paid or earned:
+  interest, whether it is on a bank deposit or debt, compensates the
+  depositor or lender for the time value of money.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-13}{}
+\begin{itemize}
+\tightlist
+\item
+  Time value of money problems involve the net value of cash flows at
+  different points in time.
+\item
+  In a typical case, the variables might be: a balance (the real or
+  nominal value of a debt or a financial asset in terms of monetary
+  units), a periodic rate of interest, the number of periods, and a
+  series of cash flows.
+\item
+  For example, Rs 100 invested for one year, earning 5\% interest, will
+  be worth Rs 105 after one year; therefore, Rs 100 paid now and Rs 105
+  paid exactly one year later both have the same value to a recipient
+  who expects 5\% interest assuming that inflation would be zero
+  percent.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Future value of a present sum}
+\protect\hypertarget{future-value-of-a-present-sum}{}
+The future value (FV) formula is:
+
+\begin{equation}
+FV = PV(1 + i)^n
+\label{eqn:future-value}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Present value of a future sum}
+\protect\hypertarget{present-value-of-a-future-sum}{}
+\footnotesize
+
+The present value formula is the core formula for the time value of
+money; each of the other formulae is derived from this formula. For
+example, the annuity formula is the sum of a series of present value
+calculations.
+
+The present value (PV) formula has four variables, each of which can be
+solved for by numerical methods:
+
+\begin{equation}
+PV = \frac{FV}{(1 + i)^n}
+\label{eqn:current-value}
+\end{equation}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-14}{}
+The cumulative present value of future cash flows can be calculated by
+summing the contributions of \(FV_t\), the value of cash flow at time
+\(t\);
+
+\[
+PV = \sum_{t = 1}^n \frac{FV_t}{(1 + i)^t}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  This principle allows for the valuation of a likely stream of income
+  in the future, in such a way that annual incomes are discounted and
+  then added together, thus providing a lump-sum ``present value'' of
+  the entire income stream; all of the standard calculations for time
+  value of money derive from the most basic algebraic expression for the
+  present value of a future sum, ``discounted'' to the present by an
+  amount equal to the time value of money. For example, the future value
+  sum \({\displaystyle FV}\) to be received in one year is discounted at
+  the rate of interest \({\displaystyle r}\) to give the present value
+  sum \({\displaystyle PV}\).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\protect\hypertarget{section-15}{}
+Suppose a farmer want's to know value of his current fund deposit Rs
+10050. The annual market discounting rate (bank interest rate, if he
+deposited it in bank) is 8\%. What sum should he expect if he were to
+draw the funds after 3 years.
+
+Using formula for compounding of current value to obtain future value
+(Equation \ref{eqn:future-value}), we obtain future value of current Rs
+10050 = \ensuremath{1.37\times 10^{4}}.
+
+Similarly, in a second example, let us suppose a farmer expects Rs 10000
+from sales of his crops and poultry 2 years later, now find the current
+value of his future expected earning. (Suppose half yearly discounting
+rate is 4\%).
+
+It is calculated from the discounting future value to current value,
+using equation \ref{eqn:current-value}: 8548.04. Here we should use
+\texttt{n\ =\ 4}, because time time frequency is 2 times for the given
+annual compounding rate.
+\end{frame}
+
+
+
+
+\end{document}

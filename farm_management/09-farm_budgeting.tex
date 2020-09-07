@@ -1,0 +1,546 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[12pt,ignorenonframetext,aspectratio=169]{beamer}
+\IfFileExists{pgfpages.sty}{\usepackage{pgfpages}}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+
+
+
+
+
+%
+\fi
+
+  \usetheme[]{iqss}
+
+
+
+
+
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+  \usepackage{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\newif\ifbibliography
+
+
+\hypersetup{
+      pdftitle={Farm budgeting},
+        pdfauthor={Deependra Dhakal},
+          pdfborder={0 0 0},
+    breaklinks=true}
+%\urlstyle{same}  % Use monospace font for urls
+
+
+
+
+
+
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+  \AtBeginPart{
+    \let\insertpartnumber\relax
+    \let\partname\relax
+    \frame{\partpage}
+  }
+  \AtBeginSection{
+    \ifbibliography
+    \else
+      \let\insertsectionnumber\relax
+      \let\sectionname\relax
+      \frame{\sectionpage}
+    \fi
+  }
+  \AtBeginSubsection{
+    \let\insertsubsectionnumber\relax
+    \let\subsectionname\relax
+    \frame{\subsectionpage}
+  }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+  \setcounter{secnumdepth}{0}
+
+
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{emptypage}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{wrapfig}
+  \usepackage{float}
+  \usepackage{colortbl}
+  \usepackage{pdflscape}
+  \usepackage{tabu}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage[normalem]{ulem}
+  \usepackage{rotating}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tikz} % required for image opacity change
+  \usepackage[absolute,overlay]{textpos} % for text formatting
+  \usepackage[utf8]{inputenc}
+  \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+  \usepackage[skip=2pt]{caption}
+
+  % this font option is amenable for beamer
+  \setbeamerfont{caption}{size=\tiny}
+
+
+%% IQSS overrides
+\iqsssectiontitle{Outline}
+
+\AtBeginSection[]{
+  \title{\insertsectionhead}
+  {
+    \definecolor{white}{rgb}{0.776,0.357,0.157}
+    \definecolor{iqss@orange}{rgb}{1,1,1}
+    \ifnum \insertmainframenumber > \insertframenumber
+    \frame{
+      \frametitle{\iqsssectiontitleheader}
+      \tableofcontents[currentsection]
+    }
+    \else
+    \frame{
+      \frametitle{Backup Slides}
+      \tableofcontents[sectionstyle=shaded/shaded,subsectionstyle=shaded/shaded/shaded]
+    }
+    \fi
+  }
+}
+
+\AtBeginSubsection[]{}
+
+%%
+
+
+  \title[]{Farm budgeting}
+
+
+
+  \author[
+        Deependra Dhakal
+    ]{Deependra Dhakal}
+
+  \institute[
+    ]{
+    GAASC, Baitadi \and Tribhuwan University
+    }
+
+\date[
+      \today
+  ]{
+      \today
+        }
+
+\begin{document}
+
+% Hide progress bar and footline on titlepage
+  \begin{frame}[plain]
+  \titlepage
+  \end{frame}
+
+
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\begin{frame}{Meaning and definition}
+\protect\hypertarget{meaning-and-definition}{}
+\begin{itemize}
+\tightlist
+\item
+  A farm plan should show the crops to be grown, practices to be
+  followed in their production, combination of enterprises, use of
+  labor, investment to be made on equipment, building etc.
+\item
+  The expression of such a farm plan in monetary terms by estimation of
+  receipts, expenses and net income, is called the budgeting.
+\item
+  In other words, farm budgeting is a process of estimating costs,
+  returns and net profit of a farm or a particular enterprise.
+\item
+  Farm budgeting can be used simply to select the most profitable plan
+  from number of alternatives.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\begin{itemize}
+\tightlist
+\item
+  The physical aspects of farm planning when expressed in monetary terms
+  called budgeting.
+\item
+  The expression of farm plan in monetary terms by estimation of
+  receipts, expenses and net income is called budgeting.
+\item
+  Farm budgeting is a process of estimating costs, returns and net
+  profit of a farm or a particular enterprise.
+\item
+  Budget is a statement of estimated income and expenditure.
+\end{itemize}
+\end{frame}
+
+\hypertarget{enterprise-budgeting}{%
+\section{Enterprise budgeting}\label{enterprise-budgeting}}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\begin{itemize}
+\tightlist
+\item
+  An enterprise is defined as a single crop or livestock commodity being
+  produced on the farm.
+\item
+  Enterprises are the basic building blocks for a farm plan.
+\item
+  Enterprise budgeting calculates input required, cost involved and
+  expected returns of the particular enterprises.
+\item
+  It helps planning particular enterprises based on planning estimated
+  inputs, expense plan and obtain expected benefit.
+\item
+  Enterprise budgeting can be developed for each actual and potential
+  enterprise in a farm plan such as paddy enterprise, wheat enterprise
+  or a cow enterprise.
+\item
+  What you produce determines the profitability of the business.
+\item
+  By analyzing revenues and expenses associated with individual
+  enterprises you can determine which enterprises might be expanded and
+  those that should be cut back or eliminated.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\begin{itemize}
+\tightlist
+\item
+  A manager may also want to compare profitability of one production
+  technique with another technique (e.g.~minimum till and conventional
+  tillage practices).
+\item
+  A budget can be developed for each existing or potential enterprise in
+  a farm plan.
+\item
+  Several budgets could be developed for a single budget to represent
+  alternative combinations of inputs and outputs.
+\item
+  Each budget should be developed on the basis of a small common unit
+  such as one hectare of paddy, wheat, or maize etc. or one head of
+  livestock.
+\item
+  This permits comparison of the profit for alternative and competing
+  enterprises.
+\end{itemize}
+\end{frame}
+
+\hypertarget{partial-budgeting}{%
+\section{Partial budgeting}\label{partial-budgeting}}
+
+\begin{frame}{Meaning}
+\protect\hypertarget{meaning}{}
+\begin{itemize}
+\tightlist
+\item
+  Refers to estimating costs and returns and net income of a particular
+  enterprise.
+\item
+  It refers to estimating the returns for a part of the business
+  i.e.~one or few activities; for example, to estimate additional cost
+  and returns from growing one hectare of rice in place of vegetable
+  crop or to estimate additional cost and return by adopting foliar
+  application of chemical fertilizers instead of soil application.
+\item
+  It consists of four important elements: added costs, added returns,
+  reduced returns and reduced costs.
+\item
+  Partial budgeting technique is generally used to evaluate the
+  profitability of input substitution, enterprise substitution and scale
+  of operation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Elements}
+\protect\hypertarget{elements}{}
+\begin{enumerate}
+\tightlist
+\item
+  Added costs: Additional costs are incurred, if the proposed
+  modification is the introduction of a new enterprise or increase in
+  the size of the existing enterprise.
+\item
+  Added returns: Additional returns could be received when the proposed
+  modification is the addition of a new enterprise, or increase in the
+  size of the existing enterprise or adoption of technology that results
+  in higher productivity.
+\item
+  Reduced returns: Decrease in the returns is observed when the proposed
+  modification involves the elimination of an existing enterprise or
+  reduction in the size of the existing enterprise.
+\item
+  Reduced costs: Decrease in the costs is found when the proposed
+  modification involves the elimination of existing enterprise or
+  reduction in the size of the enterprise or adoption of a technology
+  that uses fewer amounts of resources.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Book keeping with partial budget}
+\protect\hypertarget{book-keeping-with-partial-budget}{}
+\begin{table}[H]
+\centering\begingroup\fontsize{6}{8}\selectfont
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{3em}>{\raggedright\arraybackslash}p{12em}>{\raggedright\arraybackslash}p{3em}}
+\toprule
+Debit & Amount & Credit & Amount\\
+\midrule
+\rowcolor{gray!6}  (a) increase in costs per acre &  & (a) decrease in costs per acre & \\
+1. Depreciation for 2 hours; $\frac{2200 \times 2}{2500} = \frac{44}{25}$ & 1.76 & Manual labor; 60-2 = 58 man hours (\@ Rs. 0.75 per man hour) & 44\\
+\rowcolor{gray!6}  2. Interest \@ 10\% & 0.18 &  & \\
+3. Tractor (32 HP) cost for 2 hours \@ Rs 6.56/hr & 13.12 &  & \\
+\rowcolor{gray!6}  (b) decrease in returns per acre &  & (b) increase in returns per acre & \\
+\addlinespace
+Decrease in yield \@ 2.5\%; i.e. 0.15 qtl \@ Rs. 90/qtl & 13.50 &  & \\
+\rowcolor{gray!6}  A. Total increased cost and reduced returns Rs. & 28.56 & B. Total reduced costs and increased returns Rs. & 44\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+\end{frame}
+
+\hypertarget{complete-budgeting}{%
+\section{Complete budgeting}\label{complete-budgeting}}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+\begin{itemize}
+\tightlist
+\item
+  It is also called as total budgeting.
+\item
+  Refers to preparing budget for the farm as a whole.
+\item
+  Complete budgeting considers all the crops, livestock, methods of
+  production and aspects of marketing in consolidated form and estimates
+  costs and returns for the farm as a whole.
+\item
+  Therefore complete budgeting can he specifically defined as ``An
+  estimation of the probable income and expenditure is made for the farm
+  as a single unit of course, a complete budget is required when a farm
+  plan is prepared for new farm or when drastic changes are suggested in
+  the plan of the existing pattern on an established farm''.
+\item
+  Complete budgeting can be prepared for short run (annual budget) and
+  for long run.
+\end{itemize}
+\end{frame}
+
+\hypertarget{comparison-between-budgeting-types}{%
+\section{Comparison between budgeting
+types}\label{comparison-between-budgeting-types}}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+The differences between partial and complete budgeting is presented in
+Table \ref{tab:farm-budgeting}.
+
+\begin{table}
+
+\caption{\label{tab:farm-budgeting}Difference between complete and partial budgeting}
+\centering
+\fontsize{6}{8}\selectfont
+\begin{tabular}[t]{>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{16em}>{\raggedleft\arraybackslash}p{4em}>{\raggedleft\arraybackslash}p{16em}}
+\toprule
+\textbf{} & \textbf{Complete budgeting} & \textbf{} & \textbf{Partial budgeting}\\
+\midrule
+\rowcolor{gray!6}  1 & The whole farm is considered as one unit & 1 & It is adopted when a minor aspect of farm organization is touched.\\
+2 & All the aspects like crops, livestock, machinery and other assets are considered & 2 & It is practiced with in the existing resources structure of the farm.\\
+\rowcolor{gray!6}  3 & Both fixed and variable costs are calculated for working out costs and returns. & 3 & Only variable costs are considered.\\
+4 & Net income is estimated by deleting fixed costs and costs of variable inputs from the value of the product & 4 & Net income is estimated by deleting only cost of variable inputs from the value of the product.\\
+\rowcolor{gray!6}  5 & It requires more efforts and time for preparation. & 5 & It requires relatively less efforts and time for preparation.\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\hypertarget{steps-in-farm-budgeting}{%
+\section{Steps in farm budgeting}\label{steps-in-farm-budgeting}}
+
+\begin{frame}{}
+\protect\hypertarget{section-5}{}
+\begin{itemize}
+\item
+  Step 1: is to estimate total production (output or yield) and expected
+  output price. The estimated yields and prices should be what you
+  expect under normal conditions. Be as realistic as possible.
+\item
+  Step 2: is to estimate variable costs. Variable costs are just what
+  they sound like they vary with the amount of product you produce.
+  These are the out-of- pocket costs that must be incurred if the
+  enterprise is produced or grown. Some examples of variable costs are:
+  hired labor; repairs; feed; supplies; vet. medicine; fuel; seed; etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-6}{}
+\begin{itemize}
+\tightlist
+\item
+  Step 3: is to assess fixed costs. Fixed costs will occur and will stay
+  about the same no matter how much you produce, or, in most cases
+  whether or not you produce at all. Some examples of fixed costs are:
+  depreciation; taxes; insurance; etc. Land charges are generally based
+  on one of three acceptable methods:
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    interest opportunity based on current value of land;
+  \item
+    owner rental income; or
+  \item
+    typical cash rent charge (market rent).
+  \end{enumerate}
+\item
+  Step 4: Calculating net receipts. Net receipts represent that income
+  which is left for the farmer and family to live on, pay debt, invest,
+  or save.
+\end{itemize}
+\end{frame}
+
+\hypertarget{enterprise-budgeting-an-example}{%
+\section{Enterprise budgeting: An
+example}\label{enterprise-budgeting-an-example}}
+
+\begin{frame}{Budgeting of a Mango farm}
+\protect\hypertarget{budgeting-of-a-mango-farm}{}
+\begin{columns}
+
+\begin{column}{0.4\textwidth}
+\tiny
+% \scalebox{0.3}{\begin{minipage}{1.20\textwidth}
+\begin{itemize}
+\item Area: 1 ha
+\item Place: Bharatpur, Chitwan
+\item Duration: 1 year (2060-2061 BS)
+\end{itemize}
+% \end{minipage}}
+\end{column}
+
+\begin{column}{0.8\textwidth}
+
+\scalebox{0.60}{\begin{minipage}{1.2\textwidth}
+
+\vspace{0.25cm}
+
+\begin{table}[H]
+\centering\begingroup\fontsize{6}{8}\selectfont
+
+\begin{tabular}{llrrr}
+\toprule
+Stream & Particulars & Quantity & Rate & Amount\\
+\midrule
+ & Human labor & 50 & 400 & 20000\\
+
+ & Tractor & 3 & 1600 & 4800\\
+
+ & Pump set water pond & 15 & 100 & 1500\\
+
+ & Layout & 4 & 1000 & 4000\\
+
+ & Sapling & 110 & 60 & 6600\\
+
+ & Manure & 2200 & 2 & 4400\\
+
+ & Fertilizer (Urea) & 25 & 25 & 625\\
+
+ & Fertilizer (DAP) & 15 & 50 & 750\\
+
+ & Fertilizer (Potash) & 10 & 36 & 360\\
+
+ & Plant protection chemicals (Bordeaux mixture and micronutrient) &  &  & 250\\
+
+ & Plant protection chemicals (Training and pruning) &  &  & 300\\
+
+ & Equipments & 4 & 800 & 3200\\
+
+ & Land lease value &  &  & 25000\\
+
+ & Management cost & 12 & 1500 & 18000\\
+
+ & Others &  &  & 2500\\
+
+ & Interest on variable cost &  &  & 11548\\
+
+\multirow{-17}{*}{\raggedright\arraybackslash Variable} & Total &  &  & 103833\\
+\cmidrule{1-5}
+ & Land cost &  &  & 300\\
+
+ & Water cost &  &  & 500\\
+
+ & Depreciation of farm equipments &  &  & 500\\
+
+ & Repair and maintenance of farm equipments &  &  & 500\\
+
+\multirow{-5}{*}{\raggedright\arraybackslash Fixed} & Total &  &  & 1800\\
+\cmidrule{1-5}
+ & Production & 2000 & 52 & 105000\\
+
+\multirow{-2}{*}{\raggedright\arraybackslash Production} & Total &  &  & 105000\\
+\cmidrule{1-5}
+Net profit &  &  &  & 1266\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+\end{minipage}}
+
+\end{column}
+
+\end{columns}
+\end{frame}
+
+
+
+
+\end{document}

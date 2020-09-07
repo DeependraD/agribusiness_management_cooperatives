@@ -1,0 +1,323 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[12pt,ignorenonframetext,aspectratio=169]{beamer}
+\IfFileExists{pgfpages.sty}{\usepackage{pgfpages}}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+
+
+
+
+
+%
+\fi
+
+  \usetheme[]{iqss}
+
+
+
+
+
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+  \usepackage{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\newif\ifbibliography
+
+
+\hypersetup{
+      pdftitle={Farm planning},
+        pdfauthor={Deependra Dhakal},
+          pdfborder={0 0 0},
+    breaklinks=true}
+%\urlstyle{same}  % Use monospace font for urls
+
+
+
+
+
+
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+  \AtBeginPart{
+    \let\insertpartnumber\relax
+    \let\partname\relax
+    \frame{\partpage}
+  }
+  \AtBeginSection{
+    \ifbibliography
+    \else
+      \let\insertsectionnumber\relax
+      \let\sectionname\relax
+      \frame{\sectionpage}
+    \fi
+  }
+  \AtBeginSubsection{
+    \let\insertsubsectionnumber\relax
+    \let\subsectionname\relax
+    \frame{\subsectionpage}
+  }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+  \setcounter{secnumdepth}{0}
+
+
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{emptypage}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{wrapfig}
+  \usepackage{float}
+  \usepackage{colortbl}
+  \usepackage{pdflscape}
+  \usepackage{tabu}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage[normalem]{ulem}
+  \usepackage{rotating}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tikz} % required for image opacity change
+  \usepackage[absolute,overlay]{textpos} % for text formatting
+  \usepackage[utf8]{inputenc}
+  \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+  \usepackage[skip=2pt]{caption}
+
+  % this font option is amenable for beamer
+  \setbeamerfont{caption}{size=\tiny}
+
+
+%% IQSS overrides
+\iqsssectiontitle{Outline}
+
+\AtBeginSection[]{
+  \title{\insertsectionhead}
+  {
+    \definecolor{white}{rgb}{0.776,0.357,0.157}
+    \definecolor{iqss@orange}{rgb}{1,1,1}
+    \ifnum \insertmainframenumber > \insertframenumber
+    \frame{
+      \frametitle{\iqsssectiontitleheader}
+      \tableofcontents[currentsection]
+    }
+    \else
+    \frame{
+      \frametitle{Backup Slides}
+      \tableofcontents[sectionstyle=shaded/shaded,subsectionstyle=shaded/shaded/shaded]
+    }
+    \fi
+  }
+}
+
+\AtBeginSubsection[]{}
+
+%%
+
+
+  \title[]{Farm planning}
+
+
+
+  \author[
+        Deependra Dhakal
+    ]{Deependra Dhakal}
+
+  \institute[
+    ]{
+    GAASC, Baitadi \and Tribhuwan University
+    }
+
+\date[
+      \today
+  ]{
+      \today
+        }
+
+\begin{document}
+
+% Hide progress bar and footline on titlepage
+  \begin{frame}[plain]
+  \titlepage
+  \end{frame}
+
+
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+\begin{frame}{Farm plan: Meaning}
+\protect\hypertarget{farm-plan-meaning}{}
+\begin{itemize}
+\tightlist
+\item
+  A successful farm business is not result of chance factors' -- good
+  weather and good prices -- help but a profitable and growing business
+  is the product of good planning.
+\item
+  A farm plan is a program of total farm activity of a farmer drawn up
+  in advance.
+\item
+  Planning is a process of generating ideas, while reviewing past
+  performance and using the knowledge gained to make future
+  decision/choices among a variety of them for translating it into
+  operation/production.
+\item
+  Farm planning is a scientific planning that is systematic, written and
+  based on the best information available and aimed at achieving the
+  maximum satisfaction for the farmer and his family out of their
+  resources.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Importance and use}
+\protect\hypertarget{importance-and-use}{}
+\begin{itemize}
+\tightlist
+\item
+  After farm planning, budgeting is undertaken. Budgeting is a method of
+  analyzing plans for the use of agricultural resources at the command
+  of the decision maker.
+\item
+  Enable farm entrepreneurs to achieve the objectives in relation to his
+  farm and family in a more organized manner;
+\item
+  Enable careful examination of the existing resources, efficient
+  allocation and reduces wastes;
+\item
+  Help input and output sell, calculate estimated farm incomes,
+  arrangement of required credit ahead of time;
+\item
+  Orderly planning helps preventing stress and strains in the farming
+  business;
+\item
+  Planning eases cash income in a regular way;
+\item
+  In sum, it is money saving device, cheaper to commit mistakes on the
+  paper than in the business.
+\end{itemize}
+\end{frame}
+
+\hypertarget{good-farm-plan}{%
+\section{Good farm plan}\label{good-farm-plan}}
+
+\begin{frame}{Principle characteristics}
+\protect\hypertarget{principle-characteristics}{}
+\begin{itemize}
+\tightlist
+\item
+  Must be written form by outlining minor details;
+\item
+  First plan and work up on plan;
+\item
+  Forward looking: prepare by considering environment, family/hire
+  labor, soil fertility management etc. so avoid rigidity in farm
+  planning;
+\item
+  Must be resource use efficient;
+\item
+  Balance combination of enterprises by due consideration in marketing
+  arrangement, soil
+\item
+  fertility, credit, stabilize farm earning, resource mobilization;
+\item
+  Must reduce risk, stresses and strains;
+\item
+  Optimize use of farmer's capacity, knowledge, training \& experience;
+\item
+  Must record inflow and outflow of the fund;
+\item
+  Plan must provide flexibility.
+\end{itemize}
+\end{frame}
+
+\hypertarget{techniques}{%
+\section{Techniques}\label{techniques}}
+
+\begin{frame}{Steps in preparing farm plan}
+\protect\hypertarget{steps-in-preparing-farm-plan}{}
+\begin{enumerate}
+\tightlist
+\item
+  Evaluating present farm situation (with respect to Resource inventory,
+  crops grown, extent of resource use, level of production, cost and
+  returns)
+\item
+  List out the risks to farm production (incidence of pest and diseases,
+  possibility of drought, cyclones, flood etc. are to be borne in mind
+  while planning.)
+\item
+  Identifying the weakness of the existing plan (Like suitable variety,
+  type of fertilizer, and plant protection chemicals, their marketing,
+  cultural practices etc. minor operational changes may help in
+  increasing returns)
+\item
+  Specification of technical coefficients of production (to identify
+  suitable technology, there is need to gather information from various
+  sources regarding the improved farming method and practices and the
+  various inputs which can be applied under local condition.)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Specification of appropriate prices (for the specified production
+  coefficient average prices are to be determined to estimate the
+  expected returns.)
+\item
+  Preparation of enterprise budget (enterprise budget can be prepared
+  with the help of extension leaflets, research station reports,
+  publications etc. these budgets will give input output relationship of
+  each enterprise.)
+\item
+  Preparation of alternate plan (an alternate plan can be made by
+  improving present cropping scheme and by keeping in view the long
+  range farm benefits.)
+\item
+  Analyze the alternate plan to check profitability (extra returns per
+  rupee investment in alternate plan is estimated by partial budgeting.)
+\end{enumerate}
+\end{frame}
+
+
+
+
+\end{document}

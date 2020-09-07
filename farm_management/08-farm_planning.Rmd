@@ -1,0 +1,83 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Farm planning
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+# requirements
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+
+```
+
+# Background
+
+## Farm plan: Meaning
+
+- A successful farm business is not result of chance factors' -- good weather and good prices -- help but a profitable and growing business is the product of good planning. 
+- A farm plan is a program of total farm activity of a farmer drawn up in advance. 
+- Planning is a process of generating ideas, while reviewing past performance and using the knowledge gained to make future decision/choices among a variety of them for translating it into operation/production. 
+- Farm planning is a scientific planning that is systematic, written and based on the best information available and aimed at achieving the maximum satisfaction for the farmer and his family out of their resources.
+
+## Importance and use
+
+- After farm planning, budgeting is undertaken. Budgeting is a method of analyzing plans for the use of agricultural resources at the command of the decision maker. 
+- Enable farm entrepreneurs to achieve the objectives in relation to his farm and family in a more organized manner;
+- Enable careful examination of the existing resources, efficient allocation and reduces wastes;
+- Help input and output sell, calculate estimated farm incomes, arrangement of required credit ahead of time;
+- Orderly planning helps preventing stress and strains in the farming business;
+- Planning eases cash income in a regular way;
+- In sum, it is money saving device, cheaper to commit mistakes on the paper than in the
+business.
+
+# Good farm plan
+
+## Principle characteristics
+
+- Must be written form by outlining minor details;
+- First plan and work up on plan;
+- Forward looking: prepare by considering environment, family/hire labor, soil fertility management etc. so avoid rigidity in farm planning;
+- Must be resource use efficient;
+- Balance combination of enterprises by due consideration in marketing arrangement, soil
+- fertility, credit, stabilize farm earning, resource mobilization;
+- Must reduce risk, stresses and strains;
+- Optimize use of farmer's capacity, knowledge, training & experience;
+- Must record inflow and outflow of the fund;
+- Plan must provide flexibility.
+
+# Techniques
+
+## Steps in preparing farm plan
+
+1. Evaluating present farm situation (with respect to Resource inventory, crops grown, extent of resource use, level of production, cost and returns)
+2. List out the risks to farm production (incidence of pest and diseases, possibility of drought, cyclones, flood etc. are to be borne in mind while planning.)
+3. Identifying the weakness of the existing plan (Like suitable variety, type of fertilizer, and plant protection chemicals, their marketing, cultural practices etc. minor operational changes may help in increasing returns)
+4. Specification of technical coefficients of production (to identify suitable technology, there is need to gather information from various sources regarding the improved farming method and practices and the various inputs which can be applied under local condition.) 
+
+##
+
+5. Specification of appropriate prices (for the specified production coefficient average prices are to be determined to estimate the expected returns.)
+6. Preparation of enterprise budget (enterprise budget can be prepared with the help of extension leaflets, research station reports, publications etc. these budgets will give input output relationship of each enterprise.)
+7. Preparation of alternate plan (an alternate plan can be made by improving present cropping scheme and by keeping in view the long range farm benefits.)
+8. Analyze the alternate plan to check profitability (extra returns per rupee investment in alternate plan is estimated by partial budgeting.)

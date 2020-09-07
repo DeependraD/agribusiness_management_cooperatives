@@ -1,0 +1,435 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[12pt,ignorenonframetext,aspectratio=169]{beamer}
+\IfFileExists{pgfpages.sty}{\usepackage{pgfpages}}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+\fi
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+
+
+
+
+
+%
+\fi
+
+  \usetheme[]{iqss}
+
+
+
+
+
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+  \usepackage{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
+\newif\ifbibliography
+
+
+\hypersetup{
+      pdftitle={Cooperative operation in commercial farming},
+        pdfauthor={Deependra Dhakal},
+          pdfborder={0 0 0},
+    breaklinks=true}
+%\urlstyle{same}  % Use monospace font for urls
+
+
+
+
+
+
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+  \AtBeginPart{
+    \let\insertpartnumber\relax
+    \let\partname\relax
+    \frame{\partpage}
+  }
+  \AtBeginSection{
+    \ifbibliography
+    \else
+      \let\insertsectionnumber\relax
+      \let\sectionname\relax
+      \frame{\sectionpage}
+    \fi
+  }
+  \AtBeginSubsection{
+    \let\insertsubsectionnumber\relax
+    \let\subsectionname\relax
+    \frame{\subsectionpage}
+  }
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+  \setcounter{secnumdepth}{0}
+
+
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{emptypage}
+  \usepackage{array}
+  \usepackage{multirow}
+  \usepackage{wrapfig}
+  \usepackage{float}
+  \usepackage{colortbl}
+  \usepackage{pdflscape}
+  \usepackage{tabu}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage[normalem]{ulem}
+  \usepackage{rotating}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tikz} % required for image opacity change
+  \usepackage[absolute,overlay]{textpos} % for text formatting
+  \usepackage[utf8]{inputenc}
+  \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+  \usepackage[skip=2pt]{caption}
+
+  % this font option is amenable for beamer
+  \setbeamerfont{caption}{size=\tiny}
+
+
+%% IQSS overrides
+\iqsssectiontitle{Outline}
+
+\AtBeginSection[]{
+  \title{\insertsectionhead}
+  {
+    \definecolor{white}{rgb}{0.776,0.357,0.157}
+    \definecolor{iqss@orange}{rgb}{1,1,1}
+    \ifnum \insertmainframenumber > \insertframenumber
+    \frame{
+      \frametitle{\iqsssectiontitleheader}
+      \tableofcontents[currentsection]
+    }
+    \else
+    \frame{
+      \frametitle{Backup Slides}
+      \tableofcontents[sectionstyle=shaded/shaded,subsectionstyle=shaded/shaded/shaded]
+    }
+    \fi
+  }
+}
+
+\AtBeginSubsection[]{}
+
+%%
+
+
+  \title[]{Cooperative operation in commercial farming}
+
+
+
+  \author[
+        Deependra Dhakal
+    ]{Deependra Dhakal}
+
+  \institute[
+    ]{
+    GAASC, Baitadi \and Tribhuwan University
+    }
+
+\date[
+      \today
+  ]{
+      \today
+        }
+
+\begin{document}
+
+% Hide progress bar and footline on titlepage
+  \begin{frame}[plain]
+  \titlepage
+  \end{frame}
+
+
+
+\begin{frame}{Commercial farming}
+\protect\hypertarget{commercial-farming}{}
+\begin{itemize}
+\tightlist
+\item
+  Cultivation of crops, rearing of livestock and producing farm
+  commodities for purpose of generating profit.
+\item
+  Commercial farming makes use of cost reducing technologies in
+  production and optimize production levels based on consumer demand and
+  price of produce.
+\item
+  These types of agricultural systems are more specialized in choice of
+  crop or enterprise, so that operational plan may learn from industry
+  sector.
+\item
+  Term generally refers to high input use condition where inputs such as
+  irrigation, fertilizer and land management are heavily controlled to
+  aim for higher volume of output.
+\item
+  Cooperative farming ensures better production of agricultural goods
+  through encouragement of use of bigger scale technology, besides also
+  providing chance for capital formation among smallholder farmers.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cooperative: Lesson from India}
+\protect\hypertarget{cooperative-lesson-from-india}{}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  Dairy farming based on the Anand Pattern, with a single marketing
+  cooperative, is India's largest self-sustaining industry and its
+  largest rural employment provider.
+\item
+  Successful implementation of the Anand model has made India the
+  world's largest milk producer.
+\item
+  Here small, marginal farmers with a couple or so heads of milch cattle
+  queue up twice daily to pour milk from their small containers into the
+  village union collection points.
+\item
+  The milk after processing at the district unions is then marketed by
+  the state cooperative federation nationally under the Amul brand name,
+  India's largest food brand.
+\item
+  With the Anand pattern three-fourth of the price paid by the mainly
+  urban consumers goes into the hands of millions of small dairy
+  farmers, who are the owners of the brand and the cooperative.
+\item
+  The cooperative hires professionals for their expertise and skills and
+  uses hi-tech research labs and modern processing plants and transport
+  cold-chains, to ensure quality of their produce and value-add to the
+  milk.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Agriculture cooperatives types}
+\protect\hypertarget{agriculture-cooperatives-types}{}
+\footnotesize
+
+\begin{enumerate}
+\tightlist
+\item
+  Marketing cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Includes commodities or commodity groups such as cotton, dairy, fruit
+  and vegetables, poultry, and livestock marketing cooperatives.
+\item
+  Primary objectives is marketing the farm produce of its members.
+\item
+  As marketing is difficult task for individual farmers, establishing a
+  marketing cooperative is very important for commercialized
+  agricultural development and to maintain the farm profit.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Farm supply cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Farm supply cooperatives are vital for the dependable supply of farm
+  inputs such as farm machinery, equipment, fertilizers, housing
+  materials, livestock feed, seed and petroleum products.
+\item
+  They may also handle items such as lawn equipment, food items, or
+  necessary items for gardening.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\footnotesize
+
+\begin{itemize}
+\tightlist
+\item
+  Cooperative endeavors such as feed mills, farm machinery, and
+  fertilizer plants can be established at the regional or national
+  level, whereas the farm supply depot can be established at the local
+  level.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Service cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Set up for special services such as credit services,
+  telephone/electric service, insurance services, irrigation services,
+  grain banks, trucking, artificial insemination, cotton ginning, ginger
+  drying, rice drying, etc.
+\item
+  Service Cooperatives may also provide items such as chemicals, diesel,
+  oil, gas, feed, seedlings, and seeds to its members.
+\item
+  Soil testing, crop scouting, and land leveling are other services a
+  service cooperative may provide to its members.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\footnotesize
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Production Cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Farmer cooperatives for agricultural production such as milk, fruits
+  and vegetables, poultry, etc. fall into this category.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Processing cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Farmer cooperatives for processing agricultural commodities such as
+  fruits, vegetables, flowers, etc. are important to minimize losses
+  from perishable commodities and increase income from these
+  commodities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Advantages of cooperatives in commercial farming}
+\protect\hypertarget{advantages-of-cooperatives-in-commercial-farming}{}
+\footnotesize
+
+\begin{enumerate}
+\item
+  \textbf{Increases bargaining strength of the farmers}: Many of the
+  defects of the present agricultural marketing system arise because
+  often one ignorant and illiterate farmer (as an individual) has to
+  face well-organized mass of clever intermediaries. If the farmers join
+  hands and for a co-operative, naturally they will be less prone to
+  exploitation and malpractices. Instead of marketing their produce
+  separately, they will market it together through one agency.
+\item
+  \textbf{Direct dealing with final buyers}: The co-operatives can
+  altogether skip the intermediaries and enter into direct relations
+  with the final buyers. This practice will eliminate exploiters and
+  ensure fair prices to both the producers and the consumers.
+\item
+  \textbf{Provision of credit}: The marketing co-operative societies
+  provide credit to the farmers to save them from the necessity of
+  selling their produce immediately after harvesting. This ensures
+  better returns to the farmers.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\footnotesize
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \textbf{Easier and cheaper transport}: Bulk transport of agricultural
+  produce by the societies is often easier and cheaper. Sometimes the
+  societies have their own means of transport.
+\item
+  \textbf{Storage facilities}: The co-operative marketing societies
+  generally have storage facilities. Thus the farmers can wait for
+  better prices.
+\item
+  \textbf{Grading and standardization}: This task can be done more
+  easily for a co-operative agency than for an individual farmer. For
+  this purpose, they can seek assistance from the government or can even
+  evolve their own grading arrangements.
+\item
+  \textbf{Market intelligence}: The co-operatives can arrange to obtain
+  data on market prices, demand and supply and other related information
+  from the markets on a regular basis and can plan their activities
+  accordingly.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+\begin{enumerate}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  \textbf{Influencing marketing prices}: Wherever strong marketing
+  co-operative are operative, they have bargained for and have achieved,
+  better prices for their agricultural produce.
+\item
+  \textbf{Provision of inputs and consumer goods}: The co-operative
+  marketing societies can easily arrange for bulk purchase of
+  agricultural inputs, like seeds, manures fertilizers etc. and consumer
+  goods at relatively lower price and can then distribute them to the
+  members.
+\item
+  \textbf{Processing of agricultural produce}: The co-operative
+  societies can undertake processing activities like crushing seeds,
+  ginning and pressing of cotton, etc. In addition to all these
+  advantages, the co-operative marketing system can arouse the spirit of
+  self-confidence and collective action in the farmers without which the
+  programs of agricultural development, howsoever well-conceived and
+  implemented, holds no promise to success.
+\end{enumerate}
+\end{frame}
+
+
+
+
+\end{document}

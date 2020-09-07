@@ -1,0 +1,108 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Cooperative operation in commercial farming"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 1
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Commercial farming
+
+- Cultivation of crops, rearing of livestock and producing farm commodities for purpose of generating profit.
+- Commercial farming makes use of cost reducing technologies in production and optimize production levels based on consumer demand and price of produce.
+- These types of agricultural systems are more specialized in choice of crop or enterprise, so that operational plan may learn from industry sector.
+- Term generally refers to high input use condition where inputs such as irrigation, fertilizer and land management are heavily controlled to aim for higher volume of output.
+- Cooperative farming ensures better production of agricultural goods through encouragement of use of bigger scale technology, besides also providing chance for capital formation among smallholder farmers.
+
+# Cooperative: Lesson from India
+
+\footnotesize
+
+- Dairy farming based on the Anand Pattern, with a single marketing cooperative, is India's largest self-sustaining industry and its largest rural employment provider.
+- Successful implementation of the Anand model has made India the world's largest milk producer.
+- Here small, marginal farmers with a couple or so heads of milch cattle queue up twice daily to pour milk from their small containers into the village union collection points. 
+- The milk after processing at the district unions is then marketed by the state cooperative federation nationally under the Amul brand name, India's largest food brand. 
+- With the Anand pattern three-fourth of the price paid by the mainly urban consumers goes into the hands of millions of small dairy farmers, who are the owners of the brand and the cooperative. 
+- The cooperative hires professionals for their expertise and skills and uses hi-tech research labs and modern processing plants and transport cold-chains, to ensure quality of their produce and value-add to the milk. 
+
+# Agriculture cooperatives types
+
+\footnotesize
+
+1. Marketing cooperatives
+- Includes commodities or commodity groups such as cotton, dairy, fruit and vegetables, poultry, and livestock marketing cooperatives.
+- Primary objectives is marketing the farm produce of its members. 
+- As marketing is difficult task for individual farmers, establishing a marketing cooperative is very important for commercialized agricultural development and to maintain the farm profit.
+
+2. Farm supply cooperatives
+- Farm supply cooperatives are vital for the dependable supply of farm inputs such as farm machinery, equipment, fertilizers, housing materials, livestock feed, seed and petroleum products.
+- They may also handle items such as lawn equipment, food items, or necessary items for gardening.
+
+#
+
+\footnotesize
+
+- Cooperative endeavors such as feed mills, farm machinery, and fertilizer plants can be established at the regional or national level, whereas the farm supply depot can be established at the local level.
+3. Service cooperatives
+- Set up for special services such as credit services, telephone/electric service, insurance services, irrigation services, grain banks, trucking, artificial insemination, cotton ginning, ginger drying, rice drying, etc.
+- Service Cooperatives may also provide items such as chemicals, diesel, oil, gas, feed, seedlings, and seeds to its members.
+- Soil testing, crop scouting, and land leveling are other services a service cooperative may provide to its members.
+
+#
+
+\footnotesize
+
+4. Production Cooperatives
+- Farmer cooperatives for agricultural production such as milk, fruits and vegetables, poultry, etc. fall into this category.
+5. Processing cooperatives
+- Farmer cooperatives for processing agricultural commodities such as fruits, vegetables, flowers, etc. are important to minimize losses from perishable commodities and increase income from these commodities.
+
+# Advantages of cooperatives in commercial farming
+
+\footnotesize
+
+1. **Increases bargaining strength of the farmers**: Many of the defects of the present agricultural marketing system arise because often one ignorant and illiterate
+farmer (as an individual) has to face well-organized mass of clever intermediaries. If the farmers join hands and for a co-operative, naturally they will be less prone to exploitation and malpractices. Instead of marketing their produce separately, they will market it together through one agency.
+
+2. **Direct dealing with final buyers**: The co-operatives can altogether skip the intermediaries and enter into direct relations with the final buyers. This practice will eliminate exploiters and ensure fair prices to both the producers and the consumers.
+
+3. **Provision of credit**: The marketing co-operative societies provide credit to the farmers to save them from the necessity of selling their produce immediately after harvesting. This ensures better returns to the farmers.
+
+#
+
+\footnotesize
+
+4. **Easier and cheaper transport**: Bulk transport of agricultural produce by the societies is often easier and cheaper. Sometimes the societies
+have their own means of transport.
+5. **Storage facilities**: The co-operative marketing societies generally have storage facilities. Thus the farmers can wait for better prices.
+6. **Grading and standardization**: This task can be done more easily for a co-operative agency than for an individual farmer. For this purpose, they can seek assistance from the government or can even evolve their own grading arrangements.
+7. **Market intelligence**: The co-operatives can arrange to obtain data on market prices, demand and supply and other related information from the markets on a regular basis and can plan their activities accordingly.
+
+#
+
+8. **Influencing marketing prices**: Wherever strong marketing co-operative are operative, they have bargained for and have achieved, better prices for their agricultural produce.
+9. **Provision of inputs and consumer goods**: The co-operative marketing societies can easily arrange for bulk purchase of agricultural inputs, like seeds, manures fertilizers etc. and consumer goods at relatively lower price and can then distribute them to the members.
+10. **Processing of agricultural produce**: The co-operative societies can undertake processing activities like crushing seeds, ginning and pressing of cotton, etc. In addition to all these advantages, the co-operative marketing system can arouse the spirit of self-confidence and collective action in the farmers without which the programs of agricultural development, howsoever well-conceived and implemented, holds no promise to success.
+

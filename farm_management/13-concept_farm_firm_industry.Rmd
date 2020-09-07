@@ -1,0 +1,165 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Basic concept of farm firms, plant, industry and their interrelationships in agricultural commodities"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 1
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Farm
+
+- A piece of land where various enterprise are produced, generally agricultural commodities.
+- Function of land, labor, and capital for producing particular output.
+- Types of farm:
+  - Family farm: Household labor dependent and diversified production
+  - Commercial farm: Commercial approach of production, market-oriented and has generally around Rs. 250000 sales annually.
+  
+# Firm
+
+- It refers to the production unit or an organization that focuses on producing goods and services for the sake of profits to trade or sell to consumers.
+- A firm has a component of management and someone makes a decision -- entrepreneur or owner cum manager.
+- There is some hierarchy and an organizational head.
+- Business enterprise or a company as a whole is also called firm.
+- The function of making fundamental policy decision in a firm is generally called 'entrepreneurship'.
+
+#
+
+- It is classified on the type of business doing, its size and pattern of ownership
+- Based on ownership and decision making process the institutional classification:
+  - Proprietorship
+  - Partnership
+  - Corporation
+- Majority of firms are privately owned and are created to produce mass profit, however there are a number of non profit organizations.
+
+#
+
+```{r technology-basics, fig.width=6, fig.height=3, out.width="70%"}
+DiagrammeR::mermaid(
+  "
+  graph TB
+  subgraph 
+  b1[Visible to eye. <br>Occurs in the form of capital goods, assets. e.g. Building, machinery]
+  end
+  subgraph 
+  c1[Non-visible form. <br>Occurs in the management services. e.g. service of doctor, manager.]
+  end
+  A(Technology) -->|Embodied| b1
+  A -->|Disembodied| c1
+  "
+)
+```
+
+
+# Plant
+
+- A plant in terms of business is a particular facility that is used to manufacture a product for a business company
+- A plant has a plant manager who is responsible for the manufacturing process to run smoothly. e.g. skim milk plant in a dairy industry.
+- A firm may comprise only of a single plant, or multiple plants.
+- Thus, plant is also a set of machinery/technology used in production process. For example, milk processing plant, jam/jelly processing plant.
+- **Objective of plant**
+  - Technical efficiency: Physical
+  - Economic efficiency: Monetary
+
+# Industry
+
+- It comprises several similar firms or plants (Group of similar firms/plants).
+- For e.g.: agricultural industry, livestock industry, poultry industry, agri-feed industry, eco-tourism industry, mining industry and coaling industry etc.
+- Agricultural industry has millions of farms, 2.6 to 2.7 millions of farm in Nepalese agri-industry.
+- Two criteria are used to define industry:
+  1. Product being produced
+  2. Method of production
+- Firms are grouped into an industry on the basis:
+  - Products are close substitute
+  - Raw materials being used in production are similar
+- **Objective of industry**:
+  - To achieve/increase physical optima or
+  - To achieve/increase economic optima
+  
+#
+
+- Physical optima: Level of input used that gives maximum output. This is important in cases where physical inputs are insufficient. For e.g., country where there is widespread "malnutrition", physical optima is hard to reach.
+- Economic optima: Those countries which achieve self-sufficiency, no malnutrition problem working on economic optima, i.e., level of input used that maximize the "profit";
+
+# Inter-relationship between firm, plant and industry with respect to agricultural production
+
+\begin{columns}
+
+\column{0.5\textwidth}
+
+```{r interrelationship-firm-plant-industry}
+DiagrammeR::mermaid(
+  "
+  graph TB
+  subgraph Industry
+  subgraph Firm1
+  subgraph Plant1
+  ab111[ ]
+  ab112[ ]
+  ab113[ ]
+  end
+  subgraph Plant2
+  ab121[ ]
+  ab122[ ]
+  ab123[ ]
+  end
+  end
+  subgraph Firm2
+  subgraph Plant1
+  ab211[ ]
+  ab212[ ]
+  ab213[ ]
+  end
+  subgraph Plant2
+  ab221[ ]
+  ab222[ ]
+  ab223[ ]
+  end
+  end
+  end
+  "
+)
+```
+
+
+```{r interrelationship-firm-plant-industry-dairy}
+DiagrammeR::mermaid("
+                    graph TB
+                    
+                    A{DDC} --> B{Distribution firm}
+                    B --> A
+                    A --> C[Processing plant]
+                    A --> D((Dairy industry))
+                    F[Skim milk powder plant] --> E{Skim milk powder producing firm}
+                    E --> F
+                    E --> D
+                    G[Chilling plant/vat] --> H{Private dairy}
+                    H --> G
+                    H --> D
+                    ")
+```
+
+\column{0.5\textwidth}
+
+\end{columns}

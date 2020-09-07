@@ -44,12 +44,71 @@ source("./../scripts/graphics.R")
   2. Factor-factor relationship
   3. Product-product relationship
 
+# Cost concepts
+
+## Background
+
+- A farmer can increase his income by one of two ways:
+  1. Increasing the production
+  2. Reducing the cost of production
+<!-- - Normally in competitive market, prices are not in the control of individual farmer, his additional production must, therefore, sell at same or even lower price. -->
+<!-- - Additionally, the cost of producing extra units of produce might involve higher costs. -->
+<!-- - The second alternative is to reduce the cost of production. -->
+<!-- - Often the cost of production is a policy issue when producer complain about not covering cost of production from the price they receive for their produce. -->
+
+## Cash cost and non-cash cost
+
+- In economics cost means the total efforts involved in the production of a commodity while expense of production only signify money costs.
+- Cash costs are incurred when resources are purchased and used immediately in the production process.
+- Non-cash cost consist of depreciation and payments to resources owned by the farmers e.g., depreciation on tractor, equipment, buildings, payment made to the farmer himself or family labor, management and owned capital.
+
+## Total cost
+
+- Fixed costs plus variable costs equal total costs. Total costs are required for computing net revenue. Net revenue is equal to total revenue less total cost.
+- Whether a particular cost item will be considered as fixed or variable one depends upon whether the input concerned is fixed or variable for the problem under consideration.
+- During long run planning period all inputs are variable. Thus in long run there are no fixed costs.
+- Total cost = Fixed cost + Variable cost
+
+## Marginal cost
+
+- The additional cost of doing a little bit more (or 1 unit more if a unit can be measured) of an activity.
+- How do you make a rational decision about when the alarm should go off? What you have to do is to weigh up the costs and benefits of additional sleep. Each extra minute in bed gives you more sleep (the marginal benefit), but gives you more of a rush when you get up (the marginal cost).
+- The decision is therefore based on the costs and benefits of extra sleep, not on the total costs and benefits of a whole night’s sleep.
+
+<!-- ## Characteristics of marginal cost -->
+
+## Opportunity cost
+
+- The farm resources have alternative uses.
+- The price that will be required to prevent the transference of factors to other uses is called "opportunity cost" or "alternative cost".
+- The price which should be put on any input is therefore the return which must be given up in the next best alternative use.
+- Thus every resource used in production has one true cost: opportunity cost.
+- Suppose a farmer has 40 kgs of fertilizer; it adds Rs 250 to the total revenue from wheat and Rs 200 to the revenue from barley. If he fertilizes barley, his opportunity cost is Rs 250, which he has foregone on wheat. If he fertilizes wheat, his opportunity cost is Rs 200, foregone on barley.
+
+##
+
+- Thus once purchased, market price of input becomes irrelevant to the problem of its allocation among alternative uses.
+- In case of durable resources such as machinery or land which are used in production, the opportunity cost is defined to be the amount that total capital investment could earn if invested in its best alternative use.
+- For simplest case, the opportunity cost will be interest that a deposit of money in a bank would fetch.
+
+## Return concepts
+
+- Gross return = Total production $\times$ price
+- Net return = Gross return - Total cost
+- Returns to fixed farm resources(or returns over variable costs) = Gross returns - Variable cost
+
+## Rational decision
+
+- Doing more of an activity if its marginal benefit exceeds its marginal cost and doing less if its marginal cost exceeds its marginal benefit.
+- Rational decisions are made with rational choices; that involve weighing up the benefit of any activity against its opportunity cost.
 
 # Product
 
 ## Total product (TP)
 
-- A given level of total product is always associated with a particular level of input(s) use with a given technology. Production function is often presented as total output curve because total product curve and production function curve are closely associated.
+- A given level of total product is always associated with a particular level of input(s) use with a given technology. 
+- The total volume or amount of final output produced by a firm using given inputs in a given period of time is called **Total product**.
+- Production function is often presented as total output curve because total product curve and production function curve are closely associated.
 
 ## Average product (AP)
 
@@ -113,11 +172,11 @@ ex2 %>%
 - In Example 1 (Table \ref{tab:marginal-product1}), when $\Delta X = 5$, $\Delta Y = 10$, then $\frac{\Delta Y}{\Delta X} = \frac{10}{5} = 2.0$
 - In Example 2 (Table \ref{tab:marginal-product2}), when $\Delta X = 5$, $\Delta Y = 20$ for first unit of input, 15 for second and 5 for third addition of input. It indicates that with each unit change in X from 0 to first addition of inputs, there is a change in 2 units of Y ($\frac{\Delta Y}{\Delta X} = \frac{20}{5} = 4.0$). The Marginal product of variable unit can be thus approximated by dividing addition to total output by addition to total input. The marginal product, however, has decreased upon further addition of inputs to the first input level. i.e., when the input level is 15 (0 + 5 + 10), the additional 5 (10-5) unit input have given rise to only 15 (45-30) unit of output, hence the marginal product ($\frac{\Delta Y}{\Delta X} = \frac{15}{5} = 3.0$). This is reduction from the previous value of MP of 4.
 
-## Exact marginal product
+<!-- ## Exact marginal product -->
 
-- Exact (point) marginal product refers to the marginal product as a derivative. This indicates the marginal product of a point. The derivative gives the values at a point and not an average between two points.
+<!-- - Exact (point) marginal product refers to the marginal product as a derivative. This indicates the marginal product of a point. The derivative gives the values at a point and not an average between two points. -->
 
-- If the production function $Y = \alpha + \beta X$, point marginal product = $\frac{\delta Y}{\delta X} = b$, which is a linear constant relationship. If the production function is non-linear, i.e., $Y = \alpha + \beta X + \gamma X^2$, exact MP will be $\frac{\delta Y}{\delta X} = \beta + 2\gamma X$.
+<!-- - If the production function $Y = \alpha + \beta X$, point marginal product = $\frac{\delta Y}{\delta X} = b$, which is a linear constant relationship. If the production function is non-linear, i.e., $Y = \alpha + \beta X + \gamma X^2$, exact MP will be $\frac{\delta Y}{\delta X} = \beta + 2\gamma X$. -->
 
 ## Example: Production function of wheat
 

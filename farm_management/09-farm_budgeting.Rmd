@@ -1,0 +1,278 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Farm budgeting
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+bibliography: [./../bibliography/bibliographies.bib]
+---
+
+```{r setup, include=FALSE}
+# requirements
+library(knitr)
+require(tidyverse)
+require(rtables)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+
+```
+
+# Introduction
+
+## Meaning and definition
+
+- A farm plan should show the crops to be grown, practices to be followed in their production, combination of enterprises, use of labor, investment to be made on equipment, building etc. 
+- The expression of such a farm plan in monetary terms by estimation of receipts, expenses and net income, is called the budgeting. 
+- In other words, farm budgeting is a process of estimating costs, returns and net profit of a farm or a particular enterprise. 
+- Farm budgeting can be used simply to select the most profitable plan from number of alternatives.
+
+##
+
+- The physical aspects of farm planning when expressed in monetary terms called budgeting.
+- The expression of farm plan in monetary terms by estimation of receipts, expenses and net income is called budgeting.
+- Farm budgeting is a process of estimating costs, returns and net profit of a farm or a particular enterprise.
+- Budget is a statement of estimated income and expenditure.
+
+# Enterprise budgeting
+
+##
+
+- An enterprise is defined as a single crop or livestock commodity being produced on the farm.
+- Enterprises are the basic building blocks for a farm plan.
+- Enterprise budgeting calculates input required, cost involved and expected returns of the particular enterprises.
+- It helps planning particular enterprises based on planning estimated inputs, expense plan and obtain expected benefit.
+- Enterprise budgeting can be developed for each actual and potential enterprise in a farm plan such as paddy enterprise, wheat enterprise or a cow enterprise.
+- What you produce determines the profitability of the business. 
+- By analyzing revenues and expenses associated with individual enterprises you can determine which enterprises might be expanded and those that should be cut back or eliminated.
+
+##
+
+- A manager may also want to compare profitability of one production technique with another technique (e.g. minimum till and conventional tillage practices).
+- A budget can be developed for each existing or potential enterprise in a farm plan. 
+- Several budgets could be developed for a single budget to represent alternative combinations of inputs and outputs.
+- Each budget should be developed on the basis of a small common unit such as one hectare of paddy, wheat, or maize etc. or one head of livestock.
+- This permits comparison of the profit for alternative and competing enterprises.
+
+# Partial budgeting
+
+## Meaning
+
+- Refers to estimating costs and returns and net income of a particular enterprise. 
+- It refers to estimating the returns for a part of the business i.e. one or few activities; for example, to estimate additional cost and returns from growing one hectare of rice in place of vegetable crop or to estimate additional cost and return by adopting foliar application of chemical fertilizers instead of soil application. 
+- It consists of four important elements: added costs, added returns, reduced returns and reduced costs. 
+- Partial budgeting technique is generally used to evaluate the profitability of input substitution, enterprise substitution and scale of operation.
+
+## Elements
+
+1. Added costs: Additional costs are incurred, if the proposed modification is the introduction of a new enterprise or increase in the size of the existing enterprise.
+2. Added returns: Additional returns could be received when the proposed modification is the addition of a new enterprise, or increase in the size of the existing enterprise or adoption of technology that results in higher productivity.
+3. Reduced returns: Decrease in the returns is observed when the proposed modification involves the elimination of an existing enterprise or reduction in the size of the existing enterprise.
+4. Reduced costs: Decrease in the costs is found when the proposed modification involves the elimination of existing enterprise or reduction in the size of the enterprise or adoption of a technology that uses fewer amounts of resources.
+
+## Book keeping with partial budget
+
+
+<!-- ```{r partial-budget-book} -->
+<!-- partial_budget <- tribble(~"Debit_Direction", ~"Debit_Particular", ~"Debit_Amount", ~"Credit_Direction", ~"Credit_Particular", ~"Credit_Amount", -->
+<!--         "Increase in costs per acre", "1. Depreciation for 2 hours = $\\frac{2200 \\times 2}{2500} = \\frac{44}{25}$", 1.76, "Decrease in costs per acre", "Manual labor, 60-2 = 58 man hours at 0.75 per man hour", 43.50, -->
+<!--         "Increase in costs per acre", "2. Interest at 10 \\%", 0.18, "Decrease in costs per acre", NA, NA, -->
+<!--         "Increase in costs per acre", "3. Tractor (32 HP) cost for 2 hours at Rs 6.56 per hour", 13.12, "Decrease in costs per acre", NA, NA, -->
+<!--         "Decrease in return per acre", "Decrease in yield at 2.5 \\% i.e. 0.15 quintals at Rs 90 per quintal", 13.50, "Increase in return per acre", NA, NA) %>% -->
+<!--   pivot_longer(cols = 1:6, names_to = c("Account", ".value"), names_pattern = "(.*)_(.*)") -->
+
+<!-- obs_n_mean <- function(df, .N_col, lblstr = NULL) { -->
+<!--   x <- df[["Amount"]] -->
+<!--   in_rows( -->
+<!--     "Total" = rcell(sum(x, na.rm = TRUE), format = "xx") -->
+<!--   ) -->
+<!-- } -->
+
+<!-- basic_table() %>% -->
+<!--   split_cols_by("Account") %>% -->
+<!--   split_rows_by("Direction") %>% -->
+<!--   summarize_row_groups(cfun = obs_n_mean) %>% -->
+<!--   split_rows_by("Particular", split_fun = drop_split_levels) %>% -->
+<!--   analyze("Amount", afun = function(x)sum(x, na.rm = TRUE), format = "xx.x") %>% -->
+<!--   build_table(partial_budget) %>% -->
+<!--   trim_zero_rows() %>% -->
+<!--   rtables::matrix_form() %>% -->
+<!--   .[["strings"]] %>% # string output is also available in the matrix -->
+<!--   as_tibble() %>% -->
+<!--   janitor::row_to_names(1, remove_row = TRUE) %>% -->
+<!--   knitr::kable(booktabs = TRUE, escape = FALSE, format = "latex") %>% -->
+<!--   kableExtra::kable_styling(latex_options = c("striped"), font_size = 6) -->
+<!-- ``` -->
+
+```{r partial-budget-book}
+tribble(
+  ~"Debit", ~"Debit_amount", ~"Credit", ~"Credit_amount",
+  "(a) increase in costs per acre", NA, "(a) decrease in costs per acre", NA, 
+  "1. Depreciation for 2 hours; $\\frac{2200 \\times 2}{2500} = \\frac{44}{25}$", 1.76, "Manual labor; 60-2 = 58 man hours (\\@ Rs. 0.75 per man hour)", 43.50, 
+  "2. Interest \\@ 10\\%", 0.18, NA, NA, 
+  "3. Tractor (32 HP) cost for 2 hours \\@ Rs 6.56/hr", 13.12, NA, NA,
+  "(b) decrease in returns per acre", NA, "(b) increase in returns per acre", NA, 
+  "Decrease in yield \\@ 2.5\\%; i.e. 0.15 qtl \\@ Rs. 90/qtl", 13.50, NA, NA, 
+  "A. Total increased cost and reduced returns Rs.", 28.56, "B. Total reduced costs and increased returns Rs.", 43.50
+) %>% 
+  knitr::kable(booktabs = TRUE, col.names = c("Debit", "Amount", "Credit", "Amount"), escape = FALSE, caption = "Economics of groundnut harvesting per acre by groundnut digger-shaker v/s manual labor") %>%
+  kableExtra::kable_styling(latex_options = c("striped"), font_size = 6) %>% 
+  kableExtra::column_spec(column = 1:4, width = c("12em", "3em", "12em", "3em"))
+```
+
+# Complete budgeting
+
+##
+
+- It is also called as total budgeting.
+- Refers to preparing budget for the farm as a whole.
+- Complete budgeting considers all the crops, livestock, methods of production and aspects of marketing in consolidated form and estimates costs and returns for the farm as a whole.
+- Therefore complete budgeting can he specifically defined as "An estimation of the probable income and expenditure is made for the farm as a single unit of course, a complete budget is required when a farm plan is prepared for new farm or when drastic changes are suggested in the plan of the existing pattern on an established farm".
+- Complete budgeting can be prepared for short run (annual budget) and for long run.
+
+# Comparison between budgeting types
+
+##
+
+The differences between partial and complete budgeting is presented in Table \ref{tab:farm-budgeting}.
+
+```{r farm-budgeting, echo=FALSE}
+partial_complete <- structure(list(X = 1:5, Complete.Budgeting = structure(c(5L, 1L, 2L, 4L, 3L), 
+                                                                           .Label = c("All the aspects like crops, livestock, machinery and other assets are considered",
+                                                                                      "Both fixed and variable costs are calculated for working out costs and returns.",
+                                                                                      "It requires more efforts and time for preparation.", "Net income is estimated by deleting fixed costs and costs of variable inputs from the value of the product",
+                                                                                      "The whole farm is considered as one unit"), class = "factor"),
+                                   X.1 = 1:5, 
+                                   Partial.Budgeting = structure(c(1L, 2L, 5L, 4L, 3L), 
+                                                                 .Label = c("It is adopted when a minor aspect of farm organization is touched.",
+                                                                            "It is practiced with in the existing resources structure of the farm.",
+                                                                            "It requires relatively less efforts and time for preparation.",
+                                                                            "Net income is estimated by deleting only cost of variable inputs from the value of the product.",
+                                                                            "Only variable costs are considered."), class = "factor")), 
+                              .Names = c("X", "Complete.Budgeting", "X.1", "Partial.Budgeting"), class = "data.frame", 
+                              row.names = c(NA,-5L))
+
+# for wide tables use package tabu to wrap the text.
+partial_complete %>% knitr::kable(format = "latex",
+             caption = "Difference between complete and partial budgeting",
+             col.names = c("", "Complete budgeting", "", "Partial budgeting"), booktabs = TRUE) %>%
+  kableExtra::kable_styling(position = "right", latex_options = "striped", font_size = 6) %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::column_spec(1:4, width = c("4em", "16em", "4em", "16em"))
+
+```
+
+# Steps in farm budgeting
+
+##
+
+- Step 1: is to estimate total production (output or yield) and expected output price. The estimated yields and prices should be what you expect under normal conditions. Be as realistic as possible.
+
+- Step 2: is to estimate variable costs. Variable costs are just what they sound like they vary with the amount of product you produce. These are the out-of- pocket costs that must be incurred if the enterprise is produced or grown. Some examples of variable costs are: hired labor; repairs; feed; supplies; vet. medicine; fuel; seed; etc.
+
+##
+
+- Step 3: is to assess fixed costs. Fixed costs will occur and will stay about the same no matter how much you produce, or, in most cases whether or not you produce at all. Some examples of fixed costs are: depreciation; taxes; insurance; etc. Land charges are generally based on one of three acceptable methods:
+  1. interest opportunity based on current value of land;
+  2. owner rental income; or
+  3. typical cash rent charge (market rent).
+
+- Step 4: Calculating net receipts. Net receipts represent that income which is left for the farmer and family to live on, pay debt, invest, or save.
+
+# Enterprise budgeting: An example
+
+## Budgeting of a Mango farm
+
+\begin{columns}
+
+\begin{column}{0.4\textwidth}
+\tiny
+% \scalebox{0.3}{\begin{minipage}{1.20\textwidth}
+\begin{itemize}
+\item Area: 1 ha
+\item Place: Bharatpur, Chitwan
+\item Duration: 1 year (2060-2061 BS)
+\end{itemize}
+% \end{minipage}}
+\end{column}
+
+\begin{column}{0.8\textwidth}
+
+\scalebox{0.60}{\begin{minipage}{1.2\textwidth}
+
+\vspace{0.25cm}
+
+```{r enterprise-budgeting}
+tribble(
+  ~"Stream", ~"Particulars", ~"Unit", ~"Quantity", ~"Rate", ~"Amount", 
+  "Variable", "Human labor", "Day", 50, 400, NA,
+  "Variable", "Tractor", "Hour", 3, 1600, NA, 
+  "Variable", "Pump set water pond", "Hour", 15, 100, NA, 
+  "Variable", "Layout", "Day", 4, 1000, NA, 
+  "Variable", "Sapling", "Number", 110, 60, NA, 
+  "Variable", "Manure", "Kg", 2200, 2, NA, 
+  "Variable", "Fertilizer (Urea)", "Kg", 25, 25, NA,
+  "Variable", "Fertilizer (DAP)", "Kg", 15, 50, NA, 
+  "Variable", "Fertilizer (Potash)", "Kg", 10, 36, NA, 
+  "Variable", "Plant protection chemicals (Bordeaux mixture and micronutrient)", "Rs", NA, NA, 250, 
+  "Variable", "Plant protection chemicals (Training and pruning)", "Rs", NA, NA, 300,
+  "Variable", "Equipments", "Number", 4, 800, NA,
+  "Variable", "Land lease value", "Rs", NA, NA, 25000,
+  "Variable", "Management cost", "Month", 12, 1500, NA,
+  "Variable", "Others", "Rs", NA, NA, 2500,
+  "Variable", "Interest on variable cost", NA, NA, NA, 11548.2,
+  # NA, "Total variable cost", "Rs", NA, NA, NA,
+  "Fixed", "Land cost", "Rs", NA, NA, 300, 
+  "Fixed", "Water cost", "Rs", NA, NA, 500, 
+  "Fixed", "Depreciation of farm equipments", "Rs", NA, NA, 500, 
+  "Fixed", "Repair and maintenance of farm equipments", "Rs", NA, NA, 500,
+  # NA, "Total fixed cost", "Rs", NA, NA, 1800, 
+  # NA, "Total cost", "Rs", NA, NA, 109583.2, 
+  "Production", "Production", "Kg", 2000, 52.5, 10500 
+  # NA, "Total income", NA, NA, NA, NA, 
+  # NA, "Profit/loss (Total income - Total cost)", NA, NA, NA, NA,
+) %>%
+  mutate(`Amount` = case_when(
+    !is.na(Quantity) & !is.na(Rate) ~ Quantity * Rate, 
+    TRUE ~ `Amount`
+  )) %>%
+  pivot_wider(id_cols = c(Particulars, Quantity, Rate), names_from = Stream, values_from = `Amount`) %>%
+  # # use janitor to obtain summary tabulation
+  # janitor::as_tabyl() %>%
+  # janitor::adorn_totals(where = "row", name = "Total") %>% # but this gets sum of all rates and quantity too! this is not sensible
+  # or use summarize
+  bind_rows(summarise_at(., vars(Variable:Production), list(~sum(., na.rm = TRUE))) %>%
+              add_column(Particulars = "Total")) %>%
+  pivot_longer(cols = c(Variable:Production), 
+               names_to = c("Stream"), values_to = c("Amount"), values_drop_na = TRUE) %>%
+  mutate(raw_or_sum = if_else(Particulars == "Total", 2, 1)) %>% 
+  mutate(Stream = factor(Stream, levels = c("Variable", "Fixed", "Production"), ordered = T)) %>% 
+  arrange(Stream, raw_or_sum) %>% 
+  select(Stream, everything(), -raw_or_sum) %>% 
+  bind_rows(tibble(Stream = "Net profit", 
+                   Amount = (sum(.$`Amount`[.$Stream=="Variable"], na.rm = T) + 
+                     sum(.$`Amount`[.$Stream=="Fixed"], na.rm = T) - 
+                     sum(.$`Amount`[.$Stream=="Production"], na.rm = T)))) %>% 
+  knitr::kable(booktabs = TRUE) %>% 
+  kableExtra::kable_styling(latex_options = "basic", font_size = 6) %>% 
+  kableExtra::collapse_rows(columns = 1, valign = "middle", latex_hline = "major") # note that adding full latex_hline = "full" requires much more table length
+```
+\end{minipage}}
+
+\end{column}
+
+\end{columns}

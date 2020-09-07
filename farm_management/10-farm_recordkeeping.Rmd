@@ -1,0 +1,112 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: Farm recordkeeping
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 2
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+# Meaning and definition
+
+##
+
+- Farm accountancy is defined as the art as well as the science of recording in books business transactions in regular and systematic manner so that their nature, extent and financial effects can be readily ascertained at any time of the year.
+- Farm accounting is an application of the accounting principles to the business of farming.
+- Farm book keeping is known as a system of records written to furnish a history of the business transactions, with special reference to its financial side.
+
+##
+
+- A record keeping system should go beyond the basic listing of income and expenses. 
+- The major financial accounting statements aim to provide a picture of the financial position and performance of a business. 
+- A business's accounting system will normally produce three particular statements on a regular, recurring basis.
+
+# Importance
+
+##
+
+1. Measure profit and assess financial condition.
+2. Provide data for business analysis.
+3. Assist in preparing reports for partners, lenders, landlords, input providers, and government agencies.
+4. Measure the profitability of individual enterprises.
+5. Assist in the analysis of new investments.
+6. Prepare income tax returns.
+
+# Farm records -- Examples
+
+## Dairy farm
+
+\footnotesize
+
+- Livestock register :  the number of the animals at the farm along with their identification number, date of birth, sire number, dam number, calf and its sex, date of calving, date of purchase, date of sale/auction/death.
+- Calving register : record of calving that take place in the farm. dam and sire number of the calf, calf number, sex and its date of birth and any other remarks like type of calving (normal/abnormal).
+- Daily milk yield register : daily milk yield performance of the cows.
+- Calf register : records of calf at the farm, calf number, sex of the calf, sire number, dam number, birth weight etc.
+- Growth record of young stock : the weight of the young stocks at different intervals.
+- Daily feeding register : the amount concentrate, dry fodder, green fodder and other feeds given to the animals daily.
+- Herd health register : record of the diseased animals along with history, symptoms, diagnosed disease, treatment given and name of the veterinarian who treated.
+- Cattle breeding register : details of breeding practices in the farm such as cow number, date of calving, date of heat and services along with the bull number, date of successful service, pregnancy diagnosis records, expected date of calving, actual date of calving, calf number etc.
+- Animal History sheet : animal number, breed, date of birth, sire and dam number, lactation yield records, date of drying, date of disposal/death, cause of disposal etc.
+
+## Crop production farm
+
+- Field locations book
+- Crop rotation and input history by field
+- Individual field activity log
+- Storage records
+- Sales record
+- Estimated and actual individual crop income and expense
+- Income worksheet
+- Expense worksheet
+
+# Farm inventory
+
+## Making an inventory
+
+- An inventory is generally done at least once a year and involves the counting of everything on the farm, including hectares of land, tons of grain in stock, animals and so on. The inventory will also include the money value in Rand of the assets.
+- Walk around the farm and make a general inspection of farm assets. Make a list or spreadsheet of items according to main categories such as buildings, land, machinery, equipment, farm supplies and stock.
+
+## Details on a farm inventory
+
+- Size of the farm, the right of ownership, the size of land that is used for agriculture and a valuation of the production unit.
+- Description and valuation of fixed improvements such as a new borehole or roof.
+- Vehicles, machinery and equipment, as well as numbers and types or models.
+- Numbers and types of livestock.
+- Stocks, farm supplies and production inputs such as seed, fertiliser.
+- Finished and semi-finished products at the beginning and end of the financial year.
+- In separate columns of the inventory indicate the following:
+  - The year when each item of property was purchased.
+  - The purchase price of each item.
+  - The expected lifetime of machinery/equipment.
+  - Then calculate the annual depreciation for each item using the straight-line method or the reducing-value method.
+
+## Expected lifetime of equipment
+
+- Below are the expected lifetimes for some machinery and equipment used on a farm. In brackets is the salvage value as a percentage of the purchase price - the value of the item at the end of its life.
+
+- Vehicles - 5 years (10\%)
+- Tractors - 10 years (10\%)
+- Implements - 10 years (10\%)
+- Tools - 10 years (10\%)
+- Pumps and electrical motors - 15 years (0\%)

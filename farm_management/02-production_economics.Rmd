@@ -219,10 +219,10 @@ The slope of a line indicates the rate of change in one quantity in response to 
 2. Non-monotonic
   - In nonmonotonic functions, the nature of relationship itself changes through the range of the curve.
 
-## Scatter diagram
+<!-- ## Scatter diagram -->
 
-## Slope of curve
+<!-- ## Slope of curve -->
 
-# Bibliography
+<!-- # Bibliography -->
 
-## For more information
+<!-- ## For more information -->
