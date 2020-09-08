@@ -38,6 +38,19 @@ options(kableExtra.latex.load_packages = FALSE)
 - Co-operatives frequently have social goals which they aim to accomplish by investing a proportion of trading profits back into their communities.
 - The Rochdale Society of Equitable Pioneers, founded in 1844, is usually considered the first successful cooperative enterprise. They set up the society to open their own store selling food items they could not otherwise afford.
 
+## Cooperative values
+
+- Self help
+- Self accountability
+- Democracy
+- Equality
+- Equity
+- Solidarity
+- Honesty
+- Openness
+- Social responsibility
+- Caring for others
+
 ## Principles^[Adopted by the international cooperative alliance in 1995]
 
 \footnotesize
@@ -52,34 +65,56 @@ options(kableExtra.latex.load_packages = FALSE)
   
 ##
 
+\footnotesize
+
 4. Autonomy and independence
+- Cooperatives are autonomous, self-help organizations controlled by their members.
+- If they enter into agreements with other organizations, including governments, or raise capital from external sources, they maintain their cooperative autonomy.
 5. Education, training and information
+- Co-operatives provide education and training for their members, elected representatives, managers, and employees so they can contribute effectively to the development of their co-operatives.
+
+##
+
 6. Cooperation among cooperatives
+- Co-operatives serve their members most effectively and strengthen the co-operative movement by working together through local, national, regional and international structures.
 7. Concern for community
+- Co-operative work for the sustainable development of their communities through policies approved by their members.
 
 # Organization/structures
 
 ##
 
-```{r organogram-cooperatives, fig.width=6, out.width="80%"}
-knitr::include_graphics("./figs/organogram_cooperative_movement.png")
-```
 
-##
+## Types of farmer cooperative
 
 \footnotesize
 
-1. Producer co-operatives: Some co-operatives process and market their members' products and services directly while others may also sell the input necessary to their members' economic activities. Examples: Agriculture cooperatives, pooling of equipment, advisory services, etc.
-
-2. Multi-stakeholder co-operatives: The membership of these co-operatives is made of different categories of members who share a common interest in the organization. Examples: home care services, health services, community services, etc.
-
-3. Worker co-operatives: The purpose of these co-operatives is to provide their members with work by operating an enterprise. The co-operatives are owned by their employee members. Examples: forestry, leisure, production and manufacturing, tourism, communications and marketing, etc.
+1. Production cooperatives
+- Farmer cooperatives for agricultural production such as milk, fruits and vegetables, poultry, etc. fall into this category.
+2. Supply cooperatives
+- Farm supply cooperatives are vital for the dependable supply of farm inputs such as farm machinery, equipment, fertilizers, housing materials, livestock feed, seed and petroleum products.
+- They may also handle items such as lawn equipment, food items, or necessary items for gardening.
+- Cooperative endeavors such as feed mills, farm machinery, and fertilizer plants can be established at the regional or national level, whereas the farm supply depot can be established at the local level.
 
 ##
 
-4. Worker-Shareholder co-operatives: These are incorporated co-operatives that hold partial ownership of the business in which the co-operative members are employed. Because of its share capital, the co-operative may participate in the management of the business and the workers may influence work organization. Examples: production and manufacturing, technology, etc.
+3. Service cooperatives
+- Set up for special services such as credit services, telephone/electric service, insurance services, irrigation services, grain banks, trucking, artificial insemination, cotton ginning, ginger drying, rice drying, etc.
+- Service cooperatives may also provide items such as chemicals, diesel, oil, gas, feed, seedlings, and seeds to its members.
+- Soil testing, crop scouting, and land leveling are other services a service cooperative may provide to its members.
+4. Credit
+- Members should be able to obtain the required credit from their cooperative, and the cooperative should be able to deliver the credit and accept deposits from its members in order to build some capital for itself.
 
-5. Consumer co-operatives: A consumers' cooperative is a business owned by its customers. Employees can also generally become members. Members vote on major decisions and elect the board of directors from among their own number. They provide their members with goods and services for their personal use. Examples: Food, credit unions, housing, insurance co-operatives, etc.
+##
+
+4. Processing
+- Farmer's cooperatives for processing agricultural commodities such as fruits, vegetables, spices and beverages crops. They are important to minimize post harvest losses and increase the income of the farmers.
+5. Guidance (which includes education, training and extension services): 
+- The members should be able to receive spontaneous guidance and advice from their cooperative, and the cooperative should be able to deliver expert advice to the members
+6. Marketing cooperatives
+- Includes commodities or commodity groups such as cotton, dairy, fruit and vegetables, poultry, and livestock marketing cooperatives.
+- Primary objectives is marketing the farm produce of its members. 
+- As marketing is difficult task for individual farmers, establishing a marketing cooperative is very important for commercialized agricultural development and to maintain the farm profit.
 
 # Roles of cooperative in commercial farming
 
@@ -111,6 +146,15 @@ knitr::include_graphics("./figs/organogram_cooperative_movement.png")
   - For example, women-only cooperatives in South Asia facilitate economic independence and improve the social standing of women through their active participation in businesses and management.
 
 # Cooperatives laws and by-laws
+
+## Acts, policies and laws
+
+- Cooperative act, 2048 BS
+- Cooperative regulation, 2049 BS
+- Cooperative registration operation, auditing, monitoring and execution standards, 2068 BS
+- National cooperative policy, 2069 BS
+- Cooperative organization unification related guideline, 2070 BS
+- Cooperative act, 2074 BS^[Refer to lecture slides in Nepali for details]
 
 ## National cooperative federation of Nepal (NCFN)
 

@@ -1,0 +1,122 @@
+% A CONSORT-style flowchart of a randomized controlled trial
+% using the PGF/TikZ package
+% Author  : Morten Vejs Willert (July 2010)
+% License : Creative Commons attribution license
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+%%%<
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{center}
+\setlength\PreviewBorder{10pt}%
+%%%>
+
+\usetikzlibrary{shapes,arrows}
+\usepackage{caption}
+\newcommand*{\h}{\hspace{5pt}}% for indentation
+\newcommand*{\hh}{\h\h}% double indentation
+\begin{document}
+\begin{center}
+  % \captionof{figure}{Flowchart of provision for cooperative formation (According to Cooperative Act, 2074 BC)}
+  % setting the typeface to sans serif and the font size to small
+  % the scope local to the environment
+  \sffamily
+  \footnotesize
+  \begin{tikzpicture}[auto,
+    %decision/.style={diamond, draw=black, thick, fill=white,
+    %text width=8em, text badly centered,
+    %inner sep=1pt, font=\sffamily\small},
+    block_center/.style ={rectangle, draw=black, thick, fill=white,
+      text width=8em, text centered,
+      minimum height=4em},
+    block_left/.style ={rectangle, draw=black, thick, fill=white,
+      text width=16em, text ragged, minimum height=4em, inner sep=6pt},
+    block_noborder/.style ={rectangle, draw=none, thick, fill=none,
+      text width=18em, text centered, minimum height=1em},
+    block_assign/.style ={rectangle, draw=black, thick, fill=white,
+      text width=18em, text ragged, minimum height=3em, inner sep=6pt},
+    block_lost/.style ={rectangle, draw=black, thick, fill=white,
+      text width=16em, text ragged, minimum height=3em, inner sep=6pt},
+      line/.style ={draw, thick, -latex', shorten >=0pt}]
+    % outlining the flowchart using the PGF/TikZ matrix funtion
+    \matrix [column sep=5mm,row sep=3mm] {
+      % enrollment - row 1
+      \node [block_center] (sectoral_multipurpose) {Sectoral and multipurpose cooperative};
+      & \node [block_left] (sectoral_multipurpose_membership) {Minimum number of member individuals required : \\
+        a) General (n=17)
+        b) Business based on labor and skills involving youth and others (n=15) \\
+        c) Saving and credit organization in Metropolitan and Sub-metropolitan city (n=100) \\
+        d) Employee, teacher or professors in government job (n = 100; 30 if less than 100 employees work under the office}; \\
+      % district sectoral association
+      \node [block_center] (district_sectoral) {District sectoral cooperative association}; 
+      & \node [block_left] (district_sectoral_membership) {Minimum number of member organizations (Registered pursuant to Section 15) required : \\
+        a) General (n=11) \\
+        b) Sectoral cooperative organizations in class "A" remote districts (n=7)
+        };
+      % district association
+      & \node [block_center] (district_association) {District cooperative association}; 
+      & \node [block_left] (district_association_membership) {Minimum number of member organizations (Registered pursuant to Section 15) required : \\
+        a) General (n=11) \\
+        b) Sectoral cooperative organizations in class "A" remote districts (n=7)
+        c) The association shall include more than 50\% of the sectoral associations registered in the district.
+      }; \\
+      % province sectoral association
+      \node [block_center] (province_sectoral) {Provincial sectoral cooperative association}; 
+      & \node [block_left] (province_sectoral_membership) {Minimum number of sectoral organizations of at least 5 districts (Registered pursuant to section 15) required : \\
+        a) General (n=25) \\
+        b) The association shall include more than 50\% of the sectoral associations registered in the province.
+      };
+      % province association
+      & \node [block_center] (province_association) {Provincial cooperative association}; 
+      & \node [block_left] (province_association_membership) {Minimum number of member organizations formed in at least 5 districts or district cooperative sectoral associations or district cooperative associations or provincial sectoral associations required : \\
+        a) General (n=30) \\
+        b) The association shall include more than 50\% of each of the district cooperative sectoral associations, district cooperative associations or provincial sectoral associations registered all over the province.
+      }; \\
+      % central sectoral association
+      \node [block_center] (central_sectoral_association) {Central sectoral cooperative association}; 
+      & \node [block_left] (central_sectoral_association_membership) {Minimum number of member organizations formed in at least 7 districts or district cooperative sectoral associations or district cooperative associations or provincial sectoral associations required : \\
+        a) General (n=51) \\
+        b) The association shall include more than 50\% of each of the district cooperative sectoral associations, or provincial sectoral associations registered all over the province.
+      };
+      % specialized cooperative associations
+      & \node [block_center] (specialized_association) {Specialized cooperative association}; 
+      & \node [block_left] (specialized_association_membership) {Minimum number of multi-purpose or sectoral organizations (Registered pursuant to section 15) in for carrying out works requiring large amount of investment and relating to hydro power, chemical fertilizers factory, residential projects, transport, heavy agro equipment, fruits processing, herbs processing, sugar industries, cold storage, hospital, college, technical shools, laboratory or to fulfill the demand of common need of members : \\
+        a) General (n=25) \\
+        b) Its operational procedures shall be as prescribed.
+      }; \\
+      % federation of national cooperatives
+      \node [block_center] (national_federation) {Federation of national cooperatives}; 
+      & \node [block_left] (national_federation_membership) {Minimum number of following organizations may together form National Federation of Cooperatives with the objective of promoting good governance in cooperatives sector on the basis of values, norms and principles of cooperatives: \\
+        a) More than 50\% of the district sectoral cooperatives associations formed pursuant to Section 4.\\
+        b) More than 50\% of the district cooperatives associations formed pursuant to Section 5.\\
+        c) More than 50\% of the provincial sectoral cooperatives associations formed pursuant to Section 7.\\
+        d) More than 50\% of the central sectoral cooperatives associations formed pursuant to Section 8.
+      }; \\
+      }; % end matrix
+    \begin{scope}[every path/.style=line]
+      % paths for enrollemnt rows
+      \path (sectoral_multipurpose)   -- (sectoral_multipurpose_membership);
+      \path (sectoral_multipurpose)   -- (district_sectoral);
+      \path (district_sectoral) -- (district_sectoral_membership);
+      \path (sectoral_multipurpose) -- (district_association);
+      \path (district_association)  -- (district_association_membership);
+      \path (district_association) -- (province_association);
+      \path (province_sectoral) -- (province_sectoral_membership);
+      \path (district_sectoral) -- (province_sectoral);
+      \path (province_association) -- (province_association_membership);
+      \path (central_sectoral_association) -- (central_sectoral_association_membership);
+      \path (province_sectoral) -- (central_sectoral_association);
+      \path (district_association) -- (central_sectoral_association);
+      \path (specialized_association) -- (specialized_association_membership);
+      \path (national_federation) -- (national_federation_membership);
+      \path (district_association) |- (national_federation);
+      \path (district_sectoral) |- (national_federation);
+      \path (province_association) |- (national_federation);
+      \path (province_sectoral) |- (national_federation);
+      % \path (random)     -| (wlc);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+\end{document}

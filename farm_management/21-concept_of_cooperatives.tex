@@ -116,6 +116,11 @@
   \usepackage[absolute,overlay]{textpos} % for text formatting
   \usepackage[utf8]{inputenc}
   \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+
+  % custom commands for flowchart
+  \newcommand*{\h}{\hspace{5pt}}% for indentation
+  \newcommand*{\hh}{\h\h}% double indentation
+
   \usepackage[skip=2pt]{caption}
 
   % this font option is amenable for beamer
@@ -209,6 +214,33 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Cooperative values}
+\protect\hypertarget{cooperative-values}{}
+\begin{itemize}
+\tightlist
+\item
+  Self help
+\item
+  Self accountability
+\item
+  Democracy
+\item
+  Equality
+\item
+  Equity
+\item
+  Solidarity
+\item
+  Honesty
+\item
+  Openness
+\item
+  Social responsibility
+\item
+  Caring for others
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Principles\footnote<.->{Adopted by the international
   cooperative alliance in 1995}}
 \protect\hypertarget{principles}{}
@@ -263,72 +295,322 @@
 
 \begin{frame}{}
 \protect\hypertarget{section}{}
+\footnotesize
+
 \begin{enumerate}
 \setcounter{enumi}{3}
 \tightlist
 \item
   Autonomy and independence
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Cooperatives are autonomous, self-help organizations controlled by
+  their members.
+\item
+  If they enter into agreements with other organizations, including
+  governments, or raise capital from external sources, they maintain
+  their cooperative autonomy.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\tightlist
 \item
   Education, training and information
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Co-operatives provide education and training for their members,
+  elected representatives, managers, and employees so they can
+  contribute effectively to the development of their co-operatives.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\tightlist
 \item
   Cooperation among cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Co-operatives serve their members most effectively and strengthen the
+  co-operative movement by working together through local, national,
+  regional and international structures.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+\tightlist
 \item
   Concern for community
 \end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Co-operative work for the sustainable development of their communities
+  through policies approved by their members.
+\end{itemize}
 \end{frame}
 
 \hypertarget{organizationstructures}{%
 \section{Organization/structures}\label{organizationstructures}}
 
 \begin{frame}{}
-\protect\hypertarget{section-1}{}
-\includegraphics[width=0.8\linewidth]{./figs/organogram_cooperative_movement}
+\protect\hypertarget{section-2}{}
+\begin{tikzpicture}[auto,
+    %decision/.style={diamond, draw=black, thick, fill=white,
+    %text width=8em, text badly centered,
+    %inner sep=1pt, font=\sffamily\small},
+    block_center/.style ={rectangle, draw=black, thick, fill=white,
+      text width=8em, text centered,
+      minimum height=4em},
+    block_left/.style ={rectangle, draw=black, thick, fill=white,
+      text width=16em, text ragged, minimum height=4em, inner sep=6pt},
+    block_noborder/.style ={rectangle, draw=none, thick, fill=none,
+      text width=18em, text centered, minimum height=1em},
+    block_assign/.style ={rectangle, draw=black, thick, fill=white,
+      text width=18em, text ragged, minimum height=3em, inner sep=6pt},
+    block_lost/.style ={rectangle, draw=black, thick, fill=white,
+      text width=16em, text ragged, minimum height=3em, inner sep=6pt},
+      line/.style ={draw, thick, -latex', shorten >=0pt}]
+    % outlining the flowchart using the PGF/TikZ matrix funtion
+    \matrix [column sep=5mm,row sep=3mm] {
+      % enrollment - row 1
+      \node [block_center] (referred) {Referred (n=173)};
+      & \node [block_left] (excluded1) {Excluded (n=17): \\
+        a) Did not wish to participate (n=9) \\
+        b) Did not show for interview (n=5) \\
+        c) Other reasons (n=3)}; \\
+      % enrollment - row 2
+      \node [block_center] (assessment) {Assessed for eligibility (n=156)}; 
+      & \node [block_left] (excluded2) {Excluded (n=54): \\
+        a) Inclusion criteria not met (n=22) \\
+        b) Exclusion criteria(s) met (n=13) \\
+        c) Not suited for group (n=7) \\
+        d) Not suited for CBT (n=2) \\
+        e) Sought other treatment (n=3) \\
+        f) Other reasons (n=7)}; \\
+      % enrollment - row 3
+      \node [block_center] (random) {Randomised (n=102)}; 
+      & \\
+      % follow-up - row 4
+      \node [block_noborder] (i) {Intervention group}; 
+      & \node [block_noborder] (wlc) {Wait-list control group}; \\
+      % follow-up - row 5
+      \node [block_assign] (i_T0) {Allocated to intervention (n=51): \\
+      \h Received intervention (n=49) \\
+      \h Did not receive intervention (n=2, \\
+      \hh 1 with primary anxiety disorder, \\
+      \hh 1 could not find time to participate)}; 
+      & \node [block_assign] (wlc_T0) {Allocated to wait-list (n=51): \\
+      \h Stayed on wait-list (n=48) \\
+      \h Did not stay on wait-list (n=3, \\
+      \hh 2 changed jobs and lost motivation, \\
+      \hh 1 was offered treatment elsewhere)}; \\
+      % follow-up - row 6
+      \node [block_lost] (i_T3) {Post-intervention measurement: \\
+      \h Lost to follow-up (n=5, \\
+      \hh 2 dropped out of the intervention, \\
+      \hh 3 did not complete measurement)}; 
+      & \node [block_lost] (wlc_T3) {Post-wait-list measurement: \\
+      \h Lost to follow-up (n=6, \\
+      \hh 3 dropped out of the wait-list, \\
+      \hh 3 did not complete measurement)}; \\
+      % follow-up - row 7
+      % empty first column for intervention group 
+      & \node [block_assign] (wlc_T36) {Allocated to intervention (n=48): \\
+      \h Received intervention (n=46) \\
+      \h Did not receive intervention (n=2, \\
+      \hh 1 reported low motivation, \\
+      \hh 1 could not find time to participate)}; \\
+      % follow-up - row 8
+      \node [block_lost] (i_T6) {3-months follow-up measurement: \\
+      \h Lost to follow-up (n=9, \\
+      \hh did not complete measurement)}; 
+      & \node [block_lost] (wlc_T6) {Post-intervention measurement: \\
+      \h Lost to follow-up (n=5, \\
+      \hh 2 dropped out of the intervention, \\
+      \hh 3 did not complete measurement)}; \\
+      % follow-up - row 9
+      % empty first column for intervention group 
+      & \node [block_lost] (wlc_T9) {3-months follow-up measurement \\
+      \h Lost to follow-up (n=2, \\
+      \hh did not complete measurement)}; \\
+      % analysis - row 10
+      \node [block_assign] (i_ana) {Analysed (n=51)}; 
+      & \node [block_assign] (wlc_ana) {Analysed (n=51)}; \\
+    };% end matrix
+    % connecting nodes with paths
+    \begin{scope}[every path/.style=line]
+      % paths for enrollemnt rows
+      \path (referred)   -- (excluded1);
+      \path (referred)   -- (assessment);
+      \path (assessment) -- (excluded2);
+      \path (assessment) -- (random);
+      \path (random)     -- (i);
+      \path (random)     -| (wlc);
+      % paths for i-group follow-up rows
+      \path (i)          -- (i_T0);
+      \path (i_T0)       -- (i_T3);
+      \path (i_T3)       -- (i_T6);
+      \path (i_T6)       -- (i_ana);
+      % paths for wlc-group follow-up rows
+      \path (wlc)        -- (wlc_T0);
+      \path (wlc_T0)     -- (wlc_T3);
+      \path (wlc_T3)     -- (wlc_T36);
+      \path (wlc_T36)    -- (wlc_T6);
+      \path (wlc_T6)     -- (wlc_T9);
+      \path (wlc_T9)     -- (wlc_ana);
+    \end{scope}
+  \end{tikzpicture}
+
+\includegraphics[width=0.8\linewidth]{21-concept_of_cooperatives_files/figure-beamer/organogram-cooperatives-1}
 \end{frame}
 
-\begin{frame}{}
-\protect\hypertarget{section-2}{}
+\begin{frame}{Types of farmer cooperative}
+\protect\hypertarget{types-of-farmer-cooperative}{}
 \footnotesize
 
 \begin{enumerate}
+\tightlist
 \item
-  Producer co-operatives: Some co-operatives process and market their
-  members' products and services directly while others may also sell the
-  input necessary to their members' economic activities. Examples:
-  Agriculture cooperatives, pooling of equipment, advisory services,
-  etc.
-\item
-  Multi-stakeholder co-operatives: The membership of these co-operatives
-  is made of different categories of members who share a common interest
-  in the organization. Examples: home care services, health services,
-  community services, etc.
-\item
-  Worker co-operatives: The purpose of these co-operatives is to provide
-  their members with work by operating an enterprise. The co-operatives
-  are owned by their employee members. Examples: forestry, leisure,
-  production and manufacturing, tourism, communications and marketing,
-  etc.
+  Production cooperatives
 \end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Farmer cooperatives for agricultural production such as milk, fruits
+  and vegetables, poultry, etc. fall into this category.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Supply cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Farm supply cooperatives are vital for the dependable supply of farm
+  inputs such as farm machinery, equipment, fertilizers, housing
+  materials, livestock feed, seed and petroleum products.
+\item
+  They may also handle items such as lawn equipment, food items, or
+  necessary items for gardening.
+\item
+  Cooperative endeavors such as feed mills, farm machinery, and
+  fertilizer plants can be established at the regional or national
+  level, whereas the farm supply depot can be established at the local
+  level.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{}
 \protect\hypertarget{section-3}{}
 \begin{enumerate}
-\setcounter{enumi}{3}
+\setcounter{enumi}{2}
+\tightlist
 \item
-  Worker-Shareholder co-operatives: These are incorporated co-operatives
-  that hold partial ownership of the business in which the co-operative
-  members are employed. Because of its share capital, the co-operative
-  may participate in the management of the business and the workers may
-  influence work organization. Examples: production and manufacturing,
-  technology, etc.
-\item
-  Consumer co-operatives: A consumers' cooperative is a business owned
-  by its customers. Employees can also generally become members. Members
-  vote on major decisions and elect the board of directors from among
-  their own number. They provide their members with goods and services
-  for their personal use. Examples: Food, credit unions, housing,
-  insurance co-operatives, etc.
+  Service cooperatives
 \end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Set up for special services such as credit services,
+  telephone/electric service, insurance services, irrigation services,
+  grain banks, trucking, artificial insemination, cotton ginning, ginger
+  drying, rice drying, etc.
+\item
+  Service cooperatives may also provide items such as chemicals, diesel,
+  oil, gas, feed, seedlings, and seeds to its members.
+\item
+  Soil testing, crop scouting, and land leveling are other services a
+  service cooperative may provide to its members.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Credit
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Members should be able to obtain the required credit from their
+  cooperative, and the cooperative should be able to deliver the credit
+  and accept deposits from its members in order to build some capital
+  for itself.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Processing
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Farmer's cooperatives for processing agricultural commodities such as
+  fruits, vegetables, spices and beverages crops. They are important to
+  minimize post harvest losses and increase the income of the farmers.
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Guidance (which includes education, training and extension services):
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  The members should be able to receive spontaneous guidance and advice
+  from their cooperative, and the cooperative should be able to deliver
+  expert advice to the members
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Marketing cooperatives
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Includes commodities or commodity groups such as cotton, dairy, fruit
+  and vegetables, poultry, and livestock marketing cooperatives.
+\item
+  Primary objectives is marketing the farm produce of its members.
+\item
+  As marketing is difficult task for individual farmers, establishing a
+  marketing cooperative is very important for commercialized
+  agricultural development and to maintain the farm profit.
+\end{itemize}
 \end{frame}
 
 \hypertarget{roles-of-cooperative-in-commercial-farming}{%
@@ -336,7 +618,7 @@
 farming}\label{roles-of-cooperative-in-commercial-farming}}
 
 \begin{frame}{}
-\protect\hypertarget{section-4}{}
+\protect\hypertarget{section-5}{}
 \footnotesize
 
 \begin{itemize}
@@ -375,7 +657,7 @@ farming}\label{roles-of-cooperative-in-commercial-farming}}
 \end{frame}
 
 \begin{frame}{}
-\protect\hypertarget{section-5}{}
+\protect\hypertarget{section-6}{}
 \footnotesize
 
 \begin{itemize}
@@ -411,6 +693,27 @@ farming}\label{roles-of-cooperative-in-commercial-farming}}
 \hypertarget{cooperatives-laws-and-by-laws}{%
 \section{Cooperatives laws and
 by-laws}\label{cooperatives-laws-and-by-laws}}
+
+\begin{frame}{Acts, policies and laws}
+\protect\hypertarget{acts-policies-and-laws}{}
+\begin{itemize}
+\tightlist
+\item
+  Cooperative act, 2048 BS
+\item
+  Cooperative regulation, 2049 BS
+\item
+  Cooperative registration operation, auditing, monitoring and execution
+  standards, 2068 BS
+\item
+  National cooperative policy, 2069 BS
+\item
+  Cooperative organization unification related guideline, 2070 BS
+\item
+  Cooperative act, 2074 BS\footnote<.->{Refer to lecture slides in
+    Nepali for details}
+\end{itemize}
+\end{frame}
 
 \begin{frame}{National cooperative federation of Nepal (NCFN)}
 \protect\hypertarget{national-cooperative-federation-of-nepal-ncfn}{}

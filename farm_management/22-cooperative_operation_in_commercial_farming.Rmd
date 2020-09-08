@@ -47,37 +47,61 @@ options(kableExtra.latex.load_packages = FALSE)
 - With the Anand pattern three-fourth of the price paid by the mainly urban consumers goes into the hands of millions of small dairy farmers, who are the owners of the brand and the cooperative. 
 - The cooperative hires professionals for their expertise and skills and uses hi-tech research labs and modern processing plants and transport cold-chains, to ensure quality of their produce and value-add to the milk. 
 
-# Agriculture cooperatives types
+# Cooperative farming
 
 \footnotesize
 
-1. Marketing cooperatives
-- Includes commodities or commodity groups such as cotton, dairy, fruit and vegetables, poultry, and livestock marketing cooperatives.
-- Primary objectives is marketing the farm produce of its members. 
-- As marketing is difficult task for individual farmers, establishing a marketing cooperative is very important for commercialized agricultural development and to maintain the farm profit.
-
-2. Farm supply cooperatives
-- Farm supply cooperatives are vital for the dependable supply of farm inputs such as farm machinery, equipment, fertilizers, housing materials, livestock feed, seed and petroleum products.
-- They may also handle items such as lawn equipment, food items, or necessary items for gardening.
+```{r mermaid-cooperative-farming, fig.width=6, out.width="80%", fig.align='center'}
+DiagrammeR::mermaid("
+                    graph LR
+                    
+                    A(Types of cooperative farming)--> B(Cooperative better farming)
+                    A --> C(Cooperative tenant farming)
+                    A --> D(Cooperative collective farming)
+                    A --> E(Cooperative joint farming)
+                    ")
+```
 
 #
 
-\footnotesize
+1. Cooperative joint farming society
 
-- Cooperative endeavors such as feed mills, farm machinery, and fertilizer plants can be established at the regional or national level, whereas the farm supply depot can be established at the local level.
-3. Service cooperatives
-- Set up for special services such as credit services, telephone/electric service, insurance services, irrigation services, grain banks, trucking, artificial insemination, cotton ginning, ginger drying, rice drying, etc.
-- Service Cooperatives may also provide items such as chemicals, diesel, oil, gas, feed, seedlings, and seeds to its members.
-- Soil testing, crop scouting, and land leveling are other services a service cooperative may provide to its members.
+- Most comprehensive type of cooperative farming society.
+- Small owners pool their land for the purpose of joint cultivation.
+- The ownership is individual but the operations are collective.
+- The management is democratic and is elected by the members of the society.
+- It purchases various inputs from the market and arranges for the marketing of the produce.
+- It also seeks financial assistance from outside agencies to carry on these activities.
 
 #
 
-\footnotesize
+2. Cooperative better farming society
+- The members do not cultivate their land jointly. Each member cultivates his own land.
+- However, they co-operate with each other for pre-sowing and post harvesting operation.
+- For instance, they purchase various agricultural inputs like seeds, fertilizers, insecticides, services of machinery etc. on cooperative basis.
+- They sell the crops jointly.
+- A cooperative better farming society may also arrange for financial assistance for carrying on these activities.
+- The members pay for the service rendered to them by the society.
 
-4. Production Cooperatives
-- Farmer cooperatives for agricultural production such as milk, fruits and vegetables, poultry, etc. fall into this category.
-5. Processing cooperatives
-- Farmer cooperatives for processing agricultural commodities such as fruits, vegetables, flowers, etc. are important to minimize losses from perishable commodities and increase income from these commodities.
+# 
+
+3. Cooperative tenant farming society
+- This is a society which purchases or leases in land from the Government or private individuals and then in turn leases out the land to its members.
+- Such societies are usually organized by landless farmers.
+- The members cultivate the land and pay the rent falling to their share, to the society.
+- The society also renders various other services to its members and charges from, its members for the service so rendered.
+- The profits earned by the society are distributed among its members according to some agreed formula.
+
+#
+
+4. Cooperative collective farming society
+- This type of society involves pooling of their land by the members on a permanent basis.
+- A member who joins this society cannot ever withdraw his land from the society.
+- He can only transfer his land to some other person who will now become a substitute member of the society.
+-The functions of this society are similar to those performed by a
+cooperative joint farming society.
+- The member get their wages and profits according to the labor and land respectively contributed by them.
+- It is obvious that such a society is formed in contravention of the general principles of cooperative i.e. voluntary membership with a right to withdraw from the society at any time.
 
 # Advantages of cooperatives in commercial farming
 
@@ -106,3 +130,51 @@ have their own means of transport.
 9. **Provision of inputs and consumer goods**: The co-operative marketing societies can easily arrange for bulk purchase of agricultural inputs, like seeds, manures fertilizers etc. and consumer goods at relatively lower price and can then distribute them to the members.
 10. **Processing of agricultural produce**: The co-operative societies can undertake processing activities like crushing seeds, ginning and pressing of cotton, etc. In addition to all these advantages, the co-operative marketing system can arouse the spirit of self-confidence and collective action in the farmers without which the programs of agricultural development, howsoever well-conceived and implemented, holds no promise to success.
 
+# Registration of cooperatives in Nepal
+
+\footnotesize
+
+A cooperative organization can carry out its functions only after its registration under the Cooperative act, 2074. For registration of cooperatives following procedures should be followed.
+
+1. Preliminary meeting: According to the Cooperative act, 2074, there should be at least 25 members to form a cooperative society. Preliminary meeting must be held before applying for the registration. The meeting is held in the presence of 25 members under 1 chairman among them. The following things should be discussed in the meeting:
+
+- Commencement of the business
+- The name and address of the society
+- The objectives of the society
+- The value of each share
+- Membership fee
+
+#
+
+\footnotesize
+
+2. Filing an application for registration: After preparing and passing proposed by laws and working schemes in the preliminary general meeting. In application should be submitted to the office of registrar, department of cooperatives, and government of Nepal
+
+Following things are mentioned in the application form:
+
+- Proposed name of society
+- Address
+- Objectives
+- Working areas
+- Liabilities
+- Total share capital
+- Total number of shares to be paid
+- Two copies of law of proposed society
+- Original copy of working scheme
+- Copies of citizen certificate
+- Application must be signed by chairman
+
+#
+
+3. Receiving the certificate of registration
+
+After filing application for registration, certificate of registration is to be received. After applying application along with document, they are submitted at the registration office. Then the registrar checks all the documents. If the documents are satisfactory then registrar will issue certificate of registration. After receiving certificate of registration, the society can operate.
+
+# Legal provisions for dissolution of co-operative society
+
+Cooperative society can be dissolved under following circumstances:
+
+- Two third majority of total number of society can take decisions of dissolution.
+- Registrar can dissolve it, if application with reasonable clause is received.
+- Registrar can dissolve it, if the society is found inactive and not operating for two years.
+- The registrar can dissolve it, if it is found operating against the law and objectives of it.
