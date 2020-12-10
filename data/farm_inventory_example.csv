@@ -1,0 +1,30 @@
+# farm inventory,,,,,,,
+# quantity is either expressed in kg (when applicable) or in number of units,,,,,,,
+# calculate the change in inventory (value at beginning-value at end),,,,,,,
+sn,item_category1,item_category2,item_category3,beginning_of_year_2076_quantity,beginning_of_year_2076_value,end_of_year_2076_quantity,end_of_year_2076_value
+1,Non depreciable assets,Crop produce,,0,0,0,0
+2,Non depreciable assets,Supplies,Seeds,0,0,0,0
+3,Non depreciable assets,Supplies,Urea (fertilizer),5,200,2,80
+4,Non depreciable assets,Supplies,DAP (fertilizer),2,120,1,60
+5,Non depreciable assets,Supplies,MoP (fertilizer),0,0,1,55
+6,Non depreciable assets,Supplies,BHC 10\% (Pesticide),0.5,25,0,0
+7,Non depreciable assets,Supplies,Blitox (Pesticide),2,240,0,0
+8,Non depreciable assets,Supplies,Malthion (Pesticide),2.5,300,1,120
+9,Non depreciable assets,Maize seed (Crop growing),,3,600,3,600
+10,Non depreciable assets,Sugarcane setts (Crop growing),,100,1000,100,1000
+11,Non depreciable assets,Marketable livestock,,0,0,0,0
+12,Non depreciable assets,Others,,0,0,0,0
+13,Depreciable assets,Farm machinery,Tractor,1,250000,1,200000
+14,Depreciable assets,Farm machinery,"Tiller, disc harrow",1,50000,1,45000
+15,Depreciable assets,Farm machinery,Tubewell,1,20000,1,19000
+16,Depreciable assets,Farm machinery,Trolley,1,25000,1,22500
+17,Depreciable assets,Farm machinery,Wheat thresher,1,22600,1,20000
+18,Depreciable assets,Farm machinery,Seed cum fertilizer drill,1,22500,1,20400
+19,Depreciable assets,Farm machinery,Other implements and hand tools (bulk unit),1,15000,1,12000
+20,Depreciable assets,Farm buildings,,1,300000,1,280000
+21,Depreciable assets,"Livestock (buffaloes, cattle) (number)",,12,400000,12,300000
+22,Depreciable assets,Land (ha),,2,2400000,2,2400000
+23,Cash assets,Cash in hand,,,15000,,12500
+24,Cash assets,Small savings or bank deposits,,,120000,,90000
+25,Cash assets,Shares in cooperatives,,,5000,,5000
+26,Cash assets,Other properties,,,0,,0

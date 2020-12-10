@@ -109,18 +109,14 @@ options(kableExtra.latex.load_packages = FALSE)
 
 ## Example
 
-\begin{columns}
-
-\column{0.4\textwidth}
-\scalebox{0.60}{\begin{minipage}{1.2\textwidth}
+\scalebox{0.60}{\begin{minipage}{1.0\textwidth}
 \begin{itemize}
 \item Net worth or equity or net assets or capital of a company/farm is calculated by calculating the difference between the Total Assets and the Total Liabilities.
 \item An example Net worth statement of MudnBrick Commercial Vegetable and Livestock Farm is presented in Table \ref{tab:net-worth-state}.
 \end{itemize}
 \end{minipage}}
 
-\column{0.8\textwidth}
-\scalebox{0.6}{\begin{minipage}{1.2\textwidth}
+\scalebox{0.6}{\begin{minipage}{1.0\textwidth}
 
 ```{r net-worth-state}
 net_worth <- readxl::read_xlsx("../data/concepts_of_economics.xlsx", sheet = "net_worth_state", col_names = FALSE)
@@ -136,7 +132,6 @@ net_worth[-c(1,2,3,4),] %>%
 ```
 
 \end{minipage}}
-\end{columns}
 
 ## Farm income statement/Profit and loss account
 

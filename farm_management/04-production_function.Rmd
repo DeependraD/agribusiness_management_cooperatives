@@ -49,7 +49,7 @@ source("./../scripts/graphics.R")
 ##
 
 - Under such situation question of how much of certain input (amount of fertilizer or feed to a cow) to apply arises ?
-- This situtation is dealt by single factor-product relationships. a.k.a single variable production function (in a production function various levels of input are involved with corresponding output of the product).
+- This situation is dealt by single factor-product relationships. a.k.a single variable production function (in a production function various levels of input are involved with corresponding output of the product).
 
 #### Inputs have several different names:
 Inputs = factors = factors of production = resources = A, L, K, M

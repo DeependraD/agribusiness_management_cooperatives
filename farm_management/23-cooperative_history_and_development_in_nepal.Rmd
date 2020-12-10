@@ -36,8 +36,7 @@ options(kableExtra.latex.load_packages = FALSE)
 - The GON established the Department of Cooperatives under the Ministry of Planning, Development, and Agriculture in 2010 BS
 - The department started building for cooperative movement
 - The modern cooperative started from Rapti valley of Chitwan district as a part and partial flood relief and resettlement program.
-- First cooperative society established in Shardanagar, Chitwan"Bakhan sahakari sanstha"
-- 
+- First cooperative society established in Shardanagar, Chitwan -- "Bakhan sahakari sanstha"
 
 ##
 
@@ -45,24 +44,23 @@ options(kableExtra.latex.load_packages = FALSE)
 - In 2016, the cooperative organization act and in 2018 B.S. the cooperative organization regulations were promulgated.
 - In 2018, Sajha Publications, Sajha Travels, Sajha Health Service were formed under the Central Cooperative Sajha Organization.
 - After the restoration of democracy, Sajha Organization Act 2041 was dissolved and Cooperative Act 2048 and Cooperative Regulations 2048 were passed by the parliament. These two laws are still in effect.
-- The department of cooperatives has provided the authority for registration and regulation of cooperatives societies/ unions/ federations under the act
+- The department of cooperatives has provided the authority for registration and regulation of cooperatives societies/unions/federations under the act.
 - The department of cooperatives after establishment faced unification, merge, separation problem from aligned ministries.
-- It is under Ministry of Land management, Agriculture and cooperatives, 2074/75
-- Before it was under Ministry of Cooperatives and Poverty Alleviation, 2069
+- It is under Ministry of Land management, Agriculture and cooperatives, 2074/75. Before it was under Ministry of Cooperatives and Poverty Alleviation, 2069
 
 ##
 
-The Co-operative Act 1992 has provided an opportunity for the Nepalese people to establish independent   and   autonomous   co-operative   societies   by   themselves,   according   to   their capacity to fulfil their own needs (DEOC 2012). Moreover, the new act has its foundation on basic cooperatives principles and has also provided a legal baseboth for the establishment of co-operative  societies, unionsand federations  and  application  of  co-operative  values,  norms and principles into practice (DEOC 2012).
-
-t is estimated that some three million people are affiliated in more than thirty thousandcooperatives, and more than fifty four thousandpeople are  employed  directly  in  Cooperative  business  in  Nepal
-
-Agriculture  related cooperatives were the second most (25.88%) prevalent nature of cooperatives after thesaving and credit cooperatives (MoCPA 2015)
+- The co-operative act, 1992 
+  - provided an opportunity for the Nepalese people to establish independent and autonomous co-operative societies by themselves.
+  - has foundation on basic cooperative principles and has also provided a legal base both for establishment of cooperative societies and unions and federations.
+- It is estimated that some three million people are affiliated in more than thirty thousand cooperatives, and more than 54 thousand people are employed directly in Cooperative business in Nepal.
+- Agriculture  related cooperatives were the second most (25.88%) prevalent nature of cooperatives after the saving and credit cooperatives (MoCPA, 2015).
 
 # Cooperative: Developments in Agriculture
 
 ##
 
-- Nepal's new constitution (Constitution of Nepal, 2070) makes strong commitments to cooperatives, many of which are agricultural. 
+- Nepal's new constitution (Constitution of Nepal, 2070) makes strong commitments to cooperatives, many of which are agricultural.
 - It has been spoken often that cooperative in Nepal can provide an effective institutional framework to promote and sustain development at local level.
 - Also, cooperative in Nepal hold promise to break the vicious cycle of rural poverty through contributing to economic and social improvements.
 - Current development policies and plans of Nepal have considered the cooperative sector as one of the 3 pillars of the country's economic development; other two being the public sector and the private sector.
@@ -70,36 +68,64 @@ Agriculture  related cooperatives were the second most (25.88%) prevalent nature
 
 ##
 
-Agriculturalcooperatives  offer  market  opportunities  to  smallholders,  and  provide  them  with services  such  as  better  training  in  natural  resource  management  and  better  access  to information, technologies,  innovations  and  extension  services,thus  helping  smallholders achieve sustainable livelihoods and improve food security in their communities (IFAD 2012).Asin  other  developing  countries,  agricultural  cooperatives  in  Nepal  are  involved  in  overall socio-economic  wellbeing  of  farming  community,  in  general,  and  members,  in  particular.  Major    roles that    agricultural    cooperative    can    play in    Nepal include:promoting commercialization   of   agriculture   through   providingfarm   inputs,   credit   and   improved technologies  to  members;  small-scale  processing  and  value  addingof  primary  agriculture products; marketing of primary as well as processed agriculture products in domestic as well as  international  markets;  capacity  building  of  member  farmers  in  technical  as  well  as management  aspects  of  agriculturalproduction  and  marketing;  promotion  of  sustainable  use of local resources; community development; policy lobbying for farmer-friendly agriculture; networking  with  government  and  non-government  service  providers  to  tap  resources  for  the benefit of farming communities; and promotion of social inclusion and social harmony in the community. 
+- Agricultural cooperatives offer market opportunities to smallholders, and provide them with services such as better training in natural resource management and better access to information technologies, innovations and extension services, thus helping smallholders achieve sustainable livelihoods and improve food security in their communities (IFAD 2012).
+- As in other developing countries, agricultural cooperatives in Nepal are involved in overall socio-economic well being of farming community, in general, and members, in particular. 
+
+# Role of agricultural cooperatives
 
 ##
 
-Poverty  is  considered  a  major  threat  for  world  peace  and  stability.  Therefore,  bilateral  and multilateral donor agencies are reviewing their aid strategies with the goal of transformation of  economies  and  societies  inthe  developing  world  through  fundamental  changes  in economic  structures,  governance  and  institutions,  and  human  capacity  so  that  countries  can sustain further economic and social progress without depending on foreign aid (OCDC 2007). The  renewed  focus  on  cooperatives  has  also  come  as  an  important  strategy  to  help  achieve these goals. 
+```{r role-of-agricultural-cooperatives, fig.width=6, out.width="85%"}
+DiagrammeR::mermaid(
+"
+graph LR
+subgraph 
+A[Promoting commercialization of agriculture through<br> provision of farm inputs, credit and improved technologies to members]
+B[Small scale processing and value addition of primary agricultural products]
+C[Marketing of primary as well as processed agricultural products<br> in domestic as well as international markets]
+D[Capacity building of member farmers in technical<br> as well as management aspects of agricultural production and marketing]
+E[Promotion of sustainable use of local resources]
+F[Community development]
+G[Policy lobbying for farmer friendly agriculture]
+H[Networking with government and non-government service providers<br> to tap resources for benefit of farming communities]
+I[Promotion of social inclusion and social harmony in the community]
+end
+"
+)
 
-Achievements made by the cooperatives in economic prosperity of societies, particularly in developing countries:
-
-These includeddairy   cooperatives   in   India   and agricultural   cooperativesin   Zambia;   ICT cooperatives  in  rural  America  after  the  World  War  II,  Poland,  Albania,  Argentina  and Bolivia;  electric  service  cooperatives  in  the  Philippines,  Bangladesh  India  and  Bolivia; financial  service  cooperatives  in  Mexico,  the  Philippines,  Bolivia,  Nicaragua,  Romania, Poland,  Ecuador,  El Salvador,  Guatemala,  Honduras,  Jamaica  and  Russia;  housing  and community  cooperatives  in  Poland,  Bosnia  and  Herzegovina,  and  the  Philippines;  insurance services   cooperatives   in   Guatemala,   Colombia   and   Dominican   Republic;   and   youth cooperatives  in  South  Africa.  Empirical  evidence  shows  cooperative  organizationshave proved  their  worth  in  uplifting  the  socio-economic  condition  of  their  members together with sustainable management of local natural resources.
-
-There has been a remarkable growth in the number of cooperatives in recent years and oneof  main  reasons  for  such  growth  is  attributed  to  the  government  extension and  farm sector policy  of  supporting  farmers  through  the  cooperatives. For  example,  government policy  of  distributing  subsidized  fertilizers  through  the  agriculture  and  related  cooperatives has spurred the trend of forming cooperatives in rural and peri-urban areas
+```
 
 ##
 
-The government budget forthefiscal year 2008/09introduced a new program 'Cooperatives in every village, food storage in every house'to increase the agricultural productivity through cooperatives(MOF, 2009).This program aimed at motivating small farmers to commercialize theiragriculture throughcooperative models. The government allottedRs. 85million (\$ 761,000)for providingincentives to cooperative farming. The Government of thebudgetforFiscal Year2011/12has given more importance tothecooperatives;ithas brought various cooperatives programs and policiesfor the promotionand expansion of cooperativesasone of the centralpillarsof theeconomy. This budget launchesanational programof “Cooperatives in Villagesand Cites, EmploymentatEvery Household”to encouragecooperative farmingto increase agricultural productivity. The governmentproposedRs. 10 million (about \$90,000) for this programto enhance the capacity of cooperatives and to operate cooperatives as campinginordertoincrease agriculturalproductivity(MOF, 2012).The budget providedcreditfacility at aconcessional interest rate through small farmer cooperativesforthe people involvedinlivestock, poultry, andfish farming. It also aimed to provide50 percent subsidyon thecapital expenditure to the small farmercooperativesin thepurchase of machineryand equipment(MOF, 2012).
-
-The governmentbudgetfor Fiscal Year 2016/17 of Nepal has given interest subsidies in the  loan  for fiveyears  to  the  farmer's  cooperatives  if  they  bringa  project  of  constructing cold storesand warehousesthrough cooperativestopreserve and store their agricultural produces.Likewise,thebudget forFiscal Year2016/17hasemphasizedthe role of cooperativesin the  activities  of  agricultural  production,  processing, andmarketing(MOF,2016). The  budgetsaid, “Activities  of  agricultural  production, process  and  marketingwill beconductedin  such areas withthe involvementof agricultural entrepreneurs, cooperatives, the privatesector, andthe Government.”
-
-# Agricultural cooperative: A case study from Nepal
+- Poverty is considered a major threat for world peace and stability.
+- Achievements made by the cooperatives in economic prosperity of societies, particularly in developing countries:
+  - Dairy cooperatives in India and agricultural cooperatives in Zambia;
+  - ICT cooperatives in rural America after the World War II, Poland, Albania, Argentina and Bolivia;  
+  - Electric service cooperatives in the Philippines, Bangladesh India and Bolivia; 
+  - Financial service cooperatives in Mexico, the  Philippines, Bolivia, Nicaragua, Romania, Poland, Ecuador, El Salvador, Guatemala, Honduras, Jamaica and Russia;  
 
 ##
+
+- There has been a remarkable growth in the number of cooperatives in recent years and one of main reasons for such growth is attributed to the government extension and farm sector policy of supporting farmers through the cooperatives. 
+- For example, government policy of distributing subsidized fertilizers through the agriculture and related cooperatives has spurred the trend of forming cooperatives in rural and peri-urban areas.
+- Government budget for the fiscal year 2008/09 introduced a new program "Cooperatives in every village, food storage in every house" to increase the agricultural productivity through cooperatives(MOF, 2009). This program aimed at motivating small farmers to commercialize their agriculture through cooperative models.
+- The government allotted Rs. 85million for providing incentives to cooperative farming.
+
+##
+
+- Budget for fiscal year 2011/12 has given more importance to the cooperatives; it has brought various cooperatives programs and policies for the promotion and expansion of cooperatives as one of the central pillars of the economy. 
+- This budget launches a national program of "Cooperatives in Villages and Cites, Employment at Every Household" to encourage cooperative farming to increase agricultural productivity.
+- The government proposed Rs. 10 million for this program.
+- The budget provided credit facility at a concessional interest rate through small farmer cooperatives for the people involved in livestock, poultry, and fish farming. It also aimed to provide 50 percent subsidy on the capital expenditure to the small farmer cooperatives in the purchase of machinery and equipment (MOF, 2012).
+- The government budget for Fiscal Year 2016/17 said, "Activities of agricultural production, process and marketing will be conducted in such areas with the involvement of agricultural entrepreneurs, cooperatives, the private sector, and the Government."
+
+## Agricultural cooperative: A case study from Nepal
 
 - For case studies of Agricultural Cooperatives in Nepal, refer to [Building social capital within the framework of agricultural cooperatives development in rural Nepal](https://core.ac.uk/download/pdf/43382733.pdf) by Ram Krishna Shrestha.
 - For types of farmer cooperatives, refer to [Farmer Cooperatives for Food Self-sufficiency, Agricultural Commercialization, and the Socio-economic Development of Nepal](http://cffn.ca/old/conf/2007/Farmer-Cooperatives-for-Food-Self-Sufficiency-DDPoudel-cffn-canada.pdf)
 
-# Future direction for cooperatives 
-
-##
+## Future direction for cooperatives
 
 - Cooperatives here must at least match the large proportion of agricultural output which is handled by cooperatives in Europe and North America, where they play a major role. If this happens, Nepal's agricultural cooperatives can indeed be an important force for development, contributing to the achievement of the Sustainable Development Goals (which, under goal 2, address farm incomes).
-- Bulk-buying inputs (principally seed, fertiliser, and insecticide) keeps costs down since cooperatives can get better deals with suppliers than individual farmers can. 
+- Bulk-buying inputs (principally seed, fertilizer, and insecticide) keeps costs down since cooperatives can get better deals with suppliers than individual farmers can. 
 - Selling output in bulk also means better prices, particularly if the cooperative can consistently supply buyers with the amounts they need. Market intermediaries often complain that small farmers cannot reliably do this and that quality is often poor. Cooperatives' ability to provide acceptable quality is therefore also very important.
-

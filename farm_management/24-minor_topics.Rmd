@@ -1,0 +1,219 @@
+---
+author: Deependra Dhakal
+fontsize: 12pt
+title: "Minor Topics"
+date: \today
+institute:
+  - GAASC, Baitadi
+  - Tribhuwan University 
+output: 
+  binb::iqss:
+    keep_tex: true
+    slide_level: 1
+    includes:
+      in_header: iqss_beamer_header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+require(tidyverse)
+set.seed(453)
+# invalidate cache when the package version changes
+knitr::opts_chunk$set(tidy = FALSE, echo = FALSE, 
+                  message = FALSE, warning = FALSE,
+                  out.width = "45%", cache = TRUE)
+options(knitr.table.format = "latex")
+options(knitr.kable.NA = "", digits = 2, knitr.kable.NAN = "")
+options(kableExtra.latex.load_packages = FALSE)
+```
+
+#
+
+1. Define farm management. Briefly discuss the scope of farm management.
+2. Define utility. Explain the law of diminishing marginal utility.
+3. What is production function ? Enlist four factors of production function and explain any two of them.
+4. Define cooperatives. Enlist the roles of cooperatives in agricultural development of Nepal.
+5. Define farm records. What are the tools that measure financial efficiency of a farm ? Discuss in brief.
+6. Differentiate between
+	a. Cost and price
+	b. Iso-cost and Iso-quant lines
+	c. Elasticity of demand and elasticity of supply
+	d. Net worth statement and income statement
+	e. Tangible and non-tangible goods
+
+8. Write short notes on
+	a. Farm and mechanization
+	b. GATT and WTO
+	c. Indifference curve
+	d. Diminishing return
+	e. Opportunity cost
+
+# Difference between Tangible and Intangible goods/assets
+
+There are two types of categories of assets called tangible and intangible assets. 
+
+Tangible assets are typically physical assets or property owned by a company, such as computer equipment. Tangible assets are the main type of assets that companies use to produce their product and service. Some examples of tangible assets are:
+
+- Land
+- Vehicles
+- Equipment
+- Machinery
+- Furniture
+- Inventory
+- Securities like stocks, bonds, and cash
+
+Broadly, there are two types of tangible assets: Current Assets, Fixed Assets.
+
+Intangible assets don't exist physically but have a monetary value since they represent potential revenue. A type of an intangible asset could be a copyright to a song. ﻿The record company that owns the copyright would get paid a royalty each time the song is played. Other kinds of intangible assets are patent and company's brand goodwill.
+
+There are various types of assets that could be considered tangible or intangible, some of which are short-term or long-term assets.
+
+Tangible assets can be damaged by naturally occurring incidence since they are physical assets. Intangible assets are the non-physical assets that add to a company's future value or worth and can be far more valuable than tangible assets. Both of these types of assets are initially recorded on the balance sheet, which helps investors, creditors, and banks assess the value of the company.
+
+Tangible assets are also the easiest to value since they typically have a finite value and life span. Tangible assets are recorded on the balance sheet initially, but as they are used up, they get carried over to the income statement.
+
+Inventory, for example, is a tangible asset that when used, becomes included in the cost of goods sold for a company. Cost of goods sold represents the costs directly involved with the production of a good. As inventory is used up in the production process, it's recorded in cost of goods sold. 
+
+Fixed assets, such as plant and equipment, are the other types of tangible assets that are recorded on the balance sheet but as their useful life is reduced, that portion is expensed on the income statement in a process called depreciation. Depreciation is the process of allocating a portion of the cost of an asset over the years as it is used to generate revenue for the company. Depreciation helps to reflect the wear and tear on tangible assets as they are used during their lifetime.
+
+Intangible assets can be more challenging to value from an accounting standpoint. Some intangible assets have an initial purchase price, such as a patent or license. Similar to fixed assets, intangible assets are initially recorded on the balance sheet as long-term assets.  
+
+The cost of some intangible assets can be spread out over the years for which the asset generates value for the company or throughout its useful life. Whereas depreciation is used for tangible assets, intangible assets use amortization. Amortization is the same concept as depreciation, but it's only used for intangibles. Amortization spreads out the cost of the asset each year as it is expensed on the income statement.
+
+Depending on the type of business, intangible assets may include internet domain names, performance events, licensing agreements, service contracts, computer software, blueprints, manuscripts, joint ventures, medical records, permits, and trade secrets.
+
+In ordinary sense, an intangible good should not be confused with a service since a good is an object, whereas a service is an activity or labor. So a haircut is a service, not an intangible good. A different way to look at this distinction is to consider the ownership factor. In case if person A requests a design and person B fulfills the request and deliver the design through the Internet, was that a service or a digital good? It actually involves both. It's a service that produced an intangible good. If what person A bought from person B is a service, then person A should assume ownership of the design, which is a digital good; whereas if what person A bought is considered an intangible good, then person B may still own the design. It's like when you buy a book from a bookstore, you have the right to use that book but you don't own the copyright, whereas if you hire someone to write a book for you, then you will have the copyright.
+
+# Price elasticity of demand
+
+# Taxation
+
+- A payment compulsorily collected from individuals or firms by central or local government.
+- Another example of government intervention in markets is the imposition of taxes on goods.
+- This indirect taxes, as they are called include taxes such as value added tax (VAT) and excise duties on cigarettes, petrol and alcoholic drinks.
+- The taxes can be a fixed amount per unit sold a specific tax.
+- An example is the tax per liter of petrol. Alternatively, they can be percentage of the price or value added at each stage of production - an ad valorem tax. An example of such tax is VAT.
+
+# Tax types
+
+1. Specific tax
+  - These taxes can be fixed amount per unit sold. An example is the tax per liter of petrol.
+  - An indirect tax of fixed sum per unit so
+
+2. Indirect tax/*Ad valorem *
+  - This taxes are not paid directly by the consumers, but indirectly via the seller of the product
+  - Alternatively, they can be percentage of the price of value added at each stage of production -- An *ad valorem tax*. i.e., VAT.
+
+#
+
+- When a tax is imposed on a good, this will have the effect of shifting the supply curve upward by the amount of the tax.
+- In the case of specific tax, it will be a parallel shift, since the amount of the tax is the same at all prices. In the case of ad valorem tax, the curve will swing upward. At a zero price there would be no tax and hence no shifts in the supply curve. As price rises, so the gap between the original and new supply curve will widen, since a given percentage tax will be a larger absolute amount the higher the price.
+
+<!-- --- -->
+
+<!-- - But why does the supply curve shift upward by the amount of the tax? -->
+<!-- - To be persuaded to produce the same quantity as before the imposition of the tax (i.e. $Q_1$), firms must now receive a price which allows them fully to recoup the tax they have to pay (i.e. $P_1 + tax$). -->
+<!-- - The effect of the tax is to raise price and reduce quantity. Price will not rise by the full amount of the tax, however, because the demand curve is downward sloping.  -->
+<!-- - The burden on incidence of such taxes is distributed between consumers and producers. Consumers pay to the extent the price rises (consumers' share of a tax on a good). The producers pay to the extent that rise the price is not sufficient to cover the tax (producers' share of a tax on a good). -->
+
+#
+
+Type of taxes
+
+1. Specific Tax: levied on a good at a rate fixed in money terms per unit quantity, regardless of their price.
+2. Ad valorem: Value added tax (VAT) is levied on the value added of a business.
+3. Lump Sum Tax: is levied on a particular activity, regardless of its extent or the income of the taxpayers. For example, UK Television licenses.
+4. Expenditure Tax: would be levied on income less net savings.
+
+# Government intervention
+
+Government policies on agribusiness enterprises is the goals and methods used to bring desirable change in socio-economic variables. The government intervenes in many markets, even markets which are highly competitive. The interventions can take a number of forms:
+
+- The control of prices: Fixing prices, either above or below the free-market equilibrium,
+- Taxation: Taxing of production or sale of various goods.
+- Subsidies: Subsidizing the production or sale of various goods
+- Buffer Stock: Taking over production
+- Regulation: Various laws could be passed to regulate the behavior of firms. For example, various activities, such as the dumping of toxic waste, could be made illegal; or licences or official permission might have to be obtained to produce certain goods; or a regulatory body could supervise the activities of various firms and prevent any that it felt to be against the public interest.
+
+# Why intervene ?
+
+The following are the most commonly cited of the free market:
+1. Agricultural prices are subject to considerable fluctuation (risk and uncertainty, lack of lone term investment plan, cobweb theory of supply, etc.)
+2. Farm incomes rise less likely over time than other incomes.
+3. The lack of economic power of farmers.
+4. Traditional rural ways of live may be destroyed.
+5. Completion from abroad (cheap food imports from abroad).
+
+# Objectives of government intervention
+
+1) To reduce price and income instability
+2) To improve resource allocation pattern
+3) To make the nation self sufficient in food and fibers and ultimately in export of goods
+4) To raise the general economic standard of people
+5) To provide guide for the producers of goods and services
+
+# Measures/types of government intervention
+
+1. Price control
+
+- This could be done to protect consumers or producers as the case may be.
+- Deliberate attempt by the government to adjust prices in the market rather than give forces of demand and supply a free hand.
+- There are two categories of price control: Maximum price and Minimum price
+
+Maximum price/ceiling price
+
+- This is that price below the equilibrium above which no producer is allowed to sell. This is established below the equilibrium so as to protect the consumers from producers' exploitation.
+
+#
+
+Minimum price/floor price
+
+- This is the price above the equilibrium price established by the government, below which no producer is permitted to sale
+- This is a price higher than the equilibrium and is meant to protect the producers from low prices.
+
+2. Buffer stock
+
+- The government can buy food and place it in store when harvest are good, and then release the food on the market when harvests are bad. 
+- The buffer stocks are only for stabilizing prices or farm incomes, not for providing long term support to farmers.
+- If there is good harvest, government buys up the surplus and puts it into store.
+- If there is bad harvest, government releases the stored goods to the market so that quantity supply is Q in both times to fulfil normal demand in equilibrium price (P).
+
+#
+
+3. Subsidy
+
+- A subsidy is reverse of tax: a requirement that the government pay an extra amount to producers or consumers of a good. Government uses subsidies to encourage the production and consumption of a particular good or service.
+- Subsidy can also be used as an alternative price control to benefit certain groups without generating a shortage or an excess supply.
+
+# Elasticity of demand and supply
+
+Elasticity of demand = $\frac{\textrm{Percentage change in quantity demanded}}{\textrm{Percentage change in price}}$
+
+Elasticity of supply = $\frac{\textrm{Percentage change in quantity supplied}}{\textrm{Percentage change in price}}$
+
+- When the value of elasticity is greater than 1.0, it suggests that the demand for the good or service is affected by the price. 
+- A value that is less than 1.0 suggests that the demand is insensitive to price, or inelastic.
+
+# General Agreement on Trade and Tariffs (GATT)
+
+GATT is a multilateral agreement on trade in goods. Before 1995, GATT itself was an international agency containing the main set of rules for international trade.
+
+The then GATT had contracting parties and it used to deal with goods. Since the establishment of WTO, GATT has become one of the agreements dealing with trade in goods. This agreement is concerned with associate agreements, understandings, and decisions made for the biggest portion of constraints and allow for most of the exclusions in trade policy formulation by members. GATT is led by the principles of WTO under which members must design and implement their trade policies to be non-discriminatory. Members must observe the national treatment principle and when granting protection, use tariffs, which are reasonable and bound. 
+
+#
+
+Under GATT, members deal with:
+
+- Agriculture
+- Health regulations for farm products
+- Textiles and clothing
+- Product standards
+- Investment measures
+- Antidumping measures
+- Customs valuation methods
+- Pre-shipment inspection
+- Rates of origin
+- Import licensing
+- Subsidies and counter measures
+- Safeguards 

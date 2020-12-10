@@ -116,6 +116,11 @@
   \usepackage[absolute,overlay]{textpos} % for text formatting
   \usepackage[utf8]{inputenc}
   \usetikzlibrary{mindmap,arrows,shapes,positioning,shadows,trees}
+
+  % custom commands for flowchart
+  \newcommand*{\h}{\hspace{5pt}}% for indentation
+  \newcommand*{\hh}{\h\h}% double indentation
+
   \usepackage[skip=2pt]{caption}
 
   % this font option is amenable for beamer
@@ -330,18 +335,14 @@ term asset on the balance sheet for most farm operators.
 
 \begin{frame}{Example}
 \protect\hypertarget{example}{}
-\begin{columns}
-
-\column{0.4\textwidth}
-\scalebox{0.60}{\begin{minipage}{1.2\textwidth}
+\scalebox{0.60}{\begin{minipage}{1.0\textwidth}
 \begin{itemize}
 \item Net worth or equity or net assets or capital of a company/farm is calculated by calculating the difference between the Total Assets and the Total Liabilities.
 \item An example Net worth statement of MudnBrick Commercial Vegetable and Livestock Farm is presented in Table \ref{tab:net-worth-state}.
 \end{itemize}
 \end{minipage}}
 
-\column{0.8\textwidth}
-\scalebox{0.6}{\begin{minipage}{1.2\textwidth}
+\scalebox{0.6}{\begin{minipage}{1.0\textwidth}
 
 \begin{table}[H]
 
@@ -391,7 +392,6 @@ Cash value of livestock insurance & 4000 &  & \\
 \end{table}
 
 \end{minipage}}
-\end{columns}
 \end{frame}
 
 \begin{frame}{Farm income statement/Profit and loss account}
